@@ -12,6 +12,13 @@
 		E1CD318B1A0BCB8900D317A8 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = E1CD318A1A0BCB8900D317A8 /* Images.xcassets */; };
 		E1CD318E1A0BCB8900D317A8 /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = E1CD318C1A0BCB8900D317A8 /* LaunchScreen.xib */; };
 		E1CD319A1A0BCB8900D317A8 /* IRGBuscaminasTests.m in Sources */ = {isa = PBXBuildFile; fileRef = E1CD31991A0BCB8900D317A8 /* IRGBuscaminasTests.m */; };
+		E1CD31A61A0BCBF800D317A8 /* IRGVentanaPrincipalViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = E1CD31A41A0BCBF800D317A8 /* IRGVentanaPrincipalViewController.m */; };
+		E1CD31A71A0BCBF800D317A8 /* IRGVentanaPrincipalViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = E1CD31A51A0BCBF800D317A8 /* IRGVentanaPrincipalViewController.xib */; };
+		E1CD31AD1A0BCCF900D317A8 /* IRGCelda.m in Sources */ = {isa = PBXBuildFile; fileRef = E1CD31AC1A0BCCF900D317A8 /* IRGCelda.m */; };
+		E1D41DC51A0BEF6B0059C46C /* IRGCeldaViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = E1D41DC41A0BEF6B0059C46C /* IRGCeldaViewController.m */; };
+		E1D41DCA1A0BF0050059C46C /* IRGLienzo.m in Sources */ = {isa = PBXBuildFile; fileRef = E1D41DC71A0BF0050059C46C /* IRGLienzo.m */; };
+		E1D41DCB1A0BF0050059C46C /* IRGPincel.m in Sources */ = {isa = PBXBuildFile; fileRef = E1D41DC91A0BF0050059C46C /* IRGPincel.m */; };
+		E1D41DCE1A0BFEC30059C46C /* IRGDatos.m in Sources */ = {isa = PBXBuildFile; fileRef = E1D41DCD1A0BFEC30059C46C /* IRGDatos.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -35,6 +42,19 @@
 		E1CD31931A0BCB8900D317A8 /* IRGBuscaminasTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = IRGBuscaminasTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		E1CD31981A0BCB8900D317A8 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		E1CD31991A0BCB8900D317A8 /* IRGBuscaminasTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = IRGBuscaminasTests.m; sourceTree = "<group>"; };
+		E1CD31A31A0BCBF800D317A8 /* IRGVentanaPrincipalViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IRGVentanaPrincipalViewController.h; sourceTree = "<group>"; };
+		E1CD31A41A0BCBF800D317A8 /* IRGVentanaPrincipalViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = IRGVentanaPrincipalViewController.m; sourceTree = "<group>"; };
+		E1CD31A51A0BCBF800D317A8 /* IRGVentanaPrincipalViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = IRGVentanaPrincipalViewController.xib; sourceTree = "<group>"; };
+		E1CD31AB1A0BCCF900D317A8 /* IRGCelda.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IRGCelda.h; sourceTree = "<group>"; };
+		E1CD31AC1A0BCCF900D317A8 /* IRGCelda.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = IRGCelda.m; sourceTree = "<group>"; };
+		E1D41DC31A0BEF6B0059C46C /* IRGCeldaViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IRGCeldaViewController.h; sourceTree = "<group>"; };
+		E1D41DC41A0BEF6B0059C46C /* IRGCeldaViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = IRGCeldaViewController.m; sourceTree = "<group>"; };
+		E1D41DC61A0BF0050059C46C /* IRGLienzo.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IRGLienzo.h; sourceTree = "<group>"; };
+		E1D41DC71A0BF0050059C46C /* IRGLienzo.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = IRGLienzo.m; sourceTree = "<group>"; };
+		E1D41DC81A0BF0050059C46C /* IRGPincel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IRGPincel.h; sourceTree = "<group>"; };
+		E1D41DC91A0BF0050059C46C /* IRGPincel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = IRGPincel.m; sourceTree = "<group>"; };
+		E1D41DCC1A0BFEC30059C46C /* IRGDatos.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IRGDatos.h; sourceTree = "<group>"; };
+		E1D41DCD1A0BFEC30059C46C /* IRGDatos.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = IRGDatos.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -76,8 +96,12 @@
 		E1CD31821A0BCB8900D317A8 /* IRGBuscaminas */ = {
 			isa = PBXGroup;
 			children = (
-				E1CD31871A0BCB8900D317A8 /* AppDelegate.h */,
-				E1CD31881A0BCB8900D317A8 /* AppDelegate.m */,
+				E1CD31A91A0BCC1300D317A8 /* Controlador */,
+				E1CD31A81A0BCC0600D317A8 /* Vista */,
+				E1CD31A51A0BCBF800D317A8 /* IRGVentanaPrincipalViewController.xib */,
+				E1CD31AB1A0BCCF900D317A8 /* IRGCelda.h */,
+				E1CD31AC1A0BCCF900D317A8 /* IRGCelda.m */,
+				E1CD31AA1A0BCC1D00D317A8 /* Modelo */,
 				E1CD318A1A0BCB8900D317A8 /* Images.xcassets */,
 				E1CD318C1A0BCB8900D317A8 /* LaunchScreen.xib */,
 				E1CD31831A0BCB8900D317A8 /* Supporting Files */,
@@ -109,6 +133,39 @@
 				E1CD31981A0BCB8900D317A8 /* Info.plist */,
 			);
 			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		E1CD31A81A0BCC0600D317A8 /* Vista */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			name = Vista;
+			sourceTree = "<group>";
+		};
+		E1CD31A91A0BCC1300D317A8 /* Controlador */ = {
+			isa = PBXGroup;
+			children = (
+				E1CD31871A0BCB8900D317A8 /* AppDelegate.h */,
+				E1CD31881A0BCB8900D317A8 /* AppDelegate.m */,
+				E1CD31A31A0BCBF800D317A8 /* IRGVentanaPrincipalViewController.h */,
+				E1CD31A41A0BCBF800D317A8 /* IRGVentanaPrincipalViewController.m */,
+				E1D41DC31A0BEF6B0059C46C /* IRGCeldaViewController.h */,
+				E1D41DC41A0BEF6B0059C46C /* IRGCeldaViewController.m */,
+			);
+			name = Controlador;
+			sourceTree = "<group>";
+		};
+		E1CD31AA1A0BCC1D00D317A8 /* Modelo */ = {
+			isa = PBXGroup;
+			children = (
+				E1D41DC61A0BF0050059C46C /* IRGLienzo.h */,
+				E1D41DC71A0BF0050059C46C /* IRGLienzo.m */,
+				E1D41DC81A0BF0050059C46C /* IRGPincel.h */,
+				E1D41DC91A0BF0050059C46C /* IRGPincel.m */,
+				E1D41DCC1A0BFEC30059C46C /* IRGDatos.h */,
+				E1D41DCD1A0BFEC30059C46C /* IRGDatos.m */,
+			);
+			name = Modelo;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -191,6 +248,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				E1CD31A71A0BCBF800D317A8 /* IRGVentanaPrincipalViewController.xib in Resources */,
 				E1CD318E1A0BCB8900D317A8 /* LaunchScreen.xib in Resources */,
 				E1CD318B1A0BCB8900D317A8 /* Images.xcassets in Resources */,
 			);
@@ -210,6 +268,12 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				E1CD31AD1A0BCCF900D317A8 /* IRGCelda.m in Sources */,
+				E1D41DCB1A0BF0050059C46C /* IRGPincel.m in Sources */,
+				E1D41DCE1A0BFEC30059C46C /* IRGDatos.m in Sources */,
+				E1D41DC51A0BEF6B0059C46C /* IRGCeldaViewController.m in Sources */,
+				E1CD31A61A0BCBF800D317A8 /* IRGVentanaPrincipalViewController.m in Sources */,
+				E1D41DCA1A0BF0050059C46C /* IRGLienzo.m in Sources */,
 				E1CD31891A0BCB8900D317A8 /* AppDelegate.m in Sources */,
 				E1CD31861A0BCB8900D317A8 /* main.m in Sources */,
 			);
@@ -396,6 +460,7 @@
 				E1CD319F1A0BCB8900D317A8 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		E1CD31A01A0BCB8900D317A8 /* Build configuration list for PBXNativeTarget "IRGBuscaminasTests" */ = {
 			isa = XCConfigurationList;
@@ -404,6 +469,7 @@
 				E1CD31A21A0BCB8900D317A8 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};
