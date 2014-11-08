@@ -130,12 +130,16 @@
 
 
 - (void) iniciarJuego{
+    if (!self.juegoAcabado){
+        [self restablecerNumeroDeMinasPendietes];
+    }
     self.juegoAcabado = false;
     [[IRGDatos sharedDatos] borrarJuego];
     [self borrarCanvas];
     [self generarCanvas];
     [self actualizarNumeroDeMinas];
     [self generarMinas];
+    [self restablecerNumeroDeMinasPendietes];
     [self actualizarBotonYBarraDeProgreso];
     [self activarMostrarMinas];
     [self desactivarNumeroDeMinas];
@@ -150,12 +154,16 @@
     [self desactivarMostrarMinas];
     [self activarNumeroDeMinas];
     [self establecerFondoDeError];
+    [self restablecerNumeroDeMinasPendietes];
+
 }
 
 - (void) acabarJuegoSinError{
     self.juegoAcabado = true;
     [self activarNumeroDeMinas];
     [self establecerFondoDeVictoria];
+    [self restablecerNumeroDeMinasPendietes];
+
 }
 
 # pragma mark - Auxiliares segundo nivel
@@ -211,11 +219,12 @@
             numeroDeMinas --;
         }
     }
-    self.totalMinas.text = [NSString stringWithFormat:@"%d",[[IRGDatos sharedDatos] numeroDeMinas]];
-    
     self.mostrarMinas = false;
 }
 
+- (void) restablecerNumeroDeMinasPendietes{
+    self.totalMinas.text = [NSString stringWithFormat:@"%d",[[IRGDatos sharedDatos] numeroDeMinas]];
+}
 
 -(void) actualizarBotonYBarraDeProgreso{
     NSArray *todasLasCeldas = [IRGDatos sharedDatos].todasLasCeldas;
@@ -314,5 +323,7 @@
 -(NSInteger) altoDelCanvas{
     return self.canvas.frame.size.height;
 }
+
+
 
 @end
