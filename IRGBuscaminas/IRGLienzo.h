@@ -16,9 +16,9 @@
 @property (nonatomic,readonly) NSInteger altoCelda;
 @property (nonatomic,readonly) NSInteger anchoCelda;
 
-@property (nonatomic) UIColor *colorDelTrazoDeLaCeldaSinPintar;
-@property (nonatomic) UIColor *colorDelRellenoDeLaCeldaSinPintar;
-@property (nonatomic) NSUInteger grosoDelTrazoDeLaCeldaSinPintar;
+
+
+
 
 + (instancetype) sharedLienzo;
 

@@ -24,7 +24,10 @@
 @property (nonatomic) BOOL juegoAcabado;
 
 @property (weak, nonatomic) IBOutlet UIView *canvas;
-@property (weak, nonatomic) IBOutlet UILabel *minasPendientes;
+@property (weak, nonatomic) IBOutlet UITextField *totalMinas;
+@property (weak, nonatomic) IBOutlet UIButton *botonPrincipal;
+@property (weak, nonatomic) IBOutlet UIButton *BotonMostrarMinas;
+@property (weak, nonatomic) IBOutlet UIProgressView *barraDeProgreso;
 
 @end
 
@@ -42,9 +45,10 @@
 }
 
 
-#pragma mark - Navigation
+#pragma mark - Navigation primer nivel
 
 - (IBAction)accionJugar:(UIButton *)sender {
+    [self.totalMinas resignFirstResponder];
     [self iniciarJuego];
 }
 
@@ -60,20 +64,69 @@
     self.mostrarMinas = !self.mostrarMinas;
 }
 
-#pragma mark - Delegado
+# pragma mark Navigation segundo nivel
+
+-(void) mostrarTodasLasMinas{
+    
+    for (IRGCeldaViewController * celdaViewController in [[IRGDatos sharedDatos] todasLasCeldas]){
+        [celdaViewController mostrarMina];
+    }
+}
+
+-(void) ocultarTodasLasMinas{
+    
+    for (IRGCeldaViewController * celdaViewController in [[IRGDatos sharedDatos] todasLasCeldas]){
+        [celdaViewController ocultarMina];
+    }
+}
+
+#pragma mark - Delegado primer nivel
 
 - (void) celdaPulsada:(IRGCeldaViewController *)celdaPulsada{
     if (!self.juegoAcabado){
         if (celdaPulsada.tieneMina){
-            [self acabarJuego];
+            [self acabarJuegoConError];
         }
         else {
             [self propagaTouch:celdaPulsada];
+            [self actualizarBotonYBarraDeProgreso];
         }
     }
 }
 
-#pragma mark - Auxiliares
+# pragma mark Delegado segundo nivel
+
+-(void) propagaTouch:(IRGCeldaViewController *)celdaViewController{
+    if (!celdaViewController.estado == procesado){
+        
+        celdaViewController.estado = procesado;
+        [celdaViewController dibujarComoCeldaVacia];
+        
+        if ([[IRGDatos sharedDatos] tieneMinasAlrededor:celdaViewController]){
+            NSArray * celdasSinMinasAlrededorAPropagar= [[NSMutableArray alloc]init];
+            celdasSinMinasAlrededorAPropagar =[[IRGDatos sharedDatos] celdasSinMinasAlrededorDe:celdaViewController incluyendoEsquinas:true];
+            for (IRGCeldaViewController * celdeViewControllerTmp in celdasSinMinasAlrededorAPropagar ){
+                [self propagaTouch:celdeViewControllerTmp];
+            }
+        }
+        else {
+            [celdaViewController mostrarNumeroDeMinas];
+        }
+    }
+}
+
+-(void) actualizaMinasPendientes{
+    int banderasPuestas=0;
+    for (IRGCeldaViewController *celdaViewController in [IRGDatos sharedDatos].todasLasCeldas){
+        if (celdaViewController.estado == conBandera){
+            banderasPuestas++;
+        }
+    }
+    int banderasPendientes = [IRGDatos sharedDatos].numeroDeMinas;
+    banderasPendientes = banderasPendientes-banderasPuestas;
+    self.totalMinas.text = [NSString stringWithFormat:@"%d",banderasPendientes];
+}
+#pragma mark - Auxiliares primer nivel
 
 
 - (void) iniciarJuego{
@@ -81,13 +134,31 @@
     [[IRGDatos sharedDatos] borrarJuego];
     [self borrarCanvas];
     [self generarCanvas];
+    [self actualizarNumeroDeMinas];
     [self generarMinas];
+    [self actualizarBotonYBarraDeProgreso];
+    [self activarMostrarMinas];
+    [self desactivarNumeroDeMinas];
+    [self iniciarBarraDeProgreso];
+    [self establecerFondoNeutro];
 }
 
--(void) acabarJuego{
+-(void) acabarJuegoConError{
     [self mostrarTodasLasMinas];
     self.juegoAcabado = true;
+    [self establecerImagenDelBotonPrincipal:@"error"];
+    [self desactivarMostrarMinas];
+    [self activarNumeroDeMinas];
+    [self establecerFondoDeError];
 }
+
+- (void) acabarJuegoSinError{
+    self.juegoAcabado = true;
+    [self activarNumeroDeMinas];
+    [self establecerFondoDeVictoria];
+}
+
+# pragma mark - Auxiliares segundo nivel
 
 - (void) generarCanvas{
     for (NSInteger fila = 0;fila < [IRGLienzo sharedLienzo].filasDelLienzo;fila++){
@@ -109,21 +180,25 @@
         }
     }
 }
-
-- (IRGCeldaViewController *) crearCeldaViewControllerConFila:(NSInteger)fila
-                                                  conColumna:(NSInteger)columna{
-    IRGCeldaViewController *celdaViewController = [[IRGCeldaViewController alloc]initConNumeroDeFila:fila numeroDeColumna:columna];
-    celdaViewController.delegado = self;
-    return celdaViewController;
+-(void) establecerFondoNeutro{
+    self.canvas.backgroundColor = [IRGPincel sharedPincel].colorDeRellenoDePantallaNormal;
 }
 
-- (void) anadirAlCanvasElCeldaViewController:(IRGCeldaViewController *)celdaViewController{
-    [self.canvas addSubview:celdaViewController.view];
+- (void) establecerFondoDeError{
 
+    self.canvas.backgroundColor = [IRGPincel sharedPincel].colorDeRellenoDePantallaDeError;
 }
+
+- (void) establecerFondoDeVictoria {
+    self.canvas.backgroundColor = [IRGPincel sharedPincel].colorDeRellenoDePantallaDeVictoria;
+}
+
+-(void) actualizarNumeroDeMinas{
+    [IRGDatos sharedDatos].numeroDeMinas = [self.totalMinas.text intValue];
+}
+
 - (void) generarMinas{
     for (int numeroDeMinas = 0;numeroDeMinas < [IRGDatos sharedDatos].numeroDeMinas;numeroDeMinas++){
-        
         NSInteger celdaConMina = [self generarNumeroAleatorioEntre:0
                                                                  Y:[IRGLienzo sharedLienzo].filasDelLienzo*[IRGLienzo sharedLienzo].columnasDelLienzo];
         
@@ -136,50 +211,108 @@
             numeroDeMinas --;
         }
     }
-    self.minasPendientes.text = [NSString stringWithFormat:@"%d",[[IRGDatos sharedDatos] numeroDeMinas]];
-
+    self.totalMinas.text = [NSString stringWithFormat:@"%d",[[IRGDatos sharedDatos] numeroDeMinas]];
+    
     self.mostrarMinas = false;
-    
 }
 
 
--(void) propagaTouch:(IRGCeldaViewController *)celdaViewController{
-    if (!celdaViewController.estado == procesado){
-        
-        celdaViewController.estado = procesado;
-        [celdaViewController dibujarComoCeldaVacia];
-        
-        if ([[IRGDatos sharedDatos] tieneMinasAlrededor:celdaViewController]){
-            NSArray * celdasSinMinasAlrededorAPropagar= [[NSMutableArray alloc]init];
-            celdasSinMinasAlrededorAPropagar =[[IRGDatos sharedDatos] celdasSinMinasAlrededorDe:celdaViewController incluyendoEsquinas:true];
-            for (IRGCeldaViewController * celdeViewControllerTmp in celdasSinMinasAlrededorAPropagar ){
-                [self propagaTouch:celdeViewControllerTmp];
-            }
-        }
-        else {
-            [celdaViewController mostrarNumeroDeMinas];
+-(void) actualizarBotonYBarraDeProgreso{
+    NSArray *todasLasCeldas = [IRGDatos sharedDatos].todasLasCeldas;
+    Float32 totalCeldas = [todasLasCeldas count];
+    totalCeldas = totalCeldas - [IRGDatos sharedDatos].numeroDeMinas;
+    
+    Float32 totalCeldasProcesadas = 0;
+    for (IRGCeldaViewController * celdaViewController in todasLasCeldas){
+        if (celdaViewController.estado == procesado){
+            totalCeldasProcesadas++;
         }
     }
+    Float32 porcentajeDeAvance = (totalCeldasProcesadas/totalCeldas);
+    [self actualizarBotonConProgreso:porcentajeDeAvance];
+    [self actualizarBarraDeProgresoConProgreso:porcentajeDeAvance];
 }
 
--(void) mostrarTodasLasMinas{
-    
-    for (IRGCeldaViewController * celdaViewController in [[IRGDatos sharedDatos] todasLasCeldas]){
-        [celdaViewController mostrarMina];
-    }
+- (void) activarMostrarMinas{
+    self.BotonMostrarMinas.enabled = TRUE;
 }
 
--(void) ocultarTodasLasMinas{
-    
-    for (IRGCeldaViewController * celdaViewController in [[IRGDatos sharedDatos] todasLasCeldas]){
-        [celdaViewController ocultarMina];
-    }
+- (void) desactivarMostrarMinas{
+    self.BotonMostrarMinas.enabled = false;
 }
+
+- (void) activarNumeroDeMinas{
+    self.totalMinas.enabled = true;
+    self.totalMinas.textColor = [UIColor blueColor];
+    self.totalMinas.text = [NSString stringWithFormat:@"%d",[IRGDatos sharedDatos].numeroDeMinas];
+}
+
+- (void) desactivarNumeroDeMinas{
+    self.totalMinas.enabled = false;
+    self.totalMinas.textColor = [UIColor lightGrayColor];
+}
+
+-(void) iniciarBarraDeProgreso{
+    [self.barraDeProgreso setProgress:0 animated:true];
+}
+
+
+
+# pragma mark - Auxiliares tercer nivel
+
+-(void) actualizarBotonConProgreso:(float)porcentajeDeAvance{
+    if (porcentajeDeAvance == 1) {
+        [self establecerImagenDelBotonPrincipal:@"igualA100"];
+        [self acabarJuegoSinError];
+    }
+    if (porcentajeDeAvance < 1) {
+        [self establecerImagenDelBotonPrincipal:@"menorDe100"];
+    }
+    if (porcentajeDeAvance < .8) {
+        [self establecerImagenDelBotonPrincipal:@"menorDe80"];
+    }
+    if (porcentajeDeAvance < .60) {
+        [self establecerImagenDelBotonPrincipal:@"menorDe60"];
+    }
+    if (porcentajeDeAvance < .40) {
+        [self establecerImagenDelBotonPrincipal:@"menorDe40"];
+    }
+    
+    if (porcentajeDeAvance < .20) {
+        [self establecerImagenDelBotonPrincipal:@"menorDe20"];
+    }
+
+    
+}
+
+- (void) actualizarBarraDeProgresoConProgreso:(float)porcentajeDeAvance{
+    [self.barraDeProgreso setProgress:porcentajeDeAvance animated:true];
+}
+
+
+- (void) establecerImagenDelBotonPrincipal:(NSString *)imagenNueva{
+    [self.botonPrincipal setImage:[UIImage imageNamed:imagenNueva] forState:(normal) ];
+}
+
+- (IRGCeldaViewController *) crearCeldaViewControllerConFila:(NSInteger)fila
+                                                  conColumna:(NSInteger)columna{
+    IRGCeldaViewController *celdaViewController = [[IRGCeldaViewController alloc]initConNumeroDeFila:fila numeroDeColumna:columna conDelegado:self];
+    return celdaViewController;
+}
+
+- (void) anadirAlCanvasElCeldaViewController:(IRGCeldaViewController *)celdaViewController{
+    [self.canvas addSubview:celdaViewController.view];
+}
+
 
 - (NSInteger) generarNumeroAleatorioEntre:(NSInteger)numeroInferior
                                         Y:(NSInteger) numeroSuperior{
     NSInteger numeroAleatorio =numeroInferior+random()%numeroSuperior;
     return numeroAleatorio;
+}
+
+-(NSInteger) altoDelCanvas{
+    return self.canvas.frame.size.height;
 }
 
 @end

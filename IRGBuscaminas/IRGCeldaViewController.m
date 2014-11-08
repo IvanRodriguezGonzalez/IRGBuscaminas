@@ -28,19 +28,27 @@
 #pragma mark - Inicializadores
 
 -(instancetype)init{
-    return [self initConNumeroDeFila:0 numeroDeColumna:0];
+    return [self initConNumeroDeFila:0 numeroDeColumna:0 conDelegado:nil];
 }
 
 //designated initializer
 - (instancetype) initConNumeroDeFila:(NSInteger)numeroDeFila
-                     numeroDeColumna:(NSInteger)numeroDeColumna{
+                     numeroDeColumna:(NSInteger)numeroDeColumna
+                         conDelegado:(IRGVentanaPrincipalViewController*)delegado{
     self = [super init];
     if (self){
+        _delegado = delegado;
         _numeroDeFila = numeroDeFila;
         _numeroDeColumna = numeroDeColumna;
         
-        NSInteger posicionX = numeroDeColumna*[IRGLienzo sharedLienzo].anchoCelda;
-        NSInteger posicionY = numeroDeFila*[IRGLienzo sharedLienzo].altoCelda;
+        NSInteger tamanoXDelJuego = [IRGLienzo sharedLienzo].anchoCelda*[IRGLienzo sharedLienzo].columnasDelLienzo;
+        NSInteger margenX = ([UIApplication sharedApplication].keyWindow.frame.size.width -tamanoXDelJuego)/2;
+        
+        NSInteger tamanoYDelJuego = [IRGLienzo sharedLienzo].altoCelda*[IRGLienzo sharedLienzo].filasDelLienzo;
+        NSInteger margenY = (self.delegado.altoDelCanvas-tamanoYDelJuego)/2;
+        
+        NSInteger posicionX = margenX+numeroDeColumna*[IRGLienzo sharedLienzo].anchoCelda;
+        NSInteger posicionY = margenY+numeroDeFila*[IRGLienzo sharedLienzo].altoCelda;
         NSInteger anchoCelda = [IRGLienzo sharedLienzo].anchoCelda;
         NSInteger altoCelda = [IRGLienzo sharedLienzo].altoCelda;
         
@@ -67,7 +75,12 @@
     
     UITapGestureRecognizer  *tapGestureRecognizer = [[UITapGestureRecognizer alloc] initWithTarget:self
                                                                                                               action:@selector(tapGestureRecognizer:)];
+    UITapGestureRecognizer  *tapGestureRecognizerWith2 = [[UITapGestureRecognizer alloc] initWithTarget:self
+                                                                                            action:@selector(tapGestureRecognizer:)];
+    tapGestureRecognizerWith2.numberOfTouchesRequired = 2;
+    
     [self.view addGestureRecognizer:tapGestureRecognizer];
+    [self.view addGestureRecognizer:tapGestureRecognizerWith2];
     
 
 }
@@ -95,6 +108,16 @@
 
     }
 }
+
+
+-(void) tapGestureRecognizer2 : (UITapGestureRecognizer *) gesture{
+    if(gesture.state == UIGestureRecognizerStateRecognized){
+        [self.delegado celdaPulsada:self];
+        
+    }
+}
+
+
 -(void) longPressGestureRecognizer: (UILongPressGestureRecognizer *)gesture{
     if (gesture.state == UIGestureRecognizerStateRecognized){
         switch (self.estado)
@@ -112,6 +135,7 @@
                 NSLog (@"Integer out of range");
                 break;
         }
+        [self.delegado actualizaMinasPendientes];
     }
 }
 
@@ -143,14 +167,23 @@
 
 - (void) mostrarMina{
     if (self.tieneMina){
-        UIImage *imagenConBandera = [UIImage imageNamed:@"bandera"];
-        self.celda.imagenDeMina.image= imagenConBandera;
+        self.celda.imagenDeMina.image= [UIImage imageNamed:@"mina"];
+    }
+    else{
+        if(self.estado == conBandera){
+            self.celda.imagenDeMina.image =[UIImage imageNamed:@"banderaErronea"];
+        }
     }
 }
 
 - (void) ocultarMina {
-    if (self.tieneMina){
-        self.celda.backgroundColor = [IRGLienzo sharedLienzo].colorDelRellenoDeLaCeldaSinPintar;
+    if ((self.tieneMina) & (self.estado == libre)){
+        self.celda.imagenDeMina.image= nil;
+    }
+    else {
+        if (self.estado == conBandera){
+            self.celda.imagenDeMina.image =[UIImage imageNamed:@"bandera"];
+        }
     }
 }
 
@@ -165,11 +198,11 @@
     
     IRGCelda *celdaTemporal;
      celdaTemporal = [[IRGCelda alloc]initWithFrame:self.frameCelda
-                                 colorDelBorde:[IRGLienzo sharedLienzo].colorDelTrazoDeLaCeldaSinPintar
-                                grosorDelTrazo:[IRGLienzo sharedLienzo].grosoDelTrazoDeLaCeldaSinPintar];
+                                      colorDelBorde:[IRGPincel sharedPincel].colorDeTrazoDelPincel
+                                      grosorDelTrazo:[IRGPincel sharedPincel].grosorDelTrazoDelPincel];
     self.view = celdaTemporal;
     self.celda = celdaTemporal;;
-    self.celda.backgroundColor = [IRGLienzo sharedLienzo].colorDelRellenoDeLaCeldaSinPintar;
+    self.celda.backgroundColor = [IRGPincel sharedPincel].colorDeRellenoDelPincel;
 }
 
 -(void) dibujaEstado{

@@ -27,7 +27,8 @@ typedef enum {
 
 //designated initializer
 - (instancetype) initConNumeroDeFila:(NSInteger)numeroDeFila
-                     numeroDeColumna:(NSInteger)numeroDeColumna;
+                     numeroDeColumna:(NSInteger)numeroDeColumna
+                         conDelegado:(IRGVentanaPrincipalViewController*)delegado;
 
 - (void) mostrarNumeroDeMinas;
 - (void) mostrarMina;

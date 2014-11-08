@@ -10,7 +10,7 @@
 
 # define ALTO_DE_LA_CELDA 20
 # define ANCHO_DE_LA_CELDA 20
-# define FILAS_DEL_LIENZO 15
+# define FILAS_DEL_LIENZO 25
 # define COLUMNAS_DEL_LIENZO 15
 # define TAMANO_MINIMO_PARA_PINTAR_BORDE 5
 
@@ -39,18 +39,12 @@
     self = [super init];
     
     if (self) {
-        [self establecerCeldaSinPintarPorDefecto];
     }
     return self;
 }
 
 #pragma mark - Accesors
 
-- (void) establecerCeldaSinPintarPorDefecto {
-    self.colorDelTrazoDeLaCeldaSinPintar = [UIColor blackColor];
-    self.colorDelRellenoDeLaCeldaSinPintar = [UIColor lightGrayColor];
-    self.grosoDelTrazoDeLaCeldaSinPintar = 1;
-}
 
 
 -(NSInteger) filasDelLienzo {

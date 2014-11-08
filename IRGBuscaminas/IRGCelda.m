@@ -7,7 +7,8 @@
 //
 
 #import "IRGCelda.h"
-#define TAMANO_DEL_NUMERO 10
+#define TAMANO_X_DEL_NUMERO 10
+#define TAMANO_Y_DEL_NUMERO 10
 
 @interface IRGCelda ()
 
@@ -38,19 +39,20 @@
     if (self){
         _colorDelBorde = colorDelBorde;
         _grosorDelTrazoDeLaCelda = grosorDelTrazo;
-        [self setMultipleTouchEnabled:YES];
-        CGRect frame = CGRectMake((self.frame.size.width-TAMANO_DEL_NUMERO)/2, (self.frame.size.height-TAMANO_DEL_NUMERO)/2, TAMANO_DEL_NUMERO, TAMANO_DEL_NUMERO);
 
-        UILabel * numeroDeMinasAlrededorTmp = [[UILabel alloc] initWithFrame:frame];
+        CGRect frame = CGRectMake(6 ,0, self.frame.size.width -12, self.frame.size.height-2);
+        UILabel * numeroDeMinasAlrededor = [[UILabel alloc] initWithFrame:frame];
+        [numeroDeMinasAlrededor setAdjustsFontSizeToFitWidth:true];
+
+        CGRect frame1 = CGRectMake(1, 1, self.frame.size.width-2,self.frame.size.height-2);
         UIImage *imagen =nil;
         UIImageView * imagenDeMina  = [[UIImageView alloc]initWithImage:imagen];
-        CGRect frame1 = CGRectMake(1, 1, self.frame.size.width-2,self.frame.size.height-2);
-
         imagenDeMina.frame = frame1;
-        [self addSubview:numeroDeMinasAlrededorTmp];
-        self.numeroDeMinasAlrededor = numeroDeMinasAlrededorTmp;
+        
+        [self addSubview:numeroDeMinasAlrededor];
         [self addSubview:imagenDeMina];
-        self.numeroDeMinasAlrededor = numeroDeMinasAlrededorTmp;
+        
+        self.numeroDeMinasAlrededor = numeroDeMinasAlrededor;
         self.imagenDeMina = imagenDeMina;
     }
     return self;

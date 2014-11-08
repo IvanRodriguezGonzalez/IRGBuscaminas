@@ -37,8 +37,7 @@
 }
 
 - (void) establecerPincelPorDefecto{
-    self.colorDeTrazoDelPincel = [UIColor lightGrayColor];
-    self.colorDeRellenoDelPincel = [UIColor blueColor];
+    self.colorDeTrazoDelPincel = [[UIColor alloc]initWithRed:.65 green:.65 blue:.65 alpha:1];
     self.grosorDelTrazoDelPincel = 1;
 }
 
@@ -48,9 +47,26 @@
     return [UIColor blackColor];
 }
 
-- (UIColor *) colorDeRellenoDeLaCeldaVacia{
-    return [UIColor clearColor];
+
+-(UIColor *) colorDeRellenoDePantallaNormal{
+    return [[UIColor alloc]initWithRed:.8 green:.8 blue:.8 alpha:1];
 }
 
+- (UIColor *) colorDeRellenoDelPincel{
+    return[[UIColor alloc]initWithRed:.6 green:.6 blue:.6 alpha:1];
+}
+
+- (UIColor *) colorDeRellenoDeLaCeldaVacia{
+    return [[UIColor alloc]initWithRed:.9 green:.9 blue:.9 alpha:1];
+    
+}
+
+-(UIColor *) colorDeRellenoDePantallaDeError{
+    return [[UIColor alloc] initWithRed:.8 green:.1 blue:.2  alpha:1];
+}
+
+-(UIColor *) colorDeRellenoDePantallaDeVictoria{
+    return [[UIColor alloc] initWithRed:0 green:.5 blue:0 alpha:1];;
+}
 
 @end

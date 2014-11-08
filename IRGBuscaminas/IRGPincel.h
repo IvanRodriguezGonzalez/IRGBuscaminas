@@ -11,11 +11,15 @@
 
 @interface IRGPincel : NSObject
 
-@property (nonatomic) UIColor * colorDeTrazoDelPincel;
-@property (nonatomic) UIColor * colorDeRellenoDelPincel;
-@property (nonatomic) NSUInteger grosorDelTrazoDelPincel;
 @property (nonatomic) UIColor * colorDelNumeroDeMInas;
+@property (nonatomic) UIColor * colorDeTrazoDelPincel;
+@property (nonatomic) NSUInteger grosorDelTrazoDelPincel;
+
+@property (nonatomic) UIColor * colorDeRellenoDelPincel;
 @property (nonatomic) UIColor * colorDeRellenoDeLaCeldaVacia;
+@property (nonatomic) UIColor * colorDeRellenoDePantallaNormal;
+@property (nonatomic) UIColor * colorDeRellenoDePantallaDeError;
+@property (nonatomic) UIColor * colorDeRellenoDePantallaDeVictoria;
 
 + (instancetype) sharedPincel;
 

@@ -10,7 +10,12 @@
 @class IRGCeldaViewController;
 
 @interface IRGVentanaPrincipalViewController : UIViewController
+@property (nonatomic) NSInteger altoDelCanvas;
 
 -(void) celdaPulsada:(IRGCeldaViewController *)celdaPulsada;
+-(void) actualizaMinasPendientes;
+
+
+
 
 @end
