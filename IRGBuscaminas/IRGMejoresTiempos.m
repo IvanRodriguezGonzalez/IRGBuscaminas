@@ -37,9 +37,9 @@
     self = [super init];
     if (self) {
         [self inicializarMejoresTiempos];
-        [self anadirTiempo:1 Nombre:@"Ivan1" numeroDeCeldas:100 numeroDeMinas:40];
-        [self anadirTiempo:2 Nombre:@"Ivan2" numeroDeCeldas:50 numeroDeMinas:20];
-        [self anadirTiempo:2 Nombre:@"Ivan3" numeroDeCeldas:60 numeroDeMinas:30];
+        [self anadirTiempo:99 Nombre:@"Ivan1" numeroDeCeldas:100 numeroDeMinas:40];
+        [self anadirTiempo:210 Nombre:@"Ivan2" numeroDeCeldas:50 numeroDeMinas:20];
+        [self anadirTiempo:230 Nombre:@"Ivan3" numeroDeCeldas:60 numeroDeMinas:30];
         
         
     }

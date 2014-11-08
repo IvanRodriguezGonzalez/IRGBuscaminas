@@ -20,7 +20,7 @@
     [super viewDidLoad];
     CGRect frame = CGRectMake(0, 60, self.view.frame.size.width, self.view.frame.size.height-60);
     UITableView *tablaDeMejoresTiempos = [[UITableView alloc]initWithFrame:frame style:UITableViewStylePlain];
-    tablaDeMejoresTiempos.delegate = self;
+    tablaDeMejoresTiempos.dataSource = self;
     [self.view addSubview:tablaDeMejoresTiempos];
     // Do any additional setup after loading the view from its nib.
 }
@@ -50,13 +50,17 @@
 - (UITableViewCell *)tableView:(UITableView *)tableView
          cellForRowAtIndexPath:(NSIndexPath *)indexPath{
     
-    UITableViewCell *celda = [[UITableViewCell alloc]initWithStyle:UITableViewCellStyleDefault
+    UITableViewCell *celda = [[UITableViewCell alloc]initWithStyle:UITableViewCellStyleSubtitle
                                                    reuseIdentifier:@"UITableViewCell"];
     
     NSInteger filaDeLaTabla  = indexPath.row;
     IRGDatoDelMejorTiempo *mejorTiempo =[IRGMejoresTiempos sharedMejoresTiempos].todosLosMejoresTiempos[filaDeLaTabla];
     
+    NSString * detalle = [NSString stringWithFormat:@"Tiempo:%ld Celdas:%ld Minas:%ld",(long)mejorTiempo.tiempo,(long)mejorTiempo.numeroDeCeldas,(long)mejorTiempo.numeroDeMinas];
+    
     celda.textLabel.text = mejorTiempo.nombre;
+    celda.detailTextLabel.text = detalle;
+    
     return celda;
 }
 

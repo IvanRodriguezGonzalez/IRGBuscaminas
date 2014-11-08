@@ -8,6 +8,6 @@
 
 #import <UIKit/UIKit.h>
 
-@interface IRGMejoresTiemposViewController : UIViewController
+@interface IRGMejoresTiemposViewController : UIViewController<UITableViewDataSource>
 
 @end
