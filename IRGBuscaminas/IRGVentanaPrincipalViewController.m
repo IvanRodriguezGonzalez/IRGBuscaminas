@@ -83,8 +83,8 @@
 #pragma mark - Delegado primer nivel
 
 - (void) celdaPulsada:(IRGCeldaViewController *)celdaPulsada{
-    if (!self.juegoAcabado){
-        if (celdaPulsada.tieneMina){
+    if ((!self.juegoAcabado) & (celdaPulsada.estado == libre)){
+        if ((celdaPulsada.tieneMina) ){
             [self acabarJuegoConError];
         }
         else {

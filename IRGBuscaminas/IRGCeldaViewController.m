@@ -69,18 +69,21 @@
     [self crearCeldaComoVista];
     
     [self.view setMultipleTouchEnabled:YES];
-    UILongPressGestureRecognizer  *longPressGestureRecognizer = [[UILongPressGestureRecognizer alloc] initWithTarget:self
-                                                                                                              action:@selector(longPressGestureRecognizer:)];
-    [self.view addGestureRecognizer:longPressGestureRecognizer];
     
+    
+    UITapGestureRecognizer *doubleTapRecognizer = [[UITapGestureRecognizer alloc] initWithTarget:self
+                                                                                          action:@selector(doubleTap:)];
+    doubleTapRecognizer.numberOfTapsRequired= 2;
+    doubleTapRecognizer.delaysTouchesBegan = YES;
+    
+    
+   
     UITapGestureRecognizer  *tapGestureRecognizer = [[UITapGestureRecognizer alloc] initWithTarget:self
                                                                                                               action:@selector(tapGestureRecognizer:)];
-    UITapGestureRecognizer  *tapGestureRecognizerWith2 = [[UITapGestureRecognizer alloc] initWithTarget:self
-                                                                                            action:@selector(tapGestureRecognizer:)];
-    tapGestureRecognizerWith2.numberOfTouchesRequired = 2;
+    [tapGestureRecognizer requireGestureRecognizerToFail:doubleTapRecognizer];
     
     [self.view addGestureRecognizer:tapGestureRecognizer];
-    [self.view addGestureRecognizer:tapGestureRecognizerWith2];
+    [self.view addGestureRecognizer:doubleTapRecognizer];
     
 
 }
@@ -90,15 +93,6 @@
     // Dispose of any resources that can be recreated.
 }
 
-
-# pragma mark - Overrides
-
-- (void) setEstado:(IRGEstados)estado{
-
-    _estado = estado;
-    [self dibujaEstado];
-    
-}
 
 #pragma mark - Navigation
 
@@ -110,15 +104,7 @@
 }
 
 
--(void) tapGestureRecognizer2 : (UITapGestureRecognizer *) gesture{
-    if(gesture.state == UIGestureRecognizerStateRecognized){
-        [self.delegado celdaPulsada:self];
-        
-    }
-}
-
-
--(void) longPressGestureRecognizer: (UILongPressGestureRecognizer *)gesture{
+-(void) doubleTap: (UILongPressGestureRecognizer *)gesture{
     if (gesture.state == UIGestureRecognizerStateRecognized){
         switch (self.estado)
         {
@@ -141,6 +127,13 @@
 
 
 # pragma mark - Publicos
+
+- (void) setEstado:(IRGEstados)estado{
+    
+    _estado = estado;
+    [self dibujaEstado];
+    
+}
 
 - (void) mostrarNumeroDeMinas{
     
