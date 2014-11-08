@@ -15,6 +15,7 @@
 #import "IRGCeldaViewController.h"
 #import "IRGDatos.h"
 #import "IRGCelda.h"
+#import "IRGMejoresTiemposViewController.h"
 
 
 @interface IRGVentanaPrincipalViewController ()
@@ -22,12 +23,18 @@
 @property (nonatomic)  NSInteger numeroDeColumnas;
 @property (nonatomic) BOOL mostrarMinas;
 @property (nonatomic) BOOL juegoAcabado;
+@property (nonatomic) BOOL ayudaActivada;
+@property (nonatomic) BOOL mostrandoAyuda;
+@property (nonatomic) int tiempoDeJuegoEnSegundos;
+@property (nonatomic,weak) NSTimer *reloj;
 
 @property (weak, nonatomic) IBOutlet UIView *canvas;
 @property (weak, nonatomic) IBOutlet UITextField *totalMinas;
 @property (weak, nonatomic) IBOutlet UIButton *botonPrincipal;
 @property (weak, nonatomic) IBOutlet UIButton *BotonMostrarMinas;
 @property (weak, nonatomic) IBOutlet UIProgressView *barraDeProgreso;
+@property (weak, nonatomic) IBOutlet UITextField *tiempoDeJuego;
+
 
 @end
 
@@ -43,6 +50,11 @@
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
 }
+- (void)viewWillAppear:(BOOL)animated{
+    [super viewWillAppear:animated];
+    [self ocultarrBarraDeNavegacion];
+}
+
 
 
 #pragma mark - Navigation primer nivel
@@ -57,11 +69,21 @@
    
     if (!self.mostrarMinas){
         [self mostrarTodasLasMinas];
+        [self activarModoAyuda];
+        [self activarMostrandoAyuda];
+        [self actualizarBotonConProgreso:0];
     }
     else {
         [self ocultarTodasLasMinas];
+        [self desactivarMostrandoAyuda];
     }
     self.mostrarMinas = !self.mostrarMinas;
+}
+
+- (IBAction)accionMostarMejoresTiempos:(UIButton *)sender {
+    [self mostrarBarraDeNavegacion];
+    [self crearVistaDeMejoresTiempos];
+    
 }
 
 # pragma mark Navigation segundo nivel
@@ -79,19 +101,48 @@
         [celdaViewController ocultarMina];
     }
 }
+- (void) crearVistaDeMejoresTiempos{
+    
+    NSBundle * bundle = [NSBundle mainBundle];
+    IRGMejoresTiemposViewController *mejoresTiemposViewController = [[IRGMejoresTiemposViewController alloc] initWithNibName:@"IRGMejoresTiemposViewController" bundle:bundle];
+    [self.navigationController pushViewController: mejoresTiemposViewController animated:true];
+    
+}
 
 #pragma mark - Delegado primer nivel
 
 - (void) celdaPulsada:(IRGCeldaViewController *)celdaPulsada{
-    if ((!self.juegoAcabado) & (celdaPulsada.estado == libre)){
-        if ((celdaPulsada.tieneMina) ){
-            [self acabarJuegoConError];
-        }
-        else {
-            [self propagaTouch:celdaPulsada];
-            [self actualizarBotonYBarraDeProgreso];
+    if (!self.mostrandoAyuda){
+        
+        if ((!self.juegoAcabado) & (celdaPulsada.estado == libre)){
+            if ((celdaPulsada.tieneMina) ){
+                [self acabarJuegoConError];
+            }
+            else {
+                [self propagaTouch:celdaPulsada];
+                [self actualizarBotonYBarraDeProgreso];
+            }
         }
     }
+}
+
+- (void) celdaDoblePulsada:(IRGCeldaViewController *)celdaDoblePulsada{
+    switch (celdaDoblePulsada.estado)
+    {
+        case libre:
+            celdaDoblePulsada.estado = conBandera;
+            break;
+        case conBandera:
+            celdaDoblePulsada.estado = conDuda;
+            break;
+        case conDuda:
+            celdaDoblePulsada.estado = libre ;
+            break;
+        default:
+            NSLog (@"Estdo de celda no esperado");
+            break;
+    }
+    [self actualizaMinasPendientes];
 }
 
 # pragma mark Delegado segundo nivel
@@ -133,6 +184,7 @@
     if (!self.juegoAcabado){
         [self restablecerNumeroDeMinasPendietes];
     }
+    [self desactivarModoAyuda];
     self.juegoAcabado = false;
     [[IRGDatos sharedDatos] borrarJuego];
     [self borrarCanvas];
@@ -145,6 +197,8 @@
     [self desactivarNumeroDeMinas];
     [self iniciarBarraDeProgreso];
     [self establecerFondoNeutro];
+    [self inicializarTiempoDeJuego];
+    [self iniciarReloj];
 }
 
 -(void) acabarJuegoConError{
@@ -155,7 +209,7 @@
     [self activarNumeroDeMinas];
     [self establecerFondoDeError];
     [self restablecerNumeroDeMinasPendietes];
-
+    [self detenerRelor];
 }
 
 - (void) acabarJuegoSinError{
@@ -163,11 +217,34 @@
     [self activarNumeroDeMinas];
     [self establecerFondoDeVictoria];
     [self restablecerNumeroDeMinasPendietes];
+    [self detenerRelor];
 
 }
 
 # pragma mark - Auxiliares segundo nivel
 
+-(void) iniciarReloj{
+    if (!self.reloj){
+        self.reloj = [NSTimer scheduledTimerWithTimeInterval:1
+                                                      target:self
+                                                    selector:@selector(actualizarTiempoDeJuego:)
+                                                    userInfo:nil
+                                                     repeats:true];
+    }
+    else {
+        [self inicializarTiempoDeJuego];
+    }
+}
+
+-(void) detenerRelor{
+    [self.reloj invalidate];
+};
+
+- (void) actualizarTiempoDeJuego:(NSTimer *)timer{
+    self.tiempoDeJuegoEnSegundos = self.tiempoDeJuegoEnSegundos+1;
+    [self actualizarTiempoDeJuego];
+    
+}
 - (void) generarCanvas{
     for (NSInteger fila = 0;fila < [IRGLienzo sharedLienzo].filasDelLienzo;fila++){
         for (NSInteger columna = 0; columna< [IRGLienzo sharedLienzo].columnasDelLienzo;columna++){
@@ -270,27 +347,32 @@
 # pragma mark - Auxiliares tercer nivel
 
 -(void) actualizarBotonConProgreso:(float)porcentajeDeAvance{
-    if (porcentajeDeAvance == 1) {
-        [self establecerImagenDelBotonPrincipal:@"igualA100"];
-        [self acabarJuegoSinError];
-    }
-    if (porcentajeDeAvance < 1) {
-        [self establecerImagenDelBotonPrincipal:@"menorDe100"];
-    }
-    if (porcentajeDeAvance < .8) {
-        [self establecerImagenDelBotonPrincipal:@"menorDe80"];
-    }
-    if (porcentajeDeAvance < .60) {
-        [self establecerImagenDelBotonPrincipal:@"menorDe60"];
-    }
-    if (porcentajeDeAvance < .40) {
-        [self establecerImagenDelBotonPrincipal:@"menorDe40"];
-    }
     
-    if (porcentajeDeAvance < .20) {
-        [self establecerImagenDelBotonPrincipal:@"menorDe20"];
+    if (self.ayudaActivada){
+        [self establecerImagenDelBotonPrincipal:@"modoAyuda"];
     }
-
+    else {
+        if (porcentajeDeAvance == 1) {
+            [self establecerImagenDelBotonPrincipal:@"igualA100"];
+            [self acabarJuegoSinError];
+        }
+        if (porcentajeDeAvance < 1) {
+            [self establecerImagenDelBotonPrincipal:@"menorDe100"];
+        }
+        if (porcentajeDeAvance < .8) {
+            [self establecerImagenDelBotonPrincipal:@"menorDe80"];
+        }
+        if (porcentajeDeAvance < .60) {
+            [self establecerImagenDelBotonPrincipal:@"menorDe60"];
+        }
+        if (porcentajeDeAvance < .40) {
+            [self establecerImagenDelBotonPrincipal:@"menorDe40"];
+        }
+        
+        if (porcentajeDeAvance < .20) {
+            [self establecerImagenDelBotonPrincipal:@"menorDe20"];
+        }
+    }
     
 }
 
@@ -324,6 +406,58 @@
     return self.canvas.frame.size.height;
 }
 
+-(void) activarModoAyuda{
+    self.ayudaActivada = true;
+}
 
+- (void) desactivarModoAyuda{
+    self.ayudaActivada = false;
+}
+
+-(void) inicializarTiempoDeJuego{
+    self.tiempoDeJuegoEnSegundos = 0;
+    self.tiempoDeJuego.text =     @"00:00";
+}
+- (void) actualizarTiempoDeJuego{
+  
+    self.tiempoDeJuego.text = [self formatearTiempoDeJuegoEnSegundos:self.tiempoDeJuegoEnSegundos];;
+}
+
+- (NSString *) formatearTiempoDeJuegoEnSegundos:(NSInteger)tiempoEnSegundos{
+    NSInteger minutos = self.tiempoDeJuegoEnSegundos / 60;
+    NSInteger segundos = self.tiempoDeJuegoEnSegundos - minutos*60;
+    NSString * textoDeMinutos;
+    NSString * textoDeSegundos;
+    
+    if (minutos<10){
+        textoDeMinutos = [NSString stringWithFormat:@"0%ld",(long)minutos];
+    }
+    else{
+        textoDeMinutos = [NSString stringWithFormat:@"%ld",(long)minutos];
+    }
+    
+    if (segundos<10){
+        textoDeSegundos = [NSString stringWithFormat:@"0%ld",(long)segundos];
+    }
+    else{
+        textoDeSegundos = [NSString stringWithFormat:@"%ld",(long)segundos];
+    }
+    return [NSString stringWithFormat:@"%@:%@",textoDeMinutos,textoDeSegundos ];
+}
+
+- (void) activarMostrandoAyuda{
+    self.mostrandoAyuda = true;
+}
+
+- (void) desactivarMostrandoAyuda{
+    self.mostrandoAyuda = false;
+}
+
+-(void) mostrarBarraDeNavegacion{
+    [self.navigationController setNavigationBarHidden:false animated:FALSE];
+}
+-(void) ocultarrBarraDeNavegacion{
+    [self.navigationController setNavigationBarHidden:true animated:false];
+}
 
 @end

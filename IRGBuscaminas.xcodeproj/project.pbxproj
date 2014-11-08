@@ -7,6 +7,11 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		320334381A0EB854000FFAEF /* IRGMejoresTiempos.m in Sources */ = {isa = PBXBuildFile; fileRef = 320334371A0EB854000FFAEF /* IRGMejoresTiempos.m */; };
+		3203343E1A0EB9A1000FFAEF /* IRGDatoDelMejorTiempo.m in Sources */ = {isa = PBXBuildFile; fileRef = 3203343D1A0EB9A1000FFAEF /* IRGDatoDelMejorTiempo.m */; };
+		320334411A0EBDF3000FFAEF /* IRGPrincipalNavigationViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 320334401A0EBDF3000FFAEF /* IRGPrincipalNavigationViewController.m */; };
+		320334451A0EC9A7000FFAEF /* IRGMejoresTiemposViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 320334431A0EC9A7000FFAEF /* IRGMejoresTiemposViewController.m */; };
+		320334461A0EC9A7000FFAEF /* IRGMejoresTiemposViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 320334441A0EC9A7000FFAEF /* IRGMejoresTiemposViewController.xib */; };
 		E1CD31861A0BCB8900D317A8 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = E1CD31851A0BCB8900D317A8 /* main.m */; };
 		E1CD31891A0BCB8900D317A8 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = E1CD31881A0BCB8900D317A8 /* AppDelegate.m */; };
 		E1CD318B1A0BCB8900D317A8 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = E1CD318A1A0BCB8900D317A8 /* Images.xcassets */; };
@@ -32,6 +37,15 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		320334361A0EB854000FFAEF /* IRGMejoresTiempos.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IRGMejoresTiempos.h; sourceTree = "<group>"; };
+		320334371A0EB854000FFAEF /* IRGMejoresTiempos.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = IRGMejoresTiempos.m; sourceTree = "<group>"; };
+		3203343C1A0EB9A1000FFAEF /* IRGDatoDelMejorTiempo.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IRGDatoDelMejorTiempo.h; sourceTree = "<group>"; };
+		3203343D1A0EB9A1000FFAEF /* IRGDatoDelMejorTiempo.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = IRGDatoDelMejorTiempo.m; sourceTree = "<group>"; };
+		3203343F1A0EBDF3000FFAEF /* IRGPrincipalNavigationViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IRGPrincipalNavigationViewController.h; sourceTree = "<group>"; };
+		320334401A0EBDF3000FFAEF /* IRGPrincipalNavigationViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = IRGPrincipalNavigationViewController.m; sourceTree = "<group>"; };
+		320334421A0EC9A7000FFAEF /* IRGMejoresTiemposViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IRGMejoresTiemposViewController.h; sourceTree = "<group>"; };
+		320334431A0EC9A7000FFAEF /* IRGMejoresTiemposViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = IRGMejoresTiemposViewController.m; sourceTree = "<group>"; };
+		320334441A0EC9A7000FFAEF /* IRGMejoresTiemposViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = IRGMejoresTiemposViewController.xib; sourceTree = "<group>"; };
 		E1CD31801A0BCB8900D317A8 /* IRGBuscaminas.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = IRGBuscaminas.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		E1CD31841A0BCB8900D317A8 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		E1CD31851A0BCB8900D317A8 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
@@ -99,6 +113,7 @@
 				E1CD31A91A0BCC1300D317A8 /* Controlador */,
 				E1CD31A81A0BCC0600D317A8 /* Vista */,
 				E1CD31A51A0BCBF800D317A8 /* IRGVentanaPrincipalViewController.xib */,
+				320334441A0EC9A7000FFAEF /* IRGMejoresTiemposViewController.xib */,
 				E1CD31AB1A0BCCF900D317A8 /* IRGCelda.h */,
 				E1CD31AC1A0BCCF900D317A8 /* IRGCelda.m */,
 				E1CD31AA1A0BCC1D00D317A8 /* Modelo */,
@@ -151,6 +166,10 @@
 				E1CD31A41A0BCBF800D317A8 /* IRGVentanaPrincipalViewController.m */,
 				E1D41DC31A0BEF6B0059C46C /* IRGCeldaViewController.h */,
 				E1D41DC41A0BEF6B0059C46C /* IRGCeldaViewController.m */,
+				3203343F1A0EBDF3000FFAEF /* IRGPrincipalNavigationViewController.h */,
+				320334401A0EBDF3000FFAEF /* IRGPrincipalNavigationViewController.m */,
+				320334421A0EC9A7000FFAEF /* IRGMejoresTiemposViewController.h */,
+				320334431A0EC9A7000FFAEF /* IRGMejoresTiemposViewController.m */,
 			);
 			name = Controlador;
 			sourceTree = "<group>";
@@ -164,6 +183,10 @@
 				E1D41DC91A0BF0050059C46C /* IRGPincel.m */,
 				E1D41DCC1A0BFEC30059C46C /* IRGDatos.h */,
 				E1D41DCD1A0BFEC30059C46C /* IRGDatos.m */,
+				320334361A0EB854000FFAEF /* IRGMejoresTiempos.h */,
+				320334371A0EB854000FFAEF /* IRGMejoresTiempos.m */,
+				3203343C1A0EB9A1000FFAEF /* IRGDatoDelMejorTiempo.h */,
+				3203343D1A0EB9A1000FFAEF /* IRGDatoDelMejorTiempo.m */,
 			);
 			name = Modelo;
 			sourceTree = "<group>";
@@ -251,6 +274,7 @@
 				E1CD31A71A0BCBF800D317A8 /* IRGVentanaPrincipalViewController.xib in Resources */,
 				E1CD318E1A0BCB8900D317A8 /* LaunchScreen.xib in Resources */,
 				E1CD318B1A0BCB8900D317A8 /* Images.xcassets in Resources */,
+				320334461A0EC9A7000FFAEF /* IRGMejoresTiemposViewController.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -269,10 +293,14 @@
 			buildActionMask = 2147483647;
 			files = (
 				E1CD31AD1A0BCCF900D317A8 /* IRGCelda.m in Sources */,
+				320334451A0EC9A7000FFAEF /* IRGMejoresTiemposViewController.m in Sources */,
 				E1D41DCB1A0BF0050059C46C /* IRGPincel.m in Sources */,
 				E1D41DCE1A0BFEC30059C46C /* IRGDatos.m in Sources */,
+				320334411A0EBDF3000FFAEF /* IRGPrincipalNavigationViewController.m in Sources */,
 				E1D41DC51A0BEF6B0059C46C /* IRGCeldaViewController.m in Sources */,
 				E1CD31A61A0BCBF800D317A8 /* IRGVentanaPrincipalViewController.m in Sources */,
+				320334381A0EB854000FFAEF /* IRGMejoresTiempos.m in Sources */,
+				3203343E1A0EB9A1000FFAEF /* IRGDatoDelMejorTiempo.m in Sources */,
 				E1D41DCA1A0BF0050059C46C /* IRGLienzo.m in Sources */,
 				E1CD31891A0BCB8900D317A8 /* AppDelegate.m in Sources */,
 				E1CD31861A0BCB8900D317A8 /* main.m in Sources */,

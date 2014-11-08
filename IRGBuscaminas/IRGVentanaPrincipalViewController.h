@@ -13,6 +13,7 @@
 @property (nonatomic) NSInteger altoDelCanvas;
 
 -(void) celdaPulsada:(IRGCeldaViewController *)celdaPulsada;
+-(void) celdaDoblePulsada: (IRGCeldaViewController *)celdaDoblePulsada;
 -(void) actualizaMinasPendientes;
 
 

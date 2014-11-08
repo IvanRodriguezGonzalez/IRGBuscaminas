@@ -96,34 +96,14 @@
 
 #pragma mark - Navigation
 
+-(void) doubleTap:(UITapGestureRecognizer *)gesture{
+    [self.delegado celdaPulsada:self];
+}
+
 -(void) tapGestureRecognizer : (UITapGestureRecognizer *) gesture{
-    if(gesture.state == UIGestureRecognizerStateRecognized){
-        [self.delegado celdaPulsada:self];
-
-    }
+    [self.delegado celdaDoblePulsada:self];
 }
 
-
--(void) doubleTap: (UILongPressGestureRecognizer *)gesture{
-    if (gesture.state == UIGestureRecognizerStateRecognized){
-        switch (self.estado)
-        {
-            case libre:
-                self.estado = conBandera;
-                break;
-            case conBandera:
-                self.estado = conDuda;
-                break;
-            case conDuda:
-                self.estado = libre ;
-                break;
-            default:
-                NSLog (@"Integer out of range");
-                break;
-        }
-        [self.delegado actualizaMinasPendientes];
-    }
-}
 
 
 # pragma mark - Publicos
@@ -132,7 +112,6 @@
     
     _estado = estado;
     [self dibujaEstado];
-    
 }
 
 - (void) mostrarNumeroDeMinas{
