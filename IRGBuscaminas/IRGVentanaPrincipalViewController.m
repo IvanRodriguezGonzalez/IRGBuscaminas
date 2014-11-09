@@ -18,6 +18,7 @@
 #import "IRGCelda.h"
 #import "IRGMejoresTiemposViewController.h"
 #import "IRGMejoresTiempos.h"
+#import "IRGPreguntarNombreViewController.h"
 
 
 @interface IRGVentanaPrincipalViewController ()
@@ -95,7 +96,7 @@
 }
 
 - (IBAction)accionMostarMejoresTiempos:(UIButton *)sender {
-    [self mostrarBarraDeNavegacion];
+   // [self mostrarBarraDeNavegacion];
     [self crearVistaDeMejoresTiempos];
     
 }
@@ -119,8 +120,8 @@
     
     NSBundle * bundle = [NSBundle mainBundle];
     IRGMejoresTiemposViewController *mejoresTiemposViewController = [[IRGMejoresTiemposViewController alloc] initWithNibName:@"IRGMejoresTiemposViewController" bundle:bundle];
-    [self.navigationController pushViewController: mejoresTiemposViewController animated:true];
-    
+    mejoresTiemposViewController.modalPresentationStyle =UIModalPresentationFormSheet;
+    [self presentViewController:mejoresTiemposViewController animated:TRUE completion:nil];
 }
 
 #pragma mark - Delegado primer nivel
@@ -237,11 +238,11 @@
     [self detenerRelor];
     [self desactivarBotonMostrarMinas];
     [self activarBotonMejoresTiempos];
-    [self registrarMejorTiempo:self.tiempoDeJuegoEnSegundos
-                        Nombre:@"Ivan"
-                numeroDeCeldas:[IRGLienzo sharedLienzo].filasDelLienzo*[IRGLienzo sharedLienzo].columnasDelLienzo
-                 numeroDeMinas:[IRGDatos sharedDatos].numeroDeMinas
-                      conAyuda:FALSE];
+    [self preguntarNombreConTiempo:self.tiempoDeJuegoEnSegundos
+                            Nombre:nil
+                    numeroDeCeldas:[IRGLienzo sharedLienzo].filasDelLienzo*[IRGLienzo sharedLienzo].columnasDelLienzo
+                     numeroDeMinas:[IRGDatos sharedDatos].numeroDeMinas
+                          conAyuda:FALSE];
 }
 
 - (void) acabarJuegoSinErrorConAyuda{
@@ -252,29 +253,42 @@
     [self detenerRelor];
     [self desactivarBotonMostrarMinas];
     [self activarBotonMejoresTiempos];
-    [self registrarMejorTiempo:self.tiempoDeJuegoEnSegundos
-                        Nombre:@"Ivan"
-                numeroDeCeldas:[IRGLienzo sharedLienzo].filasDelLienzo*[IRGLienzo sharedLienzo].columnasDelLienzo
-                 numeroDeMinas:[IRGDatos sharedDatos].numeroDeMinas
-                      conAyuda:TRUE];
-}
+    [self preguntarNombreConTiempo:self.tiempoDeJuegoEnSegundos
+                            Nombre:nil
+                    numeroDeCeldas:[IRGLienzo sharedLienzo].filasDelLienzo*[IRGLienzo sharedLienzo].columnasDelLienzo
+                     numeroDeMinas:[IRGDatos sharedDatos].numeroDeMinas
+                          conAyuda:true];
+
+   }
 
 
 
 # pragma mark - Auxiliares segundo nivel
 
-- (void) registrarMejorTiempo: (NSInteger)mejorTiempo
-                       Nombre:(NSString *)nombre
-               numeroDeCeldas:(NSInteger)numeroDeCeldas
-                numeroDeMinas:(NSInteger)numeroDeMinas
-                     conAyuda:(bool)conAyuda{
+-(NSString *) preguntarNombreConTiempo:(NSInteger)tiempo
+                          Nombre:(NSString *)nombre
+                  numeroDeCeldas:(NSInteger)numeroDeCeldas
+                   numeroDeMinas:(NSInteger)numeroDeMinas
+                        conAyuda:(bool)conAyuda{
     
-    [[IRGMejoresTiempos sharedMejoresTiempos] anadirTiempo:mejorTiempo
-                                                    Nombre:nombre
-                                            numeroDeCeldas:numeroDeCeldas
-                                             numeroDeMinas:numeroDeMinas
-                                                  conAyuda:conAyuda];
+    NSBundle *bunlde = [NSBundle mainBundle];
+    
+    IRGPreguntarNombreViewController * vistaPreguntarModalViewController = [[IRGPreguntarNombreViewController alloc]initWithNibName:@"IRGPreguntarNombreViewController" bundle:bunlde];
+    vistaPreguntarModalViewController.modalPresentationStyle = UIModalPresentationFormSheet;
+    
+    IRGDatoDelMejorTiempo *datoDelMejorTiempo = [[IRGDatoDelMejorTiempo alloc]initConTiempo:tiempo
+                                                                                     nombre:nombre
+                                                                             numeroDeCeldas:numeroDeCeldas
+                                                                              numeroDeMinas:numeroDeMinas
+                                                                          conAyuda:conAyuda];
+    vistaPreguntarModalViewController.datoDelMejorTiempo = datoDelMejorTiempo;
+    [self presentViewController:vistaPreguntarModalViewController animated:TRUE completion:nil];
+
+    return datoDelMejorTiempo.nombre;
+    
 }
+
+
 
 -(void) iniciarReloj{
     if (!self.reloj){

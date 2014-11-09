@@ -9,7 +9,7 @@
 #import "IRGDatos.h"
 #import "IRGLienzo.h"
 
-#define NUMERO_DE_MINAS_POR_DEFECTO 40
+#define NUMERO_DE_MINAS_POR_DEFECTO 1
 
 @interface IRGDatos ()
 @property (nonatomic) NSMutableArray * celdasDelJuego;

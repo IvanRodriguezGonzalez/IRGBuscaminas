@@ -70,7 +70,7 @@
 }
 
 -(UIColor *) colorDeRellenoDePantallaDeModoAyuda{
-    return [[UIColor alloc] initWithRed:1 green:1 blue:1 alpha:1];
+    return [[UIColor alloc] initWithRed:0 green:.5 blue:.5 alpha:1];
 }
 
 -(UIColor *) colorEtiquetaDeBotonSeleccionado{

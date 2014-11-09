@@ -13,6 +13,8 @@
 		320334451A0EC9A7000FFAEF /* IRGMejoresTiemposViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 320334431A0EC9A7000FFAEF /* IRGMejoresTiemposViewController.m */; };
 		320334461A0EC9A7000FFAEF /* IRGMejoresTiemposViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 320334441A0EC9A7000FFAEF /* IRGMejoresTiemposViewController.xib */; };
 		320334491A0F20A4000FFAEF /* IRGMetodosComunes.m in Sources */ = {isa = PBXBuildFile; fileRef = 320334481A0F20A4000FFAEF /* IRGMetodosComunes.m */; };
+		32A1DB121A0FAFAB00AA33CE /* IRGPreguntarNombreViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 32A1DB101A0FAFAB00AA33CE /* IRGPreguntarNombreViewController.m */; };
+		32A1DB131A0FAFAB00AA33CE /* IRGPreguntarNombreViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 32A1DB111A0FAFAB00AA33CE /* IRGPreguntarNombreViewController.xib */; };
 		E1CD31861A0BCB8900D317A8 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = E1CD31851A0BCB8900D317A8 /* main.m */; };
 		E1CD31891A0BCB8900D317A8 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = E1CD31881A0BCB8900D317A8 /* AppDelegate.m */; };
 		E1CD318B1A0BCB8900D317A8 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = E1CD318A1A0BCB8900D317A8 /* Images.xcassets */; };
@@ -49,6 +51,9 @@
 		320334441A0EC9A7000FFAEF /* IRGMejoresTiemposViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = IRGMejoresTiemposViewController.xib; sourceTree = "<group>"; };
 		320334471A0F20A4000FFAEF /* IRGMetodosComunes.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IRGMetodosComunes.h; sourceTree = "<group>"; };
 		320334481A0F20A4000FFAEF /* IRGMetodosComunes.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = IRGMetodosComunes.m; sourceTree = "<group>"; };
+		32A1DB0F1A0FAFAB00AA33CE /* IRGPreguntarNombreViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IRGPreguntarNombreViewController.h; sourceTree = "<group>"; };
+		32A1DB101A0FAFAB00AA33CE /* IRGPreguntarNombreViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = IRGPreguntarNombreViewController.m; sourceTree = "<group>"; };
+		32A1DB111A0FAFAB00AA33CE /* IRGPreguntarNombreViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = IRGPreguntarNombreViewController.xib; sourceTree = "<group>"; };
 		E1CD31801A0BCB8900D317A8 /* IRGBuscaminas.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = IRGBuscaminas.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		E1CD31841A0BCB8900D317A8 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		E1CD31851A0BCB8900D317A8 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
@@ -125,8 +130,6 @@
 				3203344A1A0F20A9000FFAEF /* Comunes */,
 				E1CD31A91A0BCC1300D317A8 /* Controlador */,
 				E1CD31A81A0BCC0600D317A8 /* Vista */,
-				E1CD31A51A0BCBF800D317A8 /* IRGVentanaPrincipalViewController.xib */,
-				320334441A0EC9A7000FFAEF /* IRGMejoresTiemposViewController.xib */,
 				E1CD31AB1A0BCCF900D317A8 /* IRGCelda.h */,
 				E1CD31AC1A0BCCF900D317A8 /* IRGCelda.m */,
 				E1CD31AA1A0BCC1D00D317A8 /* Modelo */,
@@ -166,6 +169,9 @@
 		E1CD31A81A0BCC0600D317A8 /* Vista */ = {
 			isa = PBXGroup;
 			children = (
+				320334441A0EC9A7000FFAEF /* IRGMejoresTiemposViewController.xib */,
+				E1CD31A51A0BCBF800D317A8 /* IRGVentanaPrincipalViewController.xib */,
+				32A1DB111A0FAFAB00AA33CE /* IRGPreguntarNombreViewController.xib */,
 			);
 			name = Vista;
 			sourceTree = "<group>";
@@ -177,6 +183,8 @@
 				E1CD31881A0BCB8900D317A8 /* AppDelegate.m */,
 				E1CD31A31A0BCBF800D317A8 /* IRGVentanaPrincipalViewController.h */,
 				E1CD31A41A0BCBF800D317A8 /* IRGVentanaPrincipalViewController.m */,
+				32A1DB0F1A0FAFAB00AA33CE /* IRGPreguntarNombreViewController.h */,
+				32A1DB101A0FAFAB00AA33CE /* IRGPreguntarNombreViewController.m */,
 				E1D41DC31A0BEF6B0059C46C /* IRGCeldaViewController.h */,
 				E1D41DC41A0BEF6B0059C46C /* IRGCeldaViewController.m */,
 				3203343F1A0EBDF3000FFAEF /* IRGPrincipalNavigationViewController.h */,
@@ -284,6 +292,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				32A1DB131A0FAFAB00AA33CE /* IRGPreguntarNombreViewController.xib in Resources */,
 				E1CD31A71A0BCBF800D317A8 /* IRGVentanaPrincipalViewController.xib in Resources */,
 				E1CD318E1A0BCB8900D317A8 /* LaunchScreen.xib in Resources */,
 				E1CD318B1A0BCB8900D317A8 /* Images.xcassets in Resources */,
@@ -316,6 +325,7 @@
 				320334381A0EB854000FFAEF /* IRGMejoresTiempos.m in Sources */,
 				3203343E1A0EB9A1000FFAEF /* IRGDatoDelMejorTiempo.m in Sources */,
 				E1D41DCA1A0BF0050059C46C /* IRGLienzo.m in Sources */,
+				32A1DB121A0FAFAB00AA33CE /* IRGPreguntarNombreViewController.m in Sources */,
 				E1CD31891A0BCB8900D317A8 /* AppDelegate.m in Sources */,
 				E1CD31861A0BCB8900D317A8 /* main.m in Sources */,
 			);

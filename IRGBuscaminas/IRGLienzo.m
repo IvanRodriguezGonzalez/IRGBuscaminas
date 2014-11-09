@@ -8,10 +8,10 @@
 
 #import "IRGLienzo.h"
 
-# define ALTO_DE_LA_CELDA 20
-# define ANCHO_DE_LA_CELDA 20
-# define FILAS_DEL_LIENZO 25
-# define COLUMNAS_DEL_LIENZO 15
+# define ALTO_DE_LA_CELDA 30
+# define ANCHO_DE_LA_CELDA 30
+# define FILAS_DEL_LIENZO 29
+# define COLUMNAS_DEL_LIENZO 25
 # define TAMANO_MINIMO_PARA_PINTAR_BORDE 5
 
 
