@@ -19,11 +19,11 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
+   
     CGRect frame = CGRectMake(0, 60, self.view.frame.size.width, self.view.frame.size.height-60);
     UITableView *tablaDeMejoresTiempos = [[UITableView alloc]initWithFrame:frame style:UITableViewStylePlain];
     tablaDeMejoresTiempos.dataSource = self;
     [self.view addSubview:tablaDeMejoresTiempos];
-    // Do any additional setup after loading the view from its nib.
 }
 
 - (void)didReceiveMemoryWarning {
