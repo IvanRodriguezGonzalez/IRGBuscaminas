@@ -7,6 +7,7 @@
 //
 
 #import "IRGMejoresTiemposViewController.h"
+#import"IRGMetodosComunes.h"
 #import "IRGMejoresTiempos.h"
 #import "IRGDatoDelMejorTiempo.h"
 
@@ -43,8 +44,8 @@
 #pragma mark Delegado Primer Nivel
 - (NSInteger)tableView:(UITableView *)tableView
  numberOfRowsInSection:(NSInteger)section{
-    int a =[[IRGMejoresTiempos sharedMejoresTiempos].todosLosMejoresTiempos count];
-    return  a;
+    
+    return [[IRGMejoresTiempos sharedMejoresTiempos].todosLosMejoresTiempos count];
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView
@@ -55,8 +56,20 @@
     
     NSInteger filaDeLaTabla  = indexPath.row;
     IRGDatoDelMejorTiempo *mejorTiempo =[IRGMejoresTiempos sharedMejoresTiempos].todosLosMejoresTiempos[filaDeLaTabla];
+   
+    NSString * timepoDeJuegoFormateado =  [IRGMetodosComunes formatearTiempoDeJuegoEnSegundos:mejorTiempo.tiempo];
+
     
-    NSString * detalle = [NSString stringWithFormat:@"Tiempo:%ld Celdas:%ld Minas:%ld",(long)mejorTiempo.tiempo,(long)mejorTiempo.numeroDeCeldas,(long)mejorTiempo.numeroDeMinas];
+    NSString *conAyuda;
+    if(mejorTiempo.conAyuda){
+        conAyuda = @"Si";
+    }
+    else{
+        conAyuda = @"No";
+    }
+    
+    
+    NSString * detalle = [NSString stringWithFormat:@"Tiempo:%@ Celdas:%ld Minas:%ld Con ayuda:%@",timepoDeJuegoFormateado,(long)mejorTiempo.numeroDeCeldas,(long)mejorTiempo.numeroDeMinas,conAyuda];
     
     celda.textLabel.text = mejorTiempo.nombre;
     celda.detailTextLabel.text = detalle;

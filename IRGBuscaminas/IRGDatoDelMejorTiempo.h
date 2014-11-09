@@ -8,16 +8,18 @@
 
 #import <Foundation/Foundation.h>
 
-@interface IRGDatoDelMejorTiempo : NSObject
+@interface IRGDatoDelMejorTiempo : NSObject<NSCoding>
 @property (nonatomic) NSInteger tiempo;
 @property (nonatomic) NSString * nombre;
 @property (nonatomic) NSInteger numeroDeCeldas;
 @property (nonatomic )NSInteger numeroDeMinas;
+@property (nonatomic) BOOL conAyuda;
 
 //designated initializer
 - (instancetype) initConTiempo: (NSInteger)tiempo
                         nombre:(NSString *)nombre
                 numeroDeCeldas:(NSInteger) numeroDeCeldas
-                 numeroDeMinas:(NSInteger) numeroDeMinas;
+                 numeroDeMinas:(NSInteger) numeroDeMinas
+                      conAyuda:(bool) conAyuda;
 
 @end

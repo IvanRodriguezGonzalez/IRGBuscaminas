@@ -10,12 +10,14 @@
 #define NUMERO_DE_COLUMNAS_POR_DEFECTO 10
 
 #import "IRGVentanaPrincipalViewController.h"
+#import "IRGMetodosComunes.h"
 #import "IRGPincel.h"
 #import "IRGLienzo.h"
 #import "IRGCeldaViewController.h"
 #import "IRGDatos.h"
 #import "IRGCelda.h"
 #import "IRGMejoresTiemposViewController.h"
+#import "IRGMejoresTiempos.h"
 
 
 @interface IRGVentanaPrincipalViewController ()
@@ -30,8 +32,14 @@
 
 @property (weak, nonatomic) IBOutlet UIView *canvas;
 @property (weak, nonatomic) IBOutlet UITextField *totalMinas;
+@property (weak, nonatomic) IBOutlet UILabel *etiquetaTextFieldTotalMinas;
 @property (weak, nonatomic) IBOutlet UIButton *botonPrincipal;
-@property (weak, nonatomic) IBOutlet UIButton *BotonMostrarMinas;
+@property (weak, nonatomic) IBOutlet UILabel *etiquetaBotonPrincipal;
+@property (weak, nonatomic) IBOutlet UIButton *botonMostrarMinas;
+@property (weak, nonatomic) IBOutlet UILabel *etiquetaBotonMostrarMinas;
+
+@property (weak, nonatomic) IBOutlet UIButton *botonMostrarMejoresTiempos;
+@property (weak, nonatomic) IBOutlet UILabel *etiquetaBotonMostrarMejoresTiempos;
 @property (weak, nonatomic) IBOutlet UIProgressView *barraDeProgreso;
 @property (weak, nonatomic) IBOutlet UITextField *tiempoDeJuego;
 
@@ -71,11 +79,17 @@
         [self mostrarTodasLasMinas];
         [self activarModoAyuda];
         [self activarMostrandoAyuda];
+        [self establecerFondoDeAyuda];
         [self actualizarBotonConProgreso:0];
+        [self establecerBotonYEtiquetaBotonMostrarMinasModoMostrandoAyuda];
+        [self desactivarBotonPrincipal];
     }
     else {
         [self ocultarTodasLasMinas];
         [self desactivarMostrandoAyuda];
+        [self establecerFondoNeutro];
+        [self establecerBotonYEtiquetaBotonMostrarMinasModoNormal];
+        [self activarBotonPrincipal];
     }
     self.mostrarMinas = !self.mostrarMinas;
 }
@@ -111,10 +125,9 @@
 
 #pragma mark - Delegado primer nivel
 
-- (void) celdaPulsada:(IRGCeldaViewController *)celdaPulsada{
-    if (!self.mostrandoAyuda){
-        
-        if ((!self.juegoAcabado) & (celdaPulsada.estado == libre)){
+- (void) celdaDoblePulsada:(IRGCeldaViewController *)celdaPulsada{
+    if ((!self.mostrandoAyuda)&(!self.juegoAcabado)){
+        if (celdaPulsada.estado == libre){
             if ((celdaPulsada.tieneMina) ){
                 [self acabarJuegoConError];
             }
@@ -126,23 +139,25 @@
     }
 }
 
-- (void) celdaDoblePulsada:(IRGCeldaViewController *)celdaDoblePulsada{
-    switch (celdaDoblePulsada.estado)
-    {
-        case libre:
-            celdaDoblePulsada.estado = conBandera;
-            break;
-        case conBandera:
-            celdaDoblePulsada.estado = conDuda;
-            break;
-        case conDuda:
-            celdaDoblePulsada.estado = libre ;
-            break;
-        default:
-            NSLog (@"Estdo de celda no esperado");
-            break;
+- (void) celdaPulsada:(IRGCeldaViewController *)celdaDoblePulsada{
+    if ((!self.mostrandoAyuda)&(!self.juegoAcabado)){
+        switch (celdaDoblePulsada.estado)
+        {
+            case libre:
+                celdaDoblePulsada.estado = conBandera;
+                break;
+            case conBandera:
+                celdaDoblePulsada.estado = conDuda;
+                break;
+            case conDuda:
+                celdaDoblePulsada.estado = libre ;
+                break;
+            default:
+                NSLog (@"Estdo de celda no esperado");
+                break;
+        }
+        [self actualizaMinasPendientes];
     }
-    [self actualizaMinasPendientes];
 }
 
 # pragma mark Delegado segundo nivel
@@ -181,47 +196,85 @@
 
 
 - (void) iniciarJuego{
-    if (!self.juegoAcabado){
-        [self restablecerNumeroDeMinasPendietes];
-    }
-    [self desactivarModoAyuda];
     self.juegoAcabado = false;
     [[IRGDatos sharedDatos] borrarJuego];
     [self borrarCanvas];
     [self generarCanvas];
     [self actualizarNumeroDeMinas];
     [self generarMinas];
-    [self restablecerNumeroDeMinasPendietes];
+
+    [self desactivarModoAyuda];
+    [self desactivarMostrandoAyuda];
+    [self activarBotonMostrarMinas];
+    [self desactivarBotonMejoresTiempos];
+    [self desactivarTextFieldNumeroDeMinas];
+
     [self actualizarBotonYBarraDeProgreso];
-    [self activarMostrarMinas];
-    [self desactivarNumeroDeMinas];
     [self iniciarBarraDeProgreso];
     [self establecerFondoNeutro];
     [self inicializarTiempoDeJuego];
     [self iniciarReloj];
+
 }
 
 -(void) acabarJuegoConError{
     [self mostrarTodasLasMinas];
     self.juegoAcabado = true;
     [self establecerImagenDelBotonPrincipal:@"error"];
-    [self desactivarMostrarMinas];
-    [self activarNumeroDeMinas];
+    [self desactivarBotonMostrarMinas];
+    [self activarBotonMejoresTiempos];
+    [self activarTextFieldNumeroDeMinas];
     [self establecerFondoDeError];
-    [self restablecerNumeroDeMinasPendietes];
+    [self recuperarNumeroDeMinasPendietes];
     [self detenerRelor];
 }
 
-- (void) acabarJuegoSinError{
+- (void) acabarJuegoSinErrorSinAyuda{
     self.juegoAcabado = true;
-    [self activarNumeroDeMinas];
+    [self activarTextFieldNumeroDeMinas];
     [self establecerFondoDeVictoria];
-    [self restablecerNumeroDeMinasPendietes];
+    [self recuperarNumeroDeMinasPendietes];
     [self detenerRelor];
-
+    [self desactivarBotonMostrarMinas];
+    [self activarBotonMejoresTiempos];
+    [self registrarMejorTiempo:self.tiempoDeJuegoEnSegundos
+                        Nombre:@"Ivan"
+                numeroDeCeldas:[IRGLienzo sharedLienzo].filasDelLienzo*[IRGLienzo sharedLienzo].columnasDelLienzo
+                 numeroDeMinas:[IRGDatos sharedDatos].numeroDeMinas
+                      conAyuda:FALSE];
 }
+
+- (void) acabarJuegoSinErrorConAyuda{
+    self.juegoAcabado = true;
+    [self activarTextFieldNumeroDeMinas];
+    [self establecerFondoDeVictoria];
+    [self recuperarNumeroDeMinasPendietes];
+    [self detenerRelor];
+    [self desactivarBotonMostrarMinas];
+    [self activarBotonMejoresTiempos];
+    [self registrarMejorTiempo:self.tiempoDeJuegoEnSegundos
+                        Nombre:@"Ivan"
+                numeroDeCeldas:[IRGLienzo sharedLienzo].filasDelLienzo*[IRGLienzo sharedLienzo].columnasDelLienzo
+                 numeroDeMinas:[IRGDatos sharedDatos].numeroDeMinas
+                      conAyuda:TRUE];
+}
+
+
 
 # pragma mark - Auxiliares segundo nivel
+
+- (void) registrarMejorTiempo: (NSInteger)mejorTiempo
+                       Nombre:(NSString *)nombre
+               numeroDeCeldas:(NSInteger)numeroDeCeldas
+                numeroDeMinas:(NSInteger)numeroDeMinas
+                     conAyuda:(bool)conAyuda{
+    
+    [[IRGMejoresTiempos sharedMejoresTiempos] anadirTiempo:mejorTiempo
+                                                    Nombre:nombre
+                                            numeroDeCeldas:numeroDeCeldas
+                                             numeroDeMinas:numeroDeMinas
+                                                  conAyuda:conAyuda];
+}
 
 -(void) iniciarReloj{
     if (!self.reloj){
@@ -278,6 +331,10 @@
     self.canvas.backgroundColor = [IRGPincel sharedPincel].colorDeRellenoDePantallaDeVictoria;
 }
 
+-(void) establecerFondoDeAyuda{
+    self.canvas.backgroundColor = [IRGPincel sharedPincel].colorDeRellenoDePantallaDeModoAyuda;
+}
+
 -(void) actualizarNumeroDeMinas{
     [IRGDatos sharedDatos].numeroDeMinas = [self.totalMinas.text intValue];
 }
@@ -299,7 +356,7 @@
     self.mostrarMinas = false;
 }
 
-- (void) restablecerNumeroDeMinasPendietes{
+- (void) recuperarNumeroDeMinasPendietes{
     self.totalMinas.text = [NSString stringWithFormat:@"%d",[[IRGDatos sharedDatos] numeroDeMinas]];
 }
 
@@ -319,24 +376,6 @@
     [self actualizarBarraDeProgresoConProgreso:porcentajeDeAvance];
 }
 
-- (void) activarMostrarMinas{
-    self.BotonMostrarMinas.enabled = TRUE;
-}
-
-- (void) desactivarMostrarMinas{
-    self.BotonMostrarMinas.enabled = false;
-}
-
-- (void) activarNumeroDeMinas{
-    self.totalMinas.enabled = true;
-    self.totalMinas.textColor = [UIColor blueColor];
-    self.totalMinas.text = [NSString stringWithFormat:@"%d",[IRGDatos sharedDatos].numeroDeMinas];
-}
-
-- (void) desactivarNumeroDeMinas{
-    self.totalMinas.enabled = false;
-    self.totalMinas.textColor = [UIColor lightGrayColor];
-}
 
 -(void) iniciarBarraDeProgreso{
     [self.barraDeProgreso setProgress:0 animated:true];
@@ -350,11 +389,14 @@
     
     if (self.ayudaActivada){
         [self establecerImagenDelBotonPrincipal:@"modoAyuda"];
+        if (porcentajeDeAvance == 1){
+            [self acabarJuegoSinErrorConAyuda];
+        }
     }
     else {
         if (porcentajeDeAvance == 1) {
             [self establecerImagenDelBotonPrincipal:@"igualA100"];
-            [self acabarJuegoSinError];
+            [self acabarJuegoSinErrorSinAyuda];
         }
         if (porcentajeDeAvance < 1) {
             [self establecerImagenDelBotonPrincipal:@"menorDe100"];
@@ -406,44 +448,72 @@
     return self.canvas.frame.size.height;
 }
 
--(void) activarModoAyuda{
-    self.ayudaActivada = true;
-}
-
-- (void) desactivarModoAyuda{
-    self.ayudaActivada = false;
-}
-
 -(void) inicializarTiempoDeJuego{
     self.tiempoDeJuegoEnSegundos = 0;
     self.tiempoDeJuego.text =     @"00:00";
 }
 - (void) actualizarTiempoDeJuego{
   
-    self.tiempoDeJuego.text = [self formatearTiempoDeJuegoEnSegundos:self.tiempoDeJuegoEnSegundos];;
+    self.tiempoDeJuego.text = [IRGMetodosComunes formatearTiempoDeJuegoEnSegundos:self.tiempoDeJuegoEnSegundos];;
 }
 
-- (NSString *) formatearTiempoDeJuegoEnSegundos:(NSInteger)tiempoEnSegundos{
-    NSInteger minutos = self.tiempoDeJuegoEnSegundos / 60;
-    NSInteger segundos = self.tiempoDeJuegoEnSegundos - minutos*60;
-    NSString * textoDeMinutos;
-    NSString * textoDeSegundos;
-    
-    if (minutos<10){
-        textoDeMinutos = [NSString stringWithFormat:@"0%ld",(long)minutos];
-    }
-    else{
-        textoDeMinutos = [NSString stringWithFormat:@"%ld",(long)minutos];
-    }
-    
-    if (segundos<10){
-        textoDeSegundos = [NSString stringWithFormat:@"0%ld",(long)segundos];
-    }
-    else{
-        textoDeSegundos = [NSString stringWithFormat:@"%ld",(long)segundos];
-    }
-    return [NSString stringWithFormat:@"%@:%@",textoDeMinutos,textoDeSegundos ];
+#pragma mark - Activacion y Desactivacion de botones y barras
+
+-(void) activarBotonPrincipal{
+    self.botonPrincipal.enabled = true;
+    self.etiquetaBotonPrincipal.enabled = true;
 }
+
+-(void) desactivarBotonPrincipal{
+    self.botonPrincipal.enabled  = false;
+    self.etiquetaBotonPrincipal.enabled = false;
+}
+
+-(void) mostrarBarraDeNavegacion{
+    [self.navigationController setNavigationBarHidden:false animated:FALSE];
+}
+-(void) ocultarrBarraDeNavegacion{
+    [self.navigationController setNavigationBarHidden:true animated:false];
+}
+
+- (void) activarBotonMejoresTiempos{
+    self.botonMostrarMejoresTiempos.enabled = true;
+    self.etiquetaBotonMostrarMejoresTiempos.enabled = true;
+}
+
+- (void) desactivarBotonMejoresTiempos{
+    self.botonMostrarMejoresTiempos.enabled = false;
+    self.etiquetaBotonMostrarMejoresTiempos.enabled = false;
+}
+
+- (void) activarBotonMostrarMinas{
+    self.botonMostrarMinas.enabled = TRUE;
+    self.etiquetaBotonMostrarMinas.enabled = true;
+}
+
+- (void) desactivarBotonMostrarMinas{
+    self.botonMostrarMinas.enabled = false;
+    self.etiquetaBotonMostrarMinas.enabled = false;
+}
+
+- (void) activarTextFieldNumeroDeMinas{
+    self.totalMinas.enabled = true;
+    self.etiquetaTextFieldTotalMinas.enabled = true;
+}
+
+- (void) desactivarTextFieldNumeroDeMinas{
+    self.totalMinas.enabled = false;
+    self.etiquetaTextFieldTotalMinas.enabled = false;}
+
+- (void) establecerBotonYEtiquetaBotonMostrarMinasModoMostrandoAyuda{
+    self.etiquetaBotonMostrarMinas.textColor = [IRGPincel sharedPincel].colorEtiquetaDeBotonSeleccionado;
+}
+
+-(void) establecerBotonYEtiquetaBotonMostrarMinasModoNormal{
+    self.etiquetaBotonMostrarMinas.textColor = [IRGPincel sharedPincel].colorEtiquetaDeBotonNormal;
+}
+
+# pragma mark - Activar y Desactivar estados
 
 - (void) activarMostrandoAyuda{
     self.mostrandoAyuda = true;
@@ -453,11 +523,13 @@
     self.mostrandoAyuda = false;
 }
 
--(void) mostrarBarraDeNavegacion{
-    [self.navigationController setNavigationBarHidden:false animated:FALSE];
+
+-(void) activarModoAyuda{
+    self.ayudaActivada = true;
 }
--(void) ocultarrBarraDeNavegacion{
-    [self.navigationController setNavigationBarHidden:true animated:false];
+
+- (void) desactivarModoAyuda{
+    self.ayudaActivada = false;
 }
 
 @end

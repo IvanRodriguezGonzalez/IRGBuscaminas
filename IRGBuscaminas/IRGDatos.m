@@ -38,7 +38,6 @@
     self = [super init];
     
     if (self) {
- //       _celdasDelJuego = [[NSMutableArray alloc]init];
     }
     return self;
 }

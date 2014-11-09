@@ -16,10 +16,11 @@
 - (void) anadirTiempo:(NSInteger)tiempo
                Nombre:(NSString *)nombre
        numeroDeCeldas:(NSInteger)numeroDeCeldas
-        numeroDeMinas:(NSInteger)numeroDeMinas;
+        numeroDeMinas:(NSInteger)numeroDeMinas
+             conAyuda:(bool)conAyuda;
 
 - (NSArray *) todosLosMejoresTiempos;
-
+- (bool) guardarMejoresTiempos;
 
 
 @end

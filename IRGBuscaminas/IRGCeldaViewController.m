@@ -97,11 +97,11 @@
 #pragma mark - Navigation
 
 -(void) doubleTap:(UITapGestureRecognizer *)gesture{
-    [self.delegado celdaPulsada:self];
+    [self.delegado celdaDoblePulsada:self];
 }
 
 -(void) tapGestureRecognizer : (UITapGestureRecognizer *) gesture{
-    [self.delegado celdaDoblePulsada:self];
+    [self.delegado celdaPulsada:self];
 }
 
 

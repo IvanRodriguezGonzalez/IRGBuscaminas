@@ -69,4 +69,15 @@
     return [[UIColor alloc] initWithRed:0 green:.5 blue:0 alpha:1];;
 }
 
+-(UIColor *) colorDeRellenoDePantallaDeModoAyuda{
+    return [[UIColor alloc] initWithRed:1 green:1 blue:1 alpha:1];
+}
+
+-(UIColor *) colorEtiquetaDeBotonSeleccionado{
+    return [[UIColor alloc] initWithRed:0 green:0 blue:1 alpha:1];
+}
+
+-(UIColor *) colorEtiquetaDeBotonNormal{
+    return [[UIColor alloc] initWithRed:0 green:0 blue:0 alpha:1];
+}
 @end

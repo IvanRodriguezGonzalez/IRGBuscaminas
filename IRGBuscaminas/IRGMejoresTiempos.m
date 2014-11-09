@@ -14,6 +14,8 @@
 
 @end
 
+
+
 @implementation IRGMejoresTiempos
 
 #pragma mark - Inicializadores
@@ -36,14 +38,15 @@
 -(instancetype) initPrivado{
     self = [super init];
     if (self) {
-        [self inicializarMejoresTiempos];
-        [self anadirTiempo:99 Nombre:@"Ivan1" numeroDeCeldas:100 numeroDeMinas:40];
-        [self anadirTiempo:210 Nombre:@"Ivan2" numeroDeCeldas:50 numeroDeMinas:20];
-        [self anadirTiempo:230 Nombre:@"Ivan3" numeroDeCeldas:60 numeroDeMinas:30];
         
-        
+        if ([self existeArchivo:[self obtenerPath]]){
+            _mejoresTiempos = [self recuperarMejoresTiempos:[self obtenerPath]];
+        }
+        else {
+            _mejoresTiempos = [[NSMutableArray alloc] init];
+        }
     }
-    return self;
+   return self;
 }
 
 #pragma mark - Auxiliares primer nivel
@@ -55,16 +58,55 @@
 - (void) anadirTiempo:(NSInteger)tiempo
                Nombre:(NSString *)nombre
        numeroDeCeldas:(NSInteger)numeroDeCeldas
-        numeroDeMinas:(NSInteger)numeroDeMinas{
+        numeroDeMinas:(NSInteger)numeroDeMinas
+             conAyuda:(bool)conAyuda{
     IRGDatoDelMejorTiempo * datoDelMejorTiempo = [[IRGDatoDelMejorTiempo alloc]initConTiempo:tiempo
                                                                                     nombre:nombre
                                                                             numeroDeCeldas:numeroDeCeldas
-                                                                             numeroDeMinas:numeroDeMinas];
+                                                                             numeroDeMinas:numeroDeMinas
+                                                                                    conAyuda:conAyuda];
     [self.mejoresTiempos addObject:datoDelMejorTiempo];
+    [self guardarMejoresTiempos];
 }
 
 - (NSArray *) todosLosMejoresTiempos{
     return self.mejoresTiempos;
 }
 
+#pragma mark Auxiliares primer nivel
+-(bool) guardarMejoresTiempos{
+    NSString *path = [self obtenerPath];
+    NSArray * a = self.mejoresTiempos;
+    return [NSKeyedArchiver archiveRootObject:self.mejoresTiempos
+                                       toFile:path];
+}
+
+
+
+
+#pragma mark Funciones auxiliares
+
+-(NSString *) obtenerPath{
+    NSArray *listaDePath = NSSearchPathForDirectoriesInDomains(NSDocumentDirectory,
+                                                               NSUserDomainMask,
+                                                               TRUE);
+    //NSString *directorio = listaDePath[0];
+    NSString * directorio = @"/Users/IRG/Desktop/TopScores/";
+   return [directorio stringByAppendingString:@"Resultados.irg"];
+}
+
+-(BOOL) existeArchivo:(NSString *)pathArchivo{
+    
+    NSFileManager *fileManagerPrincipal = [NSFileManager defaultManager];
+        if ([fileManagerPrincipal fileExistsAtPath:[self obtenerPath]]){
+            return TRUE;
+        }
+        else{
+            return FALSE;
+        }
+}
+
+-(NSMutableArray *) recuperarMejoresTiempos:(NSString *)path{
+    return   [NSKeyedUnarchiver unarchiveObjectWithFile:path];
+}
 @end

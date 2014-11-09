@@ -12,6 +12,7 @@
 		320334411A0EBDF3000FFAEF /* IRGPrincipalNavigationViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 320334401A0EBDF3000FFAEF /* IRGPrincipalNavigationViewController.m */; };
 		320334451A0EC9A7000FFAEF /* IRGMejoresTiemposViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 320334431A0EC9A7000FFAEF /* IRGMejoresTiemposViewController.m */; };
 		320334461A0EC9A7000FFAEF /* IRGMejoresTiemposViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 320334441A0EC9A7000FFAEF /* IRGMejoresTiemposViewController.xib */; };
+		320334491A0F20A4000FFAEF /* IRGMetodosComunes.m in Sources */ = {isa = PBXBuildFile; fileRef = 320334481A0F20A4000FFAEF /* IRGMetodosComunes.m */; };
 		E1CD31861A0BCB8900D317A8 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = E1CD31851A0BCB8900D317A8 /* main.m */; };
 		E1CD31891A0BCB8900D317A8 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = E1CD31881A0BCB8900D317A8 /* AppDelegate.m */; };
 		E1CD318B1A0BCB8900D317A8 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = E1CD318A1A0BCB8900D317A8 /* Images.xcassets */; };
@@ -46,6 +47,8 @@
 		320334421A0EC9A7000FFAEF /* IRGMejoresTiemposViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IRGMejoresTiemposViewController.h; sourceTree = "<group>"; };
 		320334431A0EC9A7000FFAEF /* IRGMejoresTiemposViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = IRGMejoresTiemposViewController.m; sourceTree = "<group>"; };
 		320334441A0EC9A7000FFAEF /* IRGMejoresTiemposViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = IRGMejoresTiemposViewController.xib; sourceTree = "<group>"; };
+		320334471A0F20A4000FFAEF /* IRGMetodosComunes.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IRGMetodosComunes.h; sourceTree = "<group>"; };
+		320334481A0F20A4000FFAEF /* IRGMetodosComunes.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = IRGMetodosComunes.m; sourceTree = "<group>"; };
 		E1CD31801A0BCB8900D317A8 /* IRGBuscaminas.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = IRGBuscaminas.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		E1CD31841A0BCB8900D317A8 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		E1CD31851A0BCB8900D317A8 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
@@ -89,6 +92,15 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		3203344A1A0F20A9000FFAEF /* Comunes */ = {
+			isa = PBXGroup;
+			children = (
+				320334471A0F20A4000FFAEF /* IRGMetodosComunes.h */,
+				320334481A0F20A4000FFAEF /* IRGMetodosComunes.m */,
+			);
+			name = Comunes;
+			sourceTree = "<group>";
+		};
 		E1CD31771A0BCB8900D317A8 = {
 			isa = PBXGroup;
 			children = (
@@ -110,6 +122,7 @@
 		E1CD31821A0BCB8900D317A8 /* IRGBuscaminas */ = {
 			isa = PBXGroup;
 			children = (
+				3203344A1A0F20A9000FFAEF /* Comunes */,
 				E1CD31A91A0BCC1300D317A8 /* Controlador */,
 				E1CD31A81A0BCC0600D317A8 /* Vista */,
 				E1CD31A51A0BCBF800D317A8 /* IRGVentanaPrincipalViewController.xib */,
@@ -297,6 +310,7 @@
 				E1D41DCB1A0BF0050059C46C /* IRGPincel.m in Sources */,
 				E1D41DCE1A0BFEC30059C46C /* IRGDatos.m in Sources */,
 				320334411A0EBDF3000FFAEF /* IRGPrincipalNavigationViewController.m in Sources */,
+				320334491A0F20A4000FFAEF /* IRGMetodosComunes.m in Sources */,
 				E1D41DC51A0BEF6B0059C46C /* IRGCeldaViewController.m in Sources */,
 				E1CD31A61A0BCBF800D317A8 /* IRGVentanaPrincipalViewController.m in Sources */,
 				320334381A0EB854000FFAEF /* IRGMejoresTiempos.m in Sources */,
