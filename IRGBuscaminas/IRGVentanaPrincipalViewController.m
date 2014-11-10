@@ -19,6 +19,7 @@
 #import "IRGMejoresTiemposViewController.h"
 #import "IRGMejoresTiempos.h"
 #import "IRGPreguntarNombreViewController.h"
+#import "IRGGestorDeEstados.h"
 
 
 @interface IRGVentanaPrincipalViewController ()
@@ -31,8 +32,9 @@
 @property (nonatomic) int tiempoDeJuegoEnSegundos;
 @property (nonatomic,weak) NSTimer *reloj;
 
+@property (nonatomic) IRGGestorDeEstados *gestorDeEstados;
+
 @property (weak, nonatomic) IBOutlet UIView *canvas;
-@property (weak, nonatomic) IBOutlet UITextField *totalMinas;
 @property (weak, nonatomic) IBOutlet UILabel *etiquetaTextFieldTotalMinas;
 @property (weak, nonatomic) IBOutlet UIButton *botonPrincipal;
 @property (weak, nonatomic) IBOutlet UILabel *etiquetaBotonPrincipal;
@@ -52,6 +54,7 @@
 #pragma mark - Overrides
 - (void)viewDidLoad {
     [super viewDidLoad];
+    [self iniciarGestorDeEstados];
     // Do any additional setup after loading the view from its nib.
 }
 
@@ -69,12 +72,14 @@
 #pragma mark - Navigation primer nivel
 
 - (IBAction)accionJugar:(UIButton *)sender {
-    [self.totalMinas resignFirstResponder];
-    [self iniciarJuego];
+    [self.gestorDeEstados accionJugar];
 }
 
 
 - (IBAction)accionMostrarMinas:(UIButton *)sender {
+    [self.gestorDeEstados accionMostrarMinas];
+    
+    /*
    
     if (!self.mostrarMinas){
         [self mostrarTodasLasMinas];
@@ -93,6 +98,7 @@
         [self activarBotonPrincipal];
     }
     self.mostrarMinas = !self.mostrarMinas;
+     */
 }
 
 - (IBAction)accionMostarMejoresTiempos:(UIButton *)sender {
@@ -102,6 +108,19 @@
 }
 
 # pragma mark Navigation segundo nivel
+
+-(void) mostrarMinasxx{
+    [self mostrarTodasLasMinas];
+    [self establecerFondoDeAyuda];
+    [self actualizarBotonConProgreso:0];
+    [self establecerBotonYEtiquetaBotonMostrarMinasModoMostrandoAyuda];
+}
+
+-(void) ocultarMinasxx{
+    [self ocultarTodasLasMinas];
+    [self establecerFondoNeutro];
+    [self establecerBotonYEtiquetaBotonMostrarMinasModoNormal];
+}
 
 -(void) mostrarTodasLasMinas{
     
@@ -195,9 +214,29 @@
 }
 #pragma mark - Auxiliares primer nivel
 
+- (void) iniciarGestorDeEstados{
+    self.gestorDeEstados = [[IRGGestorDeEstados alloc]initConDelegado:self];
+}
 
 - (void) iniciarJuego{
+    
+    [self.totalMinas resignFirstResponder];
+    [[IRGDatos sharedDatos] borrarJuego];
+    [self borrarCanvas];
+    [self generarCanvas];
+    [self actualizarNumeroDeMinas];
+    [self generarMinas];
+    
+    [self actualizarBotonYBarraDeProgreso];
+    [self iniciarBarraDeProgreso];
+    [self establecerFondoNeutro];
+    [self inicializarTiempoDeJuego];
+    [self iniciarReloj];
+    
+    
+    /*
     self.juegoAcabado = false;
+    
     [[IRGDatos sharedDatos] borrarJuego];
     [self borrarCanvas];
     [self generarCanvas];
@@ -215,7 +254,7 @@
     [self establecerFondoNeutro];
     [self inicializarTiempoDeJuego];
     [self iniciarReloj];
-
+*/
 }
 
 -(void) acabarJuegoConError{

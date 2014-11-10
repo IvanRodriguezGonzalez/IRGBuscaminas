@@ -91,7 +91,7 @@
                                                                NSUserDomainMask,
                                                                TRUE);
     //NSString *directorio = listaDePath[0];
-    NSString * directorio = @"/Users/IRG/Desktop/TopScores/";
+    NSString * directorio = @"/Users/LVS/Desktop/TopScores/";
    return [directorio stringByAppendingString:@"Resultados.irg"];
 }
 
