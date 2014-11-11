@@ -37,7 +37,8 @@
         
         self.estadoDelJuegoFinalizadoConError = [[IRGEstadoDelJuegoFinalizadoConError alloc] initConGestorDeEstados:self delegado:self.delegado];
         
-
+        self.estadoDelJuegoEnPausa = [[IRGEstadoDelJuegoEnPausa alloc] initConGestorDeEstados:self delegado:self.delegado];
+        
         
         self.estadoDelJuego = self.estadoDelJuegoInicio;
     }
@@ -68,6 +69,10 @@
 
 -(void) establecerBotones{
     [self.estadoDelJuego establecerBotones];
+}
+
+-(void) accionPausar{
+    [self.estadoDelJuego accionPausar];
 }
 
 #pragma mark - Meotodos de primer nivel

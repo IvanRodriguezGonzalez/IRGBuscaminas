@@ -44,10 +44,12 @@
 #pragma mark Metodos del protocolo
 
 - (void) establecerBotones{
-    [self.delegado desactivarBotonMostrarMinas];
-    [self.delegado activarBotonMejoresTiempos];
-    [self.delegado activarBotonPrincipal];
-    [self.delegado activarTextFieldNumeroDeMinas];
+    [self.delegado.gestionarBotonera desactivarBotonMostrarMinas];
+    [self.delegado.gestionarBotonera activarBotonMejoresTiempos];
+    [self.delegado.gestionarBotonera activarBotonPrincipal];
+    [self.delegado.gestionarBotonera activarTextFieldNumeroDeMinas];
+    [self.delegado.gestionarBotonera desactivarBotonPausar];
+
 }
 
 
@@ -70,7 +72,9 @@
     
 }
 
-
+-(void) accionPausar{
+    [NSException exceptionWithName:@"accion incorrecta" reason:@"El estado no la soporta" userInfo:nil];
+}
 
 
 @end

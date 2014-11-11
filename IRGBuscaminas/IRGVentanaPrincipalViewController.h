@@ -7,13 +7,26 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "IRGGestionarBotonera.h"
+
 @class IRGCeldaViewController;
 
 @interface IRGVentanaPrincipalViewController : UIViewController
 @property (nonatomic) NSInteger altoDelCanvas;
 
 @property (weak, nonatomic) IBOutlet UITextField *totalMinas;
+@property (weak, nonatomic) IBOutlet UILabel *etiquetaTextFieldTotalMinas;
+@property (weak, nonatomic) IBOutlet UIButton *botonPrincipal;
 @property (weak, nonatomic) IBOutlet UILabel *etiquetaBotonPrincipal;
+@property (weak, nonatomic) IBOutlet UIButton *botonMostrarMinas;
+@property (weak, nonatomic) IBOutlet UILabel *etiquetaBotonMostrarMinas;
+@property (weak, nonatomic) IBOutlet UIButton *botonMostrarMejoresTiempos;
+@property (weak, nonatomic) IBOutlet UILabel *etiquetaBotonMostrarMejoresTiempos;
+@property (weak, nonatomic) IBOutlet UIButton *botonPausar;
+@property (weak, nonatomic) IBOutlet UILabel *etiquetaBotonPausar;
+@property (nonatomic,weak) NSTimer *reloj;
+
+@property (nonatomic) IRGGestionarBotonera *gestionarBotonera;
 
 
 
@@ -24,6 +37,7 @@
 
 -(void) actualizaMinasPendientes;
 
+/*
 - (void) activarBotonMostrarMinas;
 - (void) desactivarBotonMostrarMinas;
 - (void) activarBotonMejoresTiempos;
@@ -32,7 +46,7 @@
 - (void) desactivarBotonPrincipal;
 - (void) activarTextFieldNumeroDeMinas;
 - (void) desactivarTextFieldNumeroDeMinas;
-
+*/
 - (void) iniciarJuego;
 - (void) mostrarMinas;
 - (void) ocultarMinas;
@@ -41,5 +55,6 @@
 - (NSInteger) actualizarBotonYBarraDeProgreso;
 - (void) acabarJuegoSinErrorSinAyuda;
 - (void) acabarJuegoSinErrorConAyuda;
+-(void) iniciarReloj;
 
 @end

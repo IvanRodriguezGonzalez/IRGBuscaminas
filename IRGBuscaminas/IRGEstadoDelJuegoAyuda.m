@@ -42,10 +42,12 @@
 #pragma mark Metodos del protocolo
 
 - (void) establecerBotones{
-    [self.delegado desactivarBotonMostrarMinas];
-    [self.delegado desactivarBotonMejoresTiempos];
-    [self.delegado desactivarBotonPrincipal];
-    [self.delegado desactivarTextFieldNumeroDeMinas];
+    [self.delegado.gestionarBotonera desactivarBotonMostrarMinas];
+    [self.delegado.gestionarBotonera desactivarBotonMejoresTiempos];
+    [self.delegado.gestionarBotonera desactivarBotonPrincipal];
+    [self.delegado.gestionarBotonera desactivarTextFieldNumeroDeMinas];
+    [self.delegado.gestionarBotonera desactivarBotonPausar];
+
     [self iniciarReloj];
 }
 
@@ -81,6 +83,10 @@
 -(void) ocultarAyuda{
     self.gestorDeEstados.estadoDelJuego = self.gestorDeEstados.estadoDelJuegoEnJuegoConAyuda;
     [self.delegado ocultarMinas];
+}
+
+-(void) accionPausar{
+    [NSException exceptionWithName:@"accion incorrecta" reason:@"El estado no la soporta" userInfo:nil];
 }
 
 @end

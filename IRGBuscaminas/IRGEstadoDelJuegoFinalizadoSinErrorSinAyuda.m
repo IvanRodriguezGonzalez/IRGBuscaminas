@@ -32,6 +32,9 @@
     [NSException exceptionWithName:@"Invalid init" reason:@"Use initConSender" userInfo:nil];
     return false;
 }
+-(void) accionPausar{
+    [NSException exceptionWithName:@"accion incorrecta" reason:@"El estado no la soporta" userInfo:nil];
+}
 
 
 #pragma mark - Overrides
@@ -42,10 +45,12 @@
 #pragma mark Metodos del protocolo
 
 - (void) establecerBotones{
-    [self.delegado desactivarBotonMostrarMinas];
-    [self.delegado activarBotonMejoresTiempos];
-    [self.delegado activarBotonPrincipal];
-    [self.delegado activarTextFieldNumeroDeMinas];
+    [self.delegado.gestionarBotonera desactivarBotonMostrarMinas];
+    [self.delegado.gestionarBotonera activarBotonMejoresTiempos];
+    [self.delegado.gestionarBotonera activarBotonPrincipal];
+    [self.delegado.gestionarBotonera activarTextFieldNumeroDeMinas];
+    [self.delegado.gestionarBotonera desactivarBotonPausar];
+
 }
 
 

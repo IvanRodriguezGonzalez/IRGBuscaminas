@@ -15,6 +15,7 @@
 
 -(void)accionJugar;
 -(void)accionMostrarMinas;
+-(void) accionPausar;
 -(void) celdaPulsada: (IRGCeldaViewController *)celdaViewController;
 -(void) celdaDoblePulsada: (IRGCeldaViewController *)celdaViewController;
 -(void) establecerBotones;

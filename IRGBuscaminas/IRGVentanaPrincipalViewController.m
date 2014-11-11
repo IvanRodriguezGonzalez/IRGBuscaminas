@@ -20,23 +20,17 @@
 #import "IRGMejoresTiempos.h"
 #import "IRGPreguntarNombreViewController.h"
 #import "IRGGestorDeEstados.h"
+#import "IRGGestionarBotonera.h"
 
 
 @interface IRGVentanaPrincipalViewController ()
 @property (nonatomic)  NSInteger numeroDeFilas;
 @property (nonatomic)  NSInteger numeroDeColumnas;
 @property (nonatomic) int tiempoDeJuegoEnSegundos;
-@property (nonatomic,weak) NSTimer *reloj;
 
 @property (nonatomic) IRGGestorDeEstados *gestorDeEstados;
 
 @property (weak, nonatomic) IBOutlet UIView *canvas;
-@property (weak, nonatomic) IBOutlet UILabel *etiquetaTextFieldTotalMinas;
-@property (weak, nonatomic) IBOutlet UIButton *botonPrincipal;
-@property (weak, nonatomic) IBOutlet UIButton *botonMostrarMinas;
-@property (weak, nonatomic) IBOutlet UILabel *etiquetaBotonMostrarMinas;
-@property (weak, nonatomic) IBOutlet UIButton *botonMostrarMejoresTiempos;
-@property (weak, nonatomic) IBOutlet UILabel *etiquetaBotonMostrarMejoresTiempos;
 @property (weak, nonatomic) IBOutlet UIProgressView *barraDeProgreso;
 @property (weak, nonatomic) IBOutlet UITextField *tiempoDeJuego;
 
@@ -48,6 +42,8 @@
 #pragma mark - Overrides
 - (void)viewDidLoad {
     [super viewDidLoad];
+    [self iniciarGestionarBotonera];
+
     [self iniciarGestorDeEstados];
 }
 
@@ -77,6 +73,10 @@
     
 }
 
+-(IBAction)accionPausar:(UIButton *)sender{
+    [self.gestorDeEstados accionPausar];
+}
+
 # pragma mark Navigation segundo nivel
 
 -(void) mostrarMinas{
@@ -89,7 +89,7 @@
 -(void) ocultarMinas{
     [self ocultarTodasLasMinas];
     [self establecerFondoNeutro];
-    [self establecerBotonYEtiquetaBotonMostrarMinasModoNormal];
+    [self.gestionarBotonera establecerBotonYEtiquetaBotonMostrarMinasModoNormal];
 }
 
 -(void) mostrarTodasLasMinas{
@@ -156,6 +156,10 @@
     self.totalMinas.text = [NSString stringWithFormat:@"%d",banderasPendientes];
 }
 #pragma mark - Auxiliares primer nivel
+
+-(void) iniciarGestionarBotonera{
+    self.gestionarBotonera = [[IRGGestionarBotonera alloc]initConSender:self];
+}
 
 - (void) iniciarGestorDeEstados{
     self.gestorDeEstados = [[IRGGestorDeEstados alloc]initConDelegado:self];
@@ -408,60 +412,15 @@
 
 #pragma mark - Activacion y Desactivacion de botones y barras
 
--(void) activarBotonPrincipal{
-    self.botonPrincipal.enabled = true;
-    self.etiquetaBotonPrincipal.enabled = true;
-}
-
--(void) desactivarBotonPrincipal{
-    self.botonPrincipal.enabled  = false;
-    self.etiquetaBotonPrincipal.enabled = false;
-}
-
 -(void) mostrarBarraDeNavegacion{
     [self.navigationController setNavigationBarHidden:false animated:FALSE];
 }
 -(void) ocultarrBarraDeNavegacion{
     [self.navigationController setNavigationBarHidden:true animated:false];
 }
-
-- (void) activarBotonMejoresTiempos{
-    self.botonMostrarMejoresTiempos.enabled = true;
-    self.etiquetaBotonMostrarMejoresTiempos.enabled = true;
-}
-
-- (void) desactivarBotonMejoresTiempos{
-    self.botonMostrarMejoresTiempos.enabled = false;
-    self.etiquetaBotonMostrarMejoresTiempos.enabled = false;
-}
-
-- (void) activarBotonMostrarMinas{
-    self.botonMostrarMinas.enabled = TRUE;
-    self.etiquetaBotonMostrarMinas.enabled = true;
-}
-
-- (void) desactivarBotonMostrarMinas{
-    self.botonMostrarMinas.enabled = false;
-    self.etiquetaBotonMostrarMinas.enabled = false;
-}
-
-- (void) activarTextFieldNumeroDeMinas{
-    self.totalMinas.enabled = true;
-    self.etiquetaTextFieldTotalMinas.enabled = true;
-}
-
-- (void) desactivarTextFieldNumeroDeMinas{
-    self.totalMinas.enabled = false;
-    self.etiquetaTextFieldTotalMinas.enabled = false;}
-
 - (void) establecerBotonYEtiquetaBotonMostrarMinasModoMostrandoAyuda{
     self.etiquetaBotonMostrarMinas.textColor = [IRGPincel sharedPincel].colorEtiquetaDeBotonSeleccionado;
 }
-
--(void) establecerBotonYEtiquetaBotonMostrarMinasModoNormal{
-    self.etiquetaBotonMostrarMinas.textColor = [IRGPincel sharedPincel].colorEtiquetaDeBotonNormal;
-}
-
 
 
 

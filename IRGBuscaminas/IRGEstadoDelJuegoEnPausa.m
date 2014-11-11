@@ -1,31 +1,27 @@
 //
-//  IRGEstadoDelJuegoInicio.m
+//  IRGEstadoDelJuegoEnPausa.m
 //  IRGBuscaminas
 //
-//  Created by Leticia Vila Sexto on 10/11/14.
+//  Created by Leticia Vila Sexto on 11/11/14.
 //  Copyright (c) 2014 Ivan Rodriguez Gonzalez. All rights reserved.
 //
 
-#import "IRGEstadoDelJuegoInicio.h"
-#import "IRGDatos.h"
-#import "IRGVentanaPrincipalViewController.h"
+#import "IRGEstadoDelJuegoEnPausa.h"
 #import "IRGGestorDeEstados.h"
 
+@interface  IRGEstadoDelJuegoEnPausa()
 
 
-@interface IRGEstadoDelJuegoInicio()
 @property (nonatomic,strong) IRGVentanaPrincipalViewController *delegado;
 @property (nonatomic,strong) IRGGestorDeEstados * gestorDeEstados;
-
 @end
 
-@implementation IRGEstadoDelJuegoInicio
-
+@implementation IRGEstadoDelJuegoEnPausa
 
 #pragma mark Inicializadores
 //designated initizalizer
 -(instancetype) initConGestorDeEstados: (IRGGestorDeEstados *)gestorDeEstados
-                                delegado:(IRGVentanaPrincipalViewController *)sender{
+                              delegado:(IRGVentanaPrincipalViewController *)sender{
     self = [super init];
     if (self) {
         _delegado = sender;
@@ -39,42 +35,46 @@
     return false;
 }
 
+
 #pragma mark - Overrides
 -(NSString *) description{
-    return @"Inicio";
+    return @"Pausado...";
 }
 
 #pragma mark Metodos del protocolo
 
 - (void) establecerBotones{
     [self.delegado.gestionarBotonera desactivarBotonMostrarMinas];
-    [self.delegado.gestionarBotonera activarBotonMejoresTiempos];
-    [self.delegado.gestionarBotonera activarBotonPrincipal];
-    [self.delegado.gestionarBotonera activarTextFieldNumeroDeMinas];
-    [self.delegado.gestionarBotonera desactivarBotonPausar];
+    [self.delegado.gestionarBotonera desactivarBotonMejoresTiempos];
+    [self.delegado.gestionarBotonera desactivarBotonPrincipal];
+    [self.delegado.gestionarBotonera desactivarTextFieldNumeroDeMinas];
+    [self.delegado.gestionarBotonera activarBotonPausar];
+    
 }
 
+
 - (void) accionJugar{
-    self.gestorDeEstados.estadoDelJuego = self.gestorDeEstados.estadoDelJuegoEnJuego;
-    [self.delegado iniciarJuego];
+    [NSException exceptionWithName:@"accion incorrecta" reason:@"El estado no la soporta" userInfo:nil];
 }
 
 -(void) accionMostrarMinas{
     [NSException exceptionWithName:@"accion incorrecta" reason:@"El estado no la soporta" userInfo:nil];
-
 }
 
 -(void) celdaPulsada:(IRGCeldaViewController *)celdaViewController{
     [NSException exceptionWithName:@"accion incorrecta" reason:@"El estado no la soporta" userInfo:nil];
-
+    
 }
 
 - (void) celdaDoblePulsada:(IRGCeldaViewController *)celdaViewController{
     [NSException exceptionWithName:@"accion incorrecta" reason:@"El estado no la soporta" userInfo:nil];
- 
+    
 }
 
 -(void) accionPausar{
-    [NSException exceptionWithName:@"accion incorrecta" reason:@"El estado no la soporta" userInfo:nil];
+    [self.delegado iniciarReloj];
+    self.gestorDeEstados.estadoDelJuego = self.gestorDeEstados.estadoDelJuegoEnJuego;
+    
 }
+
 @end
