@@ -37,16 +37,7 @@
 
 -(void) actualizaMinasPendientes;
 
-/*
-- (void) activarBotonMostrarMinas;
-- (void) desactivarBotonMostrarMinas;
-- (void) activarBotonMejoresTiempos;
-- (void) desactivarBotonMejoresTiempos;
-- (void) activarBotonPrincipal;
-- (void) desactivarBotonPrincipal;
-- (void) activarTextFieldNumeroDeMinas;
-- (void) desactivarTextFieldNumeroDeMinas;
-*/
+- (void) recuperarNumeroDeMinasPendietes;
 - (void) iniciarJuego;
 - (void) mostrarMinas;
 - (void) ocultarMinas;
@@ -55,6 +46,13 @@
 - (NSInteger) actualizarBotonYBarraDeProgreso;
 - (void) acabarJuegoSinErrorSinAyuda;
 - (void) acabarJuegoSinErrorConAyuda;
--(void) iniciarReloj;
+- (void) iniciarReloj;
+- (void) inicializarTiempoDeJuego;
+- (void) detenerRelor;
+- (void) mostrarImagenSobreElCanvas:(NSString *)imagen;
+- (void) eliminarImagenSobreElCanvas;
+
+
+
 
 @end

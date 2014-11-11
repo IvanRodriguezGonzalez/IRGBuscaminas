@@ -111,7 +111,7 @@
 - (void) setEstado:(IRGEstados)estado{
     
     _estado = estado;
-    [self dibujaEstado];
+    [self dibujarEstado];
 }
 
 - (void) mostrarNumeroDeMinas{
@@ -120,6 +120,10 @@
     self.celda.numeroDeMinasAlrededor.text = [NSString stringWithFormat:@"%ld",(long)numeroDeMinasAlrededor];
     
     self.celda.numeroDeMinasAlrededor.textColor = [IRGPincel sharedPincel].colorDelNumeroDeMInas;
+    
+    if (numeroDeMinasAlrededor==0){
+        self.celda.numeroDeMinasAlrededor.text = @"";
+    }
     if (numeroDeMinasAlrededor ==1){
         self.celda.numeroDeMinasAlrededor.textColor = [UIColor blueColor];
     }
@@ -159,10 +163,6 @@
     }
 }
 
-- (void) dibujarComoCeldaVacia{
-    self.celda.backgroundColor = [[IRGPincel sharedPincel] colorDeRellenoDeLaCeldaVacia];
-}
-
 
 # pragma mark - Auxiliares
 
@@ -174,25 +174,42 @@
                                       grosorDelTrazo:[IRGPincel sharedPincel].grosorDelTrazoDelPincel];
     self.view = celdaTemporal;
     self.celda = celdaTemporal;;
-    self.celda.backgroundColor = [IRGPincel sharedPincel].colorDeRellenoDelPincel;
+    [self dibujarEstado];
 }
 
--(void) dibujaEstado{
+-(void) dibujarEstado{
     UIImage *imagenConBandera = [UIImage imageNamed:@"bandera"];
     UIImage *imagenConDuda = [UIImage imageNamed:@"duda"];
     switch (self.estado)
     {
         case libre:
             self.celda.imagenDeMina.image = nil;
+            self.celda.backgroundColor = [IRGPincel sharedPincel].colorDeRellenoDeLaCeldaVacia;
+            [self.celda setNeedsDisplay];
             break;
         case conBandera:
             self.celda.imagenDeMina.image= imagenConBandera;
+            [self.celda setBackgroundColor:[IRGPincel sharedPincel].colorDeRellenoDeLaCeldaVacia];
+            [self.celda setNeedsDisplay];
             break;
         case conDuda:
             self.celda.imagenDeMina.image= imagenConDuda;
+            self.celda.backgroundColor = [IRGPincel sharedPincel].colorDeRellenoDeLaCeldaVacia;
+            [self.celda setNeedsDisplay];
+            break;
+        case procesado:
+            self.celda.backgroundColor = [IRGPincel sharedPincel].colorDeRellenoDelPincel;
+            [self mostrarNumeroDeMinas];
+            [self.celda setNeedsDisplay];
             break;
     }
 }
 
+-(void) ocultarCelda{
+    self.celda.backgroundColor = [UIColor greenColor];
+    self.celda.numeroDeMinasAlrededor.text = @"";
+    self.celda.imagenDeMina.image = [UIImage imageNamed:@"candado"];
+    [self.celda setNeedsDisplay];
+}
 
 @end

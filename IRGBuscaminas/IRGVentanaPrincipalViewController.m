@@ -33,6 +33,7 @@
 @property (weak, nonatomic) IBOutlet UIView *canvas;
 @property (weak, nonatomic) IBOutlet UIProgressView *barraDeProgreso;
 @property (weak, nonatomic) IBOutlet UITextField *tiempoDeJuego;
+@property (weak, nonatomic) IBOutlet UIImageView *imagenDeBloqueo;
 
 
 @end
@@ -129,7 +130,7 @@
     if (!celdaViewController.estado == procesado){
         
         celdaViewController.estado = procesado;
-        [celdaViewController dibujarComoCeldaVacia];
+        [celdaViewController dibujarEstado];
         
         if ([[IRGDatos sharedDatos] tieneMinasAlrededor:celdaViewController]){
             NSArray * celdasSinMinasAlrededorAPropagar= [[NSMutableArray alloc]init];
@@ -156,6 +157,7 @@
     self.totalMinas.text = [NSString stringWithFormat:@"%d",banderasPendientes];
 }
 #pragma mark - Auxiliares primer nivel
+
 
 -(void) iniciarGestionarBotonera{
     self.gestionarBotonera = [[IRGGestionarBotonera alloc]initConSender:self];
@@ -337,8 +339,6 @@
     return porcentajeDeAvance;
 }
 
-
-
 -(void) iniciarBarraDeProgreso{
     [self.barraDeProgreso setProgress:0 animated:true];
 }
@@ -410,6 +410,18 @@
     self.tiempoDeJuego.text = [IRGMetodosComunes formatearTiempoDeJuegoEnSegundos:self.tiempoDeJuegoEnSegundos];;
 }
 
+- (void) mostrarImagenSobreElCanvas:(NSString *)imagen {
+    self.imagenDeBloqueo.image = [UIImage imageNamed:imagen];
+    self.imagenDeBloqueo.backgroundColor = [UIColor lightGrayColor];
+    [self.canvas bringSubviewToFront:self.imagenDeBloqueo];
+}
+
+-(void) eliminarImagenSobreElCanvas{
+    [self.canvas sendSubviewToBack:self.imagenDeBloqueo];
+    self.imagenDeBloqueo.backgroundColor = [UIColor clearColor];
+    self.imagenDeBloqueo.image = nil;
+}
+
 #pragma mark - Activacion y Desactivacion de botones y barras
 
 -(void) mostrarBarraDeNavegacion{
@@ -421,9 +433,6 @@
 - (void) establecerBotonYEtiquetaBotonMostrarMinasModoMostrandoAyuda{
     self.etiquetaBotonMostrarMinas.textColor = [IRGPincel sharedPincel].colorEtiquetaDeBotonSeleccionado;
 }
-
-
-
 
 
 @end

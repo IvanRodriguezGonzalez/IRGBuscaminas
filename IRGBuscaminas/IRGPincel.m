@@ -7,7 +7,7 @@
 //
 
 #import "IRGPincel.h"
-#import "IRGLienzo.h"
+//#import "IRGLienzo.h"
 
 @implementation IRGPincel
 

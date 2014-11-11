@@ -81,7 +81,7 @@
 }
 
 -(void) ocultarAyuda{
-    self.gestorDeEstados.estadoDelJuego = self.gestorDeEstados.estadoDelJuegoEnJuegoConAyuda;
+    [self.gestorDeEstados establecerEstado:self.gestorDeEstados.estadoDelJuegoEnJuegoConAyuda];
     [self.delegado ocultarMinas];
 }
 

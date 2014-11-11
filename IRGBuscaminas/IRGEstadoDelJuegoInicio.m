@@ -55,7 +55,7 @@
 }
 
 - (void) accionJugar{
-    self.gestorDeEstados.estadoDelJuego = self.gestorDeEstados.estadoDelJuegoEnJuego;
+    [self.gestorDeEstados establecerEstado:self.gestorDeEstados.estadoDelJuegoEnJuego];
     [self.delegado iniciarJuego];
 }
 

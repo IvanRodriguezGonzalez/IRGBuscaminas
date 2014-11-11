@@ -248,8 +248,8 @@
 		E1CD31A81A0BCC0600D317A8 /* Vista */ = {
 			isa = PBXGroup;
 			children = (
-				E1CD31AC1A0BCCF900D317A8 /* IRGCelda.m */,
 				E1CD31AB1A0BCCF900D317A8 /* IRGCelda.h */,
+				E1CD31AC1A0BCCF900D317A8 /* IRGCelda.m */,
 				320334441A0EC9A7000FFAEF /* IRGMejoresTiemposViewController.xib */,
 				E1CD31A51A0BCBF800D317A8 /* IRGVentanaPrincipalViewController.xib */,
 				32A1DB111A0FAFAB00AA33CE /* IRGPreguntarNombreViewController.xib */,

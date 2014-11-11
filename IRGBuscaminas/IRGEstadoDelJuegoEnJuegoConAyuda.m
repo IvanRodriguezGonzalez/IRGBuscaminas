@@ -46,19 +46,19 @@
     [self.delegado.gestionarBotonera desactivarBotonMejoresTiempos];
     [self.delegado.gestionarBotonera activarBotonPrincipal];
     [self.delegado.gestionarBotonera desactivarTextFieldNumeroDeMinas];
-    [self.delegado.gestionarBotonera activarBotonPausar];
+    [self.delegado.gestionarBotonera desactivarBotonPausar];
 
 }
 
 
 - (void) accionJugar{
     [self.delegado iniciarJuego];
-    self.gestorDeEstados.estadoDelJuego = self.gestorDeEstados.estadoDelJuegoEnJuego;
+    [self.gestorDeEstados establecerEstado:self.gestorDeEstados.estadoDelJuegoEnJuego];
 }
 
 -(void) accionMostrarMinas{
     [self.delegado mostrarMinas];
-    self.gestorDeEstados.estadoDelJuego = self.gestorDeEstados.estadoDelJuegoAyuda;
+    [self.gestorDeEstados establecerEstado:self.gestorDeEstados.estadoDelJuegoAyuda];
 }
 
 -(void) celdaPulsada:(IRGCeldaViewController *)celdaViewController{
@@ -83,14 +83,14 @@
 - (void) celdaDoblePulsada:(IRGCeldaViewController *)celdaViewController{
     if (celdaViewController.estado == libre){
         if ((celdaViewController.tieneMina) ){
-            self.gestorDeEstados.estadoDelJuego= self.gestorDeEstados.estadoDelJuegoFinalizadoConError;
+            [self.gestorDeEstados establecerEstado:self.gestorDeEstados.estadoDelJuegoFinalizadoConError];
             [self.delegado acabarJuegoConError];
         }
         else {
             [self.delegado propagaTouch:celdaViewController];
             NSInteger porcentajeDeAvance =[self.delegado actualizarBotonYBarraDeProgreso];
             if (porcentajeDeAvance == 1){
-                self.gestorDeEstados.estadoDelJuego = self.gestorDeEstados.estadoDelJuegoFinalizadoSinErrorConAyuda;
+                [self.gestorDeEstados establecerEstado:self.gestorDeEstados.estadoDelJuegoFinalizadoSinErrorConAyuda];
                 [self.delegado acabarJuegoSinErrorConAyuda];
             }
         }

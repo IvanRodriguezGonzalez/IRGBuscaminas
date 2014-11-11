@@ -33,7 +33,8 @@ typedef enum {
 - (void) mostrarNumeroDeMinas;
 - (void) mostrarMina;
 - (void) ocultarMina;
-- (void) dibujarComoCeldaVacia;
+- (void) dibujarEstado;
+- (void) ocultarCelda;
 
 
 

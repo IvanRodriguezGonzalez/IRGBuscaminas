@@ -12,6 +12,7 @@
 @interface IRGGestorDeEstados ()
 
 @property (nonatomic) IRGVentanaPrincipalViewController *delegado;
+@property (nonatomic) id<IRGEstadosDelJuego> estadoDelJuego;
 
 @end
 
@@ -82,6 +83,12 @@
     _estadoDelJuego = estadoDelJuego;
     [self establecerBotones];
     self.delegado.etiquetaBotonPrincipal.text = [NSString stringWithFormat:@"%@",self.estadoDelJuego];
+}
+
+#pragma mark - metodos propios primer nivel
+
+-(void) establecerEstado:(id<IRGEstadosDelJuego>)nuevoEstado{
+    self.estadoDelJuego = nuevoEstado;
 }
 
 

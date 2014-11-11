@@ -55,33 +55,34 @@
 }
 
 - (void) accionJugar{
+    [self.delegado recuperarNumeroDeMinasPendietes];
     [self.delegado iniciarJuego];
-    self.gestorDeEstados.estadoDelJuego = self.gestorDeEstados.estadoDelJuegoEnJuego;
+    [self.gestorDeEstados establecerEstado:self.gestorDeEstados.estadoDelJuegoEnJuego];
 }
 
 -(void) accionMostrarMinas{
+    [self.delegado detenerRelor];
+    [self.delegado inicializarTiempoDeJuego];
     [self.delegado mostrarMinas];
-    self.gestorDeEstados.estadoDelJuego = self.gestorDeEstados.estadoDelJuegoAyuda;
+    [self.gestorDeEstados establecerEstado:self.gestorDeEstados.estadoDelJuegoAyuda];
 }
 
 -(void) celdaDoblePulsada:(IRGCeldaViewController *)celdaViewController{
     if (celdaViewController.estado == libre){
         if ((celdaViewController.tieneMina) ){
-            self.gestorDeEstados.estadoDelJuego= self.gestorDeEstados.estadoDelJuegoFinalizadoConError;
+            [self.gestorDeEstados establecerEstado:self.gestorDeEstados.estadoDelJuegoFinalizadoConError];
             [self.delegado acabarJuegoConError];
         }
         else {
             [self.delegado propagaTouch:celdaViewController];
             NSInteger porcentajeDeAvance =[self.delegado actualizarBotonYBarraDeProgreso];
             if (porcentajeDeAvance == 1){
-                self.gestorDeEstados.estadoDelJuego = self.gestorDeEstados.estadoDelJuegoFinalizadoSinErrorSinAyuda;
+                [self.gestorDeEstados establecerEstado:self.gestorDeEstados.estadoDelJuegoFinalizadoSinErrorSinAyuda];
                 [self.delegado acabarJuegoSinErrorSinAyuda];
             }
         }
     }
 }
-    
-
 
 - (void) celdaPulsada:(IRGCeldaViewController *)celdaViewController{
     switch (celdaViewController.estado)
@@ -104,6 +105,7 @@
 
 -(void) accionPausar{
     [self.delegado.reloj invalidate];
-    self.gestorDeEstados.estadoDelJuego = self.gestorDeEstados.estadoDelJuegoEnPausa;
+    [self.gestorDeEstados establecerEstado:self.gestorDeEstados.estadoDelJuegoEnPausa];
+    [self.delegado mostrarImagenSobreElCanvas:@"imagenDeBloqueo3"];
 }
 @end

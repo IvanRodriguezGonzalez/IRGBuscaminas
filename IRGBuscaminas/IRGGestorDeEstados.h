@@ -22,7 +22,6 @@
 
 @interface IRGGestorDeEstados : NSObject<IRGEstadosDelJuego>
 
-@property (nonatomic) id<IRGEstadosDelJuego> estadoDelJuego;
 
 @property (nonatomic) IRGEstadoDelJuegoInicio *estadoDelJuegoInicio;
 @property (nonatomic) IRGEstadoDelJuegoEnJuego * estadoDelJuegoEnJuego;
@@ -38,6 +37,6 @@
 
 
 
-- (void) setEstadoDelJuego:(id<IRGEstadosDelJuego>)estadoDelJuego;
+-(void) establecerEstado:(id<IRGEstadosDelJuego>)nuevoEstado;
 
 @end
