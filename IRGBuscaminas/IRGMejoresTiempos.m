@@ -76,7 +76,6 @@
 #pragma mark Auxiliares primer nivel
 -(bool) guardarMejoresTiempos{
     NSString *path = [self obtenerPath];
-    NSArray * a = self.mejoresTiempos;
     return [NSKeyedArchiver archiveRootObject:self.mejoresTiempos
                                        toFile:path];
 }

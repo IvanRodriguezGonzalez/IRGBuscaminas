@@ -8,6 +8,8 @@
 
 #import "IRGEstadoDelJuegoEnJuegoConAyuda.h"
 #import "IRGGestorDeEstados.h"
+#import "IRGCeldaViewController.h"
+
 
 @interface IRGEstadoDelJuegoEnJuegoConAyuda()
 @property (nonatomic,strong) IRGVentanaPrincipalViewController *delegado;
@@ -32,6 +34,11 @@
     return false;
 }
 
+
+#pragma mark - Overrides
+-(NSString *) description{
+    return @"En juego... (pero con ayuda :-) )";
+}
 #pragma mark Metodos del protocolo
 
 - (void) establecerBotones{
@@ -43,22 +50,49 @@
 
 
 - (void) accionJugar{
-    [NSException exceptionWithName:@"accion incorrecta" reason:@"El estado no la soporta" userInfo:nil];
+    [self.delegado iniciarJuego];
+    self.gestorDeEstados.estadoDelJuego = self.gestorDeEstados.estadoDelJuegoEnJuego;
 }
 
 -(void) accionMostrarMinas{
-    [self.delegado mostrarMinasxx];
+    [self.delegado mostrarMinas];
     self.gestorDeEstados.estadoDelJuego = self.gestorDeEstados.estadoDelJuegoAyuda;
 }
 
 -(void) celdaPulsada:(IRGCeldaViewController *)celdaViewController{
-    [NSException exceptionWithName:@"accion incorrecta" reason:@"El estado no la soporta" userInfo:nil];
-    
+    switch (celdaViewController.estado)
+    {
+        case libre:
+            celdaViewController.estado = conBandera;
+            break;
+        case conBandera:
+            celdaViewController.estado = conDuda;
+            break;
+        case conDuda:
+            celdaViewController.estado = libre ;
+            break;
+        default:
+            NSLog (@"Estdo de celda no esperado");
+            break;
+    }
+    [self.delegado actualizaMinasPendientes];
 }
 
 - (void) celdaDoblePulsada:(IRGCeldaViewController *)celdaViewController{
-    [NSException exceptionWithName:@"accion incorrecta" reason:@"El estado no la soporta" userInfo:nil];
-    
+    if (celdaViewController.estado == libre){
+        if ((celdaViewController.tieneMina) ){
+            self.gestorDeEstados.estadoDelJuego= self.gestorDeEstados.estadoDelJuegoFinalizadoConError;
+            [self.delegado acabarJuegoConError];
+        }
+        else {
+            [self.delegado propagaTouch:celdaViewController];
+            NSInteger porcentajeDeAvance =[self.delegado actualizarBotonYBarraDeProgreso];
+            if (porcentajeDeAvance == 1){
+                self.gestorDeEstados.estadoDelJuego = self.gestorDeEstados.estadoDelJuegoFinalizadoSinErrorConAyuda;
+                [self.delegado acabarJuegoSinErrorConAyuda];
+            }
+        }
+    }
 }
 
 

@@ -1,30 +1,27 @@
 //
-//  IRGEstadoDelJuegoInicio.m
+//  IRGEstadoDelJuegoFinalizadoConerror.m
 //  IRGBuscaminas
 //
-//  Created by Leticia Vila Sexto on 10/11/14.
+//  Created by Leticia Vila Sexto on 11/11/14.
 //  Copyright (c) 2014 Ivan Rodriguez Gonzalez. All rights reserved.
 //
 
-#import "IRGEstadoDelJuegoInicio.h"
-#import "IRGDatos.h"
-#import "IRGVentanaPrincipalViewController.h"
+#import "IRGEstadoDelJuegoFinalizadoConerror.h"
 #import "IRGGestorDeEstados.h"
 
+@interface  IRGEstadoDelJuegoFinalizadoConError()
 
-@interface IRGEstadoDelJuegoInicio()
+
 @property (nonatomic,strong) IRGVentanaPrincipalViewController *delegado;
 @property (nonatomic,strong) IRGGestorDeEstados * gestorDeEstados;
-
 @end
 
-@implementation IRGEstadoDelJuegoInicio
-
+@implementation IRGEstadoDelJuegoFinalizadoConError
 
 #pragma mark Inicializadores
 //designated initizalizer
 -(instancetype) initConGestorDeEstados: (IRGGestorDeEstados *)gestorDeEstados
-                                delegado:(IRGVentanaPrincipalViewController *)sender{
+                              delegado:(IRGVentanaPrincipalViewController *)sender{
     self = [super init];
     if (self) {
         _delegado = sender;
@@ -38,9 +35,10 @@
     return false;
 }
 
+
 #pragma mark - Overrides
 -(NSString *) description{
-    return @"Inicio";
+    return @"Ohhh... Vuelve a intentarlo!";
 }
 
 #pragma mark Metodos del protocolo
@@ -52,6 +50,7 @@
     [self.delegado activarTextFieldNumeroDeMinas];
 }
 
+
 - (void) accionJugar{
     self.gestorDeEstados.estadoDelJuego = self.gestorDeEstados.estadoDelJuegoEnJuego;
     [self.delegado iniciarJuego];
@@ -59,16 +58,19 @@
 
 -(void) accionMostrarMinas{
     [NSException exceptionWithName:@"accion incorrecta" reason:@"El estado no la soporta" userInfo:nil];
-
 }
 
 -(void) celdaPulsada:(IRGCeldaViewController *)celdaViewController{
     [NSException exceptionWithName:@"accion incorrecta" reason:@"El estado no la soporta" userInfo:nil];
-
+    
 }
 
 - (void) celdaDoblePulsada:(IRGCeldaViewController *)celdaViewController{
     [NSException exceptionWithName:@"accion incorrecta" reason:@"El estado no la soporta" userInfo:nil];
- 
+    
 }
+
+
+
+
 @end

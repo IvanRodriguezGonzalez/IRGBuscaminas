@@ -18,6 +18,9 @@
 		E12E5D3A1A10F36E0047FCCF /* IRGEstadoDelJuegoEnJuego.m in Sources */ = {isa = PBXBuildFile; fileRef = E12E5D391A10F36E0047FCCF /* IRGEstadoDelJuegoEnJuego.m */; };
 		E12E5D3D1A10FD090047FCCF /* IRGEstadoDelJuegoInicio.m in Sources */ = {isa = PBXBuildFile; fileRef = E12E5D3C1A10FD090047FCCF /* IRGEstadoDelJuegoInicio.m */; };
 		E12E5D411A1113FD0047FCCF /* IRGGestorDeEstados.m in Sources */ = {isa = PBXBuildFile; fileRef = E12E5D401A1113FD0047FCCF /* IRGGestorDeEstados.m */; };
+		E1C5435B1A1201E000D5B23A /* IRGEstadoDelJuegoFinalizadoSinErrorSinAyuda.m in Sources */ = {isa = PBXBuildFile; fileRef = E1C5435A1A1201E000D5B23A /* IRGEstadoDelJuegoFinalizadoSinErrorSinAyuda.m */; };
+		E1C5435E1A12030C00D5B23A /* IRGEstadoDelJuegoFinalizadoSinErrorConAyuda.m in Sources */ = {isa = PBXBuildFile; fileRef = E1C5435D1A12030C00D5B23A /* IRGEstadoDelJuegoFinalizadoSinErrorConAyuda.m */; };
+		E1C543611A12043100D5B23A /* IRGEstadoDelJuegoFinalizadoConError.m in Sources */ = {isa = PBXBuildFile; fileRef = E1C543601A12043100D5B23A /* IRGEstadoDelJuegoFinalizadoConError.m */; };
 		E1CD31861A0BCB8900D317A8 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = E1CD31851A0BCB8900D317A8 /* main.m */; };
 		E1CD31891A0BCB8900D317A8 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = E1CD31881A0BCB8900D317A8 /* AppDelegate.m */; };
 		E1CD318B1A0BCB8900D317A8 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = E1CD318A1A0BCB8900D317A8 /* Images.xcassets */; };
@@ -66,6 +69,12 @@
 		E12E5D3C1A10FD090047FCCF /* IRGEstadoDelJuegoInicio.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = IRGEstadoDelJuegoInicio.m; sourceTree = "<group>"; };
 		E12E5D3F1A1113FD0047FCCF /* IRGGestorDeEstados.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IRGGestorDeEstados.h; sourceTree = "<group>"; };
 		E12E5D401A1113FD0047FCCF /* IRGGestorDeEstados.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = IRGGestorDeEstados.m; sourceTree = "<group>"; };
+		E1C543591A1201E000D5B23A /* IRGEstadoDelJuegoFinalizadoSinErrorSinAyuda.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IRGEstadoDelJuegoFinalizadoSinErrorSinAyuda.h; sourceTree = "<group>"; };
+		E1C5435A1A1201E000D5B23A /* IRGEstadoDelJuegoFinalizadoSinErrorSinAyuda.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = IRGEstadoDelJuegoFinalizadoSinErrorSinAyuda.m; sourceTree = "<group>"; };
+		E1C5435C1A12030C00D5B23A /* IRGEstadoDelJuegoFinalizadoSinErrorConAyuda.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IRGEstadoDelJuegoFinalizadoSinErrorConAyuda.h; sourceTree = "<group>"; };
+		E1C5435D1A12030C00D5B23A /* IRGEstadoDelJuegoFinalizadoSinErrorConAyuda.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = IRGEstadoDelJuegoFinalizadoSinErrorConAyuda.m; sourceTree = "<group>"; };
+		E1C5435F1A12043100D5B23A /* IRGEstadoDelJuegoFinalizadoConError.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IRGEstadoDelJuegoFinalizadoConError.h; sourceTree = "<group>"; };
+		E1C543601A12043100D5B23A /* IRGEstadoDelJuegoFinalizadoConError.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = IRGEstadoDelJuegoFinalizadoConError.m; sourceTree = "<group>"; };
 		E1CD31801A0BCB8900D317A8 /* IRGBuscaminas.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = IRGBuscaminas.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		E1CD31841A0BCB8900D317A8 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		E1CD31851A0BCB8900D317A8 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
@@ -125,19 +134,49 @@
 		E12E5D3E1A10FD0F0047FCCF /* Estados del juego */ = {
 			isa = PBXGroup;
 			children = (
-				E12E5D351A10F0010047FCCF /* IRGEstadosDelJuego.h */,
-				E12E5D381A10F36E0047FCCF /* IRGEstadoDelJuegoEnJuego.h */,
-				E12E5D391A10F36E0047FCCF /* IRGEstadoDelJuegoEnJuego.m */,
-				E12E5D3F1A1113FD0047FCCF /* IRGGestorDeEstados.h */,
-				E12E5D401A1113FD0047FCCF /* IRGGestorDeEstados.m */,
-				E12E5D3B1A10FD090047FCCF /* IRGEstadoDelJuegoInicio.h */,
-				E12E5D3C1A10FD090047FCCF /* IRGEstadoDelJuegoInicio.m */,
-				E1FE2CE51A112C1D004333F9 /* IRGEstadoDelJuegoAyuda.h */,
-				E1FE2CE61A112C1D004333F9 /* IRGEstadoDelJuegoAyuda.m */,
-				E1FE2CE81A114242004333F9 /* IRGEstadoDelJuegoEnJuegoConAyuda.h */,
-				E1FE2CE91A114242004333F9 /* IRGEstadoDelJuegoEnJuegoConAyuda.m */,
+				E1C543641A120D2800D5B23A /* Protocol */,
+				E1C543621A120CAA00D5B23A /* Header */,
+				E1C543631A120CB300D5B23A /* Implementation */,
 			);
 			name = "Estados del juego";
+			sourceTree = "<group>";
+		};
+		E1C543621A120CAA00D5B23A /* Header */ = {
+			isa = PBXGroup;
+			children = (
+				E12E5D3F1A1113FD0047FCCF /* IRGGestorDeEstados.h */,
+				E12E5D3B1A10FD090047FCCF /* IRGEstadoDelJuegoInicio.h */,
+				E12E5D381A10F36E0047FCCF /* IRGEstadoDelJuegoEnJuego.h */,
+				E1FE2CE51A112C1D004333F9 /* IRGEstadoDelJuegoAyuda.h */,
+				E1FE2CE81A114242004333F9 /* IRGEstadoDelJuegoEnJuegoConAyuda.h */,
+				E1C543591A1201E000D5B23A /* IRGEstadoDelJuegoFinalizadoSinErrorSinAyuda.h */,
+				E1C5435C1A12030C00D5B23A /* IRGEstadoDelJuegoFinalizadoSinErrorConAyuda.h */,
+				E1C5435F1A12043100D5B23A /* IRGEstadoDelJuegoFinalizadoConError.h */,
+			);
+			name = Header;
+			sourceTree = "<group>";
+		};
+		E1C543631A120CB300D5B23A /* Implementation */ = {
+			isa = PBXGroup;
+			children = (
+				E12E5D401A1113FD0047FCCF /* IRGGestorDeEstados.m */,
+				E12E5D3C1A10FD090047FCCF /* IRGEstadoDelJuegoInicio.m */,
+				E12E5D391A10F36E0047FCCF /* IRGEstadoDelJuegoEnJuego.m */,
+				E1FE2CE61A112C1D004333F9 /* IRGEstadoDelJuegoAyuda.m */,
+				E1FE2CE91A114242004333F9 /* IRGEstadoDelJuegoEnJuegoConAyuda.m */,
+				E1C5435A1A1201E000D5B23A /* IRGEstadoDelJuegoFinalizadoSinErrorSinAyuda.m */,
+				E1C5435D1A12030C00D5B23A /* IRGEstadoDelJuegoFinalizadoSinErrorConAyuda.m */,
+				E1C543601A12043100D5B23A /* IRGEstadoDelJuegoFinalizadoConError.m */,
+			);
+			name = Implementation;
+			sourceTree = "<group>";
+		};
+		E1C543641A120D2800D5B23A /* Protocol */ = {
+			isa = PBXGroup;
+			children = (
+				E12E5D351A10F0010047FCCF /* IRGEstadosDelJuego.h */,
+			);
+			name = Protocol;
 			sourceTree = "<group>";
 		};
 		E1CD31771A0BCB8900D317A8 = {
@@ -355,18 +394,21 @@
 				320334451A0EC9A7000FFAEF /* IRGMejoresTiemposViewController.m in Sources */,
 				E1D41DCB1A0BF0050059C46C /* IRGPincel.m in Sources */,
 				E1D41DCE1A0BFEC30059C46C /* IRGDatos.m in Sources */,
+				E1C543611A12043100D5B23A /* IRGEstadoDelJuegoFinalizadoConError.m in Sources */,
 				320334411A0EBDF3000FFAEF /* IRGPrincipalNavigationViewController.m in Sources */,
 				320334491A0F20A4000FFAEF /* IRGMetodosComunes.m in Sources */,
 				E1D41DC51A0BEF6B0059C46C /* IRGCeldaViewController.m in Sources */,
 				E12E5D411A1113FD0047FCCF /* IRGGestorDeEstados.m in Sources */,
 				E1CD31A61A0BCBF800D317A8 /* IRGVentanaPrincipalViewController.m in Sources */,
 				320334381A0EB854000FFAEF /* IRGMejoresTiempos.m in Sources */,
+				E1C5435B1A1201E000D5B23A /* IRGEstadoDelJuegoFinalizadoSinErrorSinAyuda.m in Sources */,
 				3203343E1A0EB9A1000FFAEF /* IRGDatoDelMejorTiempo.m in Sources */,
 				E1FE2CE71A112C1D004333F9 /* IRGEstadoDelJuegoAyuda.m in Sources */,
 				E1D41DCA1A0BF0050059C46C /* IRGLienzo.m in Sources */,
 				E12E5D3A1A10F36E0047FCCF /* IRGEstadoDelJuegoEnJuego.m in Sources */,
 				32A1DB121A0FAFAB00AA33CE /* IRGPreguntarNombreViewController.m in Sources */,
 				E1CD31891A0BCB8900D317A8 /* AppDelegate.m in Sources */,
+				E1C5435E1A12030C00D5B23A /* IRGEstadoDelJuegoFinalizadoSinErrorConAyuda.m in Sources */,
 				E1CD31861A0BCB8900D317A8 /* main.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

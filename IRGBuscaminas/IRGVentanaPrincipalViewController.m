@@ -25,10 +25,6 @@
 @interface IRGVentanaPrincipalViewController ()
 @property (nonatomic)  NSInteger numeroDeFilas;
 @property (nonatomic)  NSInteger numeroDeColumnas;
-@property (nonatomic) BOOL mostrarMinas;
-@property (nonatomic) BOOL juegoAcabado;
-@property (nonatomic) BOOL ayudaActivada;
-@property (nonatomic) BOOL mostrandoAyuda;
 @property (nonatomic) int tiempoDeJuegoEnSegundos;
 @property (nonatomic,weak) NSTimer *reloj;
 
@@ -37,10 +33,8 @@
 @property (weak, nonatomic) IBOutlet UIView *canvas;
 @property (weak, nonatomic) IBOutlet UILabel *etiquetaTextFieldTotalMinas;
 @property (weak, nonatomic) IBOutlet UIButton *botonPrincipal;
-@property (weak, nonatomic) IBOutlet UILabel *etiquetaBotonPrincipal;
 @property (weak, nonatomic) IBOutlet UIButton *botonMostrarMinas;
 @property (weak, nonatomic) IBOutlet UILabel *etiquetaBotonMostrarMinas;
-
 @property (weak, nonatomic) IBOutlet UIButton *botonMostrarMejoresTiempos;
 @property (weak, nonatomic) IBOutlet UILabel *etiquetaBotonMostrarMejoresTiempos;
 @property (weak, nonatomic) IBOutlet UIProgressView *barraDeProgreso;
@@ -55,18 +49,15 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     [self iniciarGestorDeEstados];
-    // Do any additional setup after loading the view from its nib.
 }
 
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
-    // Dispose of any resources that can be recreated.
 }
 - (void)viewWillAppear:(BOOL)animated{
     [super viewWillAppear:animated];
     [self ocultarrBarraDeNavegacion];
 }
-
 
 
 #pragma mark - Navigation primer nivel
@@ -78,27 +69,6 @@
 
 - (IBAction)accionMostrarMinas:(UIButton *)sender {
     [self.gestorDeEstados accionMostrarMinas];
-    
-    /*
-   
-    if (!self.mostrarMinas){
-        [self mostrarTodasLasMinas];
-        [self activarModoAyuda];
-        [self activarMostrandoAyuda];
-        [self establecerFondoDeAyuda];
-        [self actualizarBotonConProgreso:0];
-        [self establecerBotonYEtiquetaBotonMostrarMinasModoMostrandoAyuda];
-        [self desactivarBotonPrincipal];
-    }
-    else {
-        [self ocultarTodasLasMinas];
-        [self desactivarMostrandoAyuda];
-        [self establecerFondoNeutro];
-        [self establecerBotonYEtiquetaBotonMostrarMinasModoNormal];
-        [self activarBotonPrincipal];
-    }
-    self.mostrarMinas = !self.mostrarMinas;
-     */
 }
 
 - (IBAction)accionMostarMejoresTiempos:(UIButton *)sender {
@@ -109,14 +79,14 @@
 
 # pragma mark Navigation segundo nivel
 
--(void) mostrarMinasxx{
+-(void) mostrarMinas{
     [self mostrarTodasLasMinas];
     [self establecerFondoDeAyuda];
     [self actualizarBotonConProgreso:0];
     [self establecerBotonYEtiquetaBotonMostrarMinasModoMostrandoAyuda];
 }
 
--(void) ocultarMinasxx{
+-(void) ocultarMinas{
     [self ocultarTodasLasMinas];
     [self establecerFondoNeutro];
     [self establecerBotonYEtiquetaBotonMostrarMinasModoNormal];
@@ -146,38 +116,11 @@
 #pragma mark - Delegado primer nivel
 
 - (void) celdaDoblePulsada:(IRGCeldaViewController *)celdaPulsada{
-    if ((!self.mostrandoAyuda)&(!self.juegoAcabado)){
-        if (celdaPulsada.estado == libre){
-            if ((celdaPulsada.tieneMina) ){
-                [self acabarJuegoConError];
-            }
-            else {
-                [self propagaTouch:celdaPulsada];
-                [self actualizarBotonYBarraDeProgreso];
-            }
-        }
-    }
+    [self.gestorDeEstados celdaDoblePulsada:celdaPulsada];
 }
 
 - (void) celdaPulsada:(IRGCeldaViewController *)celdaDoblePulsada{
-    if ((!self.mostrandoAyuda)&(!self.juegoAcabado)){
-        switch (celdaDoblePulsada.estado)
-        {
-            case libre:
-                celdaDoblePulsada.estado = conBandera;
-                break;
-            case conBandera:
-                celdaDoblePulsada.estado = conDuda;
-                break;
-            case conDuda:
-                celdaDoblePulsada.estado = libre ;
-                break;
-            default:
-                NSLog (@"Estdo de celda no esperado");
-                break;
-        }
-        [self actualizaMinasPendientes];
-    }
+    [self.gestorDeEstados celdaPulsada:celdaDoblePulsada];
 }
 
 # pragma mark Delegado segundo nivel
@@ -232,51 +175,20 @@
     [self establecerFondoNeutro];
     [self inicializarTiempoDeJuego];
     [self iniciarReloj];
-    
-    
-    /*
-    self.juegoAcabado = false;
-    
-    [[IRGDatos sharedDatos] borrarJuego];
-    [self borrarCanvas];
-    [self generarCanvas];
-    [self actualizarNumeroDeMinas];
-    [self generarMinas];
-
-    [self desactivarModoAyuda];
-    [self desactivarMostrandoAyuda];
-    [self activarBotonMostrarMinas];
-    [self desactivarBotonMejoresTiempos];
-    [self desactivarTextFieldNumeroDeMinas];
-
-    [self actualizarBotonYBarraDeProgreso];
-    [self iniciarBarraDeProgreso];
-    [self establecerFondoNeutro];
-    [self inicializarTiempoDeJuego];
-    [self iniciarReloj];
-*/
 }
 
 -(void) acabarJuegoConError{
     [self mostrarTodasLasMinas];
-    self.juegoAcabado = true;
     [self establecerImagenDelBotonPrincipal:@"error"];
-    [self desactivarBotonMostrarMinas];
-    [self activarBotonMejoresTiempos];
-    [self activarTextFieldNumeroDeMinas];
     [self establecerFondoDeError];
     [self recuperarNumeroDeMinasPendietes];
     [self detenerRelor];
 }
 
 - (void) acabarJuegoSinErrorSinAyuda{
-    self.juegoAcabado = true;
-    [self activarTextFieldNumeroDeMinas];
     [self establecerFondoDeVictoria];
     [self recuperarNumeroDeMinasPendietes];
     [self detenerRelor];
-    [self desactivarBotonMostrarMinas];
-    [self activarBotonMejoresTiempos];
     [self preguntarNombreConTiempo:self.tiempoDeJuegoEnSegundos
                             Nombre:nil
                     numeroDeCeldas:[IRGLienzo sharedLienzo].filasDelLienzo*[IRGLienzo sharedLienzo].columnasDelLienzo
@@ -285,13 +197,9 @@
 }
 
 - (void) acabarJuegoSinErrorConAyuda{
-    self.juegoAcabado = true;
-    [self activarTextFieldNumeroDeMinas];
     [self establecerFondoDeVictoria];
     [self recuperarNumeroDeMinasPendietes];
     [self detenerRelor];
-    [self desactivarBotonMostrarMinas];
-    [self activarBotonMejoresTiempos];
     [self preguntarNombreConTiempo:self.tiempoDeJuegoEnSegundos
                             Nombre:nil
                     numeroDeCeldas:[IRGLienzo sharedLienzo].filasDelLienzo*[IRGLienzo sharedLienzo].columnasDelLienzo
@@ -299,8 +207,6 @@
                           conAyuda:true];
 
    }
-
-
 
 # pragma mark - Auxiliares segundo nivel
 
@@ -326,8 +232,6 @@
     return datoDelMejorTiempo.nombre;
     
 }
-
-
 
 -(void) iniciarReloj{
     if (!self.reloj){
@@ -406,14 +310,13 @@
             numeroDeMinas --;
         }
     }
-    self.mostrarMinas = false;
 }
 
 - (void) recuperarNumeroDeMinasPendietes{
     self.totalMinas.text = [NSString stringWithFormat:@"%d",[[IRGDatos sharedDatos] numeroDeMinas]];
 }
 
--(void) actualizarBotonYBarraDeProgreso{
+- (NSInteger) actualizarBotonYBarraDeProgreso{
     NSArray *todasLasCeldas = [IRGDatos sharedDatos].todasLasCeldas;
     Float32 totalCeldas = [todasLasCeldas count];
     totalCeldas = totalCeldas - [IRGDatos sharedDatos].numeroDeMinas;
@@ -427,7 +330,9 @@
     Float32 porcentajeDeAvance = (totalCeldasProcesadas/totalCeldas);
     [self actualizarBotonConProgreso:porcentajeDeAvance];
     [self actualizarBarraDeProgresoConProgreso:porcentajeDeAvance];
+    return porcentajeDeAvance;
 }
+
 
 
 -(void) iniciarBarraDeProgreso{
@@ -435,38 +340,29 @@
 }
 
 
-
 # pragma mark - Auxiliares tercer nivel
 
 -(void) actualizarBotonConProgreso:(float)porcentajeDeAvance{
     
-    if (self.ayudaActivada){
-        [self establecerImagenDelBotonPrincipal:@"modoAyuda"];
-        if (porcentajeDeAvance == 1){
-            [self acabarJuegoSinErrorConAyuda];
-        }
+    //      [self establecerImagenDelBotonPrincipal:@"modoAyuda"];
+     
+    if (porcentajeDeAvance == 1) {
+        [self establecerImagenDelBotonPrincipal:@"igualA100"];
     }
-    else {
-        if (porcentajeDeAvance == 1) {
-            [self establecerImagenDelBotonPrincipal:@"igualA100"];
-            [self acabarJuegoSinErrorSinAyuda];
-        }
-        if (porcentajeDeAvance < 1) {
-            [self establecerImagenDelBotonPrincipal:@"menorDe100"];
-        }
-        if (porcentajeDeAvance < .8) {
-            [self establecerImagenDelBotonPrincipal:@"menorDe80"];
-        }
-        if (porcentajeDeAvance < .60) {
-            [self establecerImagenDelBotonPrincipal:@"menorDe60"];
-        }
-        if (porcentajeDeAvance < .40) {
-            [self establecerImagenDelBotonPrincipal:@"menorDe40"];
-        }
-        
-        if (porcentajeDeAvance < .20) {
-            [self establecerImagenDelBotonPrincipal:@"menorDe20"];
-        }
+    if (porcentajeDeAvance < 1) {
+        [self establecerImagenDelBotonPrincipal:@"menorDe100"];
+    }
+    if (porcentajeDeAvance < .8) {
+        [self establecerImagenDelBotonPrincipal:@"menorDe80"];
+    }
+    if (porcentajeDeAvance < .60) {
+        [self establecerImagenDelBotonPrincipal:@"menorDe60"];
+    }
+    if (porcentajeDeAvance < .40) {
+        [self establecerImagenDelBotonPrincipal:@"menorDe40"];
+    }
+    if (porcentajeDeAvance < .20) {
+        [self establecerImagenDelBotonPrincipal:@"menorDe20"];
     }
     
 }
@@ -566,23 +462,9 @@
     self.etiquetaBotonMostrarMinas.textColor = [IRGPincel sharedPincel].colorEtiquetaDeBotonNormal;
 }
 
-# pragma mark - Activar y Desactivar estados
-
-- (void) activarMostrandoAyuda{
-    self.mostrandoAyuda = true;
-}
-
-- (void) desactivarMostrandoAyuda{
-    self.mostrandoAyuda = false;
-}
 
 
--(void) activarModoAyuda{
-    self.ayudaActivada = true;
-}
 
-- (void) desactivarModoAyuda{
-    self.ayudaActivada = false;
-}
+
 
 @end

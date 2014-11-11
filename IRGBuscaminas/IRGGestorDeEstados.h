@@ -14,6 +14,9 @@
 #import "IRGEstadoDelJuegoEnJuego.h"
 #import "IRGEstadoDelJuegoAyuda.h"
 #import "IRGEstadoDelJuegoEnJuegoConAyuda.h"
+#import "IRGEstadoDelJuegoFinalizadoSinErrorSinAyuda.h"
+#import "IRGEstadoDelJuegoFinalizadoSinErrorConAyuda.h"
+#import "IRGEstadoDelJuegoFinalizadoConError.h"
 
 
 @interface IRGGestorDeEstados : NSObject<IRGEstadosDelJuego>
@@ -24,7 +27,9 @@
 @property (nonatomic) IRGEstadoDelJuegoEnJuego * estadoDelJuegoEnJuego;
 @property (nonatomic) IRGEstadoDelJuegoAyuda *estadoDelJuegoAyuda;
 @property (nonatomic) IRGEstadoDelJuegoEnJuegoConAyuda * estadoDelJuegoEnJuegoConAyuda;
-
+@property (nonatomic) IRGEstadoDelJuegoFinalizadoSinErrorSinAyuda * estadoDelJuegoFinalizadoSinErrorSinAyuda;
+@property (nonatomic) IRGEstadoDelJuegoFinalizadoSinErrorConAyuda * estadoDelJuegoFinalizadoSinErrorConAyuda;
+@property (nonatomic) IRGEstadoDelJuegoFinalizadoConError* estadoDelJuegoFinalizadoConError;
 
 
 -(instancetype) initConDelegado:(IRGVentanaPrincipalViewController *)sender;

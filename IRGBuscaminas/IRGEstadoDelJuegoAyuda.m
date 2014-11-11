@@ -12,6 +12,7 @@
 @interface IRGEstadoDelJuegoAyuda()
 @property (nonatomic,strong) IRGVentanaPrincipalViewController *delegado;
 @property (nonatomic,strong) IRGGestorDeEstados * gestorDeEstados;
+@property (nonatomic)  NSTimer * relojDeEspera;
 @end
 
 @implementation IRGEstadoDelJuegoAyuda
@@ -32,13 +33,20 @@
     return false;
 }
 
+
+#pragma mark - Overrides
+-(NSString *) description{
+    return @"Ayuda!";
+}
+
 #pragma mark Metodos del protocolo
 
 - (void) establecerBotones{
-    [self.delegado activarBotonMostrarMinas];
+    [self.delegado desactivarBotonMostrarMinas];
     [self.delegado desactivarBotonMejoresTiempos];
     [self.delegado desactivarBotonPrincipal];
     [self.delegado desactivarTextFieldNumeroDeMinas];
+    [self iniciarReloj];
 }
 
 
@@ -47,8 +55,7 @@
 }
 
 -(void) accionMostrarMinas{
-    self.gestorDeEstados.estadoDelJuego = self.gestorDeEstados.estadoDelJuegoEnJuegoConAyuda;
-    [self.delegado ocultarMinasxx];
+    [NSException exceptionWithName:@"accion incorrecta" reason:@"El estado no la soporta" userInfo:nil];
 }
 
 -(void) celdaPulsada:(IRGCeldaViewController *)celdaViewController{
@@ -61,5 +68,19 @@
     
 }
 
+
+#pragma mark auxiliares primer nivel
+-(void) iniciarReloj{
+    self.relojDeEspera = [NSTimer scheduledTimerWithTimeInterval:1
+                                                      target:self
+                                                    selector:@selector(ocultarAyuda)
+                                                    userInfo:nil
+                                                     repeats:FALSE];
+}
+
+-(void) ocultarAyuda{
+    self.gestorDeEstados.estadoDelJuego = self.gestorDeEstados.estadoDelJuegoEnJuegoConAyuda;
+    [self.delegado ocultarMinas];
+}
 
 @end

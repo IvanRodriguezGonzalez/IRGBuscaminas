@@ -13,6 +13,7 @@
 @property (nonatomic) NSInteger altoDelCanvas;
 
 @property (weak, nonatomic) IBOutlet UITextField *totalMinas;
+@property (weak, nonatomic) IBOutlet UILabel *etiquetaBotonPrincipal;
 
 
 
@@ -20,6 +21,7 @@
 
 -(void) celdaPulsada:(IRGCeldaViewController *)celdaPulsada;
 -(void) celdaDoblePulsada: (IRGCeldaViewController *)celdaDoblePulsada;
+
 -(void) actualizaMinasPendientes;
 
 - (void) activarBotonMostrarMinas;
@@ -32,22 +34,12 @@
 - (void) desactivarTextFieldNumeroDeMinas;
 
 - (void) iniciarJuego;
--( void) mostrarMinasxx;
--(void) ocultarMinasxx;
-
-
-
-/*
-
-- (void) borrarCanvas;
-- (void) generarCanvas;
-- (void) actualizarNumeroDeMinas;
-- (void) generarMinas;
-- (void) actualizarBotonYBarraDeProgreso;
-- (void) iniciarBarraDeProgreso;
-- (void) establecerFondoNeutro;
-- (void) inicializarTiempoDeJuego;
--(void) iniciarReloj;
- */
+- (void) mostrarMinas;
+- (void) ocultarMinas;
+- (void) acabarJuegoConError;
+- (void) propagaTouch:(IRGCeldaViewController *)celdaViewController;
+- (NSInteger) actualizarBotonYBarraDeProgreso;
+- (void) acabarJuegoSinErrorSinAyuda;
+- (void) acabarJuegoSinErrorConAyuda;
 
 @end

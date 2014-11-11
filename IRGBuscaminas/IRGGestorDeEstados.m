@@ -31,6 +31,14 @@
                                                                                 delegado:self.delegado];
         self.estadoDelJuegoEnJuegoConAyuda = [[IRGEstadoDelJuegoEnJuegoConAyuda alloc]initConGestorDeEstados:self delegado:self.delegado];
         
+        self.estadoDelJuegoFinalizadoSinErrorSinAyuda = [[IRGEstadoDelJuegoFinalizadoSinErrorSinAyuda alloc] initConGestorDeEstados:self delegado:self.delegado];
+
+        self.estadoDelJuegoFinalizadoSinErrorConAyuda = [[IRGEstadoDelJuegoFinalizadoSinErrorConAyuda alloc] initConGestorDeEstados:self delegado:self.delegado];
+        
+        self.estadoDelJuegoFinalizadoConError = [[IRGEstadoDelJuegoFinalizadoConError alloc] initConGestorDeEstados:self delegado:self.delegado];
+        
+
+        
         self.estadoDelJuego = self.estadoDelJuegoInicio;
     }
     return self;
@@ -58,12 +66,17 @@
     [self.estadoDelJuego celdaDoblePulsada:celdaViewController];
 }
 
+-(void) establecerBotones{
+    [self.estadoDelJuego establecerBotones];
+}
+
 #pragma mark - Meotodos de primer nivel
 
 
 -(void) setEstadoDelJuego:(id<IRGEstadosDelJuego>)estadoDelJuego{
     _estadoDelJuego = estadoDelJuego;
-    [self.estadoDelJuego establecerBotones];
+    [self establecerBotones];
+    self.delegado.etiquetaBotonPrincipal.text = [NSString stringWithFormat:@"%@",self.estadoDelJuego];
 }
 
 
