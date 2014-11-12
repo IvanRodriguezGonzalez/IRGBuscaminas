@@ -7,11 +7,9 @@
 //
 
 #import <UIKit/UIKit.h>
-@class IRGNUmeroSieteSegmentosViewController;
 
 @interface IRGSieteSegmentos : UIView
+-(void) dibujarNumero:(NSInteger )valor;
 
-- (instancetype) initWithFrame:(CGRect)frame
-                      delegado:(IRGNUmeroSieteSegmentosViewController *)sender;
 
 @end

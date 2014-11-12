@@ -10,7 +10,6 @@
 @class IRGSieteSegmentos;
 
 @interface IRGNUmeroSieteSegmentosViewController : UIViewController
-@property (nonatomic) NSInteger valor;
--(void) dibujarNumero:(IRGSieteSegmentos *)sender;
+@property (nonatomic) NSInteger valorADibujar;
 
 @end

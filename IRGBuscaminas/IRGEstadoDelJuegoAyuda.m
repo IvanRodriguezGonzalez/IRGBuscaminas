@@ -107,7 +107,7 @@
     }
     else {
         self.delegado.etiquetaBotonPrincipal .text= [NSString stringWithFormat:@"%ld",(long)self.contador];
-        self.sieteSegmentosViewController.valor = 2;
+        self.sieteSegmentosViewController.valorADibujar = 2;
     }
 }
 
