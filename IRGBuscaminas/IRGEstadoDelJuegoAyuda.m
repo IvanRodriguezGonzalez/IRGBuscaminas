@@ -9,6 +9,7 @@
 #import "IRGEstadoDelJuegoAyuda.h"
 #import "IRGGestorDeEstados.h"
 #import "IRGNUmeroSieteSegmentosViewController.h"
+#define CUENTA_ATRAS 0
 
 @interface IRGEstadoDelJuegoAyuda()
 @property (nonatomic,strong) IRGVentanaPrincipalViewController *delegado;
@@ -27,7 +28,7 @@
     if (self) {
         _delegado = sender;
         _gestorDeEstados = gestorDeEstados;
-        _contador = 5;
+        _contador = CUENTA_ATRAS;
     }
     return self;
 }
@@ -88,6 +89,8 @@
 
 - (void) anadirVistaSieteSegmentos{
     [self.delegado.view addSubview:self.sieteSegmentosViewController.view];
+    self.sieteSegmentosViewController.valorADibujar = self.contador;
+
 }
 -(void) iniciarReloj{
     self.relojDeEspera = [NSTimer scheduledTimerWithTimeInterval:1
@@ -98,11 +101,13 @@
 }
 
 - (void) descontarContador{
-    self.contador = self.contador-1;
-    if (self.contador ==0){
+    //self.contador = self.contador-1;
+    if (self.contador ==1){
         [self.relojDeEspera invalidate];
         [self ocultarAyuda];
         [self.delegado.view sendSubviewToBack:self.sieteSegmentosViewController.view];
+        self.sieteSegmentosViewController = nil;
+        self.contador = CUENTA_ATRAS;
     }
     else {
         self.delegado.etiquetaBotonPrincipal .text= [NSString stringWithFormat:@"%ld",(long)self.contador];

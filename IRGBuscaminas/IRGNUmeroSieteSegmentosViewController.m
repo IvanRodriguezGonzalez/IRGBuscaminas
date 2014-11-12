@@ -19,7 +19,13 @@
 @implementation IRGNUmeroSieteSegmentosViewController
 
 -(void)loadView{
-    CGRect frame = CGRectMake(100, 100, 200, 200);
+    CGRect frameDeLaVentana = [UIApplication sharedApplication].keyWindow.frame ;
+    CGFloat anchoVentana = frameDeLaVentana.size.width;
+    CGFloat altoVentana = frameDeLaVentana.size.height;
+    
+    CGFloat anchoVista = anchoVentana/3;
+    
+    CGRect frame = CGRectMake(anchoVista,(altoVentana-anchoVista)/2,anchoVista,anchoVista);
     IRGSieteSegmentos * vista = [[IRGSieteSegmentos alloc]initWithFrame:frame];
     vista.backgroundColor =[UIColor clearColor];
     

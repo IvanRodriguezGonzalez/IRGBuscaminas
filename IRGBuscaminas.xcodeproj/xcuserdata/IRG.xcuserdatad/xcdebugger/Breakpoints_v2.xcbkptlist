@@ -15,7 +15,7 @@
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "242"
             endingLineNumber = "242"
-            landmarkName = "-iniciarReloj"
+            landmarkName = "-preguntarNombreConTiempo:Nombre:numeroDeCeldas:numeroDeMinas:conAyuda:"
             landmarkType = "5">
          </BreakpointContent>
       </BreakpointProxy>
@@ -57,7 +57,7 @@
                   symbolName = "-[IRGPreguntarNombreViewController nombreTextField]"
                   moduleName = "IRGBuscaminas"
                   urlString = "file:///Users/IRG/Desktop/Desarrollo/IOS/IRGBuscaminas/IRGBuscaminas/IRGPreguntarNombreViewController.m"
-                  timestampString = "437264573.731504"
+                  timestampString = "437527950.596503"
                   startingColumnNumber = "9223372036854775807"
                   endingColumnNumber = "9223372036854775807"
                   startingLineNumber = "15"
@@ -71,7 +71,7 @@
                   symbolName = "-[IRGPreguntarNombreViewController setNombreTextField:]"
                   moduleName = "IRGBuscaminas"
                   urlString = "file:///Users/IRG/Desktop/Desarrollo/IOS/IRGBuscaminas/IRGBuscaminas/IRGPreguntarNombreViewController.m"
-                  timestampString = "437264573.731716"
+                  timestampString = "437527950.596713"
                   startingColumnNumber = "9223372036854775807"
                   endingColumnNumber = "9223372036854775807"
                   startingLineNumber = "15"
@@ -79,6 +79,22 @@
                   offsetFromSymbolStart = "20">
                </Location>
             </Locations>
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "IRGBuscaminas/IRGEstadoDelJuegoAyuda.m"
+            timestampString = "437521261.1372"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "115"
+            endingLineNumber = "115"
+            landmarkName = "-descontarContador"
+            landmarkType = "5">
          </BreakpointContent>
       </BreakpointProxy>
    </Breakpoints>
