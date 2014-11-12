@@ -15,10 +15,12 @@
 @property (nonatomic) NSUInteger grosorDelTrazoDeLaCelda;
 @property (nonatomic) UILabel * numeroDeMinasAlrededor;
 @property (nonatomic) UIImageView *imagenDeMina;
+@property (nonatomic) bool procesada;
 
 
 - (instancetype) initWithFrame:(CGRect)frame
                  colorDelBorde:(UIColor *)colorDelBorde
-                grosorDelTrazo:(NSUInteger) grosorDelTrazo;
+                grosorDelTrazo:(NSUInteger) grosorDelTrazo
+                     procesada:(bool) proesada;
 
 @end

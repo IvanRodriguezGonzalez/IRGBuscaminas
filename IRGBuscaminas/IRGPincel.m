@@ -53,7 +53,7 @@
 }
 
 - (UIColor *) colorDeRellenoDelPincel{
-    return[[UIColor alloc]initWithRed:.9 green:.9 blue:.9 alpha:1];
+    return[[UIColor alloc]initWithRed:.8 green:.8 blue:.8 alpha:1];
 }
 
 - (UIColor *) colorDeRellenoDeLaCeldaVacia{

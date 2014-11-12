@@ -52,7 +52,7 @@
                                 <action selector="accionMostrarMinas:" destination="-1" eventType="touchUpInside" id="CrQ-Ky-3FC"/>
                             </connections>
                         </button>
-                        <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" text="1" borderStyle="roundedRect" textAlignment="right" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="OW5-p5-RKd">
+                        <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" text="20" borderStyle="roundedRect" textAlignment="right" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="OW5-p5-RKd">
                             <rect key="frame" x="623" y="8" width="40" height="57"/>
                             <constraints>
                                 <constraint firstAttribute="width" secondItem="OW5-p5-RKd" secondAttribute="height" multiplier="13:9" id="Ems-Xx-lgA"/>
@@ -286,13 +286,13 @@
                     <exclude reference="BbX-7M-r8c"/>
                 </mask>
             </variation>
-            <point key="canvasLocation" x="263.5" y="346"/>
+            <point key="canvasLocation" x="-167.5" y="361"/>
         </view>
     </objects>
     <resources>
         <image name="help normal" width="352" height="352"/>
         <image name="jugar" width="96" height="96"/>
-        <image name="mejoresTiempos" width="128" height="128"/>
+        <image name="mejoresTiempos" width="150" height="166"/>
         <image name="pausa" width="128" height="128"/>
     </resources>
 </document>

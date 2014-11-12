@@ -42,7 +42,7 @@
 #pragma mark Metodos del protocolo
 
 - (void) establecerBotones{
-    [self.delegado.gestionarBotonera activarBotonMostrarMinas];
+    [self.delegado.gestionarBotonera desactivarBotonMostrarMinas];
     [self.delegado.gestionarBotonera desactivarBotonMejoresTiempos];
     [self.delegado.gestionarBotonera activarBotonPrincipal];
     [self.delegado.gestionarBotonera desactivarTextFieldNumeroDeMinas];

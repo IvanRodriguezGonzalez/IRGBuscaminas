@@ -47,8 +47,8 @@
     [self.delegado.gestionarBotonera desactivarBotonPrincipal];
     [self.delegado.gestionarBotonera desactivarTextFieldNumeroDeMinas];
     [self.delegado.gestionarBotonera desactivarBotonPausar];
-
     [self iniciarReloj];
+
 }
 
 
@@ -73,7 +73,7 @@
 
 #pragma mark auxiliares primer nivel
 -(void) iniciarReloj{
-    self.relojDeEspera = [NSTimer scheduledTimerWithTimeInterval:1
+    self.relojDeEspera = [NSTimer scheduledTimerWithTimeInterval:3
                                                       target:self
                                                     selector:@selector(ocultarAyuda)
                                                     userInfo:nil

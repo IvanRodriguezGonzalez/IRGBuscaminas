@@ -62,13 +62,16 @@
 
 #pragma mark - overrides
 
+- (void) loadView{
+    [self crearCeldaComoVista];
+    [self.view setMultipleTouchEnabled:YES];
+    
+
+}
+
 - (void)viewDidLoad {
     [super viewDidLoad];
     // Do any additional setup after loading the view.
-    
-    [self crearCeldaComoVista];
-    
-    [self.view setMultipleTouchEnabled:YES];
     
     
     UITapGestureRecognizer *doubleTapRecognizer = [[UITapGestureRecognizer alloc] initWithTarget:self
@@ -111,6 +114,12 @@
 - (void) setEstado:(IRGEstados)estado{
     
     _estado = estado;
+    if (_estado==procesado){
+        self.celda.procesada = true;
+    }
+    else {
+        self.celda.procesada = false;
+    }
     [self dibujarEstado];
 }
 
@@ -149,18 +158,14 @@
         if(self.estado == conBandera){
             self.celda.imagenDeMina.image =[UIImage imageNamed:@"banderaErronea"];
         }
+        if (self.estado == conDuda){
+            self.celda.backgroundColor = [UIColor redColor];
+        }
     }
 }
 
 - (void) ocultarMina {
-    if ((self.tieneMina) & (self.estado == libre)){
-        self.celda.imagenDeMina.image= nil;
-    }
-    else {
-        if (self.estado == conBandera){
-            self.celda.imagenDeMina.image =[UIImage imageNamed:@"bandera"];
-        }
-    }
+    [self  dibujarEstado];
 }
 
 
@@ -171,7 +176,8 @@
     IRGCelda *celdaTemporal;
      celdaTemporal = [[IRGCelda alloc]initWithFrame:self.frameCelda
                                       colorDelBorde:[IRGPincel sharedPincel].colorDeTrazoDelPincel
-                                      grosorDelTrazo:[IRGPincel sharedPincel].grosorDelTrazoDelPincel];
+                                      grosorDelTrazo:[IRGPincel sharedPincel].grosorDelTrazoDelPincel
+                                          procesada:false];
     self.view = celdaTemporal;
     self.celda = celdaTemporal;;
     [self dibujarEstado];
