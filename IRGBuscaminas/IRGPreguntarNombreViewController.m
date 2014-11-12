@@ -47,9 +47,7 @@
         self.conAyudaTextField.text = @"No";
     }
     self.tiempoTextField.text = [IRGMetodosComunes formatearTiempoDeJuegoEnSegundos:self.datoDelMejorTiempo.tiempo]
-    ;
-
-    
+    ;    
 
 }
 

@@ -7,6 +7,7 @@
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="IRGVentanaPrincipalViewController">
             <connections>
+                <outlet property="barraBotonera" destination="hIG-gz-8Ow" id="Ybt-Og-6fH"/>
                 <outlet property="barraDeProgreso" destination="5JY-vZ-e9q" id="uch-rV-WY3"/>
                 <outlet property="botonMostrarMejoresTiempos" destination="g0l-vu-kiX" id="eLh-QO-01J"/>
                 <outlet property="botonMostrarMinas" destination="RNV-JR-Uw3" id="Tqa-zl-5Tk"/>
@@ -52,7 +53,7 @@
                                 <action selector="accionMostrarMinas:" destination="-1" eventType="touchUpInside" id="CrQ-Ky-3FC"/>
                             </connections>
                         </button>
-                        <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" text="20" borderStyle="roundedRect" textAlignment="right" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="OW5-p5-RKd">
+                        <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" text="40" borderStyle="roundedRect" textAlignment="right" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="OW5-p5-RKd">
                             <rect key="frame" x="623" y="8" width="40" height="57"/>
                             <constraints>
                                 <constraint firstAttribute="width" secondItem="OW5-p5-RKd" secondAttribute="height" multiplier="13:9" id="Ems-Xx-lgA"/>
@@ -161,6 +162,15 @@
                             </state>
                             <connections>
                                 <action selector="accionPausar:" destination="-1" eventType="touchUpInside" id="zgL-dk-27w"/>
+                            </connections>
+                        </button>
+                        <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="HXP-oM-HgR">
+                            <rect key="frame" x="233" y="23" width="46" height="30"/>
+                            <state key="normal" title="Button">
+                                <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                            </state>
+                            <connections>
+                                <action selector="mostrarMenu:" destination="-1" eventType="touchUpInside" id="Pbh-u3-PsB"/>
                             </connections>
                         </button>
                     </subviews>
@@ -286,7 +296,7 @@
                     <exclude reference="BbX-7M-r8c"/>
                 </mask>
             </variation>
-            <point key="canvasLocation" x="-167.5" y="361"/>
+            <point key="canvasLocation" x="-289.5" y="361"/>
         </view>
     </objects>
     <resources>

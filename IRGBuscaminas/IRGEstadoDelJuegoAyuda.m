@@ -8,11 +8,14 @@
 
 #import "IRGEstadoDelJuegoAyuda.h"
 #import "IRGGestorDeEstados.h"
+#import "IRGNUmeroSieteSegmentosViewController.h"
 
 @interface IRGEstadoDelJuegoAyuda()
 @property (nonatomic,strong) IRGVentanaPrincipalViewController *delegado;
 @property (nonatomic,strong) IRGGestorDeEstados * gestorDeEstados;
 @property (nonatomic)  NSTimer * relojDeEspera;
+@property (nonatomic) NSInteger contador;
+@property (nonatomic) IRGNUmeroSieteSegmentosViewController *sieteSegmentosViewController;
 @end
 
 @implementation IRGEstadoDelJuegoAyuda
@@ -24,6 +27,7 @@
     if (self) {
         _delegado = sender;
         _gestorDeEstados = gestorDeEstados;
+        _contador = 5;
     }
     return self;
 }
@@ -31,6 +35,15 @@
 -(instancetype)init {
     [NSException exceptionWithName:@"Invalid init" reason:@"Use initConSender" userInfo:nil];
     return false;
+}
+
+#pragma mark Accesors
+
+-(IRGNUmeroSieteSegmentosViewController *) sieteSegmentosViewController{
+    if (_sieteSegmentosViewController == nil){
+        _sieteSegmentosViewController = [[IRGNUmeroSieteSegmentosViewController alloc] init];
+    }
+    return  _sieteSegmentosViewController;
 }
 
 
@@ -47,6 +60,7 @@
     [self.delegado.gestionarBotonera desactivarBotonPrincipal];
     [self.delegado.gestionarBotonera desactivarTextFieldNumeroDeMinas];
     [self.delegado.gestionarBotonera desactivarBotonPausar];
+    [self anadirVistaSieteSegmentos];
     [self iniciarReloj];
 
 }
@@ -72,12 +86,29 @@
 
 
 #pragma mark auxiliares primer nivel
+
+- (void) anadirVistaSieteSegmentos{
+    [self.delegado.view addSubview:self.sieteSegmentosViewController.view];
+}
 -(void) iniciarReloj{
-    self.relojDeEspera = [NSTimer scheduledTimerWithTimeInterval:3
+    self.relojDeEspera = [NSTimer scheduledTimerWithTimeInterval:1
                                                       target:self
-                                                    selector:@selector(ocultarAyuda)
+                                                    selector:@selector(descontarContador)
                                                     userInfo:nil
-                                                     repeats:FALSE];
+                                                     repeats:TRUE];
+}
+
+- (void) descontarContador{
+    self.contador = self.contador-1;
+    if (self.contador ==0){
+        [self.relojDeEspera invalidate];
+        [self ocultarAyuda];
+        [self.delegado.view sendSubviewToBack:self.sieteSegmentosViewController.view];
+    }
+    else {
+        self.delegado.etiquetaBotonPrincipal .text= [NSString stringWithFormat:@"%ld",(long)self.contador];
+        self.sieteSegmentosViewController.valor = 2;
+    }
 }
 
 -(void) ocultarAyuda{

@@ -159,7 +159,7 @@
             self.celda.imagenDeMina.image =[UIImage imageNamed:@"banderaErronea"];
         }
         if (self.estado == conDuda){
-            self.celda.backgroundColor = [UIColor redColor];
+            self.celda.imagenDeMina.image = [UIImage imageNamed:@"dudaConError"];
         }
     }
 }

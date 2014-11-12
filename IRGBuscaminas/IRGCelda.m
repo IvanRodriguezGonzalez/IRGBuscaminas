@@ -72,61 +72,10 @@
     
     if (!self.procesada){
         [self dibujarBorderCeldaNoProcesada];
-        /*
-         [[UIColor whiteColor] setStroke];
-         CGRect  lineaSuperior = CGRectMake(0,0, self.bounds.size.width,0);
-         UIBezierPath *path = [UIBezierPath bezierPathWithRect:lineaSuperior];
-         path.lineWidth = 2;
-         [path stroke];
-         
-         [path moveToPoint:CGPointMake(0,0)];
-         CGRect  lineaIzquierda = CGRectMake(0,0, 0,self.frame.size.height);
-         path = [UIBezierPath bezierPathWithRect:lineaIzquierda];
-         [path stroke];
-         
-         [[[UIColor alloc] initWithRed:.5 green:.5 blue:.5 alpha:1] setStroke];;
-         [path moveToPoint:CGPointMake(self.frame.size.width,0)];
-         CGRect  lineaDerecha = CGRectMake(self.frame.size.width,0,self.frame.size.width,self.frame.size.height);
-         path = [UIBezierPath bezierPathWithRect:lineaDerecha];
-         [path stroke];
-         
-         [path moveToPoint:CGPointMake(0,self.frame.size.height)];
-         CGRect  lineaInferior = CGRectMake(0,self.frame.size.height,self.frame.size.width,self.frame.size.height);
-         path = [UIBezierPath bezierPathWithRect:lineaInferior];
-         [path stroke];    }
-         
-         */
-
-
-    }
+  }
     else{
         [self dibujarBorderCeldaProcesada];
     }
-
-        /*
-        [[[UIColor alloc] initWithRed:.5 green:.5 blue:.5 alpha:1] setStroke];;
-        CGRect  lineaSuperior = CGRectMake(0,0, self.bounds.size.width,0);
-        UIBezierPath *path = [UIBezierPath bezierPathWithRect:lineaSuperior];
-        path.lineWidth = 2;
-        [path stroke];
-        
-        [path moveToPoint:CGPointMake(0,0)];
-        CGRect  lineaIzquierda = CGRectMake(0,0, 0,self.frame.size.height);
-        path = [UIBezierPath bezierPathWithRect:lineaIzquierda];
-        [path stroke];
-        
-        [[UIColor whiteColor] setStroke];
-        [path moveToPoint:CGPointMake(self.frame.size.width,0)];
-        CGRect  lineaDerecha = CGRectMake(self.frame.size.width,0,self.frame.size.width,self.frame.size.height);
-        path = [UIBezierPath bezierPathWithRect:lineaDerecha];
-        [path stroke];
-        
-        [path moveToPoint:CGPointMake(0,self.frame.size.height)];
-        CGRect  lineaInferior = CGRectMake(0,self.frame.size.height,self.frame.size.width,self.frame.size.height);
-        path = [UIBezierPath bezierPathWithRect:lineaInferior];
-        [path stroke];    }
-
-*/
 }
 
 # pragma mark - Accesors
@@ -140,64 +89,122 @@
 
 #pragma mark - Auxiliares primer nivel
 -(void) dibujarBorderCeldaNoProcesada{
-    UIColor * lineaOscura =[[UIColor alloc] initWithRed:.5 green:.5 blue:.5 alpha:1];
-    UIColor * lineaClara = [[UIColor alloc] initWithRed:.9 green:.9 blue:.9 alpha:1];
-    NSInteger grosorDeLaLinea = 2;
-    [self dibujarLineaSuperiorConColor:lineaClara conGrosor:grosorDeLaLinea];
-    [self dibujarLineaIzquierdaConColor:lineaClara conGrosor:grosorDeLaLinea];
-    [self dibujarLineaInferiorConColor:lineaOscura conGrosor:grosorDeLaLinea];
-    [self dibujarLineaDerechaConColor:lineaOscura conGrosor:grosorDeLaLinea];
+    NSInteger grosorDeLaLinea = 3;
+    
+    [self dibujarLineaSuperiorClaraConGrosor:grosorDeLaLinea];
+    [self dibujarLineaIzquierdaClaraConGrosor:grosorDeLaLinea];
+    [self dibujarLineaInferiorOscuraConGrosor:grosorDeLaLinea];
+    [self dibujarLineaDerechaOscuraConGrosor:grosorDeLaLinea];
 }
     
 -(void) dibujarBorderCeldaProcesada{
-    UIColor * lineaOscura =[[UIColor alloc] initWithRed:.5 green:.5 blue:.5 alpha:1];
-    UIColor * lineaClara = [[UIColor alloc] initWithRed:1 green:1 blue:1 alpha:1];
+    
     NSInteger grosorDeLaLinea = 1;
-    [self dibujarLineaSuperiorConColor:lineaOscura conGrosor:grosorDeLaLinea];
-    [self dibujarLineaIzquierdaConColor:lineaOscura conGrosor:grosorDeLaLinea];
-    [self dibujarLineaInferiorConColor:lineaClara conGrosor:grosorDeLaLinea];
-    [self dibujarLineaDerechaConColor:lineaClara conGrosor:grosorDeLaLinea];
+    [self dibujarLineaSuperiorOscuraConGrosor:grosorDeLaLinea];
+    [self dibujarLineaIzquierdaOscuraConGrosor:grosorDeLaLinea];
+    [self dibujarLineaInferiorClaraConGrosor:grosorDeLaLinea];
+    [self dibujarLineaDerechaClaraConGrosor:grosorDeLaLinea];
 }
 
 #pragma mark - Auxiliares segundo nivel
--(void) dibujarLineaSuperiorConColor:(UIColor *)color conGrosor:(NSInteger)grosor{
+
+
+-(void) dibujarLineaSuperiorOscuraConGrosor:(NSInteger)grosor{
     CGPoint puntoInicial = CGPointMake(0, 0);
     CGPoint puntoFinal = CGPointMake(self.bounds.size.width,0);
-    [self dibujarLineaDesde:puntoInicial
+    [self dibujarLineaOscuraDesde:puntoInicial
                       hasta:(puntoFinal)
-                   conColor:color
                   conGrosor:grosor];
 }
 
-- (void) dibujarLineaInferiorConColor:(UIColor *) color conGrosor:(NSInteger)grosor{
+
+-(void) dibujarLineaSuperiorClaraConGrosor:(NSInteger)grosor{
+    CGPoint puntoInicial = CGPointMake(0, 0);
+    CGPoint puntoFinal = CGPointMake(self.bounds.size.width,0);
+    [self dibujarLineaClaraDesde:puntoInicial
+                            hasta:(puntoFinal)
+                        conGrosor:grosor];
+}
+
+
+- (void) dibujarLineaInferiorOscuraConGrosor:(NSInteger)grosor{
     CGPoint puntoInicial = CGPointMake(0, self.bounds.size.height);
     CGPoint puntoFinal = CGPointMake(self.bounds.size.width,self.bounds.size.height);
-    [self dibujarLineaDesde:puntoInicial
+    [self dibujarLineaOscuraDesde:puntoInicial
                       hasta:(puntoFinal)
-                   conColor:color
                   conGrosor:grosor];
 }
 
 
-- (void) dibujarLineaIzquierdaConColor:(UIColor *) color conGrosor:(NSInteger)grosor{
+- (void) dibujarLineaInferiorClaraConGrosor:(NSInteger)grosor{
+    CGPoint puntoInicial = CGPointMake(0, self.bounds.size.height);
+    CGPoint puntoFinal = CGPointMake(self.bounds.size.width,self.bounds.size.height);
+    [self dibujarLineaClaraDesde:puntoInicial
+                      hasta:(puntoFinal)
+                  conGrosor:grosor];
+}
+
+
+- (void) dibujarLineaIzquierdaOscuraConGrosor:(NSInteger)grosor{
     CGPoint puntoInicial = CGPointMake(0, 0);
     CGPoint puntoFinal = CGPointMake(0,self.bounds.size.height);
-    [self dibujarLineaDesde:puntoInicial
+    [self dibujarLineaOscuraDesde:puntoInicial
                       hasta:(puntoFinal)
-                   conColor:color
+                  conGrosor:grosor];
+}
+- (void) dibujarLineaIzquierdaClaraConGrosor:(NSInteger)grosor{
+    CGPoint puntoInicial = CGPointMake(0, 0);
+    CGPoint puntoFinal = CGPointMake(0,self.bounds.size.height);
+    [self dibujarLineaClaraDesde:puntoInicial
+                      hasta:(puntoFinal)
                   conGrosor:grosor];
 }
 
-- (void) dibujarLineaDerechaConColor:(UIColor *) color conGrosor:(NSInteger)grosor{
+
+
+- (void) dibujarLineaDerechaOscuraConGrosor:(NSInteger)grosor{
     CGPoint puntoInicial = CGPointMake(self.bounds.size.width, 0);
     CGPoint puntoFinal = CGPointMake(self.bounds.size.width,self.bounds.size.height);
-    [self dibujarLineaDesde:puntoInicial
+    [self dibujarLineaOscuraDesde:puntoInicial
                       hasta:(puntoFinal)
-                   conColor:color
+                  conGrosor:grosor];
+}
+
+- (void) dibujarLineaDerechaClaraConGrosor:(NSInteger)grosor{
+    CGPoint puntoInicial = CGPointMake(self.bounds.size.width, 0);
+    CGPoint puntoFinal = CGPointMake(self.bounds.size.width,self.bounds.size.height);
+    [self dibujarLineaClaraDesde:puntoInicial
+                      hasta:(puntoFinal)
                   conGrosor:grosor];
 }
 
 #pragma mark - Auxiliares tercer nivel
+
+
+
+
+- (void) dibujarLineaOscuraDesde:(CGPoint) puntoInicial
+                           hasta:(CGPoint) puntoFinal
+                       conGrosor:(NSInteger) grosor{
+    UIColor * lineaOscura =[[UIColor alloc] initWithRed:.5 green:.5 blue:.5 alpha:1];
+    [self dibujarLineaDesde:puntoInicial
+                      hasta:(puntoFinal)
+                   conColor:lineaOscura
+                  conGrosor:grosor];
+}
+
+- (void) dibujarLineaClaraDesde:(CGPoint) puntoInicial
+                           hasta:(CGPoint) puntoFinal
+                       conGrosor:(NSInteger) grosor{
+    UIColor * lineaClara = [[UIColor alloc] initWithRed:.9 green:.9 blue:.9 alpha:1];
+    [self dibujarLineaDesde:puntoInicial
+                      hasta:(puntoFinal)
+                   conColor:lineaClara
+                  conGrosor:grosor];
+}
+
+#pragma mark - Auxiliar cuarto nivel
+
 - (void) dibujarLineaDesde:(CGPoint)puntoInicial
                      hasta:(CGPoint) puntoFinal
                   conColor:(UIColor *)color

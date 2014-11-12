@@ -58,6 +58,15 @@
 
 
 #pragma mark - Navigation primer nivel
+- (IBAction)mostrarMenu:(UIButton *)sender {
+    CGRect frame = CGRectMake(0,0,100,self.view.frame.size.height);
+    UIView * vista =[[UIView alloc]initWithFrame:frame];
+    vista.backgroundColor = [UIColor redColor];
+    [self.view addSubview:vista];
+    [self.view sendSubviewToBack:vista];
+    [self.view bringSubviewToFront:vista];
+}
+
 
 - (IBAction)accionJugar:(UIButton *)sender {
     [self.gestorDeEstados accionJugar];
