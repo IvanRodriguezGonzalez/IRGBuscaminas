@@ -7,6 +7,8 @@
 //
 
 #import "IRGSieteSegmentos.h"
+#define espaciado 10
+#define anchoDelSegmentoPorDefecto 10
 
 @interface IRGSieteSegmentos ()
 @property (nonatomic) NSInteger anchoDelSegmento;
@@ -27,7 +29,7 @@
 
 #pragma mark accesors
 -(NSInteger) anchoDelSegmento{
-    return 3;
+    return anchoDelSegmentoPorDefecto;
 }
 
 #pragma mmark - Auxiliares de primer nivel
@@ -41,18 +43,38 @@
 #pragma mark - Auxiliares de segundo nivel
 
 -(void) dos{
-    [self dibujaSegmentoSuperior];
+    [self dibujaSegmentoTop];
+    [self dibujaSegmentoIzquierdoSuperior];
+    [self dibujaSegmentoDerechoSuperior];
+  //  [self dibujaSegmentoCentral];
+    
 }
 
 #pragma mark - Auxiliares de tercer nivel
 
 
--(void) dibujaSegmentoSuperior{
-    CGPoint puntoInicial = CGPointMake(0,0);
-    CGPoint puntoFinal = CGPointMake(self.frame.size.width,self.anchoDelSegmento);
+-(void) dibujaSegmentoTop{
+    CGPoint puntoInicial = CGPointMake(espaciado,0);
+    CGPoint puntoFinal = CGPointMake(self.frame.size.width-2*espaciado,0);
     [self dibujaSegmentoDesde:puntoInicial hasta:puntoFinal];
-    
 }
+-(void) dibujaSegmentoIzquierdoSuperior{
+    CGPoint puntoInicial = CGPointMake(0,espaciado);
+    CGPoint puntoFinal = CGPointMake(0,(self.frame.size.height/2)-(2*espaciado));
+    [self dibujaSegmentoDesde:puntoInicial hasta:puntoFinal];
+}
+-(void) dibujaSegmentoDerechoSuperior{
+    CGPoint puntoInicial = CGPointMake(self.frame.size.width,espaciado);
+    CGPoint puntoFinal = CGPointMake(self.frame.size.width,(self.frame.size.height/2)-(2*espaciado));
+    [self dibujaSegmentoDesde:puntoInicial hasta:puntoFinal];
+}
+
+-(void) dibujaSegmentoCentral{
+    CGPoint puntoInicial = CGPointMake (espaciado,(self.frame.size.height/2)-(2*espaciado));
+    CGPoint puntoFinal = CGPointMake(self.frame.size.width-espaciado,(self.frame.size.height/2)-(2*espaciado));
+    [self dibujaSegmentoDesde:puntoInicial hasta:puntoFinal];
+}
+
 
 #pragma mark - Auxiliares de cuarto nivel
 -(void) dibujaSegmentoDesde:(CGPoint)puntoInicial
@@ -61,7 +83,7 @@
     [[UIColor redColor] setStroke];
     UIBezierPath * path = [UIBezierPath bezierPathWithRect:linea];
     [path moveToPoint:puntoInicial];
-    path.lineWidth = 3;
+    path.lineWidth = anchoDelSegmentoPorDefecto;
     [path stroke];
     
 }

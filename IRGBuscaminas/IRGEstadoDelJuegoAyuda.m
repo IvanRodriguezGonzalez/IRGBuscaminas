@@ -62,7 +62,6 @@
     [self.delegado.gestionarBotonera desactivarBotonPausar];
     [self anadirVistaSieteSegmentos];
     [self iniciarReloj];
-
 }
 
 
@@ -107,7 +106,7 @@
     }
     else {
         self.delegado.etiquetaBotonPrincipal .text= [NSString stringWithFormat:@"%ld",(long)self.contador];
-        self.sieteSegmentosViewController.valorADibujar = 2;
+        self.sieteSegmentosViewController.valorADibujar = self.contador;
     }
 }
 
