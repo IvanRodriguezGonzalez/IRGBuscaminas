@@ -13,17 +13,18 @@
 
 #pragma mark - Propiedades configurables por el usuario
 
-@property(nonatomic) NSInteger porcentajeDetTansparencia;
 @property(nonatomic) NSInteger grosorDelSegmento;
 @property(nonatomic) NSInteger separacionEntreSegmentos;
-@property(nonatomic) NSInteger separacionDeLosSegmentosConLaVista;
+@property(nonatomic) NSInteger separacionVerticalDeLosSegmentosConLaVista;
+@property(nonatomic) NSInteger separacionHorizontalDeLosSegmentosConLaVista;
 @property(nonatomic) UIColor * colorDelTrazoDelBorde;
 @property(nonatomic) UIColor * colorDelTrazoDelBordeConLuz;
 @property(nonatomic) UIColor * colorDelTrazoDelBordeConSombra;
-@property (nonatomic)UIColor *colorDelRelleno;
+@property(nonatomic) UIColor * colorDelRellenoDelSegmento;
 @property (nonatomic) NSInteger grosorDelTrazo;
 @property (nonatomic) bool efecto3D;
 
+-(void) calcularPuntosDeDibujo;
 
 
 

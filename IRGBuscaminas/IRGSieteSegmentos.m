@@ -7,6 +7,7 @@
 //
 
 #import "IRGSieteSegmentos.h"
+#define COLOR_DE_RELLENO_DE_LA_VENTANA_POR_DEFECTO redColor
 
 @interface IRGSieteSegmentos ()
 @property (nonatomic) NSInteger anchoDelSegmento;
@@ -20,7 +21,6 @@
 @property (nonatomic) CGPoint tamanoSegmentoHorizontal;
 @property (nonatomic) CGPoint tamanoSegmentoVertical;
 
-@property (nonatomic) bool establecidoElEfecto3D;
 @end
 
 @implementation IRGSieteSegmentos
@@ -31,15 +31,9 @@
 -(instancetype) initWithFrame:(CGRect)frame{
     self = [super initWithFrame:frame];
     if (self){
-
-    self.esquinaSuperiorIzquierda = CGPointMake(self.grosorDelSegmento/2+self.separacionDeLosSegmentosConLaVista,self.grosorDelSegmento/2+self.separacionDeLosSegmentosConLaVista);
-    self.esquinaSuperiorDerecha = CGPointMake(self.bounds.size.width-self.grosorDelSegmento/2-self.separacionDeLosSegmentosConLaVista, self.grosorDelSegmento/2+self.separacionDeLosSegmentosConLaVista);
-    self.esquinaCentralIzquierda = CGPointMake(self.grosorDelSegmento/2+self.separacionDeLosSegmentosConLaVista, self.bounds.size.height/2);
-    self.esquinaCentralDerecha = CGPointMake(self.bounds.size.width-self.grosorDelSegmento/2-self.separacionDeLosSegmentosConLaVista, self.frame.size.height/2);
-    self.esquinaInferiorIzquierda = CGPointMake(self.grosorDelSegmento/2+self.separacionDeLosSegmentosConLaVista, self.bounds.size.height-self.grosorDelSegmento/2-self.separacionDeLosSegmentosConLaVista);
-    self.esquinaInferiorDerecha = CGPointMake(self.bounds.size.width-self.grosorDelSegmento/2-self.separacionDeLosSegmentosConLaVista, self.frame.size.height-self.grosorDelSegmento/2-self.separacionDeLosSegmentosConLaVista);
-    self.tamanoSegmentoHorizontal = CGPointMake(self.bounds.size.width-2*self.separacionDeLosSegmentosConLaVista-2*self.grosorDelSegmento-2*self.separacionEntreSegmentos,self.grosorDelSegmento);
-    self.tamanoSegmentoVertical = CGPointMake(self.grosorDelSegmento,self.bounds.size.height/2-self.separacionDeLosSegmentosConLaVista-1.5*self.grosorDelSegmento-2*self.separacionEntreSegmentos);
+        [self calcularPuntosDeDibujo];
+        
+        self.backgroundColor = [UIColor COLOR_DE_RELLENO_DE_LA_VENTANA_POR_DEFECTO];
         
     }
     return self;
@@ -86,16 +80,31 @@
 }
 
 
-#pragma mark accesors
--(NSInteger) anchoDelSegmento{
-    return self.grosorDelSegmento;
-}
+
 
 #pragma mmark - Auxiliares de primer nivel
 
 -(void) dibujarNumero:(NSInteger)valor{
     self.valor = valor;
     [self setNeedsDisplay];
+}
+
+-(void) calcularPuntosDeDibujo{
+    self.esquinaSuperiorIzquierda = CGPointMake(self.grosorDelSegmento/2+self.separacionHorizontalDeLosSegmentosConLaVista,self.grosorDelSegmento/2+self.separacionVerticalDeLosSegmentosConLaVista);
+    
+    self.esquinaSuperiorDerecha = CGPointMake(self.bounds.size.width-self.grosorDelSegmento/2-self.separacionHorizontalDeLosSegmentosConLaVista, self.grosorDelSegmento/2+self.separacionVerticalDeLosSegmentosConLaVista);
+    
+    self.esquinaCentralIzquierda = CGPointMake(self.grosorDelSegmento/2+self.separacionHorizontalDeLosSegmentosConLaVista, self.bounds.size.height/2);
+    
+    self.esquinaCentralDerecha = CGPointMake(self.bounds.size.width-self.grosorDelSegmento/2-self.separacionHorizontalDeLosSegmentosConLaVista, self.frame.size.height/2);
+    
+    self.esquinaInferiorIzquierda = CGPointMake(self.grosorDelSegmento/2+self.separacionHorizontalDeLosSegmentosConLaVista, self.bounds.size.height-self.grosorDelSegmento/2-self.separacionVerticalDeLosSegmentosConLaVista);
+    
+    self.esquinaInferiorDerecha = CGPointMake(self.bounds.size.width-self.grosorDelSegmento/2-self.separacionHorizontalDeLosSegmentosConLaVista, self.frame.size.height-self.grosorDelSegmento/2-self.separacionVerticalDeLosSegmentosConLaVista);
+    
+    self.tamanoSegmentoHorizontal = CGPointMake(self.bounds.size.width-2*self.separacionHorizontalDeLosSegmentosConLaVista-2*self.grosorDelSegmento-2*self.separacionEntreSegmentos,self.grosorDelSegmento);
+    
+    self.tamanoSegmentoVertical = CGPointMake(self.grosorDelSegmento,self.bounds.size.height/2-self.separacionVerticalDeLosSegmentosConLaVista-1.5*self.grosorDelSegmento-2*self.separacionEntreSegmentos);
 }
 
 #pragma mark - Auxiliares de segundo nivel
@@ -237,7 +246,7 @@
     }
     path.lineWidth = self.grosorDelTrazo;
     [path stroke];
-    [self.colorDelRelleno setFill];
+    [self.colorDelRellenoDelSegmento setFill];
     [path fill];
     
     path = [UIBezierPath bezierPath];
@@ -255,7 +264,7 @@
     }
     path.lineWidth = self.grosorDelTrazo;
     [path stroke];
-    [self.colorDelRelleno setFill];
+    [self.colorDelRellenoDelSegmento setFill];
     [path fill];
 }
 
@@ -281,7 +290,7 @@
     }
     path.lineWidth = self.grosorDelTrazo;
     [path stroke];
-    [self.colorDelRelleno setFill];
+    [self.colorDelRellenoDelSegmento setFill];
     [path fill];
     
     path = [UIBezierPath bezierPath];
@@ -299,21 +308,16 @@
     }
     path.lineWidth = self.grosorDelTrazo;
     [path stroke];
-    [self.colorDelRelleno setFill];
+    [self.colorDelRellenoDelSegmento setFill];
     [path fill];
    }
 
 #pragma mark - Accesors
 
--(NSInteger) porcentajeDetTansparencia{
-    if (_porcentajeDetTansparencia == 0) {
-        _porcentajeDetTansparencia = 50;
-    }
-    return _porcentajeDetTansparencia/100;
-}
+
 -(NSInteger) grosorDelSegmento{
     if (_grosorDelSegmento==0) {
-        _grosorDelSegmento = 30;
+        _grosorDelSegmento = self.bounds.size.width/10;
     }
     return _grosorDelSegmento;
 }
@@ -323,26 +327,34 @@
     }
     return _separacionEntreSegmentos;
 }
--(NSInteger) separacionDeLosSegmentosConLaVista{
-    if (_separacionDeLosSegmentosConLaVista==0) {
-        _separacionDeLosSegmentosConLaVista = 10;
+-(NSInteger) separacionVerticalDeLosSegmentosConLaVista{
+    if (_separacionVerticalDeLosSegmentosConLaVista==0) {
+        _separacionVerticalDeLosSegmentosConLaVista = self.bounds.size.width/10;
     }
-    return _separacionDeLosSegmentosConLaVista;
+    return _separacionVerticalDeLosSegmentosConLaVista;
 }
+
+-(NSInteger) separacionHorizontalDeLosSegmentosConLaVista{
+    if (_separacionHorizontalDeLosSegmentosConLaVista==0) {
+        _separacionHorizontalDeLosSegmentosConLaVista = self.bounds.size.width/10;
+    }
+    return _separacionHorizontalDeLosSegmentosConLaVista;
+}
+
 -(UIColor *) colorDelTrazoDelBorde{
-    if (_colorDelTrazoDelBorde == nil) {
+    if (!_colorDelTrazoDelBorde ) {
         _colorDelTrazoDelBorde = [UIColor blackColor];
     }
     return _colorDelTrazoDelBorde;
 }
 -(UIColor *) colorDelTrazoDelBordeConLuz{
-    if (_colorDelTrazoDelBordeConLuz == nil) {
+    if (!_colorDelTrazoDelBordeConLuz ) {
         _colorDelTrazoDelBordeConLuz = [UIColor whiteColor];
     }
     return _colorDelTrazoDelBordeConLuz;
 }
 -(UIColor *) colorDelTrazoDelBordeConSombra{
-    if (_colorDelTrazoDelBordeConSombra==nil) {
+    if (!_colorDelTrazoDelBordeConSombra) {
         _colorDelTrazoDelBordeConSombra = [UIColor blackColor];
     }
     return _colorDelTrazoDelBordeConSombra;
@@ -353,16 +365,12 @@
     }
     return _grosorDelTrazo;
 }
--(UIColor *)colorDelRelleno{
-    if (_colorDelRelleno==nil) {
-        _colorDelRelleno = [UIColor redColor];
+-(UIColor *)colorDelRellenoDelSegmento{
+    if (_colorDelRellenoDelSegmento==nil) {
+        _colorDelRellenoDelSegmento = [UIColor redColor];
     }
-    return _colorDelRelleno;
+    return _colorDelRellenoDelSegmento;
 }
 
--(void) setEfecto3D:(bool)efecto3D{
-    _efecto3D = efecto3D;
-    self.establecidoElEfecto3D = true;
-}
 
 @end

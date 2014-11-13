@@ -23,7 +23,9 @@
 
 @implementation IRGEstadoDelJuegoAyuda
 #pragma mark Inicializadores
+
 //designated initizalizer
+
 -(instancetype) initConGestorDeEstados: (IRGGestorDeEstados *)gestorDeEstados
                                 delegado:(IRGVentanaPrincipalViewController *)sender{
     self = [super init];
@@ -43,7 +45,7 @@
 #pragma mark Accesors
 
 -(IRGNUmeroSieteSegmentosViewController *) sieteSegmentosViewController{
-    if (_sieteSegmentosViewController == nil){
+    if (!_sieteSegmentosViewController ){
         CGRect frame = CGRectMake(
                                   (self.delegado.view.frame.size.width-TAMANO_X_VENTANA_DISPLAY_SIETE_SEGMENTOS)/2,
                                   (self.delegado.view.frame.size.height -TAMANO_Y_VENTANA_DISPLAY_SIETE_SEGMENTOS)/2 ,
@@ -53,8 +55,7 @@
         _sieteSegmentosViewController = [[IRGNUmeroSieteSegmentosViewController alloc] initWithNibName:nil
                                                                                                 bundle:nil
                                                                                              withFrame:frame];
-        self.sieteSegmentosViewController.porcentajeDetTansparencia =0.5;
-        self.sieteSegmentosViewController.conEfecto3D = true;
+
     }
     return  _sieteSegmentosViewController;
 }
@@ -102,6 +103,17 @@
 
 - (void) anadirVistaSieteSegmentos{
     [self.delegado.view addSubview:self.sieteSegmentosViewController.view];
+    
+    [self.sieteSegmentosViewController establecerVentanaConTransparencia:.5
+                                                            colorDeFondo:[UIColor lightGrayColor]];
+/*
+    [self.sieteSegmentosViewController establecerSegmentoConGrosorDelTrazo:3
+                                                         grosorDelSegmento:50
+                                                  separacionEntreSegmentos:2
+                                           separacionDelSegmentoConLaVista:100
+                                                     colorDelTrazoDelBorde:[UIColor blackColor]
+                                                           colorDelRelleno:[UIColor redColor]];
+  */  
     self.sieteSegmentosViewController.valorADibujar = self.contador;
 
 }

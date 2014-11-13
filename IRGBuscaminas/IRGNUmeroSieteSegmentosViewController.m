@@ -11,7 +11,6 @@
 #define COLOR_DE_LA_VENTANA grayColor
 
 @interface IRGNUmeroSieteSegmentosViewController ()
-@property (nonatomic) NSInteger anchoDelSegmento;
 @property (nonatomic) IRGSieteSegmentos *vistaSieteSegmentos;
 @property (nonatomic) CGRect frameDeLaVista;
 
@@ -30,7 +29,7 @@
                             bundle:nibBundleOrNil];
     if (self){
         _frameDeLaVista = frame;
-    }
+          }
     return self;
 }
 
@@ -46,12 +45,7 @@
 
 #pragma mark Overrides
 -(void)loadView{
-    
     IRGSieteSegmentos * vista = [[IRGSieteSegmentos alloc]initWithFrame:self.frameDeLaVista];
-    vista.backgroundColor =[UIColor COLOR_DE_LA_VENTANA];
-    vista.alpha = self.porcentajeDetTansparencia;
-    vista.alpha = .5;
-    
     self.view = vista;
     self.vistaSieteSegmentos = vista;
 }
@@ -74,17 +68,37 @@
 }
 
 
-#pragma mark -accesosr
--(void) setPorcentajeDetTansparencia:(NSInteger)porcentajeDetTansparencia{
-    self.vistaSieteSegmentos.porcentajeDetTansparencia =porcentajeDetTansparencia;
-    self.vistaSieteSegmentos.alpha = self.vistaSieteSegmentos.porcentajeDetTansparencia;
+#pragma mark - Auxiliares nivel uno
+
+-(void) establecerEfecto3ConColorDelTrazoDelBordeConLuz:(UIColor *)colorDelTrazoDelBordeConLuz
+                     conColortDelTrazoDelBordeConSombra:(UIColor *)colorDelTrazoDelBordeConSombra{
+    self.vistaSieteSegmentos.efecto3D = true;
+    self.vistaSieteSegmentos.colorDelTrazoDelBordeConLuz =colorDelTrazoDelBordeConLuz;
+    self.vistaSieteSegmentos.colorDelTrazoDelBordeConSombra = colorDelTrazoDelBordeConSombra;
 }
 
--(void) setConEfecto3D:(bool)conEfecto3D{
-    self.vista.efecto3D = conEfecto3D;
+-(void) establecerSegmentoConGrosorDelTrazo:(NSInteger)grosorDelTrazo
+                          grosorDelSegmento:(NSInteger)grosorDelSegmento
+                   separacionEntreSegmentos:(NSInteger)separacionEntreSegmentos
+  separacionHorizontalDelSegmentoConLaVista:(NSInteger)separacionHorizontalDelSegmentoConLaVista
+    separacionVerticalDelSegmentoConLaVista:(NSInteger)separacionVerticalDelSegmentoConLaVista
+                      colorDelTrazoDelBorde:(UIColor *)colorDelTrazoDelBorde
+                            colorDelRelleno:(UIColor *)colorDelRelleno{
+
+    self.vistaSieteSegmentos.grosorDelTrazo = grosorDelTrazo;
+    self.vistaSieteSegmentos.grosorDelSegmento = grosorDelSegmento;
+    self.vistaSieteSegmentos.separacionEntreSegmentos = separacionEntreSegmentos;
+    self.vistaSieteSegmentos.separacionHorizontalDeLosSegmentosConLaVista = separacionHorizontalDelSegmentoConLaVista;
+    self.vistaSieteSegmentos.separacionVerticalDeLosSegmentosConLaVista = separacionVerticalDelSegmentoConLaVista;
+    self.vistaSieteSegmentos.colorDelTrazoDelBorde = colorDelTrazoDelBorde;
+    self.vistaSieteSegmentos.colorDelRellenoDelSegmento = colorDelRelleno;
+    [self.vistaSieteSegmentos calcularPuntosDeDibujo];
 }
 
--(NSInteger)porcentajeDetTansparencia{
-    return self.vistaSieteSegmentos.porcentajeDetTansparencia;
+- (void) establecerVentanaConTransparencia:(float)porcentajeDeTransparencia
+                              colorDeFondo:(UIColor *)colorDeFondo{
+    self.vistaSieteSegmentos.alpha = porcentajeDeTransparencia;
+    self.vistaSieteSegmentos.backgroundColor = colorDeFondo;
 }
+
 @end

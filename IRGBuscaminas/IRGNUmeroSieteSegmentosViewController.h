@@ -12,11 +12,23 @@
 @interface IRGNUmeroSieteSegmentosViewController : UIViewController
 @property (nonatomic) NSInteger valorADibujar;
 
-@property(nonatomic) NSInteger porcentajeDetTansparencia;
-@property(nonatomic) bool conEfecto3D;
 
 //designated initializer
 -(instancetype) initWithNibName:(NSString *)nibNameOrNil
                          bundle:(NSBundle *)nibBundleOrNil
                       withFrame:(CGRect) frame;
+
+-(void) establecerEfecto3ConColorDelTrazoDelBordeConLuz:(UIColor *)colorDelTrazoDelBordeConLuz
+                     conColortDelTrazoDelBordeConSombra:(UIColor *)colorDelTrazoDelBordeConSombra;
+
+-(void) establecerSegmentoConGrosorDelTrazo:(NSInteger)grosorDelTrazo
+                          grosorDelSegmento:(NSInteger)grosorDelSegmento
+                   separacionEntreSegmentos:(NSInteger)separacionEntreSegmentos
+  separacionHorizontalDelSegmentoConLaVista:(NSInteger)separacionHorizontalDelSegmentoConLaVista
+    separacionVerticalDelSegmentoConLaVista:(NSInteger)separacionVerticalDelSegmentoConLaVista
+                      colorDelTrazoDelBorde:(UIColor *)colorDelTrazoDelBorde
+                            colorDelRelleno:(UIColor *)colorDelRelleno;
+
+- (void) establecerVentanaConTransparencia:(float)porcentajeDeTransparencia
+                              colorDeFondo:(UIColor *)colorDeFondo;
 @end
