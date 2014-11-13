@@ -50,6 +50,7 @@
     IRGSieteSegmentos * vista = [[IRGSieteSegmentos alloc]initWithFrame:self.frameDeLaVista];
     vista.backgroundColor =[UIColor COLOR_DE_LA_VENTANA];
     vista.alpha = self.porcentajeDetTansparencia;
+    vista.alpha = .5;
     
     self.view = vista;
     self.vistaSieteSegmentos = vista;
@@ -77,6 +78,10 @@
 -(void) setPorcentajeDetTansparencia:(NSInteger)porcentajeDetTansparencia{
     self.vistaSieteSegmentos.porcentajeDetTansparencia =porcentajeDetTansparencia;
     self.vistaSieteSegmentos.alpha = self.vistaSieteSegmentos.porcentajeDetTansparencia;
+}
+
+-(void) setConEfecto3D:(bool)conEfecto3D{
+    self.vista.efecto3D = conEfecto3D;
 }
 
 -(NSInteger)porcentajeDetTansparencia{

@@ -54,6 +54,7 @@
                                                                                                 bundle:nil
                                                                                              withFrame:frame];
         self.sieteSegmentosViewController.porcentajeDetTansparencia =0.5;
+        self.sieteSegmentosViewController.conEfecto3D = true;
     }
     return  _sieteSegmentosViewController;
 }

@@ -13,6 +13,7 @@
 @property (nonatomic) NSInteger valorADibujar;
 
 @property(nonatomic) NSInteger porcentajeDetTansparencia;
+@property(nonatomic) bool conEfecto3D;
 
 //designated initializer
 -(instancetype) initWithNibName:(NSString *)nibNameOrNil
