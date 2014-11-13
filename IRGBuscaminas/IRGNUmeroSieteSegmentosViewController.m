@@ -8,26 +8,49 @@
 
 #import "IRGNUmeroSieteSegmentosViewController.h"
 #import "IRGSieteSegmentos.h"
+#define COLOR_DE_LA_VENTANA grayColor
+#define TRANSPARENCIA_DE_LA_VENTANA .5
 
 @interface IRGNUmeroSieteSegmentosViewController ()
 @property (nonatomic) NSInteger anchoDelSegmento;
 @property (nonatomic) IRGSieteSegmentos *vistaSieteSegmentos;
-
+@property (nonatomic) CGRect frameDeLaVista;
 
 @end
 
 @implementation IRGNUmeroSieteSegmentosViewController
 
+#pragma mark - Inicializadores
+
+//designated initializer
+-(instancetype) initWithNibName:(NSString *)nibNameOrNil
+                         bundle:(NSBundle *)nibBundleOrNil
+                      withFrame:(CGRect) frame{
+    
+    self = [super initWithNibName:nibNameOrNil
+                            bundle:nibBundleOrNil];
+    if (self){
+        _frameDeLaVista = frame;
+    }
+    return self;
+}
+
+
+-(instancetype) initWithNibName:(NSString *)nibNameOrNil
+                         bundle:(NSBundle *)nibBundleOrNil{
+    
+    return [self initWithNibName:nibNameOrNil
+                          bundle:nibBundleOrNil
+                       withFrame:[UIApplication sharedApplication].keyWindow.frame];
+};
+
+
+#pragma mark Overrides
 -(void)loadView{
-    CGRect frameDeLaVentana = [UIApplication sharedApplication].keyWindow.frame ;
-    CGFloat anchoVentana = frameDeLaVentana.size.width;
-    CGFloat altoVentana = frameDeLaVentana.size.height;
     
-    CGFloat anchoVista = anchoVentana/3;
-    
-    CGRect frame = CGRectMake(anchoVista,(altoVentana-anchoVista)/2,anchoVista,anchoVista);
-    IRGSieteSegmentos * vista = [[IRGSieteSegmentos alloc]initWithFrame:frame];
-    vista.backgroundColor =[UIColor clearColor];
+    IRGSieteSegmentos * vista = [[IRGSieteSegmentos alloc]initWithFrame:self.frameDeLaVista];
+    vista.backgroundColor =[UIColor COLOR_DE_LA_VENTANA];
+    vista.alpha = TRANSPARENCIA_DE_LA_VENTANA;
     
     self.view = vista;
     self.vistaSieteSegmentos = vista;

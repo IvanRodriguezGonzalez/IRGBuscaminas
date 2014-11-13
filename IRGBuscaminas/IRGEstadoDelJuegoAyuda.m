@@ -9,7 +9,9 @@
 #import "IRGEstadoDelJuegoAyuda.h"
 #import "IRGGestorDeEstados.h"
 #import "IRGNUmeroSieteSegmentosViewController.h"
-#define CUENTA_ATRAS 0
+#define CUENTA_ATRAS 9
+#define TAMANO_X_VENTANA_DISPLAY_SIETE_SEGMENTOS 200
+#define TAMANO_Y_VENTANA_DISPLAY_SIETE_SEGMENTOS 400
 
 @interface IRGEstadoDelJuegoAyuda()
 @property (nonatomic,strong) IRGVentanaPrincipalViewController *delegado;
@@ -42,7 +44,14 @@
 
 -(IRGNUmeroSieteSegmentosViewController *) sieteSegmentosViewController{
     if (_sieteSegmentosViewController == nil){
-        _sieteSegmentosViewController = [[IRGNUmeroSieteSegmentosViewController alloc] init];
+        CGRect frame = CGRectMake(
+                                  (self.delegado.view.frame.size.width-TAMANO_X_VENTANA_DISPLAY_SIETE_SEGMENTOS)/2,
+                                  (self.delegado.view.frame.size.height -TAMANO_Y_VENTANA_DISPLAY_SIETE_SEGMENTOS)/2 ,
+                                  TAMANO_X_VENTANA_DISPLAY_SIETE_SEGMENTOS,
+                                  TAMANO_Y_VENTANA_DISPLAY_SIETE_SEGMENTOS);
+        _sieteSegmentosViewController = [[IRGNUmeroSieteSegmentosViewController alloc] initWithNibName:nil
+                                                                                                bundle:nil
+                                                                                             withFrame:frame];
     }
     return  _sieteSegmentosViewController;
 }
@@ -83,8 +92,9 @@
     [NSException exceptionWithName:@"accion incorrecta" reason:@"El estado no la soporta" userInfo:nil];
     
 }
-
-
+-(void) accionPausar{
+    [NSException exceptionWithName:@"accion incorrecta" reason:@"El estado no la soporta" userInfo:nil];
+}
 #pragma mark auxiliares primer nivel
 
 - (void) anadirVistaSieteSegmentos{
@@ -101,8 +111,8 @@
 }
 
 - (void) descontarContador{
-    //self.contador = self.contador-1;
-    if (self.contador ==1){
+    self.contador = self.contador-1;
+    if (self.contador ==0){
         [self.relojDeEspera invalidate];
         [self ocultarAyuda];
         [self.delegado.view sendSubviewToBack:self.sieteSegmentosViewController.view];
@@ -110,7 +120,6 @@
         self.contador = CUENTA_ATRAS;
     }
     else {
-        self.delegado.etiquetaBotonPrincipal .text= [NSString stringWithFormat:@"%ld",(long)self.contador];
         self.sieteSegmentosViewController.valorADibujar = self.contador;
     }
 }
@@ -120,8 +129,6 @@
     [self.delegado ocultarMinas];
 }
 
--(void) accionPausar{
-    [NSException exceptionWithName:@"accion incorrecta" reason:@"El estado no la soporta" userInfo:nil];
-}
+
 
 @end

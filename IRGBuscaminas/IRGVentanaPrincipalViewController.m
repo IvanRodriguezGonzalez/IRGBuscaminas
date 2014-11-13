@@ -30,7 +30,6 @@
 
 @property (nonatomic) IRGGestorDeEstados *gestorDeEstados;
 
-@property (weak, nonatomic) IBOutlet UIView *canvas;
 @property (weak, nonatomic) IBOutlet UIProgressView *barraDeProgreso;
 @property (weak, nonatomic) IBOutlet UITextField *tiempoDeJuego;
 @property (weak, nonatomic) IBOutlet UIImageView *imagenDeBloqueo;

@@ -12,4 +12,8 @@
 @interface IRGNUmeroSieteSegmentosViewController : UIViewController
 @property (nonatomic) NSInteger valorADibujar;
 
+//designated initializer
+-(instancetype) initWithNibName:(NSString *)nibNameOrNil
+                         bundle:(NSBundle *)nibBundleOrNil
+                      withFrame:(CGRect) frame;
 @end

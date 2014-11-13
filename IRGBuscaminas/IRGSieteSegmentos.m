@@ -7,9 +7,13 @@
 //
 
 #import "IRGSieteSegmentos.h"
-#define anchoDelSegmentoPorDefecto 20
-#define espaciado 2
-#define marco 1
+#define GROSOR_DEL_SEGMENTO 30
+#define ESPACIADO_ENTRE_SEGMENTOS 3
+#define ESPACIADO_CON_LA_VENTANA 30
+#define GROSOR_DEL_TRAZO 2
+#define COLOR_BORDE_DEL_SEGMENTO_CON_LUZ whiteColor
+#define COLOR_BORDE_DEL_SEGMENTO_CON_SOMBRA blackColor
+#define COLOR_DE_RELLENO redColor
 
 @interface IRGSieteSegmentos ()
 @property (nonatomic) NSInteger anchoDelSegmento;
@@ -35,14 +39,14 @@
     if (self){
         CGRect a = self.frame;
         CGRect b = self.bounds;
-    self.esquinaSuperiorIzquierda = CGPointMake(anchoDelSegmentoPorDefecto/2+marco,anchoDelSegmentoPorDefecto/2+marco);
-    self.esquinaSuperiorDerecha = CGPointMake(self.bounds.size.width-anchoDelSegmentoPorDefecto/2-marco, anchoDelSegmentoPorDefecto/2+marco);
-    self.esquinaCentralIzquierda = CGPointMake(anchoDelSegmentoPorDefecto/2+marco, self.bounds.size.height/2);
-    self.esquinaCentralDerecha = CGPointMake(self.bounds.size.width-anchoDelSegmentoPorDefecto/2-marco, self.frame.size.height/2);
-    self.esquinaInferiorIzquierda = CGPointMake(anchoDelSegmentoPorDefecto/2+marco, self.bounds.size.height-anchoDelSegmentoPorDefecto/2-marco);
-    self.esquinaInferiorDerecha = CGPointMake(self.bounds.size.width-anchoDelSegmentoPorDefecto/2-marco, self.frame.size.height-anchoDelSegmentoPorDefecto/2-marco);
-        self.tamanoSegmentoHorizontal = CGPointMake(self.bounds.size.width-2*marco-2*anchoDelSegmentoPorDefecto-2*espaciado,anchoDelSegmentoPorDefecto);
-        self.tamanoSegmentoVertical = CGPointMake(anchoDelSegmentoPorDefecto,self.bounds.size.height/2-2*marco-1.5*anchoDelSegmentoPorDefecto-2*espaciado);
+    self.esquinaSuperiorIzquierda = CGPointMake(GROSOR_DEL_SEGMENTO/2+ESPACIADO_CON_LA_VENTANA,GROSOR_DEL_SEGMENTO/2+ESPACIADO_CON_LA_VENTANA);
+    self.esquinaSuperiorDerecha = CGPointMake(self.bounds.size.width-GROSOR_DEL_SEGMENTO/2-ESPACIADO_CON_LA_VENTANA, GROSOR_DEL_SEGMENTO/2+ESPACIADO_CON_LA_VENTANA);
+    self.esquinaCentralIzquierda = CGPointMake(GROSOR_DEL_SEGMENTO/2+ESPACIADO_CON_LA_VENTANA, self.bounds.size.height/2);
+    self.esquinaCentralDerecha = CGPointMake(self.bounds.size.width-GROSOR_DEL_SEGMENTO/2-ESPACIADO_CON_LA_VENTANA, self.frame.size.height/2);
+    self.esquinaInferiorIzquierda = CGPointMake(GROSOR_DEL_SEGMENTO/2+ESPACIADO_CON_LA_VENTANA, self.bounds.size.height-GROSOR_DEL_SEGMENTO/2-ESPACIADO_CON_LA_VENTANA);
+    self.esquinaInferiorDerecha = CGPointMake(self.bounds.size.width-GROSOR_DEL_SEGMENTO/2-ESPACIADO_CON_LA_VENTANA, self.frame.size.height-GROSOR_DEL_SEGMENTO/2-ESPACIADO_CON_LA_VENTANA);
+    self.tamanoSegmentoHorizontal = CGPointMake(self.bounds.size.width-2*ESPACIADO_CON_LA_VENTANA-2*GROSOR_DEL_SEGMENTO-2*ESPACIADO_ENTRE_SEGMENTOS,GROSOR_DEL_SEGMENTO);
+    self.tamanoSegmentoVertical = CGPointMake(GROSOR_DEL_SEGMENTO,self.bounds.size.height/2-ESPACIADO_CON_LA_VENTANA-1.5*GROSOR_DEL_SEGMENTO-2*ESPACIADO_ENTRE_SEGMENTOS);
         
     }
     return self;
@@ -91,7 +95,7 @@
 
 #pragma mark accesors
 -(NSInteger) anchoDelSegmento{
-    return anchoDelSegmentoPorDefecto;
+    return GROSOR_DEL_SEGMENTO;
 }
 
 #pragma mmark - Auxiliares de primer nivel
@@ -221,190 +225,71 @@
 #pragma mark - Auxiliares de cuarto nivel
 
 -(void) dibujaSegmentoHorizontalDesde:(CGPoint)puntoInicial{
-    
-    [[UIColor blueColor] setStroke];
-    [[UIColor clearColor] setFill];
-    
-    CGPoint puntoInicialAjustado = CGPointMake(puntoInicial.x+espaciado, puntoInicial.y);
-    CGPoint puntoFinalAjustado = CGPointMake(puntoInicialAjustado.x+anchoDelSegmentoPorDefecto+self.tamanoSegmentoHorizontal.x, puntoInicialAjustado.y);
-    CGPoint puntoDestinoSuperiorIncial = CGPointMake(puntoInicialAjustado.x+anchoDelSegmentoPorDefecto/2, puntoInicialAjustado.y-anchoDelSegmentoPorDefecto/2);
-    CGPoint puntoDestinoInferiorIncial = CGPointMake(puntoInicialAjustado.x+anchoDelSegmentoPorDefecto/2, puntoInicialAjustado.y+anchoDelSegmentoPorDefecto/2);
-    CGPoint puntoDestinoSuperiorFinal = CGPointMake(puntoFinalAjustado.x-anchoDelSegmentoPorDefecto/2, puntoInicialAjustado.y-anchoDelSegmentoPorDefecto/2);
-    CGPoint puntoDestinoInferiorFinal = CGPointMake(puntoFinalAjustado.x-anchoDelSegmentoPorDefecto/2, puntoInicialAjustado.y+anchoDelSegmentoPorDefecto/2);
+
+    CGPoint puntoInicialAjustado = CGPointMake(puntoInicial.x+ESPACIADO_ENTRE_SEGMENTOS, puntoInicial.y);
+    CGPoint puntoFinalAjustado = CGPointMake(puntoInicialAjustado.x+GROSOR_DEL_SEGMENTO+self.tamanoSegmentoHorizontal.x, puntoInicialAjustado.y);
+    CGPoint puntoDestinoSuperiorIncial = CGPointMake(puntoInicialAjustado.x+GROSOR_DEL_SEGMENTO/2, puntoInicialAjustado.y-GROSOR_DEL_SEGMENTO/2);
+    CGPoint puntoDestinoInferiorIncial = CGPointMake(puntoInicialAjustado.x+GROSOR_DEL_SEGMENTO/2, puntoInicialAjustado.y+GROSOR_DEL_SEGMENTO/2);
+    CGPoint puntoDestinoSuperiorFinal = CGPointMake(puntoFinalAjustado.x-GROSOR_DEL_SEGMENTO/2, puntoInicialAjustado.y-GROSOR_DEL_SEGMENTO/2);
+    CGPoint puntoDestinoInferiorFinal = CGPointMake(puntoFinalAjustado.x-GROSOR_DEL_SEGMENTO/2, puntoInicialAjustado.y+GROSOR_DEL_SEGMENTO/2);
     
     UIBezierPath * path = [UIBezierPath bezierPath];
-
     [path moveToPoint:puntoInicialAjustado];
     [path addLineToPoint:puntoDestinoSuperiorIncial];
     [path addLineToPoint:puntoDestinoSuperiorFinal];
+
+    [[UIColor COLOR_BORDE_DEL_SEGMENTO_CON_LUZ] setStroke];
+    path.lineWidth = GROSOR_DEL_TRAZO;
+    [path stroke];
+    [[UIColor COLOR_DE_RELLENO] setFill];
+    [path fill];
+    
+    path = [UIBezierPath bezierPath];
+    [path moveToPoint:puntoDestinoSuperiorFinal];
     [path addLineToPoint:puntoFinalAjustado];
     [path addLineToPoint:puntoDestinoInferiorFinal];
     [path addLineToPoint:puntoDestinoInferiorIncial];
     [path addLineToPoint:puntoInicialAjustado];
-    
+
+    [[UIColor COLOR_BORDE_DEL_SEGMENTO_CON_SOMBRA] setStroke];
+    path.lineWidth = GROSOR_DEL_TRAZO;
     [path stroke];
+    [[UIColor COLOR_DE_RELLENO] setFill];
     [path fill];
-    
-    
 }
 
 -(void) dibujaSegmentoVerticalDesde:(CGPoint)puntoInicial{
-
-    [[UIColor blueColor] setStroke];
-    [[UIColor clearColor] setFill];
-
-    CGPoint puntoInicialAjustado = CGPointMake(puntoInicial.x, puntoInicial.y+espaciado);
-    CGRect  linea = CGRectMake(puntoInicialAjustado.x-anchoDelSegmentoPorDefecto/2,
-                               puntoInicialAjustado.y+anchoDelSegmentoPorDefecto/2,
-                               self.tamanoSegmentoVertical.x,
-                               self.tamanoSegmentoVertical.y);
-    UIBezierPath * path = [UIBezierPath bezierPathWithRect:linea];
-    [path moveToPoint:puntoInicial];
-    [path stroke];
-    [path fill];
-
     
-    // dibujo el pico superior
-    path = [UIBezierPath bezierPath];
-   
+    CGPoint puntoInicialAjustado = CGPointMake(puntoInicial.x, puntoInicial.y+ESPACIADO_ENTRE_SEGMENTOS);
+    CGPoint puntoFinalAjustado = CGPointMake(puntoInicialAjustado.x, puntoInicialAjustado.y+GROSOR_DEL_SEGMENTO+self.tamanoSegmentoVertical.y);
+    CGPoint puntoDestinoIzquierdaIncial = CGPointMake(puntoInicialAjustado.x-GROSOR_DEL_SEGMENTO/2, puntoInicialAjustado.y+GROSOR_DEL_SEGMENTO/2);
+    CGPoint puntoDestinoDerechoIncial = CGPointMake(puntoInicialAjustado.x+GROSOR_DEL_SEGMENTO/2, puntoInicialAjustado.y+GROSOR_DEL_SEGMENTO/2);
+    CGPoint puntoDestinoIzquierdaFinal = CGPointMake(puntoFinalAjustado.x-GROSOR_DEL_SEGMENTO/2, puntoFinalAjustado.y-GROSOR_DEL_SEGMENTO/2);
+    CGPoint puntoDestinoDerechoFinal = CGPointMake(puntoFinalAjustado.x+GROSOR_DEL_SEGMENTO/2, puntoFinalAjustado.y-GROSOR_DEL_SEGMENTO/2);
+    
+    UIBezierPath * path = [UIBezierPath bezierPath];
+    
     [path moveToPoint:puntoInicialAjustado];
-    
-    CGPoint puntoDestinoIzquierdaIncial = CGPointMake(puntoInicialAjustado.x-anchoDelSegmentoPorDefecto/2, puntoInicialAjustado.y+anchoDelSegmentoPorDefecto/2);
     [path addLineToPoint:puntoDestinoIzquierdaIncial];
-    
-    CGPoint puntoDestinoDerechoIncial = CGPointMake(puntoInicialAjustado.x+anchoDelSegmentoPorDefecto/2, puntoInicialAjustado.y+anchoDelSegmentoPorDefecto/2);
-    [path addLineToPoint:puntoDestinoDerechoIncial];
-    
-    [path addLineToPoint:puntoInicialAjustado];
-    [path stroke];
-    [path fill];
-    
-    // dibujo el pico inferior
-    
-    CGPoint puntoFinalAjustado = CGPointMake(puntoInicialAjustado.x, puntoInicialAjustado.y+anchoDelSegmentoPorDefecto+self.tamanoSegmentoVertical.y);
-
-    path = [UIBezierPath bezierPath];
-    [path moveToPoint:puntoFinalAjustado];
-    
-    CGPoint puntoDestinoIzquierdaFinal = CGPointMake(puntoFinalAjustado.x-anchoDelSegmentoPorDefecto/2, puntoFinalAjustado.y-anchoDelSegmentoPorDefecto/2);
     [path addLineToPoint:puntoDestinoIzquierdaFinal];
     
-    CGPoint puntoDestinoDerechoFinal = CGPointMake(puntoFinalAjustado.x+anchoDelSegmentoPorDefecto/2, puntoFinalAjustado.y-anchoDelSegmentoPorDefecto/2);
-    [path addLineToPoint:puntoDestinoDerechoFinal];
-    
-    [path addLineToPoint:puntoFinalAjustado];
+    [[UIColor COLOR_BORDE_DEL_SEGMENTO_CON_LUZ] setStroke];
+    path.lineWidth = GROSOR_DEL_TRAZO;
     [path stroke];
+    [[UIColor COLOR_DE_RELLENO] setFill];
     [path fill];
     
-}
-
-/*
- -(void) dibujaSegmentoHorizontalDesde:(CGPoint)puntoInicial{
- 
- [[UIColor blueColor] setStroke];
- [[UIColor clearColor] setFill];
- 
- 
- CGPoint puntoInicialAjustado = CGPointMake(puntoInicial.x+espaciado, puntoInicial.y);
- 
- CGRect  linea = CGRectMake(puntoInicialAjustado.x+anchoDelSegmentoPorDefecto/2
- ,puntoInicialAjustado.y-anchoDelSegmentoPorDefecto/2
- ,self.tamanoSegmentoHorizontal.x
- ,self.tamanoSegmentoHorizontal.y);
- UIBezierPath * path = [UIBezierPath bezierPathWithRect:linea];
- [path stroke];
- [path fill];
- 
- 
- 
- // dibujo el pic inicial
- path = [UIBezierPath bezierPath];
- 
- [path moveToPoint:puntoInicialAjustado];
- 
- CGPoint puntoDestinoSuperiorIncial = CGPointMake(puntoInicialAjustado.x+anchoDelSegmentoPorDefecto/2, puntoInicialAjustado.y-anchoDelSegmentoPorDefecto/2);
- [path addLineToPoint:puntoDestinoSuperiorIncial];
- 
- CGPoint puntoDestinoInferiorIncial = CGPointMake(puntoInicialAjustado.x+anchoDelSegmentoPorDefecto/2, puntoInicialAjustado.y+anchoDelSegmentoPorDefecto/2);
- [path addLineToPoint:puntoDestinoInferiorIncial];
- 
- [path addLineToPoint:puntoInicialAjustado];
- [path stroke];
- [path fill];
- 
- // dibujo el pico final
- 
- CGPoint puntoFinalAjustado = CGPointMake(puntoInicialAjustado.x+anchoDelSegmentoPorDefecto+self.tamanoSegmentoHorizontal.x, puntoInicialAjustado.y);
- 
- path = [UIBezierPath bezierPath];
- [path moveToPoint:puntoFinalAjustado];
- 
- CGPoint puntoDestinoSuperiorFinal = CGPointMake(puntoFinalAjustado.x-anchoDelSegmentoPorDefecto/2, puntoInicialAjustado.y-anchoDelSegmentoPorDefecto/2);
- [path addLineToPoint:puntoDestinoSuperiorFinal];
- 
- CGPoint puntoDestinoInferiorFinal = CGPointMake(puntoFinalAjustado.x-anchoDelSegmentoPorDefecto/2, puntoInicialAjustado.y+anchoDelSegmentoPorDefecto/2);
- [path addLineToPoint:puntoDestinoInferiorFinal];
- 
- [path addLineToPoint:puntoFinalAjustado];
- [path stroke];
- [path fill];
- 
- 
- 
- 
- }
- 
- -(void) dibujaSegmentoVerticalDesde:(CGPoint)puntoInicial{
- 
- [[UIColor blueColor] setStroke];
- [[UIColor clearColor] setFill];
- 
- CGPoint puntoInicialAjustado = CGPointMake(puntoInicial.x, puntoInicial.y+espaciado);
- CGRect  linea = CGRectMake(puntoInicialAjustado.x-anchoDelSegmentoPorDefecto/2,
- puntoInicialAjustado.y+anchoDelSegmentoPorDefecto/2,
- self.tamanoSegmentoVertical.x,
- self.tamanoSegmentoVertical.y);
- UIBezierPath * path = [UIBezierPath bezierPathWithRect:linea];
- [path moveToPoint:puntoInicial];
- [path stroke];
- [path fill];
- 
- 
- // dibujo el pico superior
- path = [UIBezierPath bezierPath];
- 
- [path moveToPoint:puntoInicialAjustado];
- 
- CGPoint puntoDestinoIzquierdaIncial = CGPointMake(puntoInicialAjustado.x-anchoDelSegmentoPorDefecto/2, puntoInicialAjustado.y+anchoDelSegmentoPorDefecto/2);
- [path addLineToPoint:puntoDestinoIzquierdaIncial];
- 
- CGPoint puntoDestinoDerechoIncial = CGPointMake(puntoInicialAjustado.x+anchoDelSegmentoPorDefecto/2, puntoInicialAjustado.y+anchoDelSegmentoPorDefecto/2);
- [path addLineToPoint:puntoDestinoDerechoIncial];
- 
- [path addLineToPoint:puntoInicialAjustado];
- [path stroke];
- [path fill];
- 
- // dibujo el pico inferior
- 
- CGPoint puntoFinalAjustado = CGPointMake(puntoInicialAjustado.x, puntoInicialAjustado.y+anchoDelSegmentoPorDefecto+self.tamanoSegmentoVertical.y);
- 
- path = [UIBezierPath bezierPath];
- [path moveToPoint:puntoFinalAjustado];
- 
- CGPoint puntoDestinoIzquierdaFinal = CGPointMake(puntoFinalAjustado.x-anchoDelSegmentoPorDefecto/2, puntoFinalAjustado.y-anchoDelSegmentoPorDefecto/2);
- [path addLineToPoint:puntoDestinoIzquierdaFinal];
- 
- CGPoint puntoDestinoDerechoFinal = CGPointMake(puntoFinalAjustado.x+anchoDelSegmentoPorDefecto/2, puntoFinalAjustado.y-anchoDelSegmentoPorDefecto/2);
- [path addLineToPoint:puntoDestinoDerechoFinal];
- 
- [path addLineToPoint:puntoFinalAjustado];
- [path stroke];
- [path fill];
- 
- }
- 
- 
-*/
-
+    path = [UIBezierPath bezierPath];
+    [path moveToPoint:puntoDestinoIzquierdaFinal];
+    [path addLineToPoint:puntoFinalAjustado];
+    [path addLineToPoint:puntoDestinoDerechoFinal];
+    [path addLineToPoint:puntoDestinoDerechoIncial];
+    [path addLineToPoint:puntoInicialAjustado];
+    
+    [[UIColor COLOR_BORDE_DEL_SEGMENTO_CON_SOMBRA] setStroke];
+    path.lineWidth = GROSOR_DEL_TRAZO;
+    [path stroke];
+    [[UIColor COLOR_DE_RELLENO] setFill];
+    [path fill];
+   }
 @end
