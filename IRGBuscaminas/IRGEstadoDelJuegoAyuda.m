@@ -51,7 +51,7 @@
                                   (self.delegado.view.frame.size.height -TAMANO_Y_VENTANA_DISPLAY_SIETE_SEGMENTOS)/2 ,
                                   TAMANO_X_VENTANA_DISPLAY_SIETE_SEGMENTOS,
                                   TAMANO_Y_VENTANA_DISPLAY_SIETE_SEGMENTOS);
-        frame = self.delegado.canvas.frame;
+        //frame = self.delegado.canvas.frame;
         _sieteSegmentosViewController = [[IRGNUmeroSieteSegmentosViewController alloc] initWithNibName:nil
                                                                                                 bundle:nil
                                                                                              withFrame:frame];
@@ -105,15 +105,17 @@
     [self.delegado.view addSubview:self.sieteSegmentosViewController.view];
     
     [self.sieteSegmentosViewController establecerVentanaConTransparencia:.5
-                                                            colorDeFondo:[UIColor lightGrayColor]];
-/*
+                                                            colorDeFondo:[UIColor clearColor]];
+
     [self.sieteSegmentosViewController establecerSegmentoConGrosorDelTrazo:3
-                                                         grosorDelSegmento:50
+                                                         grosorDelSegmento:30
                                                   separacionEntreSegmentos:2
-                                           separacionDelSegmentoConLaVista:100
+                                           separacionHorizontalDelSegmentoConLaVista:20                                   separacionVerticalDelSegmentoConLaVista:40
                                                      colorDelTrazoDelBorde:[UIColor blackColor]
                                                            colorDelRelleno:[UIColor redColor]];
-  */  
+    [self.sieteSegmentosViewController establecerEfecto3ConColorDelTrazoDelBordeConLuz:[UIColor whiteColor]
+                                                    conColortDelTrazoDelBordeConSombra:[UIColor blackColor]];
+  
     self.sieteSegmentosViewController.valorADibujar = self.contador;
 
 }

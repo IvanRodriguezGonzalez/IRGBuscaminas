@@ -25,13 +25,13 @@
             shouldBeEnabled = "Yes"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
-            filePath = "IRGBuscaminas/IRGSieteSegmentos.m"
-            timestampString = "437579178.875453"
+            filePath = "IRGBuscaminas/IRGNUmeroSieteSegmentosViewController.m"
+            timestampString = "437579225.301874"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "363"
-            endingLineNumber = "363"
-            landmarkName = "-setEfecto3D:"
+            startingLineNumber = "83"
+            endingLineNumber = "83"
+            landmarkName = "-establecerSegmentoConGrosorDelTrazo:grosorDelSegmento:separacionEntreSegmentos:separacionHorizontalDelSegmentoConLaVista:separacionVerticalDelSegmentoConLaVista:colorDelTrazoDelBorde:colorDelRelleno:"
             landmarkType = "5">
          </BreakpointContent>
       </BreakpointProxy>
@@ -41,13 +41,13 @@
             shouldBeEnabled = "Yes"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
-            filePath = "IRGBuscaminas/IRGNUmeroSieteSegmentosViewController.m"
-            timestampString = "437579225.301874"
+            filePath = "IRGBuscaminas/IRGEstadoDelJuegoAyuda.m"
+            timestampString = "437615187.127099"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "83"
-            endingLineNumber = "83"
-            landmarkName = "-setConEfecto3D:"
+            startingLineNumber = "113"
+            endingLineNumber = "113"
+            landmarkName = "-anadirVistaSieteSegmentos"
             landmarkType = "5">
          </BreakpointContent>
       </BreakpointProxy>
