@@ -9,7 +9,6 @@
 #import "IRGNUmeroSieteSegmentosViewController.h"
 #import "IRGSieteSegmentos.h"
 #define COLOR_DE_LA_VENTANA grayColor
-#define TRANSPARENCIA_DE_LA_VENTANA .5
 
 @interface IRGNUmeroSieteSegmentosViewController ()
 @property (nonatomic) NSInteger anchoDelSegmento;
@@ -50,7 +49,7 @@
     
     IRGSieteSegmentos * vista = [[IRGSieteSegmentos alloc]initWithFrame:self.frameDeLaVista];
     vista.backgroundColor =[UIColor COLOR_DE_LA_VENTANA];
-    vista.alpha = TRANSPARENCIA_DE_LA_VENTANA;
+    vista.alpha = self.porcentajeDetTansparencia;
     
     self.view = vista;
     self.vistaSieteSegmentos = vista;
@@ -73,4 +72,14 @@
     [self.vistaSieteSegmentos dibujarNumero:valorADibujar];
 }
 
+
+#pragma mark -accesosr
+-(void) setPorcentajeDetTansparencia:(NSInteger)porcentajeDetTansparencia{
+    self.vistaSieteSegmentos.porcentajeDetTansparencia =porcentajeDetTansparencia;
+    self.vistaSieteSegmentos.alpha = self.vistaSieteSegmentos.porcentajeDetTansparencia;
+}
+
+-(NSInteger)porcentajeDetTansparencia{
+    return self.vistaSieteSegmentos.porcentajeDetTansparencia;
+}
 @end

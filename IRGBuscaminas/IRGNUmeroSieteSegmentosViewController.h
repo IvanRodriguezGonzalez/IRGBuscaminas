@@ -12,6 +12,8 @@
 @interface IRGNUmeroSieteSegmentosViewController : UIViewController
 @property (nonatomic) NSInteger valorADibujar;
 
+@property(nonatomic) NSInteger porcentajeDetTansparencia;
+
 //designated initializer
 -(instancetype) initWithNibName:(NSString *)nibNameOrNil
                          bundle:(NSBundle *)nibBundleOrNil

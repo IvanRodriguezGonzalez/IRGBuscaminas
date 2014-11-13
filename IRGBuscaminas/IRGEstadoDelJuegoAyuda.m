@@ -49,9 +49,11 @@
                                   (self.delegado.view.frame.size.height -TAMANO_Y_VENTANA_DISPLAY_SIETE_SEGMENTOS)/2 ,
                                   TAMANO_X_VENTANA_DISPLAY_SIETE_SEGMENTOS,
                                   TAMANO_Y_VENTANA_DISPLAY_SIETE_SEGMENTOS);
+        frame = self.delegado.canvas.frame;
         _sieteSegmentosViewController = [[IRGNUmeroSieteSegmentosViewController alloc] initWithNibName:nil
                                                                                                 bundle:nil
                                                                                              withFrame:frame];
+        self.sieteSegmentosViewController.porcentajeDetTansparencia =0.5;
     }
     return  _sieteSegmentosViewController;
 }

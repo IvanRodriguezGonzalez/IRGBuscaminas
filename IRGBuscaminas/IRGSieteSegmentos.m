@@ -7,13 +7,6 @@
 //
 
 #import "IRGSieteSegmentos.h"
-#define GROSOR_DEL_SEGMENTO 30
-#define ESPACIADO_ENTRE_SEGMENTOS 3
-#define ESPACIADO_CON_LA_VENTANA 30
-#define GROSOR_DEL_TRAZO 2
-#define COLOR_BORDE_DEL_SEGMENTO_CON_LUZ whiteColor
-#define COLOR_BORDE_DEL_SEGMENTO_CON_SOMBRA blackColor
-#define COLOR_DE_RELLENO redColor
 
 @interface IRGSieteSegmentos ()
 @property (nonatomic) NSInteger anchoDelSegmento;
@@ -27,6 +20,7 @@
 @property (nonatomic) CGPoint tamanoSegmentoHorizontal;
 @property (nonatomic) CGPoint tamanoSegmentoVertical;
 
+@property (nonatomic) bool establecidoElEfecto3D;
 @end
 
 @implementation IRGSieteSegmentos
@@ -37,16 +31,15 @@
 -(instancetype) initWithFrame:(CGRect)frame{
     self = [super initWithFrame:frame];
     if (self){
-        CGRect a = self.frame;
-        CGRect b = self.bounds;
-    self.esquinaSuperiorIzquierda = CGPointMake(GROSOR_DEL_SEGMENTO/2+ESPACIADO_CON_LA_VENTANA,GROSOR_DEL_SEGMENTO/2+ESPACIADO_CON_LA_VENTANA);
-    self.esquinaSuperiorDerecha = CGPointMake(self.bounds.size.width-GROSOR_DEL_SEGMENTO/2-ESPACIADO_CON_LA_VENTANA, GROSOR_DEL_SEGMENTO/2+ESPACIADO_CON_LA_VENTANA);
-    self.esquinaCentralIzquierda = CGPointMake(GROSOR_DEL_SEGMENTO/2+ESPACIADO_CON_LA_VENTANA, self.bounds.size.height/2);
-    self.esquinaCentralDerecha = CGPointMake(self.bounds.size.width-GROSOR_DEL_SEGMENTO/2-ESPACIADO_CON_LA_VENTANA, self.frame.size.height/2);
-    self.esquinaInferiorIzquierda = CGPointMake(GROSOR_DEL_SEGMENTO/2+ESPACIADO_CON_LA_VENTANA, self.bounds.size.height-GROSOR_DEL_SEGMENTO/2-ESPACIADO_CON_LA_VENTANA);
-    self.esquinaInferiorDerecha = CGPointMake(self.bounds.size.width-GROSOR_DEL_SEGMENTO/2-ESPACIADO_CON_LA_VENTANA, self.frame.size.height-GROSOR_DEL_SEGMENTO/2-ESPACIADO_CON_LA_VENTANA);
-    self.tamanoSegmentoHorizontal = CGPointMake(self.bounds.size.width-2*ESPACIADO_CON_LA_VENTANA-2*GROSOR_DEL_SEGMENTO-2*ESPACIADO_ENTRE_SEGMENTOS,GROSOR_DEL_SEGMENTO);
-    self.tamanoSegmentoVertical = CGPointMake(GROSOR_DEL_SEGMENTO,self.bounds.size.height/2-ESPACIADO_CON_LA_VENTANA-1.5*GROSOR_DEL_SEGMENTO-2*ESPACIADO_ENTRE_SEGMENTOS);
+
+    self.esquinaSuperiorIzquierda = CGPointMake(self.grosorDelSegmento/2+self.separacionDeLosSegmentosConLaVista,self.grosorDelSegmento/2+self.separacionDeLosSegmentosConLaVista);
+    self.esquinaSuperiorDerecha = CGPointMake(self.bounds.size.width-self.grosorDelSegmento/2-self.separacionDeLosSegmentosConLaVista, self.grosorDelSegmento/2+self.separacionDeLosSegmentosConLaVista);
+    self.esquinaCentralIzquierda = CGPointMake(self.grosorDelSegmento/2+self.separacionDeLosSegmentosConLaVista, self.bounds.size.height/2);
+    self.esquinaCentralDerecha = CGPointMake(self.bounds.size.width-self.grosorDelSegmento/2-self.separacionDeLosSegmentosConLaVista, self.frame.size.height/2);
+    self.esquinaInferiorIzquierda = CGPointMake(self.grosorDelSegmento/2+self.separacionDeLosSegmentosConLaVista, self.bounds.size.height-self.grosorDelSegmento/2-self.separacionDeLosSegmentosConLaVista);
+    self.esquinaInferiorDerecha = CGPointMake(self.bounds.size.width-self.grosorDelSegmento/2-self.separacionDeLosSegmentosConLaVista, self.frame.size.height-self.grosorDelSegmento/2-self.separacionDeLosSegmentosConLaVista);
+    self.tamanoSegmentoHorizontal = CGPointMake(self.bounds.size.width-2*self.separacionDeLosSegmentosConLaVista-2*self.grosorDelSegmento-2*self.separacionEntreSegmentos,self.grosorDelSegmento);
+    self.tamanoSegmentoVertical = CGPointMake(self.grosorDelSegmento,self.bounds.size.height/2-self.separacionDeLosSegmentosConLaVista-1.5*self.grosorDelSegmento-2*self.separacionEntreSegmentos);
         
     }
     return self;
@@ -95,7 +88,7 @@
 
 #pragma mark accesors
 -(NSInteger) anchoDelSegmento{
-    return GROSOR_DEL_SEGMENTO;
+    return self.grosorDelSegmento;
 }
 
 #pragma mmark - Auxiliares de primer nivel
@@ -221,27 +214,30 @@
 
 
 
-
 #pragma mark - Auxiliares de cuarto nivel
 
 -(void) dibujaSegmentoHorizontalDesde:(CGPoint)puntoInicial{
 
-    CGPoint puntoInicialAjustado = CGPointMake(puntoInicial.x+ESPACIADO_ENTRE_SEGMENTOS, puntoInicial.y);
-    CGPoint puntoFinalAjustado = CGPointMake(puntoInicialAjustado.x+GROSOR_DEL_SEGMENTO+self.tamanoSegmentoHorizontal.x, puntoInicialAjustado.y);
-    CGPoint puntoDestinoSuperiorIncial = CGPointMake(puntoInicialAjustado.x+GROSOR_DEL_SEGMENTO/2, puntoInicialAjustado.y-GROSOR_DEL_SEGMENTO/2);
-    CGPoint puntoDestinoInferiorIncial = CGPointMake(puntoInicialAjustado.x+GROSOR_DEL_SEGMENTO/2, puntoInicialAjustado.y+GROSOR_DEL_SEGMENTO/2);
-    CGPoint puntoDestinoSuperiorFinal = CGPointMake(puntoFinalAjustado.x-GROSOR_DEL_SEGMENTO/2, puntoInicialAjustado.y-GROSOR_DEL_SEGMENTO/2);
-    CGPoint puntoDestinoInferiorFinal = CGPointMake(puntoFinalAjustado.x-GROSOR_DEL_SEGMENTO/2, puntoInicialAjustado.y+GROSOR_DEL_SEGMENTO/2);
+    CGPoint puntoInicialAjustado = CGPointMake(puntoInicial.x+self.separacionEntreSegmentos, puntoInicial.y);
+    CGPoint puntoFinalAjustado = CGPointMake(puntoInicialAjustado.x+self.grosorDelSegmento+self.tamanoSegmentoHorizontal.x, puntoInicialAjustado.y);
+    CGPoint puntoDestinoSuperiorIncial = CGPointMake(puntoInicialAjustado.x+self.grosorDelSegmento/2, puntoInicialAjustado.y-self.grosorDelSegmento /2);
+    CGPoint puntoDestinoInferiorIncial = CGPointMake(puntoInicialAjustado.x+self.grosorDelSegmento/2, puntoInicialAjustado.y+self.grosorDelSegmento/2);
+    CGPoint puntoDestinoSuperiorFinal = CGPointMake(puntoFinalAjustado.x-self.grosorDelSegmento/2, puntoInicialAjustado.y-self.grosorDelSegmento/2);
+    CGPoint puntoDestinoInferiorFinal = CGPointMake(puntoFinalAjustado.x-self.grosorDelSegmento/2, puntoInicialAjustado.y+self.grosorDelSegmento/2);
     
     UIBezierPath * path = [UIBezierPath bezierPath];
     [path moveToPoint:puntoInicialAjustado];
     [path addLineToPoint:puntoDestinoSuperiorIncial];
     [path addLineToPoint:puntoDestinoSuperiorFinal];
-
-    [[UIColor COLOR_BORDE_DEL_SEGMENTO_CON_LUZ] setStroke];
-    path.lineWidth = GROSOR_DEL_TRAZO;
+    if (self.efecto3D){
+        [self.colorDelTrazoDelBordeConLuz setStroke];
+    }
+    else {
+        [self.colorDelTrazoDelBorde setStroke];
+    }
+    path.lineWidth = self.grosorDelTrazo;
     [path stroke];
-    [[UIColor COLOR_DE_RELLENO] setFill];
+    [self.colorDelRelleno setFill];
     [path fill];
     
     path = [UIBezierPath bezierPath];
@@ -251,32 +247,41 @@
     [path addLineToPoint:puntoDestinoInferiorIncial];
     [path addLineToPoint:puntoInicialAjustado];
 
-    [[UIColor COLOR_BORDE_DEL_SEGMENTO_CON_SOMBRA] setStroke];
-    path.lineWidth = GROSOR_DEL_TRAZO;
+    if (self.efecto3D){
+        [self.colorDelTrazoDelBordeConSombra setStroke];
+    }
+    else {
+        [self.colorDelTrazoDelBorde setStroke];
+    }
+    path.lineWidth = self.grosorDelTrazo;
     [path stroke];
-    [[UIColor COLOR_DE_RELLENO] setFill];
+    [self.colorDelRelleno setFill];
     [path fill];
 }
 
 -(void) dibujaSegmentoVerticalDesde:(CGPoint)puntoInicial{
     
-    CGPoint puntoInicialAjustado = CGPointMake(puntoInicial.x, puntoInicial.y+ESPACIADO_ENTRE_SEGMENTOS);
-    CGPoint puntoFinalAjustado = CGPointMake(puntoInicialAjustado.x, puntoInicialAjustado.y+GROSOR_DEL_SEGMENTO+self.tamanoSegmentoVertical.y);
-    CGPoint puntoDestinoIzquierdaIncial = CGPointMake(puntoInicialAjustado.x-GROSOR_DEL_SEGMENTO/2, puntoInicialAjustado.y+GROSOR_DEL_SEGMENTO/2);
-    CGPoint puntoDestinoDerechoIncial = CGPointMake(puntoInicialAjustado.x+GROSOR_DEL_SEGMENTO/2, puntoInicialAjustado.y+GROSOR_DEL_SEGMENTO/2);
-    CGPoint puntoDestinoIzquierdaFinal = CGPointMake(puntoFinalAjustado.x-GROSOR_DEL_SEGMENTO/2, puntoFinalAjustado.y-GROSOR_DEL_SEGMENTO/2);
-    CGPoint puntoDestinoDerechoFinal = CGPointMake(puntoFinalAjustado.x+GROSOR_DEL_SEGMENTO/2, puntoFinalAjustado.y-GROSOR_DEL_SEGMENTO/2);
+    CGPoint puntoInicialAjustado = CGPointMake(puntoInicial.x, puntoInicial.y+self.separacionEntreSegmentos);
+    CGPoint puntoFinalAjustado = CGPointMake(puntoInicialAjustado.x, puntoInicialAjustado.y+self.grosorDelSegmento+self.tamanoSegmentoVertical.y);
+    CGPoint puntoDestinoIzquierdaIncial = CGPointMake(puntoInicialAjustado.x-self.grosorDelSegmento/2, puntoInicialAjustado.y+self.grosorDelSegmento/2);
+    CGPoint puntoDestinoDerechoIncial = CGPointMake(puntoInicialAjustado.x+self.grosorDelSegmento/2, puntoInicialAjustado.y+self.grosorDelSegmento/2);
+    CGPoint puntoDestinoIzquierdaFinal = CGPointMake(puntoFinalAjustado.x-self.grosorDelSegmento/2, puntoFinalAjustado.y-self.grosorDelSegmento/2);
+    CGPoint puntoDestinoDerechoFinal = CGPointMake(puntoFinalAjustado.x+self.grosorDelSegmento/2, puntoFinalAjustado.y-self.grosorDelSegmento/2);
     
     UIBezierPath * path = [UIBezierPath bezierPath];
     
     [path moveToPoint:puntoInicialAjustado];
     [path addLineToPoint:puntoDestinoIzquierdaIncial];
     [path addLineToPoint:puntoDestinoIzquierdaFinal];
-    
-    [[UIColor COLOR_BORDE_DEL_SEGMENTO_CON_LUZ] setStroke];
-    path.lineWidth = GROSOR_DEL_TRAZO;
+    if (self.efecto3D){
+        [self.colorDelTrazoDelBordeConLuz setStroke];
+    }
+    else {
+        [self.colorDelTrazoDelBorde setStroke];
+    }
+    path.lineWidth = self.grosorDelTrazo;
     [path stroke];
-    [[UIColor COLOR_DE_RELLENO] setFill];
+    [self.colorDelRelleno setFill];
     [path fill];
     
     path = [UIBezierPath bezierPath];
@@ -286,10 +291,78 @@
     [path addLineToPoint:puntoDestinoDerechoIncial];
     [path addLineToPoint:puntoInicialAjustado];
     
-    [[UIColor COLOR_BORDE_DEL_SEGMENTO_CON_SOMBRA] setStroke];
-    path.lineWidth = GROSOR_DEL_TRAZO;
+    if (self.efecto3D){
+        [self.colorDelTrazoDelBordeConSombra setStroke];
+    }
+    else {
+        [self.colorDelTrazoDelBorde setStroke];
+    }
+    path.lineWidth = self.grosorDelTrazo;
     [path stroke];
-    [[UIColor COLOR_DE_RELLENO] setFill];
+    [self.colorDelRelleno setFill];
     [path fill];
    }
+
+#pragma mark - Accesors
+
+-(NSInteger) porcentajeDetTansparencia{
+    if (_porcentajeDetTansparencia == 0) {
+        _porcentajeDetTansparencia = 50;
+    }
+    return _porcentajeDetTansparencia/100;
+}
+-(NSInteger) grosorDelSegmento{
+    if (_grosorDelSegmento==0) {
+        _grosorDelSegmento = 30;
+    }
+    return _grosorDelSegmento;
+}
+-(NSInteger) separacionEntreSegmentos{
+    if (_separacionEntreSegmentos==0) {
+        _separacionEntreSegmentos = 3;
+    }
+    return _separacionEntreSegmentos;
+}
+-(NSInteger) separacionDeLosSegmentosConLaVista{
+    if (_separacionDeLosSegmentosConLaVista==0) {
+        _separacionDeLosSegmentosConLaVista = 10;
+    }
+    return _separacionDeLosSegmentosConLaVista;
+}
+-(UIColor *) colorDelTrazoDelBorde{
+    if (_colorDelTrazoDelBorde == nil) {
+        _colorDelTrazoDelBorde = [UIColor blackColor];
+    }
+    return _colorDelTrazoDelBorde;
+}
+-(UIColor *) colorDelTrazoDelBordeConLuz{
+    if (_colorDelTrazoDelBordeConLuz == nil) {
+        _colorDelTrazoDelBordeConLuz = [UIColor whiteColor];
+    }
+    return _colorDelTrazoDelBordeConLuz;
+}
+-(UIColor *) colorDelTrazoDelBordeConSombra{
+    if (_colorDelTrazoDelBordeConSombra==nil) {
+        _colorDelTrazoDelBordeConSombra = [UIColor blackColor];
+    }
+    return _colorDelTrazoDelBordeConSombra;
+}
+-(NSInteger) grosorDelTrazo{
+    if (_grosorDelSegmento) {
+        _grosorDelTrazo = 2;
+    }
+    return _grosorDelTrazo;
+}
+-(UIColor *)colorDelRelleno{
+    if (_colorDelRelleno==nil) {
+        _colorDelRelleno = [UIColor redColor];
+    }
+    return _colorDelRelleno;
+}
+
+-(void) setEfecto3D:(bool)efecto3D{
+    _efecto3D = efecto3D;
+    self.establecidoElEfecto3D = true;
+}
+
 @end
