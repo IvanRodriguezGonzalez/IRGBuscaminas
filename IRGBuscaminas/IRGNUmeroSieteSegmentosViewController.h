@@ -16,7 +16,8 @@
 //designated initializer
 -(instancetype) initWithNibName:(NSString *)nibNameOrNil
                          bundle:(NSBundle *)nibBundleOrNil
-                      withFrame:(CGRect) frame;
+                      withFrame:(CGRect) frame
+           withNumeroDedisplays:(NSInteger)numeroDeDisplays;
 
 -(void) establecerEfecto3ConColorDelTrazoDelBordeConLuz:(UIColor *)colorDelTrazoDelBordeConLuz
                      conColortDelTrazoDelBordeConSombra:(UIColor *)colorDelTrazoDelBordeConSombra;

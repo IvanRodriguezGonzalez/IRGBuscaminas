@@ -51,10 +51,11 @@
                                   (self.delegado.view.frame.size.height -TAMANO_Y_VENTANA_DISPLAY_SIETE_SEGMENTOS)/2 ,
                                   TAMANO_X_VENTANA_DISPLAY_SIETE_SEGMENTOS,
                                   TAMANO_Y_VENTANA_DISPLAY_SIETE_SEGMENTOS);
-        //frame = self.delegado.canvas.frame;
+        frame = self.delegado.canvas.frame;
         _sieteSegmentosViewController = [[IRGNUmeroSieteSegmentosViewController alloc] initWithNibName:nil
                                                                                                 bundle:nil
-                                                                                             withFrame:frame];
+                                                                                             withFrame:frame
+                                                                                  withNumeroDedisplays:3];
 
     }
     return  _sieteSegmentosViewController;
@@ -105,7 +106,7 @@
     [self.delegado.view addSubview:self.sieteSegmentosViewController.view];
     
     [self.sieteSegmentosViewController establecerVentanaConTransparencia:.5
-                                                            colorDeFondo:[UIColor clearColor]];
+                                                            colorDeFondo:[UIColor grayColor]];
 
     [self.sieteSegmentosViewController establecerSegmentoConGrosorDelTrazo:3
                                                          grosorDelSegmento:30

@@ -13,6 +13,8 @@
 @interface IRGNUmeroSieteSegmentosViewController ()
 @property (nonatomic) IRGSieteSegmentos *vistaSieteSegmentos;
 @property (nonatomic) CGRect frameDeLaVista;
+@property (nonatomic) NSInteger numeroDeDisplays;
+@property (nonatomic) NSMutableArray *listaDeDisplays;
 
 @end
 
@@ -23,33 +25,48 @@
 //designated initializer
 -(instancetype) initWithNibName:(NSString *)nibNameOrNil
                          bundle:(NSBundle *)nibBundleOrNil
-                      withFrame:(CGRect) frame{
+                      withFrame:(CGRect) frame
+           withNumeroDedisplays:(NSInteger)numeroDeDisplays{
     
     self = [super initWithNibName:nibNameOrNil
                             bundle:nibBundleOrNil];
     if (self){
         _frameDeLaVista = frame;
+        _numeroDeDisplays = numeroDeDisplays;
           }
     return self;
 }
-
 
 -(instancetype) initWithNibName:(NSString *)nibNameOrNil
                          bundle:(NSBundle *)nibBundleOrNil{
     
     return [self initWithNibName:nibNameOrNil
                           bundle:nibBundleOrNil
-                       withFrame:[UIApplication sharedApplication].keyWindow.frame];
+                       withFrame:[UIApplication sharedApplication].keyWindow.frame
+            withNumeroDedisplays:1];
+    
 };
 
 
 #pragma mark Overrides
 -(void)loadView{
-    IRGSieteSegmentos * vista = [[IRGSieteSegmentos alloc]initWithFrame:self.frameDeLaVista];
-    self.view = vista;
-    self.vistaSieteSegmentos = vista;
-}
+    self.listaDeDisplays = [[NSMutableArray alloc]init];
+    UIView *vistaPrincipal =[[UIView alloc]initWithFrame:self.frameDeLaVista];
+    self.view = vistaPrincipal;
+    
+    for (int numeroDeDisplay =0;numeroDeDisplay<self.numeroDeDisplays;numeroDeDisplay++){
+        CGRect frameDelDisplay =CGRectMake((self.frameDeLaVista.size.width/self.numeroDeDisplays )*numeroDeDisplay
+                                           , 0
+                                           , self.frameDeLaVista.size.width/self.numeroDeDisplays
+                                           , self.frameDeLaVista.size.height);
+        
+        IRGSieteSegmentos * display = [[IRGSieteSegmentos alloc]initWithFrame:frameDelDisplay];
+        [self.listaDeDisplays addObject:display];
+        [self.view addSubview:display];
+    }
+    self.vistaSieteSegmentos = self.listaDeDisplays[2];
 
+}
 - (void)viewDidLoad {
     [super viewDidLoad];
     // Do any additional setup after loading the view.
@@ -84,7 +101,6 @@
     separacionVerticalDelSegmentoConLaVista:(NSInteger)separacionVerticalDelSegmentoConLaVista
                       colorDelTrazoDelBorde:(UIColor *)colorDelTrazoDelBorde
                             colorDelRelleno:(UIColor *)colorDelRelleno{
-
     self.vistaSieteSegmentos.grosorDelTrazo = grosorDelTrazo;
     self.vistaSieteSegmentos.grosorDelSegmento = grosorDelSegmento;
     self.vistaSieteSegmentos.separacionEntreSegmentos = separacionEntreSegmentos;
@@ -97,8 +113,8 @@
 
 - (void) establecerVentanaConTransparencia:(float)porcentajeDeTransparencia
                               colorDeFondo:(UIColor *)colorDeFondo{
-    self.vistaSieteSegmentos.alpha = porcentajeDeTransparencia;
-    self.vistaSieteSegmentos.backgroundColor = colorDeFondo;
+    self.view.alpha = porcentajeDeTransparencia;
+    self.view.backgroundColor = colorDeFondo;
 }
 
 @end

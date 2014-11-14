@@ -26,12 +26,12 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "IRGBuscaminas/IRGNUmeroSieteSegmentosViewController.m"
-            timestampString = "437579225.301874"
+            timestampString = "437617549.262527"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "83"
-            endingLineNumber = "83"
-            landmarkName = "-establecerSegmentoConGrosorDelTrazo:grosorDelSegmento:separacionEntreSegmentos:separacionHorizontalDelSegmentoConLaVista:separacionVerticalDelSegmentoConLaVista:colorDelTrazoDelBorde:colorDelRelleno:"
+            startingLineNumber = "100"
+            endingLineNumber = "100"
+            landmarkName = "-loadView"
             landmarkType = "5">
          </BreakpointContent>
       </BreakpointProxy>
@@ -42,11 +42,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "IRGBuscaminas/IRGEstadoDelJuegoAyuda.m"
-            timestampString = "437615187.127099"
+            timestampString = "437617186.242639"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "113"
-            endingLineNumber = "113"
+            startingLineNumber = "114"
+            endingLineNumber = "114"
             landmarkName = "-anadirVistaSieteSegmentos"
             landmarkType = "5">
          </BreakpointContent>
