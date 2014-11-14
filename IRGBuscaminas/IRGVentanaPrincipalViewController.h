@@ -26,7 +26,7 @@
 @property (weak, nonatomic) IBOutlet UIButton *botonPausar;
 @property (weak, nonatomic) IBOutlet UILabel *etiquetaBotonPausar;
 @property (weak, nonatomic) IBOutlet UIView *barraBotonera;
-
+@property (weak, nonatomic) IBOutlet UIView *cuentaAtras;
 @property (nonatomic,weak) NSTimer *reloj;
 
 @property (nonatomic) IRGGestionarBotonera *gestionarBotonera;

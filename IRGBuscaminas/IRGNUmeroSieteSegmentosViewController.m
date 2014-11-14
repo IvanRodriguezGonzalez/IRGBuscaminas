@@ -97,7 +97,7 @@
                             colorDelRelleno:(UIColor *)colorDelRelleno{
     self.vistaSieteSegmentos.grosorDelTrazo = grosorDelTrazo;
     self.vistaSieteSegmentos.grosorDelSegmento = grosorDelSegmento;
-    self.vistaSieteSegmentos.separacionEntreSegmentos = separacionEntreSegmentos;
+    self.vistaSieteSegmentos.separacionEntreSegmentos = separacionEntreSegmentos+grosorDelTrazo;
     self.vistaSieteSegmentos.separacionHorizontalDeLosSegmentosConLaVista = separacionHorizontalDelSegmentoConLaVista;
     self.vistaSieteSegmentos.separacionVerticalDeLosSegmentosConLaVista = separacionVerticalDelSegmentoConLaVista;
     self.vistaSieteSegmentos.colorDelTrazoDelBorde = colorDelTrazoDelBorde;
@@ -108,7 +108,8 @@
 - (void) establecerVentanaConTransparencia:(float)porcentajeDeTransparencia
                               colorDeFondo:(UIColor *)colorDeFondo{
     self.view.alpha = porcentajeDeTransparencia;
-    self.vistaSieteSegmentos.colorDeFondo = colorDeFondo;
+    self.vistaSieteSegmentos.backgroundColor = colorDeFondo;
+   // self.vistaSieteSegmentos.colorDeFondo = colorDeFondo;
 }
 
 @end

@@ -319,7 +319,7 @@
 }
 -(NSInteger) separacionEntreSegmentos{
     if (_separacionEntreSegmentos==0) {
-        _separacionEntreSegmentos = 3;
+        _separacionEntreSegmentos = 0;
     }
     return _separacionEntreSegmentos;
 }
@@ -356,7 +356,7 @@
     return _colorDelTrazoDelBordeConSombra;
 }
 -(NSInteger) grosorDelTrazo{
-    if (_grosorDelSegmento) {
+    if (_grosorDelSegmento==0) {
         _grosorDelTrazo = 2;
     }
     return _grosorDelTrazo;
@@ -367,6 +367,8 @@
     }
     return _colorDelRellenoDelSegmento;
 }
+
+/*
 -(UIColor *)colorDeFondo{
     if ((!_colorDeFondo)) {
         _colorDeFondo = [UIColor redColor];
@@ -377,6 +379,6 @@
 -(void) setColorDeFondo:(UIColor *)colorDeFondo{
     _colorDeFondo= colorDeFondo;
     self.backgroundColor = colorDeFondo;
-}
+}*/
 
 @end
