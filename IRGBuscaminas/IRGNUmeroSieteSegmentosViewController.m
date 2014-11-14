@@ -108,7 +108,7 @@
 - (void) establecerVentanaConTransparencia:(float)porcentajeDeTransparencia
                               colorDeFondo:(UIColor *)colorDeFondo{
     self.view.alpha = porcentajeDeTransparencia;
-    self.view.backgroundColor = colorDeFondo;
+    self.vistaSieteSegmentos.colorDeFondo = colorDeFondo;
 }
 
 @end

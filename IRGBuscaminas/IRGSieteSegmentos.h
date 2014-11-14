@@ -22,6 +22,7 @@
 @property(nonatomic) UIColor * colorDelTrazoDelBordeConSombra;
 @property(nonatomic) UIColor * colorDelRellenoDelSegmento;
 @property (nonatomic) NSInteger grosorDelTrazo;
+@property(nonatomic) UIColor *colorDeFondo;
 @property (nonatomic) bool efecto3D;
 
 -(void) calcularPuntosDeDibujo;

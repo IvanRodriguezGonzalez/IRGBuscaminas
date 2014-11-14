@@ -32,8 +32,6 @@
     self = [super initWithFrame:frame];
     if (self){
         [self calcularPuntosDeDibujo];
-        self.alpha = 1;
-       self.backgroundColor =  [UIColor lightGrayColor];
     }
     return self;
 }
@@ -79,13 +77,11 @@
 }
 
 
-
-
 #pragma mmark - Auxiliares de primer nivel
 
 -(void) dibujarNumero:(NSInteger)valor{
     self.valor = valor;
-    [self setNeedsDisplay];
+   [self setNeedsDisplay];
 }
 
 -(void) calcularPuntosDeDibujo{
@@ -313,6 +309,7 @@
 
 #pragma mark - Accesors
 
+@synthesize colorDeFondo = _colorDeFondo;
 
 -(NSInteger) grosorDelSegmento{
     if (_grosorDelSegmento==0) {
@@ -370,6 +367,16 @@
     }
     return _colorDelRellenoDelSegmento;
 }
+-(UIColor *)colorDeFondo{
+    if ((!_colorDeFondo)) {
+        _colorDeFondo = [UIColor redColor];
+    }
+    return _colorDeFondo;
+}
 
+-(void) setColorDeFondo:(UIColor *)colorDeFondo{
+    _colorDeFondo= colorDeFondo;
+    self.backgroundColor = colorDeFondo;
+}
 
 @end
