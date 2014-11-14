@@ -9,45 +9,13 @@
             shouldBeEnabled = "Yes"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
-            filePath = "IRGBuscaminas/IRGCeldaViewController.m"
-            timestampString = "437499019.430954"
+            filePath = "IRGBuscaminas/IRGSieteSegmentos.m"
+            timestampString = "437681368.939692"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "162"
-            endingLineNumber = "162"
-            landmarkName = "-mostrarMina"
-            landmarkType = "5">
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            shouldBeEnabled = "Yes"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "IRGBuscaminas/IRGNUmeroSieteSegmentosViewController.m"
-            timestampString = "437617549.262527"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "100"
-            endingLineNumber = "100"
-            landmarkName = "-loadView"
-            landmarkType = "5">
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            shouldBeEnabled = "Yes"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "IRGBuscaminas/IRGEstadoDelJuegoAyuda.m"
-            timestampString = "437617186.242639"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "114"
-            endingLineNumber = "114"
-            landmarkName = "-anadirVistaSieteSegmentos"
+            startingLineNumber = "43"
+            endingLineNumber = "43"
+            landmarkName = "-drawRect:"
             landmarkType = "5">
          </BreakpointContent>
       </BreakpointProxy>

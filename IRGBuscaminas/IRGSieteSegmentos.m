@@ -7,7 +7,7 @@
 //
 
 #import "IRGSieteSegmentos.h"
-#define COLOR_DE_RELLENO_DE_LA_VENTANA_POR_DEFECTO blueColor
+#define COLOR_DE_RELLENO_DE_LA_VENTANA_POR_DEFECTO grayColor
 
 @interface IRGSieteSegmentos ()
 @property (nonatomic) NSInteger anchoDelSegmento;
@@ -32,7 +32,8 @@
     self = [super initWithFrame:frame];
     if (self){
         [self calcularPuntosDeDibujo];
-        self.backgroundColor = [UIColor COLOR_DE_RELLENO_DE_LA_VENTANA_POR_DEFECTO];
+        self.alpha = 1;
+       self.backgroundColor =  [UIColor lightGrayColor];
     }
     return self;
 }

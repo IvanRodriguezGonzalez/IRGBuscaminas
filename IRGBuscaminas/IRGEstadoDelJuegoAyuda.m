@@ -10,8 +10,8 @@
 #import "IRGGestorDeEstados.h"
 #import "IRGNUmeroSieteSegmentosViewController.h"
 #define CUENTA_ATRAS 9
-#define TAMANO_X_VENTANA_DISPLAY_SIETE_SEGMENTOS 200
-#define TAMANO_Y_VENTANA_DISPLAY_SIETE_SEGMENTOS 400
+#define TAMANO_X_VENTANA_DISPLAY_SIETE_SEGMENTOS 300
+#define TAMANO_Y_VENTANA_DISPLAY_SIETE_SEGMENTOS 300
 
 @interface IRGEstadoDelJuegoAyuda()
 @property (nonatomic,strong) IRGVentanaPrincipalViewController *delegado;
@@ -51,7 +51,7 @@
                                   (self.delegado.view.frame.size.height -TAMANO_Y_VENTANA_DISPLAY_SIETE_SEGMENTOS)/2 ,
                                   TAMANO_X_VENTANA_DISPLAY_SIETE_SEGMENTOS,
                                   TAMANO_Y_VENTANA_DISPLAY_SIETE_SEGMENTOS);
-        frame = self.delegado.canvas.frame;
+      //  frame = self.delegado.canvas.frame;
         _sieteSegmentosViewController = [[IRGNUmeroSieteSegmentosViewController alloc] initWithNibName:nil
                                                                                                 bundle:nil
                                                                                              withFrame:frame
@@ -105,15 +105,15 @@
 - (void) anadirVistaSieteSegmentos{
     [self.delegado.view addSubview:self.sieteSegmentosViewController.view];
     
-    [self.sieteSegmentosViewController establecerVentanaConTransparencia:.5
+    [self.sieteSegmentosViewController establecerVentanaConTransparencia:.8
                                                             colorDeFondo:[UIColor grayColor]];
 
     [self.sieteSegmentosViewController establecerSegmentoConGrosorDelTrazo:3
                                                          grosorDelSegmento:30
                                                   separacionEntreSegmentos:2
-                                           separacionHorizontalDelSegmentoConLaVista:20                                   separacionVerticalDelSegmentoConLaVista:40
+                                           separacionHorizontalDelSegmentoConLaVista:5                                 separacionVerticalDelSegmentoConLaVista:5
                                                      colorDelTrazoDelBorde:[UIColor blackColor]
-                                                           colorDelRelleno:[UIColor redColor]];
+                                                           colorDelRelleno:[UIColor blueColor]];
     [self.sieteSegmentosViewController establecerEfecto3ConColorDelTrazoDelBordeConLuz:[UIColor whiteColor]
                                                     conColortDelTrazoDelBordeConSombra:[UIColor blackColor]];
   

@@ -13,8 +13,6 @@
 @interface IRGNUmeroSieteSegmentosViewController ()
 @property (nonatomic) IRGSieteSegmentos *vistaSieteSegmentos;
 @property (nonatomic) CGRect frameDeLaVista;
-@property (nonatomic) NSInteger numeroDeDisplays;
-@property (nonatomic) NSMutableArray *listaDeDisplays;
 
 @end
 
@@ -32,7 +30,6 @@
                             bundle:nibBundleOrNil];
     if (self){
         _frameDeLaVista = frame;
-        _numeroDeDisplays = numeroDeDisplays;
           }
     return self;
 }
@@ -50,21 +47,18 @@
 
 #pragma mark Overrides
 -(void)loadView{
-    self.listaDeDisplays = [[NSMutableArray alloc]init];
     UIView *vistaPrincipal =[[UIView alloc]initWithFrame:self.frameDeLaVista];
     self.view = vistaPrincipal;
     
-    for (int numeroDeDisplay =0;numeroDeDisplay<self.numeroDeDisplays;numeroDeDisplay++){
-        CGRect frameDelDisplay =CGRectMake((self.frameDeLaVista.size.width/self.numeroDeDisplays )*numeroDeDisplay
+        CGRect frameDelDisplay =CGRectMake((0 )
                                            , 0
-                                           , self.frameDeLaVista.size.width/self.numeroDeDisplays
+                                           , self.frameDeLaVista.size.width
                                            , self.frameDeLaVista.size.height);
         
         IRGSieteSegmentos * display = [[IRGSieteSegmentos alloc]initWithFrame:frameDelDisplay];
-        [self.listaDeDisplays addObject:display];
         [self.view addSubview:display];
-    }
-    self.vistaSieteSegmentos = self.listaDeDisplays[2];
+    
+    self.vistaSieteSegmentos = display;
 
 }
 - (void)viewDidLoad {
