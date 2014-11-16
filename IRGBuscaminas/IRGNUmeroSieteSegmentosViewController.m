@@ -23,9 +23,7 @@
 //designated initializer
 -(instancetype) initWithNibName:(NSString *)nibNameOrNil
                          bundle:(NSBundle *)nibBundleOrNil
-                      withFrame:(CGRect) frame
-           withNumeroDedisplays:(NSInteger)numeroDeDisplays{
-    
+                      withFrame:(CGRect) frame{
     self = [super initWithNibName:nibNameOrNil
                             bundle:nibBundleOrNil];
     if (self){
@@ -39,31 +37,28 @@
     
     return [self initWithNibName:nibNameOrNil
                           bundle:nibBundleOrNil
-                       withFrame:[UIApplication sharedApplication].keyWindow.frame
-            withNumeroDedisplays:1];
-    
+                       withFrame:[UIApplication sharedApplication].keyWindow.frame];
 };
 
 
 #pragma mark Overrides
 -(void)loadView{
-    UIView *vistaPrincipal =[[UIView alloc]initWithFrame:self.frameDeLaVista];
-    self.view = vistaPrincipal;
+
     
-        CGRect frameDelDisplay =CGRectMake((0 )
-                                           , 0
-                                           , self.frameDeLaVista.size.width
-                                           , self.frameDeLaVista.size.height);
-        
-        IRGSieteSegmentos * display = [[IRGSieteSegmentos alloc]initWithFrame:frameDelDisplay];
-        [self.view addSubview:display];
+    CGRect frameDelDisplay =self.frameDeLaVista;
     
+    IRGSieteSegmentos * display = [[IRGSieteSegmentos alloc]initWithFrame:frameDelDisplay];
+    self.view = display;
     self.vistaSieteSegmentos = display;
 
 }
 - (void)viewDidLoad {
     [super viewDidLoad];
     // Do any additional setup after loading the view.
+        self.view.layer.cornerRadius = 40;
+        self.view.layer.masksToBounds = YES;
+   // self.view.layer.borderWidth = 1;
+   // self.view.layer.borderColor =[UIColor grayColor].CGColor;
 }
 
 - (void)didReceiveMemoryWarning {
@@ -94,22 +89,24 @@
   separacionHorizontalDelSegmentoConLaVista:(NSInteger)separacionHorizontalDelSegmentoConLaVista
     separacionVerticalDelSegmentoConLaVista:(NSInteger)separacionVerticalDelSegmentoConLaVista
                       colorDelTrazoDelBorde:(UIColor *)colorDelTrazoDelBorde
-                            colorDelRelleno:(UIColor *)colorDelRelleno{
+                            colorDelRelleno:(UIColor *)colorDelRelleno
+                    transparenciaDelRelleno:(float)transparenciaDelRelleno{
     self.vistaSieteSegmentos.grosorDelTrazo = grosorDelTrazo;
     self.vistaSieteSegmentos.grosorDelSegmento = grosorDelSegmento;
     self.vistaSieteSegmentos.separacionEntreSegmentos = separacionEntreSegmentos+grosorDelTrazo;
     self.vistaSieteSegmentos.separacionHorizontalDeLosSegmentosConLaVista = separacionHorizontalDelSegmentoConLaVista;
     self.vistaSieteSegmentos.separacionVerticalDeLosSegmentosConLaVista = separacionVerticalDelSegmentoConLaVista;
     self.vistaSieteSegmentos.colorDelTrazoDelBorde = colorDelTrazoDelBorde;
-    self.vistaSieteSegmentos.colorDelRellenoDelSegmento = colorDelRelleno;
+    self.vistaSieteSegmentos.colorDelRellenoDelSegmento = [colorDelRelleno colorWithAlphaComponent:transparenciaDelRelleno];
     [self.vistaSieteSegmentos calcularPuntosDeDibujo];
 }
 
 - (void) establecerVentanaConTransparencia:(float)porcentajeDeTransparencia
                               colorDeFondo:(UIColor *)colorDeFondo{
-    self.view.alpha = porcentajeDeTransparencia;
-    self.vistaSieteSegmentos.backgroundColor = colorDeFondo;
-   // self.vistaSieteSegmentos.colorDeFondo = colorDeFondo;
+    
+    self.vistaSieteSegmentos.opaque= true;
+    self.vistaSieteSegmentos.backgroundColor = [colorDeFondo colorWithAlphaComponent:porcentajeDeTransparencia];
+
 }
 
 @end

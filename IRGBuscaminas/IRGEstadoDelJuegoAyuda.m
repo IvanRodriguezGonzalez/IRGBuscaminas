@@ -10,8 +10,8 @@
 #import "IRGGestorDeEstados.h"
 #import "IRGNUmeroSieteSegmentosViewController.h"
 #define CUENTA_ATRAS 9
-#define TAMANO_X_VENTANA_DISPLAY_SIETE_SEGMENTOS 300
-#define TAMANO_Y_VENTANA_DISPLAY_SIETE_SEGMENTOS 400
+#define TAMANO_X_VENTANA_DISPLAY_SIETE_SEGMENTOS 200
+#define TAMANO_Y_VENTANA_DISPLAY_SIETE_SEGMENTOS 250
 
 @interface IRGEstadoDelJuegoAyuda()
 @property (nonatomic,strong) IRGVentanaPrincipalViewController *delegado;
@@ -47,16 +47,13 @@
 -(IRGNUmeroSieteSegmentosViewController *) sieteSegmentosViewController{
     if (!_sieteSegmentosViewController ){
         CGRect frame = CGRectMake(
-                                  (self.delegado.view.frame.size.width-TAMANO_X_VENTANA_DISPLAY_SIETE_SEGMENTOS)/2,
-                                  (self.delegado.view.frame.size.height -TAMANO_Y_VENTANA_DISPLAY_SIETE_SEGMENTOS)/2 ,
+                                  (self.delegado.canvas.frame.size.width-TAMANO_X_VENTANA_DISPLAY_SIETE_SEGMENTOS)/2,
+                                  (self.delegado.canvas.frame.size.height -TAMANO_Y_VENTANA_DISPLAY_SIETE_SEGMENTOS)/2 ,
                                   TAMANO_X_VENTANA_DISPLAY_SIETE_SEGMENTOS,
                                   TAMANO_Y_VENTANA_DISPLAY_SIETE_SEGMENTOS);
-        frame = self.delegado.botonPrincipal.frame;
         _sieteSegmentosViewController = [[IRGNUmeroSieteSegmentosViewController alloc] initWithNibName:nil
                                                                                                 bundle:nil
-                                                                                             withFrame:frame
-                                                                                  withNumeroDedisplays:3];
-
+                                                                                             withFrame:frame];
     }
     return  _sieteSegmentosViewController;
 }
@@ -103,20 +100,20 @@
 #pragma mark auxiliares primer nivel
 
 - (void) anadirVistaSieteSegmentos{
-    [self.delegado.barraBotonera addSubview:self.sieteSegmentosViewController.view];
+    [self.delegado.canvas addSubview:self.sieteSegmentosViewController.view];
     
-    [self.sieteSegmentosViewController establecerVentanaConTransparencia:1
-                                                            colorDeFondo:self.delegado.barraBotonera.backgroundColor];
+    [self.sieteSegmentosViewController establecerVentanaConTransparencia:.5
+                                                            colorDeFondo:[UIColor grayColor]];
 
     [self.sieteSegmentosViewController establecerSegmentoConGrosorDelTrazo:1
-                                                         grosorDelSegmento:10
+                                                         grosorDelSegmento:30
                                                   separacionEntreSegmentos:0
-                                 separacionHorizontalDelSegmentoConLaVista:1
-                                   separacionVerticalDelSegmentoConLaVista:1
-                                                     colorDelTrazoDelBorde:[UIColor blackColor]
-                                                           colorDelRelleno:[UIColor redColor]];
- /*   [self.sieteSegmentosViewController establecerEfecto3ConColorDelTrazoDelBordeConLuz:[UIColor whiteColor]
-                                                    conColortDelTrazoDelBordeConSombra:[UIColor blackColor]];*/
+                                 separacionHorizontalDelSegmentoConLaVista:0
+                                   separacionVerticalDelSegmentoConLaVista:0
+                                                     colorDelTrazoDelBorde:[UIColor grayColor]
+                                                           colorDelRelleno:[UIColor whiteColor]transparenciaDelRelleno:.99];
+     
+  //[self.sieteSegmentosViewController establecerEfecto3ConColorDelTrazoDelBordeConLuz:[UIColor whiteColor] conColortDelTrazoDelBordeConSombra:[UIColor blackColor]];
   
     self.sieteSegmentosViewController.valorADibujar = self.contador;
 
@@ -134,7 +131,7 @@
     if (self.contador ==0){
         [self.relojDeEspera invalidate];
         [self ocultarAyuda];
-        [self.delegado.barraBotonera sendSubviewToBack:self.sieteSegmentosViewController.view];
+        [self.delegado.canvas sendSubviewToBack:self.sieteSegmentosViewController.view];
         self.sieteSegmentosViewController = nil;
         self.contador = CUENTA_ATRAS;
     }

@@ -16,9 +16,7 @@
 //designated initializer
 -(instancetype) initWithNibName:(NSString *)nibNameOrNil
                          bundle:(NSBundle *)nibBundleOrNil
-                      withFrame:(CGRect) frame
-           withNumeroDedisplays:(NSInteger)numeroDeDisplays;
-
+                      withFrame:(CGRect) frame;
 -(void) establecerEfecto3ConColorDelTrazoDelBordeConLuz:(UIColor *)colorDelTrazoDelBordeConLuz
                      conColortDelTrazoDelBordeConSombra:(UIColor *)colorDelTrazoDelBordeConSombra;
 
@@ -28,7 +26,8 @@
   separacionHorizontalDelSegmentoConLaVista:(NSInteger)separacionHorizontalDelSegmentoConLaVista
     separacionVerticalDelSegmentoConLaVista:(NSInteger)separacionVerticalDelSegmentoConLaVista
                       colorDelTrazoDelBorde:(UIColor *)colorDelTrazoDelBorde
-                            colorDelRelleno:(UIColor *)colorDelRelleno;
+                            colorDelRelleno:(UIColor *)colorDelRelleno
+                    transparenciaDelRelleno:(float)transparenciaDelRelleno;
 
 - (void) establecerVentanaConTransparencia:(float)porcentajeDeTransparencia
                               colorDeFondo:(UIColor *)colorDeFondo;

@@ -37,7 +37,9 @@
 }
 
 #pragma mark - Overrides
-- (void)drawRect:(CGRect)rect {
+
+
+    - (void)drawRect:(CGRect)rect {
     switch (self.valor) {
         case 0:
             [self cero];
@@ -86,9 +88,7 @@
 
 -(void) calcularPuntosDeDibujo{
     self.esquinaSuperiorIzquierda = CGPointMake(self.grosorDelSegmento/2+self.separacionHorizontalDeLosSegmentosConLaVista,self.grosorDelSegmento/2+self.separacionVerticalDeLosSegmentosConLaVista);
-    
     self.esquinaSuperiorDerecha = CGPointMake(self.bounds.size.width-self.grosorDelSegmento/2-self.separacionHorizontalDeLosSegmentosConLaVista, self.grosorDelSegmento/2+self.separacionVerticalDeLosSegmentosConLaVista);
-    
     self.esquinaCentralIzquierda = CGPointMake(self.grosorDelSegmento/2+self.separacionHorizontalDeLosSegmentosConLaVista, self.bounds.size.height/2);
     
     self.esquinaCentralDerecha = CGPointMake(self.bounds.size.width-self.grosorDelSegmento/2-self.separacionHorizontalDeLosSegmentosConLaVista, self.frame.size.height/2);
@@ -260,7 +260,7 @@
     path.lineWidth = self.grosorDelTrazo;
     [path stroke];
     [self.colorDelRellenoDelSegmento setFill];
-    [path fill];
+    [path fillWithBlendMode:kCGBlendModeNormal alpha:1];
 }
 
 -(void) dibujaSegmentoVerticalDesde:(CGPoint)puntoInicial{
@@ -368,17 +368,5 @@
     return _colorDelRellenoDelSegmento;
 }
 
-/*
--(UIColor *)colorDeFondo{
-    if ((!_colorDeFondo)) {
-        _colorDeFondo = [UIColor redColor];
-    }
-    return _colorDeFondo;
-}
-
--(void) setColorDeFondo:(UIColor *)colorDeFondo{
-    _colorDeFondo= colorDeFondo;
-    self.backgroundColor = colorDeFondo;
-}*/
 
 @end

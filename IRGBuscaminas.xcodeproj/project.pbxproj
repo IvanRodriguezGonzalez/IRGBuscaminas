@@ -220,7 +220,6 @@
 				E1CD31AA1A0BCC1D00D317A8 /* Modelo */,
 				E1CD318A1A0BCB8900D317A8 /* Images.xcassets */,
 				E1CD318C1A0BCB8900D317A8 /* LaunchScreen.xib */,
-				E1CD31831A0BCB8900D317A8 /* Supporting Files */,
 			);
 			path = IRGBuscaminas;
 			sourceTree = "<group>";
@@ -295,6 +294,7 @@
 				E1D41DC61A0BF0050059C46C /* IRGLienzo.h */,
 				E1D41DC71A0BF0050059C46C /* IRGLienzo.m */,
 				E1D41DC81A0BF0050059C46C /* IRGPincel.h */,
+				E1CD31831A0BCB8900D317A8 /* Supporting Files */,
 				E1D41DC91A0BF0050059C46C /* IRGPincel.m */,
 				E1D41DCC1A0BFEC30059C46C /* IRGDatos.h */,
 				E1D41DCD1A0BFEC30059C46C /* IRGDatos.m */,
