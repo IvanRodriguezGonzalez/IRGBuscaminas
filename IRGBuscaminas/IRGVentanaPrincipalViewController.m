@@ -21,7 +21,8 @@
 #import "IRGPreguntarNombreViewController.h"
 #import "IRGGestorDeEstados.h"
 #import "IRGGestionarBotonera.h"
-
+#import "IRGSettingsViewController.h"
+#import "IRGVistaPorcentajeDeAvanceViewController.h"
 
 @interface IRGVentanaPrincipalViewController ()
 @property (nonatomic)  NSInteger numeroDeFilas;
@@ -33,6 +34,7 @@
 @property (weak, nonatomic) IBOutlet UIProgressView *barraDeProgreso;
 @property (weak, nonatomic) IBOutlet UITextField *tiempoDeJuego;
 @property (weak, nonatomic) IBOutlet UIImageView *imagenDeBloqueo;
+@property(nonatomic) IRGVistaPorcentajeDeAvanceViewController *vistaConPorcentajeDeAvanceViewController;
 
 
 @end
@@ -43,7 +45,7 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     [self iniciarGestionarBotonera];
-
+    [self iniciarVistaConPorcentajeDeAvance];
     [self iniciarGestorDeEstados];
 }
 
@@ -57,6 +59,14 @@
 
 
 #pragma mark - Navigation primer nivel
+- (IBAction)mostrarConfiguracion:(UIButton *)sender {
+    IRGSettingsViewController *vistaConfiguracion =[[IRGSettingsViewController alloc]init];
+    [self.canvas addSubview:vistaConfiguracion.view];
+    
+    
+}
+
+
 - (IBAction)mostrarMenu:(UIButton *)sender {
     CGRect frame = CGRectMake(0,0,100,self.view.frame.size.height);
     UIView * vista =[[UIView alloc]initWithFrame:frame];
@@ -166,6 +176,13 @@
 }
 #pragma mark - Auxiliares primer nivel
 
+-(void) iniciarVistaConPorcentajeDeAvance{
+    IRGVistaPorcentajeDeAvanceViewController *vistaConPorcentajeDeAvanceViewController = [[IRGVistaPorcentajeDeAvanceViewController alloc]initConFrame:self.botonPrincipal.frame];
+    CGRect a = self.botonPrincipal.frame ;
+    [self.barraBotonera addSubview:vistaConPorcentajeDeAvanceViewController.view];
+    self.vistaConPorcentajeDeAvanceViewController = vistaConPorcentajeDeAvanceViewController;
+    
+}
 
 -(void) iniciarGestionarBotonera{
     self.gestionarBotonera = [[IRGGestionarBotonera alloc]initConSender:self];
@@ -342,8 +359,10 @@
         }
     }
     Float32 porcentajeDeAvance = (totalCeldasProcesadas/totalCeldas);
+    
     [self actualizarBotonConProgreso:porcentajeDeAvance];
     [self actualizarBarraDeProgresoConProgreso:porcentajeDeAvance];
+    [self.vistaConPorcentajeDeAvanceViewController dibujarAvance:porcentajeDeAvance];
     return porcentajeDeAvance;
 }
 
