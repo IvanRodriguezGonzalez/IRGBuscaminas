@@ -42,17 +42,7 @@
     return self;
 }
 
-
 #pragma mark - Accesosrs
-
--(int) numeroDeMinas{
-    if (_numeroDeMinas == 0){
-        return NUMERO_DE_MINAS_POR_DEFECTO;
-    }
-    else {
-        return _numeroDeMinas;
-    }
-}
 
 -(NSArray *) celdasDelJuego{
     if (!_celdasDelJuego){

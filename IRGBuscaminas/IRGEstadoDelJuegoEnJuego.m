@@ -9,6 +9,7 @@
 #import "IRGEstadoDelJuegoEnJuego.h"
 #import "IRGGestorDeEstados.h"
 #import "IRGCeldaViewController.h"
+#import "IRGSettings.h"
 
 @interface IRGEstadoDelJuegoEnJuego()
 @property (nonatomic,strong) IRGVentanaPrincipalViewController *delegado;
@@ -46,7 +47,12 @@
 #pragma mark Metodos del protocolo
 
 - (void) establecerBotones{
-    [self.delegado.gestionarBotonera activarBotonMostrarMinas];
+    if ([IRGSettings sharedSettings].activarAyuda){
+        [self.delegado.gestionarBotonera activarBotonMostrarMinas];
+    }
+        else{
+            [self.delegado.gestionarBotonera desactivarBotonMostrarMinas];
+        }
     [self.delegado.gestionarBotonera desactivarBotonMejoresTiempos];
     [self.delegado.gestionarBotonera activarBotonPrincipal];
     [self.delegado.gestionarBotonera desactivarTextFieldNumeroDeMinas];

@@ -14,32 +14,35 @@
 
 - (void)drawRect:(CGRect)rect {
 
-    UIBezierPath *path = [UIBezierPath bezierPathWithArcCenter:CGPointMake(self.frame.size.width/2, self.frame.size.height/2)
+    
+      UIBezierPath *path = [UIBezierPath bezierPathWithArcCenter:CGPointMake(self.frame.size.width/2, self.frame.size.height/2)
+                                          radius:self.frame.size.width/2-5
+                                      startAngle:0
+                                        endAngle:2*3.14
+                                       clockwise:true];
+    [[UIColor blackColor] setStroke];
+    path.lineWidth = 10;
+    [path stroke];
+    
+  path = [UIBezierPath bezierPathWithArcCenter:CGPointMake(self.frame.size.width/2, self.frame.size.height/2)
                                                         radius:self.frame.size.width/2-5
                                                     startAngle:0
                                                       endAngle:2*3.14
                                                      clockwise:true];
     [[UIColor lightGrayColor] setStroke];
-    path.lineWidth =7;
+    path.lineWidth =13;
     [path stroke];
   
     
-    path = [UIBezierPath bezierPathWithArcCenter:CGPointMake(self.frame.size.width/2, self.frame.size.height/2)
-                                          radius:self.frame.size.width/2-5
-                                      startAngle:0
-                                        endAngle:2*3.14*self.porcentajeDeAvance
-                                       clockwise:true];
-    [[UIColor blackColor] setStroke];
-    path.lineWidth = 7;
-    [path stroke];
+
     
     path = [UIBezierPath bezierPathWithArcCenter:CGPointMake(self.frame.size.width/2, self.frame.size.height/2)
                                                         radius:self.frame.size.width/2-5
                                                     startAngle:0
                                                       endAngle:2*3.14*self.porcentajeDeAvance
                                                      clockwise:true];
-    [[UIColor blueColor] setStroke];
-    path.lineWidth = 5;
+    [[UIColor redColor] setStroke];
+    path.lineWidth = 13;
     [path stroke];
 
 }

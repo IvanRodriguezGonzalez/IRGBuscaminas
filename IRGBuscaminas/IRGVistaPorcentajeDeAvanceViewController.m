@@ -36,7 +36,6 @@
 
 -(void) loadView{
     IRGVistaConPorcentajeDeAvance *vistaConPorcentajeDeAvance = [[IRGVistaConPorcentajeDeAvance alloc]initWithFrame:(self.frame)];
-    CGRect a = self.frame;
     CGRect frameDeLaEtiqueta =  CGRectMake(15, 20, 30, 15);
     self.etiquetaConPorcentajeDeAvance = [[UILabel alloc]initWithFrame:frameDeLaEtiqueta];
     self.etiquetaConPorcentajeDeAvance.adjustsFontSizeToFitWidth = true;

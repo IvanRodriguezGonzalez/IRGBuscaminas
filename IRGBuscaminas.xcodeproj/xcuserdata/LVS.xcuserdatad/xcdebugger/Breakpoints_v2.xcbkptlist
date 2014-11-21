@@ -9,45 +9,13 @@
             shouldBeEnabled = "Yes"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
-            filePath = "IRGBuscaminas/IRGVistaPorcentajeDeAvanceViewController.m"
-            timestampString = "438025507.335891"
+            filePath = "IRGBuscaminas/IRGSettingsViewController.m"
+            timestampString = "438281089.634542"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "32"
-            endingLineNumber = "32"
-            landmarkName = "-initConFrame:"
-            landmarkType = "5">
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            shouldBeEnabled = "Yes"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "IRGBuscaminas/IRGVistaPorcentajeDeAvanceViewController.m"
-            timestampString = "438025629.330053"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "39"
-            endingLineNumber = "39"
-            landmarkName = "-loadView"
-            landmarkType = "5">
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            shouldBeEnabled = "Yes"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "IRGBuscaminas/IRGVentanaPrincipalViewController.m"
-            timestampString = "438026149.790392"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "181"
-            endingLineNumber = "181"
-            landmarkName = "-iniciarVistaConPorcentajeDeAvance"
+            startingLineNumber = "34"
+            endingLineNumber = "34"
+            landmarkName = "-guardarResultados:"
             landmarkType = "5">
          </BreakpointContent>
       </BreakpointProxy>

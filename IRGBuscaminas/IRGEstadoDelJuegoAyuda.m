@@ -9,7 +9,7 @@
 #import "IRGEstadoDelJuegoAyuda.h"
 #import "IRGGestorDeEstados.h"
 #import "IRGNUmeroSieteSegmentosViewController.h"
-#define CUENTA_ATRAS 9
+#import "IRGSettings.h"
 #define TAMANO_X_VENTANA_DISPLAY_SIETE_SEGMENTOS 200
 #define TAMANO_Y_VENTANA_DISPLAY_SIETE_SEGMENTOS 250
 
@@ -32,7 +32,7 @@
     if (self) {
         _delegado = sender;
         _gestorDeEstados = gestorDeEstados;
-        _contador = CUENTA_ATRAS;
+        _contador = [IRGSettings sharedSettings].tiempoDeAyuda;
     }
     return self;
 }
@@ -133,7 +133,7 @@
         [self ocultarAyuda];
         [self.delegado.canvas sendSubviewToBack:self.sieteSegmentosViewController.view];
         self.sieteSegmentosViewController = nil;
-        self.contador = CUENTA_ATRAS;
+        self.contador = [IRGSettings sharedSettings].tiempoDeAyuda;
     }
     else {
         self.sieteSegmentosViewController.valorADibujar = self.contador;
@@ -144,7 +144,5 @@
     [self.gestorDeEstados establecerEstado:self.gestorDeEstados.estadoDelJuegoEnJuegoConAyuda];
     [self.delegado ocultarMinas];
 }
-
-
 
 @end

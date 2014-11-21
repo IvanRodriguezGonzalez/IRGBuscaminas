@@ -23,6 +23,8 @@
 #import "IRGGestionarBotonera.h"
 #import "IRGSettingsViewController.h"
 #import "IRGVistaPorcentajeDeAvanceViewController.h"
+#import "IRGSettings.h"
+
 
 @interface IRGVentanaPrincipalViewController ()
 @property (nonatomic)  NSInteger numeroDeFilas;
@@ -35,6 +37,8 @@
 @property (weak, nonatomic) IBOutlet UITextField *tiempoDeJuego;
 @property (weak, nonatomic) IBOutlet UIImageView *imagenDeBloqueo;
 @property(nonatomic) IRGVistaPorcentajeDeAvanceViewController *vistaConPorcentajeDeAvanceViewController;
+
+@property (nonatomic) IRGSettingsViewController * vistaDeConfiguracion;
 
 
 @end
@@ -59,9 +63,10 @@
 
 
 #pragma mark - Navigation primer nivel
+
 - (IBAction)mostrarConfiguracion:(UIButton *)sender {
-    IRGSettingsViewController *vistaConfiguracion =[[IRGSettingsViewController alloc]init];
-    [self.canvas addSubview:vistaConfiguracion.view];
+    self.vistaDeConfiguracion =[[IRGSettingsViewController alloc]init];
+    [self.canvas addSubview:self.vistaDeConfiguracion.view];
     
     
 }
@@ -178,7 +183,6 @@
 
 -(void) iniciarVistaConPorcentajeDeAvance{
     IRGVistaPorcentajeDeAvanceViewController *vistaConPorcentajeDeAvanceViewController = [[IRGVistaPorcentajeDeAvanceViewController alloc]initConFrame:self.botonPrincipal.frame];
-    CGRect a = self.botonPrincipal.frame ;
     [self.barraBotonera addSubview:vistaConPorcentajeDeAvanceViewController.view];
     self.vistaConPorcentajeDeAvanceViewController = vistaConPorcentajeDeAvanceViewController;
     
@@ -198,7 +202,6 @@
     [[IRGDatos sharedDatos] borrarJuego];
     [self borrarCanvas];
     [self generarCanvas];
-    [self actualizarNumeroDeMinas];
     [self generarMinas];
     
     [self actualizarBotonYBarraDeProgreso];
@@ -323,12 +326,9 @@
     self.canvas.backgroundColor = [IRGPincel sharedPincel].colorDeRellenoDePantallaDeModoAyuda;
 }
 
--(void) actualizarNumeroDeMinas{
-    [IRGDatos sharedDatos].numeroDeMinas = [self.totalMinas.text intValue];
-}
 
 - (void) generarMinas{
-    for (int numeroDeMinas = 0;numeroDeMinas < [IRGDatos sharedDatos].numeroDeMinas;numeroDeMinas++){
+    for (int numeroDeMinas = 0;numeroDeMinas < [IRGSettings sharedSettings].numeroDeMinas;numeroDeMinas++){
         NSInteger celdaConMina = [self generarNumeroAleatorioEntre:0
                                                                  Y:[IRGLienzo sharedLienzo].filasDelLienzo*[IRGLienzo sharedLienzo].columnasDelLienzo];
         

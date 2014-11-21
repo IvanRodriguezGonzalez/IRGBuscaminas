@@ -18,6 +18,7 @@
 		E12E5D3A1A10F36E0047FCCF /* IRGEstadoDelJuegoEnJuego.m in Sources */ = {isa = PBXBuildFile; fileRef = E12E5D391A10F36E0047FCCF /* IRGEstadoDelJuegoEnJuego.m */; };
 		E12E5D3D1A10FD090047FCCF /* IRGEstadoDelJuegoInicio.m in Sources */ = {isa = PBXBuildFile; fileRef = E12E5D3C1A10FD090047FCCF /* IRGEstadoDelJuegoInicio.m */; };
 		E12E5D411A1113FD0047FCCF /* IRGGestorDeEstados.m in Sources */ = {isa = PBXBuildFile; fileRef = E12E5D401A1113FD0047FCCF /* IRGGestorDeEstados.m */; };
+		E131A7EC1A1F18BD006EFED3 /* IRGSettings.m in Sources */ = {isa = PBXBuildFile; fileRef = E131A7EB1A1F18BD006EFED3 /* IRGSettings.m */; };
 		E134707F1A1B25370013FB43 /* IRGVistaPorcentajeDeAvanceViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = E134707E1A1B25370013FB43 /* IRGVistaPorcentajeDeAvanceViewController.m */; };
 		E13470821A1B28B80013FB43 /* IRGVistaConPorcentajeDeAvance.m in Sources */ = {isa = PBXBuildFile; fileRef = E13470811A1B28B80013FB43 /* IRGVistaConPorcentajeDeAvance.m */; };
 		E1923B741A1AA3C4000E69B2 /* IRGSettingsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = E1923B721A1AA3C4000E69B2 /* IRGSettingsViewController.m */; };
@@ -77,6 +78,8 @@
 		E12E5D3C1A10FD090047FCCF /* IRGEstadoDelJuegoInicio.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = IRGEstadoDelJuegoInicio.m; sourceTree = "<group>"; };
 		E12E5D3F1A1113FD0047FCCF /* IRGGestorDeEstados.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IRGGestorDeEstados.h; sourceTree = "<group>"; };
 		E12E5D401A1113FD0047FCCF /* IRGGestorDeEstados.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = IRGGestorDeEstados.m; sourceTree = "<group>"; };
+		E131A7EA1A1F18BD006EFED3 /* IRGSettings.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IRGSettings.h; sourceTree = "<group>"; };
+		E131A7EB1A1F18BD006EFED3 /* IRGSettings.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = IRGSettings.m; sourceTree = "<group>"; };
 		E134707D1A1B25370013FB43 /* IRGVistaPorcentajeDeAvanceViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IRGVistaPorcentajeDeAvanceViewController.h; sourceTree = "<group>"; };
 		E134707E1A1B25370013FB43 /* IRGVistaPorcentajeDeAvanceViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = IRGVistaPorcentajeDeAvanceViewController.m; sourceTree = "<group>"; };
 		E13470801A1B28B80013FB43 /* IRGVistaConPorcentajeDeAvance.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IRGVistaConPorcentajeDeAvance.h; sourceTree = "<group>"; };
@@ -309,6 +312,8 @@
 		E1CD31AA1A0BCC1D00D317A8 /* Modelo */ = {
 			isa = PBXGroup;
 			children = (
+				E131A7EA1A1F18BD006EFED3 /* IRGSettings.h */,
+				E131A7EB1A1F18BD006EFED3 /* IRGSettings.m */,
 				E1D41DC61A0BF0050059C46C /* IRGLienzo.h */,
 				E1D41DC71A0BF0050059C46C /* IRGLienzo.m */,
 				E1D41DC81A0BF0050059C46C /* IRGPincel.h */,
@@ -442,6 +447,7 @@
 				E1CB22A81A126BAC00D9EF6F /* IRGGestionarBotonera.m in Sources */,
 				E1D41DC51A0BEF6B0059C46C /* IRGCeldaViewController.m in Sources */,
 				E1A9A5CC1A13CB9B0020AE98 /* IRGNUmeroSieteSegmentosViewController.m in Sources */,
+				E131A7EC1A1F18BD006EFED3 /* IRGSettings.m in Sources */,
 				E1923B741A1AA3C4000E69B2 /* IRGSettingsViewController.m in Sources */,
 				E12E5D411A1113FD0047FCCF /* IRGGestorDeEstados.m in Sources */,
 				E1CD31A61A0BCBF800D317A8 /* IRGVentanaPrincipalViewController.m in Sources */,

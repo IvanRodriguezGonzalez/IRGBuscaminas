@@ -38,7 +38,6 @@
 -(instancetype) initPrivado{
     self = [super init];
     if (self) {
-        
         if ([self existeArchivo:[self obtenerPath]]){
             _mejoresTiempos = [self recuperarMejoresTiempos:[self obtenerPath]];
         }
@@ -81,8 +80,6 @@
 }
 
 
-
-
 #pragma mark Funciones auxiliares
 
 -(NSString *) obtenerPath{
@@ -97,12 +94,12 @@
 -(BOOL) existeArchivo:(NSString *)pathArchivo{
     
     NSFileManager *fileManagerPrincipal = [NSFileManager defaultManager];
-        if ([fileManagerPrincipal fileExistsAtPath:[self obtenerPath]]){
-            return TRUE;
-        }
-        else{
-            return FALSE;
-        }
+    if ([fileManagerPrincipal fileExistsAtPath:[self obtenerPath]]){
+        return TRUE;
+    }
+    else{
+        return FALSE;
+    }
 }
 
 -(NSMutableArray *) recuperarMejoresTiempos:(NSString *)path{
