@@ -22,7 +22,6 @@
 #import "IRGGestorDeEstados.h"
 #import "IRGGestionarBotonera.h"
 #import "IRGSettingsViewController.h"
-#import "IRGVistaPorcentajeDeAvanceViewController.h"
 #import "IRGSettings.h"
 
 
@@ -36,7 +35,6 @@
 @property (weak, nonatomic) IBOutlet UIProgressView *barraDeProgreso;
 @property (weak, nonatomic) IBOutlet UITextField *tiempoDeJuego;
 @property (weak, nonatomic) IBOutlet UIImageView *imagenDeBloqueo;
-@property(nonatomic) IRGVistaPorcentajeDeAvanceViewController *vistaConPorcentajeDeAvanceViewController;
 
 @property (nonatomic) IRGSettingsViewController * vistaDeConfiguracion;
 
@@ -49,7 +47,6 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     [self iniciarGestionarBotonera];
-    [self iniciarVistaConPorcentajeDeAvance];
     [self iniciarGestorDeEstados];
 }
 
@@ -181,12 +178,7 @@
 }
 #pragma mark - Auxiliares primer nivel
 
--(void) iniciarVistaConPorcentajeDeAvance{
-    IRGVistaPorcentajeDeAvanceViewController *vistaConPorcentajeDeAvanceViewController = [[IRGVistaPorcentajeDeAvanceViewController alloc]initConFrame:self.botonPrincipal.frame];
-    [self.barraBotonera addSubview:vistaConPorcentajeDeAvanceViewController.view];
-    self.vistaConPorcentajeDeAvanceViewController = vistaConPorcentajeDeAvanceViewController;
-    
-}
+
 
 -(void) iniciarGestionarBotonera{
     self.gestionarBotonera = [[IRGGestionarBotonera alloc]initConSender:self];
@@ -362,7 +354,6 @@
     
     [self actualizarBotonConProgreso:porcentajeDeAvance];
     [self actualizarBarraDeProgresoConProgreso:porcentajeDeAvance];
-    [self.vistaConPorcentajeDeAvanceViewController dibujarAvance:porcentajeDeAvance];
     return porcentajeDeAvance;
 }
 

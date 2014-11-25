@@ -71,11 +71,11 @@
                             </variation>
                         </textField>
                         <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Efd-Dz-d6X">
-                            <rect key="frame" x="507" y="8" width="57" height="57"/>
+                            <rect key="frame" x="326" y="8" width="57" height="57"/>
                             <constraints>
                                 <constraint firstAttribute="width" secondItem="Efd-Dz-d6X" secondAttribute="height" multiplier="1:1" id="qgA-jE-0nm"/>
                             </constraints>
-                            <state key="normal" title="Button" image="p.txt">
+                            <state key="normal" title="Button" image="minas">
                                 <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                             </state>
                             <connections>
@@ -146,7 +146,7 @@
                             <nil key="highlightedColor"/>
                         </label>
                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Nueva!" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="tqR-vs-kuf">
-                            <rect key="frame" x="519" y="68" width="33" height="12"/>
+                            <rect key="frame" x="338" y="68" width="33" height="12"/>
                             <fontDescription key="fontDescription" type="system" pointSize="10"/>
                             <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                             <nil key="highlightedColor"/>
@@ -245,6 +245,7 @@
                         <constraint firstAttribute="trailing" secondItem="Efd-Dz-d6X" secondAttribute="trailing" constant="20" symbolic="YES" id="qtW-gk-do9"/>
                         <constraint firstAttribute="centerX" secondItem="Efd-Dz-d6X" secondAttribute="centerX" id="rUU-IC-4Cd"/>
                         <constraint firstItem="Efd-Dz-d6X" firstAttribute="leading" secondItem="RNV-JR-Uw3" secondAttribute="trailing" constant="8" symbolic="YES" id="ry3-54-2iC"/>
+                        <constraint firstAttribute="centerX" secondItem="Efd-Dz-d6X" secondAttribute="centerX" id="vSe-2E-PsH"/>
                         <constraint firstItem="XQl-I1-efG" firstAttribute="centerX" secondItem="RNV-JR-Uw3" secondAttribute="centerX" id="vSf-zo-3Tz"/>
                         <constraint firstItem="RNV-JR-Uw3" firstAttribute="top" secondItem="hIG-gz-8Ow" secondAttribute="top" constant="8" id="vmc-LB-D55"/>
                         <constraint firstItem="Qdt-QI-beK" firstAttribute="bottom" secondItem="zgi-zC-f8X" secondAttribute="bottom" id="vzp-RI-I1z"/>
@@ -279,6 +280,7 @@
                             <exclude reference="rUU-IC-4Cd"/>
                             <exclude reference="ry3-54-2iC"/>
                             <exclude reference="Qkb-yv-cy0"/>
+                            <exclude reference="XgI-EK-R59"/>
                             <exclude reference="Eaf-h7-lpa"/>
                             <exclude reference="yi1-4d-AqY"/>
                         </mask>
@@ -326,7 +328,7 @@
         <image name="SystemPreferences" width="1024" height="1024"/>
         <image name="help normal" width="1024" height="1024"/>
         <image name="mejoresTiempos" width="1024" height="1024"/>
-        <image name="p.txt" width="250" height="250"/>
+        <image name="minas" width="128" height="128"/>
         <image name="pausa" width="1024" height="1024"/>
     </resources>
 </document>

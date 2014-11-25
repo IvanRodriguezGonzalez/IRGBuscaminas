@@ -19,8 +19,6 @@
 		E12E5D3D1A10FD090047FCCF /* IRGEstadoDelJuegoInicio.m in Sources */ = {isa = PBXBuildFile; fileRef = E12E5D3C1A10FD090047FCCF /* IRGEstadoDelJuegoInicio.m */; };
 		E12E5D411A1113FD0047FCCF /* IRGGestorDeEstados.m in Sources */ = {isa = PBXBuildFile; fileRef = E12E5D401A1113FD0047FCCF /* IRGGestorDeEstados.m */; };
 		E131A7EC1A1F18BD006EFED3 /* IRGSettings.m in Sources */ = {isa = PBXBuildFile; fileRef = E131A7EB1A1F18BD006EFED3 /* IRGSettings.m */; };
-		E134707F1A1B25370013FB43 /* IRGVistaPorcentajeDeAvanceViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = E134707E1A1B25370013FB43 /* IRGVistaPorcentajeDeAvanceViewController.m */; };
-		E13470821A1B28B80013FB43 /* IRGVistaConPorcentajeDeAvance.m in Sources */ = {isa = PBXBuildFile; fileRef = E13470811A1B28B80013FB43 /* IRGVistaConPorcentajeDeAvance.m */; };
 		E1923B741A1AA3C4000E69B2 /* IRGSettingsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = E1923B721A1AA3C4000E69B2 /* IRGSettingsViewController.m */; };
 		E1923B751A1AA3C4000E69B2 /* IRGSettingsViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = E1923B731A1AA3C4000E69B2 /* IRGSettingsViewController.xib */; };
 		E1A9A5CC1A13CB9B0020AE98 /* IRGNUmeroSieteSegmentosViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = E1A9A5CB1A13CB9B0020AE98 /* IRGNUmeroSieteSegmentosViewController.m */; };
@@ -80,10 +78,6 @@
 		E12E5D401A1113FD0047FCCF /* IRGGestorDeEstados.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = IRGGestorDeEstados.m; sourceTree = "<group>"; };
 		E131A7EA1A1F18BD006EFED3 /* IRGSettings.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IRGSettings.h; sourceTree = "<group>"; };
 		E131A7EB1A1F18BD006EFED3 /* IRGSettings.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = IRGSettings.m; sourceTree = "<group>"; };
-		E134707D1A1B25370013FB43 /* IRGVistaPorcentajeDeAvanceViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IRGVistaPorcentajeDeAvanceViewController.h; sourceTree = "<group>"; };
-		E134707E1A1B25370013FB43 /* IRGVistaPorcentajeDeAvanceViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = IRGVistaPorcentajeDeAvanceViewController.m; sourceTree = "<group>"; };
-		E13470801A1B28B80013FB43 /* IRGVistaConPorcentajeDeAvance.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IRGVistaConPorcentajeDeAvance.h; sourceTree = "<group>"; };
-		E13470811A1B28B80013FB43 /* IRGVistaConPorcentajeDeAvance.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = IRGVistaConPorcentajeDeAvance.m; sourceTree = "<group>"; };
 		E1923B711A1AA3C4000E69B2 /* IRGSettingsViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IRGSettingsViewController.h; sourceTree = "<group>"; };
 		E1923B721A1AA3C4000E69B2 /* IRGSettingsViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = IRGSettingsViewController.m; sourceTree = "<group>"; };
 		E1923B731A1AA3C4000E69B2 /* IRGSettingsViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = IRGSettingsViewController.xib; sourceTree = "<group>"; };
@@ -274,8 +268,6 @@
 				E1923B731A1AA3C4000E69B2 /* IRGSettingsViewController.xib */,
 				320334441A0EC9A7000FFAEF /* IRGMejoresTiemposViewController.xib */,
 				E1CD31A51A0BCBF800D317A8 /* IRGVentanaPrincipalViewController.xib */,
-				E13470801A1B28B80013FB43 /* IRGVistaConPorcentajeDeAvance.h */,
-				E13470811A1B28B80013FB43 /* IRGVistaConPorcentajeDeAvance.m */,
 				32A1DB111A0FAFAB00AA33CE /* IRGPreguntarNombreViewController.xib */,
 			);
 			name = Vista;
@@ -303,8 +295,6 @@
 				320334401A0EBDF3000FFAEF /* IRGPrincipalNavigationViewController.m */,
 				320334421A0EC9A7000FFAEF /* IRGMejoresTiemposViewController.h */,
 				320334431A0EC9A7000FFAEF /* IRGMejoresTiemposViewController.m */,
-				E134707D1A1B25370013FB43 /* IRGVistaPorcentajeDeAvanceViewController.h */,
-				E134707E1A1B25370013FB43 /* IRGVistaPorcentajeDeAvanceViewController.m */,
 			);
 			name = Controlador;
 			sourceTree = "<group>";
@@ -433,14 +423,12 @@
 			buildActionMask = 2147483647;
 			files = (
 				E12E5D3D1A10FD090047FCCF /* IRGEstadoDelJuegoInicio.m in Sources */,
-				E13470821A1B28B80013FB43 /* IRGVistaConPorcentajeDeAvance.m in Sources */,
 				E1FE2CEA1A114242004333F9 /* IRGEstadoDelJuegoEnJuegoConAyuda.m in Sources */,
 				E1A9A5CF1A13CC100020AE98 /* IRGSieteSegmentos.m in Sources */,
 				E1CD31AD1A0BCCF900D317A8 /* IRGCelda.m in Sources */,
 				320334451A0EC9A7000FFAEF /* IRGMejoresTiemposViewController.m in Sources */,
 				E1D41DCB1A0BF0050059C46C /* IRGPincel.m in Sources */,
 				E1D41DCE1A0BFEC30059C46C /* IRGDatos.m in Sources */,
-				E134707F1A1B25370013FB43 /* IRGVistaPorcentajeDeAvanceViewController.m in Sources */,
 				E1C543611A12043100D5B23A /* IRGEstadoDelJuegoFinalizadoConError.m in Sources */,
 				320334411A0EBDF3000FFAEF /* IRGPrincipalNavigationViewController.m in Sources */,
 				320334491A0F20A4000FFAEF /* IRGMetodosComunes.m in Sources */,
