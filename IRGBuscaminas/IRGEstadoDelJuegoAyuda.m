@@ -72,6 +72,8 @@
     [self.delegado.gestionarBotonera desactivarBotonPrincipal];
     [self.delegado.gestionarBotonera desactivarTextFieldNumeroDeMinas];
     [self.delegado.gestionarBotonera desactivarBotonPausar];
+    [self.delegado.gestionarBotonera desactivarSettings];
+
     [self anadirVistaSieteSegmentos];
     [self iniciarReloj];
 }
@@ -114,7 +116,7 @@
                                                            colorDelRelleno:[UIColor whiteColor]transparenciaDelRelleno:.99];
      
   //[self.sieteSegmentosViewController establecerEfecto3ConColorDelTrazoDelBordeConLuz:[UIColor whiteColor] conColortDelTrazoDelBordeConSombra:[UIColor blackColor]];
-  
+    self.contador =[IRGSettings sharedSettings].tiempoDeAyuda;;
     self.sieteSegmentosViewController.valorADibujar = self.contador;
 
 }
@@ -128,7 +130,7 @@
 
 - (void) descontarContador{
     self.contador = self.contador-1;
-    if (self.contador ==0){
+    if (self.contador ==-1){
         [self.relojDeEspera invalidate];
         [self ocultarAyuda];
         [self.delegado.canvas sendSubviewToBack:self.sieteSegmentosViewController.view];

@@ -27,8 +27,6 @@
     principalNavigationViewController.viewControllers = @[ventanaPrincipalViewController];
     
     self.window.rootViewController = principalNavigationViewController;
-    
-    self.window.backgroundColor = [UIColor whiteColor];
     [self.window makeKeyAndVisible];
     return YES;
 }

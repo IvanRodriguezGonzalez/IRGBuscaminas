@@ -2,12 +2,13 @@
   "images" : [
     {
       "idiom" : "universal",
-      "scale" : "1x"
+      "scale" : "1x",
+      "filename" : "icon.png"
     },
     {
       "idiom" : "universal",
       "scale" : "2x",
-      "filename" : "minaenjuego.png"
+      "filename" : "icon@2x.png"
     },
     {
       "idiom" : "universal",

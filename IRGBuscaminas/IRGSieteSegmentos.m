@@ -107,7 +107,6 @@
     [self dibujaSegmentoTop];
     [self dibujaSegmentoIzquierdoSuperior];
     [self dibujaSegmentoDerechoSuperior];
-    [self dibujaSegmentoCentral];
     
     [self dibujaSegmentoIzquierdoInferior];
     [self dibujaSegmentoDerechoInferior];

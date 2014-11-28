@@ -15,5 +15,7 @@
 @property (nonatomic) NSInteger tiempoDeAyuda;
 
 + (instancetype) sharedSettings;
+-(bool) guardarSettings;
+
 
 @end

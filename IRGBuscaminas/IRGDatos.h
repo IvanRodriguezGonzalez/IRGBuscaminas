@@ -12,7 +12,6 @@
 
 
 @interface IRGDatos : NSObject
-@property (nonatomic) int numeroDeMinas;
 
 //designated initializer
 + (instancetype) sharedDatos;

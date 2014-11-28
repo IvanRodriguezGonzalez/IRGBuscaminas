@@ -85,6 +85,16 @@
 }
 
 
+- (void) activarSettings{
+    self.delegado.botonSettings.enabled = true;
+    self.delegado.etiquetaSettings.enabled = true;
+}
+
+- (void) desactivarSettings{
+    self.delegado.botonSettings.enabled = false;
+    self.delegado.etiquetaSettings.enabled = false;
+}
+
 -(void) establecerBotonYEtiquetaBotonMostrarMinasModoNormal{
     self.delegado.etiquetaBotonMostrarMinas.textColor = [IRGPincel sharedPincel].colorEtiquetaDeBotonNormal;
 }

@@ -8,7 +8,6 @@
 
 #import "IRGNUmeroSieteSegmentosViewController.h"
 #import "IRGSieteSegmentos.h"
-#define COLOR_DE_LA_VENTANA grayColor
 
 @interface IRGNUmeroSieteSegmentosViewController ()
 @property (nonatomic) IRGSieteSegmentos *vistaSieteSegmentos;
@@ -43,8 +42,6 @@
 
 #pragma mark Overrides
 -(void)loadView{
-
-    
     CGRect frameDelDisplay =self.frameDeLaVista;
     
     IRGSieteSegmentos * display = [[IRGSieteSegmentos alloc]initWithFrame:frameDelDisplay];
@@ -57,8 +54,6 @@
     // Do any additional setup after loading the view.
         self.view.layer.cornerRadius = 40;
         self.view.layer.masksToBounds = YES;
-   // self.view.layer.borderWidth = 1;
-   // self.view.layer.borderColor =[UIColor grayColor].CGColor;
 }
 
 - (void)didReceiveMemoryWarning {

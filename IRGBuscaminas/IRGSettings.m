@@ -82,7 +82,7 @@
     self = [super init];
     if (self){
         _numeroDeMinas = [aDecoder decodeIntegerForKey:@"numeroDeMinas"];
-        _activarAyuda  = [aDecoder decodeObjectForKey:@"activarAyuda"];
+        _activarAyuda  = [aDecoder decodeBoolForKey:@"activarAyuda"];
         _tiempoDeAyuda = [aDecoder decodeIntegerForKey:@"tiempoDeAyuda"];
     }
     return self;

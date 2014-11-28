@@ -9,13 +9,13 @@
             shouldBeEnabled = "Yes"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
-            filePath = "IRGBuscaminas/IRGSettingsViewController.m"
-            timestampString = "438281089.634542"
+            filePath = "IRGBuscaminas/IRGEstadoDelJuegoAyuda.m"
+            timestampString = "438822068.955807"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "34"
-            endingLineNumber = "34"
-            landmarkName = "-guardarResultados:"
+            startingLineNumber = "138"
+            endingLineNumber = "138"
+            landmarkName = "-descontarContador"
             landmarkType = "5">
          </BreakpointContent>
       </BreakpointProxy>

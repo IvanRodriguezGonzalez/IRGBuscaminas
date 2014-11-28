@@ -37,6 +37,10 @@
 
 - (void) desactivarTextFieldNumeroDeMinas;
 
+- (void) activarSettings;
+
+- (void) desactivarSettings;
+
 
 -(void) establecerBotonYEtiquetaBotonMostrarMinasModoNormal;
 

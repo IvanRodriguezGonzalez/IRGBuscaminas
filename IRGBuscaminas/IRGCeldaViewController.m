@@ -73,20 +73,17 @@
     [super viewDidLoad];
     // Do any additional setup after loading the view.
     
+
+    UILongPressGestureRecognizer *longTapRecognizer = [[UILongPressGestureRecognizer alloc] initWithTarget:self
+                                                                                          action:@selector(longTap:)];
+    longTapRecognizer.minimumPressDuration =.1;
     
-    UITapGestureRecognizer *doubleTapRecognizer = [[UITapGestureRecognizer alloc] initWithTarget:self
-                                                                                          action:@selector(doubleTap:)];
-    doubleTapRecognizer.numberOfTapsRequired= 2;
-    doubleTapRecognizer.delaysTouchesBegan = YES;
-    
-    
-   
     UITapGestureRecognizer  *tapGestureRecognizer = [[UITapGestureRecognizer alloc] initWithTarget:self
                                                                                                               action:@selector(tapGestureRecognizer:)];
-    [tapGestureRecognizer requireGestureRecognizerToFail:doubleTapRecognizer];
+   //[tapGestureRecognizer requireGestureRecognizerToFail:longTapRecognizer];
     
     [self.view addGestureRecognizer:tapGestureRecognizer];
-    [self.view addGestureRecognizer:doubleTapRecognizer];
+    [self.view addGestureRecognizer:longTapRecognizer];
     
 
 }
@@ -99,8 +96,9 @@
 
 #pragma mark - Navigation
 
--(void) doubleTap:(UITapGestureRecognizer *)gesture{
+-(void) longTap:(UILongPressGestureRecognizer *)gesture{
     [self.delegado celdaDoblePulsada:self];
+    NSLog(@"largo");
 }
 
 -(void) tapGestureRecognizer : (UITapGestureRecognizer *) gesture{

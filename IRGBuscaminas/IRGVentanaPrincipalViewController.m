@@ -63,19 +63,19 @@
 
 - (IBAction)mostrarConfiguracion:(UIButton *)sender {
     self.vistaDeConfiguracion =[[IRGSettingsViewController alloc]init];
+    
+    /*
     [self.canvas addSubview:self.vistaDeConfiguracion.view];
     
-    
-}
+    float posicionX =(self.canvas.frame.size.width-self.vistaDeConfiguracion.view.frame.size.width)/2;
+    float posicionY = (self.canvas.frame.size.height-self.vistaDeConfiguracion.view.frame.size.height)/2;
+    float ancho = self.vistaDeConfiguracion.view.frame.size.width;
+    float alto = self.vistaDeConfiguracion.view.frame.size.height;
+    CGRect settingsFrame = CGRectMake(posicionX, posicionY, ancho, alto);
+//    self.vistaDeConfiguracion.view.frame = settingsFrame;
 
-
-- (IBAction)mostrarMenu:(UIButton *)sender {
-    CGRect frame = CGRectMake(0,0,100,self.view.frame.size.height);
-    UIView * vista =[[UIView alloc]initWithFrame:frame];
-    vista.backgroundColor = [UIColor redColor];
-    [self.view addSubview:vista];
-    [self.view sendSubviewToBack:vista];
-    [self.view bringSubviewToFront:vista];
+    [self.gestionarBotonera desactivarSettings];
+*/
 }
 
 
@@ -172,7 +172,7 @@
             banderasPuestas++;
         }
     }
-    int banderasPendientes = [IRGDatos sharedDatos].numeroDeMinas;
+    int banderasPendientes = [IRGSettings sharedSettings].numeroDeMinas;
     banderasPendientes = banderasPendientes-banderasPuestas;
     self.totalMinas.text = [NSString stringWithFormat:@"%d",banderasPendientes];
 }
@@ -205,7 +205,7 @@
 
 -(void) acabarJuegoConError{
     [self mostrarTodasLasMinas];
-    [self establecerImagenDelBotonPrincipal:@"error"];
+    [self establecerImagenDelBotonPrincipal:@"minaApagada"];
     [self establecerFondoDeError];
     [self recuperarNumeroDeMinasPendietes];
     [self detenerRelor];
@@ -218,7 +218,7 @@
     [self preguntarNombreConTiempo:self.tiempoDeJuegoEnSegundos
                             Nombre:nil
                     numeroDeCeldas:[IRGLienzo sharedLienzo].filasDelLienzo*[IRGLienzo sharedLienzo].columnasDelLienzo
-                     numeroDeMinas:[IRGDatos sharedDatos].numeroDeMinas
+                     numeroDeMinas:[IRGSettings sharedSettings].numeroDeMinas
                           conAyuda:FALSE];
 }
 
@@ -229,7 +229,7 @@
     [self preguntarNombreConTiempo:self.tiempoDeJuegoEnSegundos
                             Nombre:nil
                     numeroDeCeldas:[IRGLienzo sharedLienzo].filasDelLienzo*[IRGLienzo sharedLienzo].columnasDelLienzo
-                     numeroDeMinas:[IRGDatos sharedDatos].numeroDeMinas
+                     numeroDeMinas:[IRGSettings sharedSettings].numeroDeMinas
                           conAyuda:true];
 
    }
@@ -336,13 +336,13 @@
 }
 
 - (void) recuperarNumeroDeMinasPendietes{
-    self.totalMinas.text = [NSString stringWithFormat:@"%d",[[IRGDatos sharedDatos] numeroDeMinas]];
+    self.totalMinas.text = [NSString stringWithFormat:@"%d",[[IRGSettings sharedSettings] numeroDeMinas]];
 }
 
 - (NSInteger) actualizarBotonYBarraDeProgreso{
     NSArray *todasLasCeldas = [IRGDatos sharedDatos].todasLasCeldas;
     Float32 totalCeldas = [todasLasCeldas count];
-    totalCeldas = totalCeldas - [IRGDatos sharedDatos].numeroDeMinas;
+    totalCeldas = totalCeldas - [IRGSettings sharedSettings].numeroDeMinas;
     
     Float32 totalCeldasProcesadas = 0;
     for (IRGCeldaViewController * celdaViewController in todasLasCeldas){
