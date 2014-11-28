@@ -203,9 +203,9 @@
     NSInteger separacionEntreSegmentos =0;
     NSInteger separacionHorizontalDelSegmentoConLaVista = 5;
     NSInteger separacionVerticalDelSegmentoConLaVista = 5;
-
-    UIColor * colorFondoReloj =[UIColor lightGrayColor];
+    UIColor * colorFondoReloj =[UIColor blueColor];
     float alphaDelColorDelFondoDelReloj =.5;
+    
 
     CGRect unidadSegundosFrame = CGRectMake(self.tiempoDeJuegoSegundos.frame.size.width/2,0,self.tiempoDeJuegoSegundos.frame.size.width/2,self.tiempoDeJuegoSegundos.frame.size.height);
     

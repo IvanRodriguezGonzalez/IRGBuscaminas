@@ -14,6 +14,7 @@
 @property (nonatomic) bool activarAyuda;
 @property (nonatomic) NSInteger tiempoDeAyuda;
 @property (nonatomic) NSInteger dificultad;
+@property (nonatomic) float porcerntajeDeTransparencia;
 
 
 + (instancetype) sharedSettings;

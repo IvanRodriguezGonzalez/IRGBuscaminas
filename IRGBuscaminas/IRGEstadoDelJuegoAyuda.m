@@ -131,7 +131,7 @@
     if (self.contador ==-1){
         [self.relojDeEspera invalidate];
         [self ocultarAyuda];
-        [self.delegado.canvas sendSubviewToBack:self.sieteSegmentosViewController.view];
+        [self.sieteSegmentosViewController.view removeFromSuperview];
         self.sieteSegmentosViewController = nil;
         self.contador = [IRGSettings sharedSettings].tiempoDeAyuda;
     }

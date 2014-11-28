@@ -13,7 +13,7 @@
 #import "IRGDatos.h"
 #import "IRGPincel.h"
 #import "IRGVentanaPrincipalViewController.h"
-#define TIEMPO_PULSACION 0.1
+#define TIEMPO_PULSACION 0.2
 
 
 @interface IRGCeldaViewController ()

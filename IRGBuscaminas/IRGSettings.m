@@ -18,6 +18,7 @@
 #define TIEMPO_DE_AYUDA_POR_DEFECTO_DEL_NIVEL_1 2
 #define TIEMPO_DE_AYUDA_POR_DEFECTO_DEL_NIVEL_2 5
 #define TIEMPO_DE_AYUDA_POR_DEFECTO_DEL_NIVEL_3 9
+#define PORCENTAJE_DE_TRANSPARENCIA_POR_DEFECTO 1
 
 
 @interface IRGSettings ()
@@ -54,6 +55,7 @@
             _activarAyuda = AYUDAS_ACTIVAS;
             _tiempoDeAyuda = TIEMPO_DE_AYUDA_POR_DEFECTO;
             _dificultad =NIVEL_DIFICULTAD_POR_DEFECTO;
+            _porcerntajeDeTransparencia = PORCENTAJE_DE_TRANSPARENCIA_POR_DEFECTO;
         }
     }
     return self;
@@ -89,6 +91,8 @@
     [aCoder encodeBool:self.activarAyuda forKey:@"activarAyuda"];
     [aCoder encodeInteger:self.tiempoDeAyuda forKey:@"tiempoDeAyuda"];
     [aCoder encodeInteger:self.dificultad forKey:@"dificultad"];
+    [aCoder encodeFloat:self.porcerntajeDeTransparencia forKey:@"porcentajeDeTransparencia"];
+    
     
 }
 
@@ -99,6 +103,7 @@
         _activarAyuda  = [aDecoder decodeBoolForKey:@"activarAyuda"];
         _tiempoDeAyuda = [aDecoder decodeIntegerForKey:@"tiempoDeAyuda"];
         _dificultad = [aDecoder decodeIntegerForKey:@"dificultad"];
+        _porcerntajeDeTransparencia = [aDecoder decodeFloatForKey:@"porcentajeDeTransparencia"];
     }
     return self;
 }

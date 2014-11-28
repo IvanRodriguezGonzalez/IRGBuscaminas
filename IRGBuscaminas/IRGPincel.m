@@ -7,7 +7,7 @@
 //
 
 #import "IRGPincel.h"
-//#import "IRGLienzo.h"
+#import "IRGSettings.h"
 
 @implementation IRGPincel
 
@@ -54,7 +54,7 @@
 
 - (UIColor *) colorDeRellenoDelPincel{
    // return [UIColor clearColor];
-    return[[[UIColor alloc]initWithRed:.8 green:.8 blue:.8 alpha:1] colorWithAlphaComponent:.2];
+    return[[[UIColor alloc]initWithRed:.8 green:.8 blue:.8 alpha:1] colorWithAlphaComponent:[IRGSettings sharedSettings].porcerntajeDeTransparencia];
 }
 
 - (UIColor *) colorDeRellenoDeLaCeldaVacia{

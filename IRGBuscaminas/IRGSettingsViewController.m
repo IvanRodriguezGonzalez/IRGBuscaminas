@@ -8,12 +8,16 @@
 
 #import "IRGSettingsViewController.h"
 #import "IRGSettings.h"
+#import "IRGDatos.h"
+#import "IRGPincel.h"
 
 @interface IRGSettingsViewController ()
+
 @property (weak, nonatomic) IBOutlet UITextField *numeroDeMinas;
 @property (weak, nonatomic) IBOutlet UITextField *tiempoDeAyuda;
 @property (weak, nonatomic) IBOutlet UISegmentedControl *activarAyuda;
 @property (weak, nonatomic) IBOutlet UISegmentedControl *nivelDeDificultad;
+@property (weak, nonatomic) IBOutlet UISlider *porcentajeDeTransparencia;
 
 @property (weak, nonatomic) IBOutlet UIView *vistaDatos;
 @property (nonatomic) UIViewController * controllerPrincipal;
@@ -42,14 +46,18 @@
         self.activarAyuda.selectedSegmentIndex =1;
     }
     self.nivelDeDificultad.selectedSegmentIndex =[IRGSettings sharedSettings].dificultad-1;
+    self.porcentajeDeTransparencia.value = 1-[IRGSettings sharedSettings].porcerntajeDeTransparencia;
+    
     self.vistaDatos.layer.borderWidth = 1;
     self.vistaDatos.layer.borderColor = [UIColor blackColor].CGColor;
     self.vistaDatos.layer.cornerRadius = 30;
     self.vistaDatos.layer.masksToBounds = YES;
     
     [self.nivelDeDificultad addTarget:self
-                         action:@selector(actualizaNivelDeDificultad)
+                         action:@selector(actualizarNivelDeDificultad)
                forControlEvents:UIControlEventValueChanged];}
+
+
 
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
@@ -72,10 +80,21 @@
     [self.view removeFromSuperview];
 }
 
--(void) actualizaNivelDeDificultad{
+-(void) actualizarNivelDeDificultad{
     self.numeroDeMinas.text = [NSString stringWithFormat: @"%d",[[IRGSettings sharedSettings] numeroDeMInasPorDefectoDelNivel:self.nivelDeDificultad.selectedSegmentIndex+1]];
     self.tiempoDeAyuda.text = [NSString stringWithFormat: @"%d",[[IRGSettings sharedSettings] tiempoDeAyudaPorDefectoDelNivel:self.nivelDeDificultad.selectedSegmentIndex+1]];
+}
+
+- (IBAction)cambiarTransparencia:(UISlider *)sender {
+    [IRGSettings sharedSettings].porcerntajeDeTransparencia = 1-sender.value;
     
+    for (IRGCeldaViewController *celdaViewController in [IRGDatos sharedDatos].todasLasCeldas){
+        if (celdaViewController.estado == procesado){
+            celdaViewController.view.backgroundColor = [[IRGPincel sharedPincel].colorDeRellenoDelPincel colorWithAlphaComponent:1-sender.value] ;
+        }
+    }
+    
+
 }
 
 @end

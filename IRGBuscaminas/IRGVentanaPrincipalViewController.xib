@@ -63,7 +63,7 @@
                                 </button>
                                 <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="right" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="OW5-p5-RKd">
                                     <rect key="frame" x="670" y="20" width="80" height="70"/>
-                                    <color key="backgroundColor" name="controlShadowColor" catalog="System" colorSpace="catalog"/>
+                                    <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                     <constraints>
                                         <constraint firstAttribute="width" secondItem="OW5-p5-RKd" secondAttribute="height" multiplier="13:9" id="Ems-Xx-lgA"/>
                                         <constraint firstAttribute="width" constant="40" id="ZQZ-Zb-34M"/>
@@ -95,7 +95,7 @@
                                 </button>
                                 <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" enabled="NO" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="phd-fm-tez">
                                     <rect key="frame" x="582" y="20" width="80" height="70"/>
-                                    <color key="backgroundColor" red="0.047058823530000002" green="0.37254901959999998" blue="0.98039215690000003" alpha="1" colorSpace="calibratedRGB"/>
+                                    <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                     <constraints>
                                         <constraint firstAttribute="width" constant="80" id="f8E-vC-yzR"/>
                                     </constraints>
@@ -200,7 +200,7 @@
                                 </label>
                                 <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" enabled="NO" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="hSA-zv-iZP">
                                     <rect key="frame" x="487" y="20" width="80" height="70"/>
-                                    <color key="backgroundColor" red="0.023529414089999999" green="0.40000003579999999" blue="0.96078437569999997" alpha="1" colorSpace="deviceRGB"/>
+                                    <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                     <constraints>
                                         <constraint firstAttribute="width" constant="80" id="b0D-q1-I7B"/>
                                     </constraints>

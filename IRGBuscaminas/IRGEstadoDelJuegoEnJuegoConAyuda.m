@@ -46,7 +46,7 @@
     [self.delegado.gestionarBotonera desactivarBotonMejoresTiempos];
     [self.delegado.gestionarBotonera activarBotonPrincipal];
     [self.delegado.gestionarBotonera desactivarBotonPausar];
-    [self.delegado.gestionarBotonera desactivarSettings];
+    [self.delegado.gestionarBotonera activarSettings];
 }
 
 
