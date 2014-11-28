@@ -19,6 +19,7 @@
 #define TIEMPO_DE_AYUDA_POR_DEFECTO_DEL_NIVEL_2 5
 #define TIEMPO_DE_AYUDA_POR_DEFECTO_DEL_NIVEL_3 9
 #define PORCENTAJE_DE_TRANSPARENCIA_POR_DEFECTO 1
+#define TAP_PONE_BANDERA_POR_DEFECTO true;
 
 
 @interface IRGSettings ()
@@ -56,6 +57,7 @@
             _tiempoDeAyuda = TIEMPO_DE_AYUDA_POR_DEFECTO;
             _dificultad =NIVEL_DIFICULTAD_POR_DEFECTO;
             _porcerntajeDeTransparencia = PORCENTAJE_DE_TRANSPARENCIA_POR_DEFECTO;
+            _tapPoneBandera = TAP_PONE_BANDERA_POR_DEFECTO;
         }
     }
     return self;
@@ -92,6 +94,7 @@
     [aCoder encodeInteger:self.tiempoDeAyuda forKey:@"tiempoDeAyuda"];
     [aCoder encodeInteger:self.dificultad forKey:@"dificultad"];
     [aCoder encodeFloat:self.porcerntajeDeTransparencia forKey:@"porcentajeDeTransparencia"];
+    [aCoder encodeBool:self.tapPoneBandera forKey:@"tapPoneBandera"];
     
     
 }
@@ -104,6 +107,7 @@
         _tiempoDeAyuda = [aDecoder decodeIntegerForKey:@"tiempoDeAyuda"];
         _dificultad = [aDecoder decodeIntegerForKey:@"dificultad"];
         _porcerntajeDeTransparencia = [aDecoder decodeFloatForKey:@"porcentajeDeTransparencia"];
+        _tapPoneBandera = [aDecoder decodeBoolForKey:@"tapPoneBandera"];
     }
     return self;
 }

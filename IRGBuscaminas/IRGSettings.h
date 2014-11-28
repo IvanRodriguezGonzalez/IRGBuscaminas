@@ -15,6 +15,7 @@
 @property (nonatomic) NSInteger tiempoDeAyuda;
 @property (nonatomic) NSInteger dificultad;
 @property (nonatomic) float porcerntajeDeTransparencia;
+@property (nonatomic) BOOL tapPoneBandera;
 
 
 + (instancetype) sharedSettings;
