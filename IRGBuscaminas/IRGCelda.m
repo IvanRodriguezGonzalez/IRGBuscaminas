@@ -7,8 +7,7 @@
 //
 
 #import "IRGCelda.h"
-#define TAMANO_X_DEL_NUMERO 10
-#define TAMANO_Y_DEL_NUMERO 10
+
 
 @interface IRGCelda ()
 
@@ -43,9 +42,10 @@
         _grosorDelTrazoDeLaCelda = grosorDelTrazo;
         _procesada = procesada;
 
-        CGRect frame = CGRectMake(8 ,2, self.frame.size.width -12, self.frame.size.height-2);
+        CGRect frame = CGRectMake(12 ,0, self.frame.size.width, self.frame.size.height);
         UILabel * numeroDeMinasAlrededor = [[UILabel alloc] initWithFrame:frame];
-        [numeroDeMinasAlrededor setAdjustsFontSizeToFitWidth:true];
+        numeroDeMinasAlrededor.font = [UIFont  systemFontOfSize:30];
+     //   [numeroDeMinasAlrededor setAdjustsFontSizeToFitWidth:true];
 
         CGRect frame1 = CGRectMake(1, 1, self.frame.size.width-2,self.frame.size.height-2);
         UIImage *imagen =nil;

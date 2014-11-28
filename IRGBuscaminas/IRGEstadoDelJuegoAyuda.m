@@ -53,7 +53,8 @@
                                   TAMANO_Y_VENTANA_DISPLAY_SIETE_SEGMENTOS);
         _sieteSegmentosViewController = [[IRGNUmeroSieteSegmentosViewController alloc] initWithNibName:nil
                                                                                                 bundle:nil
-                                                                                             withFrame:frame];
+                                                                                             withFrame:frame
+                                         withRedondeoDeLasEsquinas:10];
     }
     return  _sieteSegmentosViewController;
 }

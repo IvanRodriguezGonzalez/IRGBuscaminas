@@ -19,6 +19,7 @@
 @property (weak, nonatomic) IBOutlet UILabel *etiquetaSettings;
 @property (weak, nonatomic) IBOutlet UITextField *totalMinas;
 
+
 @property (weak, nonatomic) IBOutlet UILabel *etiquetaTextFieldTotalMinas;
 @property (weak, nonatomic) IBOutlet UIButton *botonPrincipal;
 @property (weak, nonatomic) IBOutlet UILabel *etiquetaBotonPrincipal;

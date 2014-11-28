@@ -23,6 +23,7 @@
 #import "IRGGestionarBotonera.h"
 #import "IRGSettingsViewController.h"
 #import "IRGSettings.h"
+#import "IRGNUmeroSieteSegmentosViewController.h"
 
 
 @interface IRGVentanaPrincipalViewController ()
@@ -38,6 +39,9 @@
 
 @property (nonatomic) IRGSettingsViewController * vistaDeConfiguracion;
 
+@property (nonatomic) IRGNUmeroSieteSegmentosViewController * unidadMinas;
+@property (nonatomic) IRGNUmeroSieteSegmentosViewController * decenaMinas;
+
 
 @end
 
@@ -48,7 +52,8 @@
     [super viewDidLoad];
     [self iniciarGestionarBotonera];
     [self iniciarGestorDeEstados];
-}
+    [self iniciarTotalMinasSieteSegmentos];
+    }
 
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
@@ -174,10 +179,53 @@
     }
     int banderasPendientes = [IRGSettings sharedSettings].numeroDeMinas;
     banderasPendientes = banderasPendientes-banderasPuestas;
-    self.totalMinas.text = [NSString stringWithFormat:@"%d",banderasPendientes];
+    
+    self.decenaMinas.valorADibujar = banderasPendientes/10;
+    self.unidadMinas.valorADibujar = banderasPendientes%10;
 }
 #pragma mark - Auxiliares primer nivel
 
+-(void) iniciarTotalMinasSieteSegmentos {
+    
+    CGRect unidadMinas = CGRectMake(self.totalMinas.frame.size.width/2,0,self.totalMinas.frame.size.width/2,self.totalMinas.frame.size.height);
+    CGRect decenaMinas = CGRectMake(0,0,self.totalMinas.frame.size.width/2,self.totalMinas.frame.size.height);
+    self.unidadMinas = [[IRGNUmeroSieteSegmentosViewController alloc] initWithNibName:nil
+                                                                               bundle:nil
+                                                                            withFrame:unidadMinas
+                                                            withRedondeoDeLasEsquinas:0];
+    
+    self.decenaMinas = [[IRGNUmeroSieteSegmentosViewController alloc] initWithNibName:nil
+                                                                               bundle:nil
+                                                                            withFrame:decenaMinas
+                                                            withRedondeoDeLasEsquinas:0];
+    
+    [self.totalMinas addSubview:self.unidadMinas.view];
+    [self.totalMinas addSubview:self.decenaMinas.view];
+    
+    [self.unidadMinas establecerVentanaConTransparencia:.5
+                                           colorDeFondo:[UIColor lightGrayColor]];
+    [self.decenaMinas establecerVentanaConTransparencia:.5
+                                           colorDeFondo:[UIColor lightGrayColor]];
+    
+    [self.unidadMinas  establecerSegmentoConGrosorDelTrazo:1
+                                         grosorDelSegmento:8
+                                  separacionEntreSegmentos:0
+                 separacionHorizontalDelSegmentoConLaVista:5
+                   separacionVerticalDelSegmentoConLaVista:5
+                                     colorDelTrazoDelBorde:[UIColor blackColor]
+                                           colorDelRelleno:[UIColor redColor]
+                                   transparenciaDelRelleno:1];
+    
+    [self.decenaMinas  establecerSegmentoConGrosorDelTrazo:1
+                                         grosorDelSegmento:8
+                                  separacionEntreSegmentos:0
+                 separacionHorizontalDelSegmentoConLaVista:5
+                   separacionVerticalDelSegmentoConLaVista:5
+                                     colorDelTrazoDelBorde:[UIColor blackColor]
+                                           colorDelRelleno:[UIColor redColor]
+                                   transparenciaDelRelleno:1];
+
+}
 
 
 -(void) iniciarGestionarBotonera{
@@ -197,6 +245,7 @@
     [self generarMinas];
     
     [self actualizarBotonYBarraDeProgreso];
+    [self actualizaMinasPendientes];
     [self iniciarBarraDeProgreso];
     [self establecerFondoNeutro];
     [self inicializarTiempoDeJuego];
@@ -336,7 +385,10 @@
 }
 
 - (void) recuperarNumeroDeMinasPendietes{
-    self.totalMinas.text = [NSString stringWithFormat:@"%d",[[IRGSettings sharedSettings] numeroDeMinas]];
+    
+    
+    self.decenaMinas.valorADibujar = [IRGSettings sharedSettings].numeroDeMinas/10;
+    self.unidadMinas.valorADibujar = [IRGSettings sharedSettings].numeroDeMinas%10;
 }
 
 - (NSInteger) actualizarBotonYBarraDeProgreso{

@@ -12,6 +12,7 @@
 @interface IRGNUmeroSieteSegmentosViewController ()
 @property (nonatomic) IRGSieteSegmentos *vistaSieteSegmentos;
 @property (nonatomic) CGRect frameDeLaVista;
+@property (nonatomic) NSInteger redondeoDeLasEsquinas;
 
 @end
 
@@ -22,11 +23,14 @@
 //designated initializer
 -(instancetype) initWithNibName:(NSString *)nibNameOrNil
                          bundle:(NSBundle *)nibBundleOrNil
-                      withFrame:(CGRect) frame{
+                      withFrame:(CGRect) frame
+      withRedondeoDeLasEsquinas:(NSInteger)redondeoDeLasEsquinas
+{
     self = [super initWithNibName:nibNameOrNil
                             bundle:nibBundleOrNil];
     if (self){
         _frameDeLaVista = frame;
+        _redondeoDeLasEsquinas = redondeoDeLasEsquinas;
           }
     return self;
 }
@@ -36,7 +40,8 @@
     
     return [self initWithNibName:nibNameOrNil
                           bundle:nibBundleOrNil
-                       withFrame:[UIApplication sharedApplication].keyWindow.frame];
+                       withFrame:[UIApplication sharedApplication].keyWindow.frame
+            withRedondeoDeLasEsquinas:0];
 };
 
 
@@ -52,7 +57,7 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     // Do any additional setup after loading the view.
-        self.view.layer.cornerRadius = 40;
+    self.view.layer.cornerRadius = self.redondeoDeLasEsquinas;;
         self.view.layer.masksToBounds = YES;
 }
 
@@ -99,7 +104,6 @@
 - (void) establecerVentanaConTransparencia:(float)porcentajeDeTransparencia
                               colorDeFondo:(UIColor *)colorDeFondo{
     
-    self.vistaSieteSegmentos.opaque= true;
     self.vistaSieteSegmentos.backgroundColor = [colorDeFondo colorWithAlphaComponent:porcentajeDeTransparencia];
 
 }
