@@ -10,12 +10,12 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "IRGBuscaminas/IRGVentanaPrincipalViewController.m"
-            timestampString = "437696846.541345"
+            timestampString = "438905845.208545"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "242"
-            endingLineNumber = "242"
-            landmarkName = "-preguntarNombreConTiempo:Nombre:numeroDeCeldas:numeroDeMinas:conAyuda:"
+            startingLineNumber = "345"
+            endingLineNumber = "345"
+            landmarkName = "-iniciarJuego"
             landmarkType = "5">
          </BreakpointContent>
       </BreakpointProxy>
@@ -57,7 +57,7 @@
                   symbolName = "-[IRGPreguntarNombreViewController nombreTextField]"
                   moduleName = "IRGBuscaminas"
                   urlString = "file:///Users/IRG/Desktop/Desarrollo/IOS/IRGBuscaminas/IRGBuscaminas/IRGPreguntarNombreViewController.m"
-                  timestampString = "437900778.200412"
+                  timestampString = "438905881.352816"
                   startingColumnNumber = "9223372036854775807"
                   endingColumnNumber = "9223372036854775807"
                   startingLineNumber = "15"
@@ -71,7 +71,7 @@
                   symbolName = "-[IRGPreguntarNombreViewController setNombreTextField:]"
                   moduleName = "IRGBuscaminas"
                   urlString = "file:///Users/IRG/Desktop/Desarrollo/IOS/IRGBuscaminas/IRGBuscaminas/IRGPreguntarNombreViewController.m"
-                  timestampString = "437900778.200627"
+                  timestampString = "438905881.353011"
                   startingColumnNumber = "9223372036854775807"
                   endingColumnNumber = "9223372036854775807"
                   startingLineNumber = "15"
@@ -94,6 +94,22 @@
             startingLineNumber = "108"
             endingLineNumber = "108"
             landmarkName = "-establecerVentanaConTransparencia:colorDeFondo:"
+            landmarkType = "5">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "IRGBuscaminas/IRGVentanaPrincipalViewController.m"
+            timestampString = "438905853.186709"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "286"
+            endingLineNumber = "286"
+            landmarkName = "-iniciarTiempoDeJuegoSieteSegmentos"
             landmarkType = "5">
          </BreakpointContent>
       </BreakpointProxy>

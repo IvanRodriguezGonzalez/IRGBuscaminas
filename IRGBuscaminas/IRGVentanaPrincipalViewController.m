@@ -34,13 +34,22 @@
 @property (nonatomic) IRGGestorDeEstados *gestorDeEstados;
 
 @property (weak, nonatomic) IBOutlet UIProgressView *barraDeProgreso;
-@property (weak, nonatomic) IBOutlet UITextField *tiempoDeJuego;
+@property (weak, nonatomic) IBOutlet UITextField *tiempoDeJuegoSegundos;
+@property (weak, nonatomic) IBOutlet UITextField *tiempoDeJuegoMinutos;
 @property (weak, nonatomic) IBOutlet UIImageView *imagenDeBloqueo;
 
 @property (nonatomic) IRGSettingsViewController * vistaDeConfiguracion;
 
 @property (nonatomic) IRGNUmeroSieteSegmentosViewController * unidadMinas;
 @property (nonatomic) IRGNUmeroSieteSegmentosViewController * decenaMinas;
+
+@property (nonatomic) IRGNUmeroSieteSegmentosViewController * unidadSegundos;
+@property (nonatomic) IRGNUmeroSieteSegmentosViewController * decenasSegundos;
+@property (nonatomic) IRGNUmeroSieteSegmentosViewController * unidadMinutos;
+@property (nonatomic) IRGNUmeroSieteSegmentosViewController * decenasMinutos;
+
+@property (weak, nonatomic) IBOutlet UITextField *separadorMinutosDeSegundos;
+
 
 
 @end
@@ -53,6 +62,7 @@
     [self iniciarGestionarBotonera];
     [self iniciarGestorDeEstados];
     [self iniciarTotalMinasSieteSegmentos];
+    [self iniciarTiempoDeJuegoSieteSegmentos];
     }
 
 - (void)didReceiveMemoryWarning {
@@ -177,13 +187,106 @@
             banderasPuestas++;
         }
     }
-    int banderasPendientes = [IRGSettings sharedSettings].numeroDeMinas;
+    NSInteger banderasPendientes = [IRGSettings sharedSettings].numeroDeMinas;
     banderasPendientes = banderasPendientes-banderasPuestas;
     
     self.decenaMinas.valorADibujar = banderasPendientes/10;
     self.unidadMinas.valorADibujar = banderasPendientes%10;
 }
 #pragma mark - Auxiliares primer nivel
+
+-(void) iniciarTiempoDeJuegoSieteSegmentos{
+
+    CGRect unidadSegundosFrame = CGRectMake(self.tiempoDeJuegoSegundos.frame.size.width/2,0,self.tiempoDeJuegoSegundos.frame.size.width/2,self.tiempoDeJuegoSegundos.frame.size.height);
+    
+    CGRect decenasSegundposFrame = CGRectMake(0,0,self.tiempoDeJuegoSegundos.frame.size.width/2,self.tiempoDeJuegoSegundos.frame.size.height);
+    self.unidadSegundos = [[IRGNUmeroSieteSegmentosViewController alloc] initWithNibName:nil
+                                                                               bundle:nil
+                                                                            withFrame:unidadSegundosFrame
+                                                            withRedondeoDeLasEsquinas:0];
+    
+    self.decenasSegundos = [[IRGNUmeroSieteSegmentosViewController alloc] initWithNibName:nil
+                                                                               bundle:nil
+                                                                            withFrame:decenasSegundposFrame
+                                                            withRedondeoDeLasEsquinas:0];
+    
+    [self.tiempoDeJuegoSegundos addSubview:self.unidadSegundos.view];
+    [self.tiempoDeJuegoSegundos addSubview:self.decenasSegundos.view];
+    
+    [self.unidadSegundos establecerVentanaConTransparencia:.5
+                                           colorDeFondo:[UIColor lightGrayColor]];
+    [self.decenasSegundos establecerVentanaConTransparencia:.5
+                                           colorDeFondo:[UIColor lightGrayColor]];
+    
+    [self.unidadSegundos  establecerSegmentoConGrosorDelTrazo:1
+                                         grosorDelSegmento:10
+                                  separacionEntreSegmentos:0
+                 separacionHorizontalDelSegmentoConLaVista:5
+                   separacionVerticalDelSegmentoConLaVista:5
+                                     colorDelTrazoDelBorde:[UIColor blackColor]
+                                           colorDelRelleno:[UIColor blueColor]
+                                   transparenciaDelRelleno:1];
+    
+    [self.decenasSegundos  establecerSegmentoConGrosorDelTrazo:1
+                                         grosorDelSegmento:10
+                                  separacionEntreSegmentos:0
+                 separacionHorizontalDelSegmentoConLaVista:5
+                   separacionVerticalDelSegmentoConLaVista:5
+                                     colorDelTrazoDelBorde:[UIColor blackColor]
+                                           colorDelRelleno:[UIColor blueColor]
+                                   transparenciaDelRelleno:1];
+    
+    self.unidadSegundos.valorADibujar = 0;
+    self.decenasSegundos.valorADibujar = 0;
+    
+    
+    
+    CGRect unidadMinutosFrame = CGRectMake(self.tiempoDeJuegoMinutos.frame.size.width/2,0,self.tiempoDeJuegoMinutos.frame.size.width/2,self.tiempoDeJuegoMinutos.frame.size.height);
+    
+    CGRect decenasMinutosFrame = CGRectMake(0,0,self.tiempoDeJuegoMinutos.frame.size.width/2,self.tiempoDeJuegoMinutos.frame.size.height);
+    self.unidadMinutos = [[IRGNUmeroSieteSegmentosViewController alloc] initWithNibName:nil
+                                                                                  bundle:nil
+                                                                               withFrame:unidadMinutosFrame
+                                                               withRedondeoDeLasEsquinas:0];
+    
+    self.decenasMinutos = [[IRGNUmeroSieteSegmentosViewController alloc] initWithNibName:nil
+                                                                                   bundle:nil
+                                                                                withFrame:decenasMinutosFrame
+                                                                withRedondeoDeLasEsquinas:0];
+    
+    [self.tiempoDeJuegoMinutos addSubview:self.unidadMinutos.view];
+    [self.tiempoDeJuegoMinutos addSubview:self.decenasMinutos.view];
+    
+    [self.unidadMinutos establecerVentanaConTransparencia:.5
+                                              colorDeFondo:[UIColor lightGrayColor]];
+    [self.decenasMinutos establecerVentanaConTransparencia:.5
+                                               colorDeFondo:[UIColor lightGrayColor]];
+    
+    [self.unidadMinutos  establecerSegmentoConGrosorDelTrazo:1
+                                            grosorDelSegmento:8
+                                     separacionEntreSegmentos:0
+                    separacionHorizontalDelSegmentoConLaVista:5
+                      separacionVerticalDelSegmentoConLaVista:5
+                                        colorDelTrazoDelBorde:[UIColor blackColor]
+                                              colorDelRelleno:[UIColor blueColor]
+                                      transparenciaDelRelleno:1];
+    
+    [self.decenasMinutos  establecerSegmentoConGrosorDelTrazo:1
+                                             grosorDelSegmento:8
+                                      separacionEntreSegmentos:0
+                     separacionHorizontalDelSegmentoConLaVista:5
+                       separacionVerticalDelSegmentoConLaVista:5
+                                         colorDelTrazoDelBorde:[UIColor blackColor]
+                                               colorDelRelleno:[UIColor blueColor]
+                                       transparenciaDelRelleno:1];
+    
+    self.unidadMinutos.valorADibujar = 0;
+    self.decenasMinutos.valorADibujar = 0;
+    
+    self.separadorMinutosDeSegundos.backgroundColor = [[UIColor lightGrayColor] colorWithAlphaComponent:.5];
+    self.separadorMinutosDeSegundos.textColor = [UIColor blueColor];
+    
+}
 
 -(void) iniciarTotalMinasSieteSegmentos {
     
@@ -473,11 +576,23 @@
 
 -(void) inicializarTiempoDeJuego{
     self.tiempoDeJuegoEnSegundos = 0;
-    self.tiempoDeJuego.text =     @"00:00";
+    [self actualizarTiempoDeJuego];
 }
+
 - (void) actualizarTiempoDeJuego{
-  
-    self.tiempoDeJuego.text = [IRGMetodosComunes formatearTiempoDeJuegoEnSegundos:self.tiempoDeJuegoEnSegundos];;
+    
+    if (self.tiempoDeJuegoEnSegundos > ((59*60)+59)){
+        self.tiempoDeJuegoEnSegundos = 59*60+59;
+    }
+    int segundosEnJuego = self.tiempoDeJuegoEnSegundos % 60;
+    
+    self.unidadSegundos.valorADibujar = segundosEnJuego %10;
+    self.decenasSegundos.valorADibujar = segundosEnJuego /10;
+    
+    int minutosEnJuego =(self.tiempoDeJuegoEnSegundos /60) % 60;
+    
+    self.unidadMinutos.valorADibujar = minutosEnJuego %10;
+    self.decenasMinutos.valorADibujar = minutosEnJuego /10;
 }
 
 - (void) mostrarImagenSobreElCanvas:(NSString *)imagen {
