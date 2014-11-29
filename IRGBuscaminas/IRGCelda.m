@@ -45,8 +45,7 @@
         CGRect frame = CGRectMake(12 ,0, self.frame.size.width, self.frame.size.height);
         UILabel * numeroDeMinasAlrededor = [[UILabel alloc] initWithFrame:frame];
         numeroDeMinasAlrededor.font = [UIFont  systemFontOfSize:30];
-     //   [numeroDeMinasAlrededor setAdjustsFontSizeToFitWidth:true];
-
+        
         CGRect frame1 = CGRectMake(2, 2, self.frame.size.width-4,self.frame.size.height-4);
         UIImage *imagen =nil;
         UIImageView * imagenDeMina  = [[UIImageView alloc]initWithImage:imagen];
@@ -117,7 +116,6 @@
                   conGrosor:grosor];
 }
 
-
 -(void) dibujarLineaSuperiorClaraConGrosor:(NSInteger)grosor{
     CGPoint puntoInicial = CGPointMake(0, 0);
     CGPoint puntoFinal = CGPointMake(self.bounds.size.width,0);
@@ -126,7 +124,6 @@
                         conGrosor:grosor];
 }
 
-
 - (void) dibujarLineaInferiorOscuraConGrosor:(NSInteger)grosor{
     CGPoint puntoInicial = CGPointMake(0, self.bounds.size.height);
     CGPoint puntoFinal = CGPointMake(self.bounds.size.width,self.bounds.size.height);
@@ -134,7 +131,6 @@
                       hasta:(puntoFinal)
                   conGrosor:grosor];
 }
-
 
 - (void) dibujarLineaInferiorClaraConGrosor:(NSInteger)grosor{
     CGPoint puntoInicial = CGPointMake(0, self.bounds.size.height);
@@ -179,9 +175,6 @@
 }
 
 #pragma mark - Auxiliares tercer nivel
-
-
-
 
 - (void) dibujarLineaOscuraDesde:(CGPoint) puntoInicial
                            hasta:(CGPoint) puntoFinal

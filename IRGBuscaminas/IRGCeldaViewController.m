@@ -21,7 +21,7 @@
 @property (nonatomic) CGRect frameCelda;
 @property (nonatomic) IRGCelda * celda;
 @property (nonatomic) NSTimeInterval tiempoInicio;
-@property (nonatomic) NSInteger movimiento;
+@property (nonatomic) UIColor *colorDeFondoAntiguo;
 
 @end
 
@@ -70,16 +70,6 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     // Do any additional setup after loading the view.
-    
-    /*UILongPressGestureRecognizer *longTapRecognizer = [[UILongPressGestureRecognizer alloc] initWithTarget:self
-                                                                                          action:@selector(longTap:)];
-    longTapRecognizer.minimumPressDuration =.1;
-    UITapGestureRecognizer  *tapGestureRecognizer = [[UITapGestureRecognizer alloc] initWithTarget:self
-                                                                                                              action:@selector(tapGestureRecognizer:)];
-    [self.view addGestureRecognizer:tapGestureRecognizer];
-    [self.view addGestureRecognizer:longTapRecognizer];
-    */
-
 }
 
 - (void)didReceiveMemoryWarning {
@@ -94,21 +84,44 @@
             withEvent:(UIEvent *)event{
     UITouch *objeto = touches.anyObject;
     self.tiempoInicio = objeto.timestamp;
-    self.movimiento =0;
-    self.celda.backgroundColor = [UIColor lightGrayColor];
+    [self.celda setProcesada:true];
+    self.celda.backgroundColor = [IRGPincel sharedPincel].colorDeRellenoDelPincel;
+    [self.celda setNeedsDisplay];
 }
 
 -(void) touchesMoved:(NSSet *)touches
            withEvent:(UIEvent *)event{
-    self.movimiento++;
+    UITouch *objeto = touches.anyObject;
+    CGFloat posicionXDelTouch = [objeto locationInView:self.celda].x;
+    CGFloat posicionYDelTouch = [objeto locationInView:self.celda].y;
+    
+    if ((posicionXDelTouch< self.celda.frame.size.width) &
+        (posicionYDelTouch<self.celda.frame.size.height) &
+        (posicionXDelTouch >0) &
+        (posicionYDelTouch >0)){
+        self.celda.procesada = true;
+        self.celda.backgroundColor = [IRGPincel sharedPincel].colorDeRellenoDelPincel;
+    }
+    else {
+        self.celda.procesada = false;
+        self.celda.backgroundColor = [IRGPincel sharedPincel].colorDeRellenoDeLaCeldaVacia;
+    }
+    [self.celda setNeedsDisplay];
+
 }
 
 - (void) touchesEnded:(NSSet *)touches
             withEvent:(UIEvent *)event{
+    UITouch *objeto = touches.anyObject;
+    CGFloat posicionXDelTouch = [objeto locationInView:self.celda].x;
+    CGFloat posicionYDelTouch = [objeto locationInView:self.celda].y;
     
-    if (self.movimiento <10){
+    if ((posicionXDelTouch< self.celda.frame.size.width) &
+        (posicionYDelTouch<self.celda.frame.size.height) &
+        (posicionXDelTouch >0) &
+        (posicionYDelTouch >0)){
+        
         NSTimeInterval duracion;
-        UITouch *objeto = touches.anyObject;
         duracion = objeto.timestamp-self.tiempoInicio;
         if (duracion > .2){
             [self.delegado despejarCelda:self];
@@ -117,18 +130,13 @@
             [self.delegado ponerBandera:self];
         }
     }
+    else {
+        self.celda.procesada = false;
+        self.celda.backgroundColor = [IRGPincel sharedPincel].colorDeRellenoDeLaCeldaVacia;
+        [self.celda setNeedsDisplay];
+    }
     
 }
--(void) longTap:(UILongPressGestureRecognizer *)gesture{
-    [self.delegado despejarCelda:self];
-    NSLog(@"largo");
-}
-
--(void) tapGestureRecognizer : (UITapGestureRecognizer *) gesture{
-    [self.delegado ponerBandera:self];
-}
-
-
 
 # pragma mark - Publicos
 

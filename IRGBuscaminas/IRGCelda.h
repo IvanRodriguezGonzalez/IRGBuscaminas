@@ -21,7 +21,7 @@
 - (instancetype) initWithFrame:(CGRect)frame
                  colorDelBorde:(UIColor *)colorDelBorde
                 grosorDelTrazo:(NSUInteger) grosorDelTrazo
-                     procesada:(bool) proesada;
+                     procesada:(bool) procesada;
 
 -(void) dibujarBorderCeldaProcesada;
 
