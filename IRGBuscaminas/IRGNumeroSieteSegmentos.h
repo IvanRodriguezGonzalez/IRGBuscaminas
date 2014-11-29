@@ -1,5 +1,5 @@
 //
-//  IRGSieteSegmentos.h
+//  IRGNumeroSieteSegmentos.h
 //  IRGBuscaminas
 //
 //  Created by Leticia Vila Sexto on 12/11/14.
@@ -8,7 +8,7 @@
 
 #import <UIKit/UIKit.h>
 
-@interface IRGSieteSegmentos : UIView
+@interface IRGNumeroSieteSegmentos : UIView
 
 #pragma mark - Propiedades publicas
 

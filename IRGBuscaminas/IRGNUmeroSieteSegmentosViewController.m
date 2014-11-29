@@ -7,11 +7,11 @@
 //
 
 #import "IRGNUmeroSieteSegmentosViewController.h"
-#import "IRGSieteSegmentos.h"
+#import "IRGNumeroSieteSegmentos.h"
 
 @interface IRGNUmeroSieteSegmentosViewController ()
     #pragma mark - Propiedades privadas
-    @property (nonatomic) IRGSieteSegmentos *vistaSieteSegmentos;
+    @property (nonatomic) IRGNumeroSieteSegmentos *vistaSieteSegmentos;
     @property (nonatomic) CGRect frameDeLaVista;
     @property (nonatomic) NSInteger redondeoDeLasEsquinas;
 @end
@@ -42,15 +42,14 @@
     return false;
 };
 
-
 #pragma mark - Overrides
 -(void)loadView{
     CGRect frameDelDisplay =self.frameDeLaVista;
-    IRGSieteSegmentos * display = [[IRGSieteSegmentos alloc]initWithFrame:frameDelDisplay];
+    IRGNumeroSieteSegmentos * display = [[IRGNumeroSieteSegmentos alloc]initWithFrame:frameDelDisplay];
     self.view = display;
     self.vistaSieteSegmentos = display;
-
 }
+
 - (void)viewDidLoad {
     [super viewDidLoad];
     self.view.layer.cornerRadius = self.redondeoDeLasEsquinas;;

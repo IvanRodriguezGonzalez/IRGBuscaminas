@@ -23,6 +23,7 @@
 #import "IRGGestionarBotonera.h"
 #import "IRGSettingsViewController.h"
 #import "IRGSettings.h"
+#import "IRGDisplaySieteSegmentosViewController.h"
 #import "IRGNUmeroSieteSegmentosViewController.h"
 
 
@@ -43,7 +44,7 @@
 @property (nonatomic) IRGNUmeroSieteSegmentosViewController * unidadMinas;
 @property (nonatomic) IRGNUmeroSieteSegmentosViewController * decenaMinas;
 
-@property (nonatomic) IRGNUmeroSieteSegmentosViewController * unidadSegundos;
+@property (nonatomic) IRGDisplaySieteSegmentosViewController * unidadSegundos;
 @property (nonatomic) IRGNUmeroSieteSegmentosViewController * decenasSegundos;
 @property (nonatomic) IRGNUmeroSieteSegmentosViewController * unidadMinutos;
 @property (nonatomic) IRGNUmeroSieteSegmentosViewController * decenasMinutos;
@@ -197,13 +198,39 @@
     
     UIColor * colorSegmentosDelReloj = [UIColor whiteColor];
     UIColor * colorBordeSegmentosDelReloj =[UIColor blackColor];
-    NSInteger grosorDelSegmentoDelReloj = 8;
+    NSInteger grosorDelSegmentoDelReloj = 4;
     NSInteger separacionEntreSegmentos =0;
     NSInteger separacionHorizontalDelSegmentoConLaVista = 5;
     NSInteger separacionVerticalDelSegmentoConLaVista = 5;
     UIColor * colorFondoReloj =[UIColor blueColor];
     float alphaDelColorDelFondoDelReloj =.5;
     
+    CGRect miFrame  =    CGRectMake(0, 0, self.tiempoDeJuegoSegundos.frame.size.width, self.tiempoDeJuegoSegundos.frame.size.height);
+    self.unidadSegundos = [[IRGDisplaySieteSegmentosViewController alloc] initWithNibName:nil
+                                                                                  bundle:nil
+                                                                                withFrame:miFrame
+                                                               withRedondeoDeLasEsquinas:0
+                                                                         numeroDeDisplays:3];
+    
+    [self.tiempoDeJuegoSegundos addSubview:self.unidadSegundos.view];
+
+    [self.unidadSegundos establecerVentanaConTransparencia:alphaDelColorDelFondoDelReloj
+                                              colorDeFondo:colorFondoReloj];
+    [self.unidadSegundos  establecerSegmentoConGrosorDelTrazo:1
+                                            grosorDelSegmento:grosorDelSegmentoDelReloj
+                                     separacionEntreSegmentos:separacionEntreSegmentos
+                    separacionHorizontalDelSegmentoConLaVista:separacionHorizontalDelSegmentoConLaVista
+                      separacionVerticalDelSegmentoConLaVista:separacionVerticalDelSegmentoConLaVista
+                                        colorDelTrazoDelBorde:colorBordeSegmentosDelReloj
+                                              colorDelRelleno:colorSegmentosDelReloj
+                                      transparenciaDelRelleno:1];
+    
+
+    [self.unidadSegundos dibujarNumero: 0];
+
+    
+    
+    /*
 
     CGRect unidadSegundosFrame = CGRectMake(self.tiempoDeJuegoSegundos.frame.size.width/2,0,self.tiempoDeJuegoSegundos.frame.size.width/2,self.tiempoDeJuegoSegundos.frame.size.height);
     
@@ -246,6 +273,10 @@
     
     [self.unidadSegundos dibujarNumero: 0];
     [self.decenasSegundos dibujarNumero:0];
+     */
+    
+    
+    
     
     CGRect unidadMinutosFrame = CGRectMake(self.tiempoDeJuegoMinutos.frame.size.width/2,0,self.tiempoDeJuegoMinutos.frame.size.width/2,self.tiempoDeJuegoMinutos.frame.size.height);
     

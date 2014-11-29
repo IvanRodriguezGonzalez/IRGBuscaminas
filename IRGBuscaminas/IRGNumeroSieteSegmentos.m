@@ -1,12 +1,12 @@
 //
-//  IRGSieteSegmentos.m
+//  IRGNumeroSieteSegmentos.m
 //  IRGBuscaminas
 //
 //  Created by Leticia Vila Sexto on 12/11/14.
 //  Copyright (c) 2014 Ivan Rodriguez Gonzalez. All rights reserved.
 //
 
-#import "IRGSieteSegmentos.h"
+#import "IRGNumeroSieteSegmentos.h"
 
 #pragma mark  Constantes de la clase
 #define GROSOR_POR_DEFECTO_DEL_TRAZO    2
@@ -22,7 +22,7 @@
 
 #pragma mark -
 
-@interface IRGSieteSegmentos ()
+@interface IRGNumeroSieteSegmentos ()
     #pragma mark - Propiedades privadas
     @property (nonatomic) NSInteger valor;
 
@@ -30,7 +30,7 @@
 
 #pragma mark -
 
-@implementation IRGSieteSegmentos
+@implementation IRGNumeroSieteSegmentos
 
 #pragma mark - Inicializadores
 
