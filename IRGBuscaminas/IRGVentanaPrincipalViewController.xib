@@ -20,7 +20,6 @@
                 <outlet property="etiquetaBotonPrincipal" destination="tqR-vs-kuf" id="YHz-6h-opl"/>
                 <outlet property="etiquetaSettings" destination="RF8-s8-M45" id="Y7K-hM-KTL"/>
                 <outlet property="etiquetaTextFieldTotalMinas" destination="PLV-sg-L2k" id="tGU-Pl-7Lh"/>
-                <outlet property="imagenDeBloqueo" destination="enM-QB-vIk" id="uRj-Td-Xbs"/>
                 <outlet property="separadorMinutosDeSegundos" destination="NmP-We-SRI" id="cP9-tg-ZDA"/>
                 <outlet property="tiempoDeJuegoMinutos" destination="hSA-zv-iZP" id="IUC-aU-ktq"/>
                 <outlet property="tiempoDeJuegoSegundos" destination="phd-fm-tez" id="8Uz-Cl-Sus"/>
@@ -321,20 +320,8 @@
                 </view>
                 <view multipleTouchEnabled="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="zp6-fT-8XJ">
                     <rect key="frame" x="0.0" y="140" width="839" height="595"/>
-                    <subviews>
-                        <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="enM-QB-vIk">
-                            <rect key="frame" x="0.0" y="0.0" width="839" height="595"/>
-                            <color key="backgroundColor" red="0.80000001190000003" green="0.80000001190000003" blue="0.80000001190000003" alpha="1" colorSpace="calibratedRGB"/>
-                        </imageView>
-                    </subviews>
                     <color key="backgroundColor" red="0.80000001190000003" green="0.80000001190000003" blue="0.80000001190000003" alpha="1" colorSpace="calibratedRGB"/>
                     <gestureRecognizers/>
-                    <constraints>
-                        <constraint firstItem="enM-QB-vIk" firstAttribute="top" secondItem="zp6-fT-8XJ" secondAttribute="top" id="FdB-OM-bC4"/>
-                        <constraint firstAttribute="bottom" secondItem="enM-QB-vIk" secondAttribute="bottom" id="SMb-Xg-3JQ"/>
-                        <constraint firstAttribute="trailing" secondItem="enM-QB-vIk" secondAttribute="trailing" id="daL-dI-kUt"/>
-                        <constraint firstItem="enM-QB-vIk" firstAttribute="leading" secondItem="zp6-fT-8XJ" secondAttribute="leading" id="nSB-Yz-KzR"/>
-                    </constraints>
                 </view>
             </subviews>
             <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>

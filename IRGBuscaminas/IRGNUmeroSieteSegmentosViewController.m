@@ -98,7 +98,6 @@
     self.vistaSieteSegmentos.separacionVerticalDeLosSegmentosConLaVista = separacionVerticalDelSegmentoConLaVista;
     self.vistaSieteSegmentos.colorDelTrazoDelBorde = colorDelTrazoDelBorde;
     self.vistaSieteSegmentos.colorDelRellenoDelSegmento = [colorDelRelleno colorWithAlphaComponent:transparenciaDelRelleno];
-    [self.vistaSieteSegmentos calcularPuntosDeDibujo];
 }
 
 - (void) establecerVentanaConTransparencia:(float)porcentajeDeTransparencia

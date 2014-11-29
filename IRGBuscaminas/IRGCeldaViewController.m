@@ -132,7 +132,7 @@
         
             NSTimeInterval duracion;
             duracion = objeto.timestamp-self.tiempoInicio;
-            if (duracion > .1){
+            if (duracion > .2){
                 [self.delegado despejarCelda:self];
             }
             else {

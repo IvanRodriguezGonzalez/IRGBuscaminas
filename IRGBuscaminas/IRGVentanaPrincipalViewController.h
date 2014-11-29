@@ -54,8 +54,8 @@
 - (void) inicializarTiempoDeJuego;
 - (void) iniciarReloj;
 - (void) detenerRelor;
-- (void) mostrarImagenSobreElCanvas:(NSString *)imagen;
-- (void) eliminarImagenSobreElCanvas;
+- (void) mostrarImagenDeBloqueo:(NSString *)imagen;
+- (void) eliminarImagenDeBloqueo;
 
 - (NSInteger) calcularPorcentajeDeProgreso;
 -(void) actualizarBotonConProgreso:(float)porcentajeDeAvance;

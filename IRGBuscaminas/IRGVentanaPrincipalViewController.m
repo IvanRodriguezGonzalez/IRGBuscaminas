@@ -33,9 +33,10 @@
 
 @property (nonatomic) IRGGestorDeEstados *gestorDeEstados;
 
+@property (nonatomic) UIView *vistaDeBloqueo;
+
 @property (weak, nonatomic) IBOutlet UITextField *tiempoDeJuegoSegundos;
 @property (weak, nonatomic) IBOutlet UITextField *tiempoDeJuegoMinutos;
-@property (weak, nonatomic) IBOutlet UIImageView *imagenDeBloqueo;
 
 @property (nonatomic) IRGSettingsViewController * vistaDeConfiguracion;
 
@@ -578,16 +579,23 @@
     self.decenasMinutos.valorADibujar = minutosEnJuego /10;
 }
 
-- (void) mostrarImagenSobreElCanvas:(NSString *)imagen {
+- (void) mostrarImagenDeBloqueo:(NSString *)imagen {
+    
+    CGRect frame = self.canvas.frame;
+    if (!self.vistaDeBloqueo){
+        self.vistaDeBloqueo = [[UIView alloc]initWithFrame:frame];
+    }
+    self.vistaDeBloqueo.backgroundColor = [[UIColor redColor] colorWithAlphaComponent:.5];
+    [[UIApplication sharedApplication].keyWindow.rootViewController.view addSubview:self.vistaDeBloqueo];
+    
+    /*
     self.imagenDeBloqueo.image = [UIImage imageNamed:imagen];
     self.imagenDeBloqueo.backgroundColor = [UIColor lightGrayColor];
-    [self.canvas bringSubviewToFront:self.imagenDeBloqueo];
+    [self.canvas bringSubviewToFront:self.imagenDeBloqueo];*/
 }
 
--(void) eliminarImagenSobreElCanvas{
-    [self.canvas sendSubviewToBack:self.imagenDeBloqueo];
-    self.imagenDeBloqueo.backgroundColor = [UIColor clearColor];
-    self.imagenDeBloqueo.image = nil;
+-(void) eliminarImagenDeBloqueo{
+    [self.vistaDeBloqueo removeFromSuperview];
 }
 
 #pragma mark - Activacion y Desactivacion de botones y barras

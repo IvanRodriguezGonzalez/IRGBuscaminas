@@ -9,8 +9,8 @@
 #import "IRGLienzo.h"
 #import "IRGSettings.h"
 
-# define ALTO_DE_LA_CELDA 40
-# define ANCHO_DE_LA_CELDA 40
+# define ALTO_DE_LA_CELDA 50
+# define ANCHO_DE_LA_CELDA 50
 # define FILAS_DEL_LIENZO_Nivel_1 8
 # define COLUMNAS_DEL_LIENZO_Nivel_1 8
 

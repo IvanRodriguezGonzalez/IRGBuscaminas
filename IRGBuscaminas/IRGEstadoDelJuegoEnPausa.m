@@ -75,7 +75,7 @@
 -(void) accionPausar{
     [self.delegado iniciarReloj];
     [self.gestorDeEstados establecerEstado:self.gestorDeEstados.estadoDelJuegoEnJuego];
-    [self.delegado eliminarImagenSobreElCanvas];
+    [self.delegado eliminarImagenDeBloqueo];
 }
 
 @end

@@ -25,7 +25,6 @@
 @property(nonatomic) UIColor *colorDeFondo;
 @property (nonatomic) bool efecto3D;
 
--(void) calcularPuntosDeDibujo;
 
 
 
