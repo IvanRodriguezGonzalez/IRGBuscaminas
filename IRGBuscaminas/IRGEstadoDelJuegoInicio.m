@@ -50,7 +50,6 @@
     [self.delegado.gestionarBotonera desactivarBotonMostrarMinas];
     [self.delegado.gestionarBotonera activarBotonMejoresTiempos];
     [self.delegado.gestionarBotonera activarBotonPrincipal];
-    [self.delegado.gestionarBotonera desactivarTextFieldNumeroDeMinas];
     [self.delegado.gestionarBotonera desactivarBotonPausar];
     [self.delegado.gestionarBotonera activarSettings];
 }

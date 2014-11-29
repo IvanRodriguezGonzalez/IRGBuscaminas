@@ -47,7 +47,6 @@
     [self.delegado.gestionarBotonera desactivarBotonMostrarMinas];
     [self.delegado.gestionarBotonera desactivarBotonMejoresTiempos];
     [self.delegado.gestionarBotonera desactivarBotonPrincipal];
-    [self.delegado.gestionarBotonera desactivarTextFieldNumeroDeMinas];
     [self.delegado.gestionarBotonera activarBotonPausar];
     [self.delegado.gestionarBotonera desactivarSettings];
 

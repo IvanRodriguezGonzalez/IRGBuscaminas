@@ -45,11 +45,8 @@
     [self.delegado.gestionarBotonera desactivarBotonMostrarMinas];
     [self.delegado.gestionarBotonera activarBotonMejoresTiempos];
     [self.delegado.gestionarBotonera activarBotonPrincipal];
-    [self.delegado.gestionarBotonera activarTextFieldNumeroDeMinas];
     [self.delegado.gestionarBotonera desactivarBotonPausar];
     [self.delegado.gestionarBotonera activarSettings];
-
-
 }
 
 
@@ -75,6 +72,5 @@
 -(void) accionPausar{
     [NSException exceptionWithName:@"accion incorrecta" reason:@"El estado no la soporta" userInfo:nil];
 }
-
 
 @end

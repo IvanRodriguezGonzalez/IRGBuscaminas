@@ -74,17 +74,6 @@
     self.delegado.etiquetaBotonMostrarMinas.enabled = false;
 }
 
-- (void) activarTextFieldNumeroDeMinas{
-    self.delegado.totalMinas.enabled = true;
-    self.delegado.etiquetaTextFieldTotalMinas.enabled = true;
-}
-
-- (void) desactivarTextFieldNumeroDeMinas{
-    self.delegado.totalMinas.enabled = false;
-    self.delegado.etiquetaTextFieldTotalMinas.enabled = false;
-}
-
-
 - (void) activarSettings{
     self.delegado.botonSettings.enabled = true;
     self.delegado.etiquetaSettings.enabled = true;

@@ -7,11 +7,21 @@
 //
 
 #import "IRGLienzo.h"
+#import "IRGSettings.h"
 
 # define ALTO_DE_LA_CELDA 40
 # define ANCHO_DE_LA_CELDA 40
-# define FILAS_DEL_LIENZO 10
-# define COLUMNAS_DEL_LIENZO 10
+# define FILAS_DEL_LIENZO_Nivel_1 8
+# define COLUMNAS_DEL_LIENZO_Nivel_1 8
+
+# define FILAS_DEL_LIENZO_Nivel_2 12
+# define COLUMNAS_DEL_LIENZO_Nivel_2 12
+
+# define FILAS_DEL_LIENZO_Nivel_3 15
+# define COLUMNAS_DEL_LIENZO_Nivel_3 15
+
+
+
 # define TAMANO_MINIMO_PARA_PINTAR_BORDE 5
 
 
@@ -48,22 +58,31 @@
 
 
 -(NSInteger) filasDelLienzo {
-    if (_filasDelLienzo == 0) {
-        return FILAS_DEL_LIENZO;
+    if ([IRGSettings sharedSettings].dificultad == 1){
+        _filasDelLienzo = FILAS_DEL_LIENZO_Nivel_1 ;
     }
-    else{
-        return  _filasDelLienzo;
+    if ([IRGSettings sharedSettings].dificultad == 2){
+        _filasDelLienzo = FILAS_DEL_LIENZO_Nivel_2 ;
     }
-}
+    if ([IRGSettings sharedSettings].dificultad == 3){
+        _filasDelLienzo = FILAS_DEL_LIENZO_Nivel_3 ;
+    }
+    return _filasDelLienzo;
+        }
 
 -(NSInteger) columnasDelLienzo {
-    if (_columnasDelLienzo ==0) {
-        return   COLUMNAS_DEL_LIENZO;
+    if ([IRGSettings sharedSettings].dificultad == 1){
+        _columnasDelLienzo = COLUMNAS_DEL_LIENZO_Nivel_1 ;
     }
-    else {
+    if ([IRGSettings sharedSettings].dificultad == 2){
+        _columnasDelLienzo = COLUMNAS_DEL_LIENZO_Nivel_2 ;
+    }
+    if ([IRGSettings sharedSettings].dificultad == 3){
+        _columnasDelLienzo = COLUMNAS_DEL_LIENZO_Nivel_3 ;
+    }
     return _columnasDelLienzo;
-    }
 }
+
 
 -(NSInteger) anchoCelda{
         return  ANCHO_DE_LA_CELDA;

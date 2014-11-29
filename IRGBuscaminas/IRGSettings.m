@@ -8,6 +8,18 @@
 
 #import "IRGSettings.h"
 
+#define NIVEL_DIFICULTAD_POR_DEFECTO 2
+#define NUMERO_DE_MINAS_POR_DEFECTO 15
+#define AYUDAS_ACTIVAS true
+#define TIEMPO_DE_AYUDA_POR_DEFECTO 5
+#define MINAS_POR_DEFECTO_DEL_NIVEL_1 10
+#define MINAS_POR_DEFECTO_DEL_NIVEL_2 15
+#define MINAS_POR_DEFECTO_DEL_NIVEL_3 20
+#define TIEMPO_DE_AYUDA_POR_DEFECTO_DEL_NIVEL_1 2
+#define TIEMPO_DE_AYUDA_POR_DEFECTO_DEL_NIVEL_2 5
+#define TIEMPO_DE_AYUDA_POR_DEFECTO_DEL_NIVEL_3 9
+
+
 @interface IRGSettings ()
 
 
@@ -38,9 +50,10 @@
             self = [self recuperarSettings:[self obtenerPath]];
         }
         else {
-            _numeroDeMinas = 33;
-            _activarAyuda = true;
-            _tiempoDeAyuda = 6;
+            _numeroDeMinas = NUMERO_DE_MINAS_POR_DEFECTO;
+            _activarAyuda = AYUDAS_ACTIVAS;
+            _tiempoDeAyuda = TIEMPO_DE_AYUDA_POR_DEFECTO;
+            _dificultad =NIVEL_DIFICULTAD_POR_DEFECTO;
         }
     }
     return self;
@@ -52,8 +65,7 @@
     NSArray *listaDePath = NSSearchPathForDirectoriesInDomains(NSDocumentDirectory,
                                                                NSUserDomainMask,
                                                                TRUE);
-    //NSString *directorio = listaDePath[0];
-    NSString * directorio = @"/Users/LVS/Desktop/TopScores/";
+    NSString *directorio = listaDePath[0];
     return [directorio stringByAppendingString:@"Configuracion.irg"];
 }
 
@@ -76,6 +88,8 @@
     [aCoder encodeInteger:self.numeroDeMinas forKey:@"numeroDeMinas"];
     [aCoder encodeBool:self.activarAyuda forKey:@"activarAyuda"];
     [aCoder encodeInteger:self.tiempoDeAyuda forKey:@"tiempoDeAyuda"];
+    [aCoder encodeInteger:self.dificultad forKey:@"dificultad"];
+    
 }
 
 -(instancetype) initWithCoder:(NSCoder *)aDecoder{
@@ -84,6 +98,7 @@
         _numeroDeMinas = [aDecoder decodeIntegerForKey:@"numeroDeMinas"];
         _activarAyuda  = [aDecoder decodeBoolForKey:@"activarAyuda"];
         _tiempoDeAyuda = [aDecoder decodeIntegerForKey:@"tiempoDeAyuda"];
+        _dificultad = [aDecoder decodeIntegerForKey:@"dificultad"];
     }
     return self;
 }
@@ -94,5 +109,34 @@
                                        toFile:path];
 }
 
+-(NSInteger)numeroDeMInasPorDefectoDelNivel:(NSInteger)nivelDeDificultad{
+    NSInteger minasADevolver=NUMERO_DE_MINAS_POR_DEFECTO;
+    
+    if (nivelDeDificultad == 1){
+        minasADevolver = MINAS_POR_DEFECTO_DEL_NIVEL_1;
+    }
+    if (nivelDeDificultad == 2){
+        minasADevolver = MINAS_POR_DEFECTO_DEL_NIVEL_2;
+    }
+    if (nivelDeDificultad == 3){
+        minasADevolver = MINAS_POR_DEFECTO_DEL_NIVEL_3;
+    }
+    return minasADevolver;
+}
+
+-(NSInteger)tiempoDeAyudaPorDefectoDelNivel:(NSInteger)nivelDeDificultad{
+    NSInteger minasADevolver=TIEMPO_DE_AYUDA_POR_DEFECTO;
+    
+    if (nivelDeDificultad == 1){
+        minasADevolver = TIEMPO_DE_AYUDA_POR_DEFECTO_DEL_NIVEL_1;
+    }
+    if (nivelDeDificultad == 2){
+        minasADevolver = TIEMPO_DE_AYUDA_POR_DEFECTO_DEL_NIVEL_2;
+    }
+    if (nivelDeDificultad == 3){
+        minasADevolver = TIEMPO_DE_AYUDA_POR_DEFECTO_DEL_NIVEL_3;
+    }
+    return minasADevolver;
+}
 
 @end

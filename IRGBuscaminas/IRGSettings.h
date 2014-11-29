@@ -13,9 +13,13 @@
 @property (nonatomic) NSInteger numeroDeMinas;
 @property (nonatomic) bool activarAyuda;
 @property (nonatomic) NSInteger tiempoDeAyuda;
+@property (nonatomic) NSInteger dificultad;
+
 
 + (instancetype) sharedSettings;
 -(bool) guardarSettings;
+-(NSInteger)numeroDeMInasPorDefectoDelNivel:(NSInteger)nivelDeDificultad;
+-(NSInteger)tiempoDeAyudaPorDefectoDelNivel:(NSInteger)nivelDeDificultad;
 
 
 @end

@@ -33,7 +33,6 @@
 
 @property (nonatomic) IRGGestorDeEstados *gestorDeEstados;
 
-@property (weak, nonatomic) IBOutlet UIProgressView *barraDeProgreso;
 @property (weak, nonatomic) IBOutlet UITextField *tiempoDeJuegoSegundos;
 @property (weak, nonatomic) IBOutlet UITextField *tiempoDeJuegoMinutos;
 @property (weak, nonatomic) IBOutlet UIImageView *imagenDeBloqueo;
@@ -196,6 +195,16 @@
 #pragma mark - Auxiliares primer nivel
 
 -(void) iniciarTiempoDeJuegoSieteSegmentos{
+    
+    UIColor * colorSegmentosDelReloj = [UIColor whiteColor];
+    UIColor * colorBordeSegmentosDelReloj =[UIColor blackColor];
+    NSInteger grosorDelSegmentoDelReloj = 8;
+    NSInteger separacionEntreSegmentos =0;
+    NSInteger separacionHorizontalDelSegmentoConLaVista = 5;
+    NSInteger separacionVerticalDelSegmentoConLaVista = 5;
+
+    UIColor * colorFondoReloj =[UIColor lightGrayColor];
+    float alphaDelColorDelFondoDelReloj =.5;
 
     CGRect unidadSegundosFrame = CGRectMake(self.tiempoDeJuegoSegundos.frame.size.width/2,0,self.tiempoDeJuegoSegundos.frame.size.width/2,self.tiempoDeJuegoSegundos.frame.size.height);
     
@@ -213,33 +222,31 @@
     [self.tiempoDeJuegoSegundos addSubview:self.unidadSegundos.view];
     [self.tiempoDeJuegoSegundos addSubview:self.decenasSegundos.view];
     
-    [self.unidadSegundos establecerVentanaConTransparencia:.5
-                                           colorDeFondo:[UIColor lightGrayColor]];
-    [self.decenasSegundos establecerVentanaConTransparencia:.5
-                                           colorDeFondo:[UIColor lightGrayColor]];
+    [self.unidadSegundos establecerVentanaConTransparencia:alphaDelColorDelFondoDelReloj
+                                           colorDeFondo:colorFondoReloj];
+    [self.decenasSegundos establecerVentanaConTransparencia:alphaDelColorDelFondoDelReloj
+                                           colorDeFondo:colorFondoReloj];
     
     [self.unidadSegundos  establecerSegmentoConGrosorDelTrazo:1
-                                         grosorDelSegmento:10
-                                  separacionEntreSegmentos:0
-                 separacionHorizontalDelSegmentoConLaVista:5
-                   separacionVerticalDelSegmentoConLaVista:5
-                                     colorDelTrazoDelBorde:[UIColor blackColor]
-                                           colorDelRelleno:[UIColor blueColor]
-                                   transparenciaDelRelleno:1];
+                                         grosorDelSegmento:grosorDelSegmentoDelReloj
+                                  separacionEntreSegmentos:separacionEntreSegmentos
+                 separacionHorizontalDelSegmentoConLaVista:separacionHorizontalDelSegmentoConLaVista
+                   separacionVerticalDelSegmentoConLaVista:separacionVerticalDelSegmentoConLaVista
+                                     colorDelTrazoDelBorde:colorBordeSegmentosDelReloj
+                                              colorDelRelleno:colorSegmentosDelReloj
+                                      transparenciaDelRelleno:1];
     
     [self.decenasSegundos  establecerSegmentoConGrosorDelTrazo:1
-                                         grosorDelSegmento:10
-                                  separacionEntreSegmentos:0
-                 separacionHorizontalDelSegmentoConLaVista:5
-                   separacionVerticalDelSegmentoConLaVista:5
-                                     colorDelTrazoDelBorde:[UIColor blackColor]
-                                           colorDelRelleno:[UIColor blueColor]
+                                         grosorDelSegmento:grosorDelSegmentoDelReloj
+                                  separacionEntreSegmentos:separacionEntreSegmentos
+                 separacionHorizontalDelSegmentoConLaVista:separacionHorizontalDelSegmentoConLaVista
+                   separacionVerticalDelSegmentoConLaVista:separacionVerticalDelSegmentoConLaVista
+                                     colorDelTrazoDelBorde:colorBordeSegmentosDelReloj
+                                               colorDelRelleno:colorSegmentosDelReloj
                                    transparenciaDelRelleno:1];
     
     self.unidadSegundos.valorADibujar = 0;
     self.decenasSegundos.valorADibujar = 0;
-    
-    
     
     CGRect unidadMinutosFrame = CGRectMake(self.tiempoDeJuegoMinutos.frame.size.width/2,0,self.tiempoDeJuegoMinutos.frame.size.width/2,self.tiempoDeJuegoMinutos.frame.size.height);
     
@@ -257,34 +264,34 @@
     [self.tiempoDeJuegoMinutos addSubview:self.unidadMinutos.view];
     [self.tiempoDeJuegoMinutos addSubview:self.decenasMinutos.view];
     
-    [self.unidadMinutos establecerVentanaConTransparencia:.5
-                                              colorDeFondo:[UIColor lightGrayColor]];
-    [self.decenasMinutos establecerVentanaConTransparencia:.5
-                                               colorDeFondo:[UIColor lightGrayColor]];
+    [self.unidadMinutos establecerVentanaConTransparencia:alphaDelColorDelFondoDelReloj
+                                              colorDeFondo:colorFondoReloj];
+    [self.decenasMinutos establecerVentanaConTransparencia:alphaDelColorDelFondoDelReloj
+                                               colorDeFondo:colorFondoReloj];
     
     [self.unidadMinutos  establecerSegmentoConGrosorDelTrazo:1
-                                            grosorDelSegmento:8
-                                     separacionEntreSegmentos:0
-                    separacionHorizontalDelSegmentoConLaVista:5
-                      separacionVerticalDelSegmentoConLaVista:5
-                                        colorDelTrazoDelBorde:[UIColor blackColor]
-                                              colorDelRelleno:[UIColor blueColor]
+                                            grosorDelSegmento:grosorDelSegmentoDelReloj
+                                     separacionEntreSegmentos:separacionEntreSegmentos
+                    separacionHorizontalDelSegmentoConLaVista:separacionHorizontalDelSegmentoConLaVista
+                      separacionVerticalDelSegmentoConLaVista:separacionVerticalDelSegmentoConLaVista
+                                        colorDelTrazoDelBorde:colorBordeSegmentosDelReloj
+                                             colorDelRelleno:colorSegmentosDelReloj
                                       transparenciaDelRelleno:1];
     
     [self.decenasMinutos  establecerSegmentoConGrosorDelTrazo:1
-                                             grosorDelSegmento:8
-                                      separacionEntreSegmentos:0
-                     separacionHorizontalDelSegmentoConLaVista:5
-                       separacionVerticalDelSegmentoConLaVista:5
-                                         colorDelTrazoDelBorde:[UIColor blackColor]
-                                               colorDelRelleno:[UIColor blueColor]
+                                             grosorDelSegmento:grosorDelSegmentoDelReloj
+                                      separacionEntreSegmentos:separacionEntreSegmentos
+                     separacionHorizontalDelSegmentoConLaVista:separacionHorizontalDelSegmentoConLaVista
+                       separacionVerticalDelSegmentoConLaVista:separacionVerticalDelSegmentoConLaVista
+                                         colorDelTrazoDelBorde:colorBordeSegmentosDelReloj
+                                              colorDelRelleno:colorSegmentosDelReloj
                                        transparenciaDelRelleno:1];
     
     self.unidadMinutos.valorADibujar = 0;
     self.decenasMinutos.valorADibujar = 0;
     
-    self.separadorMinutosDeSegundos.backgroundColor = [[UIColor lightGrayColor] colorWithAlphaComponent:.5];
-    self.separadorMinutosDeSegundos.textColor = [UIColor blueColor];
+    self.separadorMinutosDeSegundos.backgroundColor = [colorFondoReloj colorWithAlphaComponent:alphaDelColorDelFondoDelReloj];
+    self.separadorMinutosDeSegundos.textColor = colorSegmentosDelReloj;
     
 }
 
@@ -347,9 +354,8 @@
     [self generarCanvas];
     [self generarMinas];
     
-    [self actualizarBotonYBarraDeProgreso];
+    [self actualizarBotonConProgreso:[self calcularPorcentajeDeProgreso]];
     [self actualizaMinasPendientes];
-    [self iniciarBarraDeProgreso];
     [self establecerFondoNeutro];
     [self inicializarTiempoDeJuego];
     [self iniciarReloj];
@@ -359,13 +365,11 @@
     [self mostrarTodasLasMinas];
     [self establecerImagenDelBotonPrincipal:@"minaApagada"];
     [self establecerFondoDeError];
-    [self recuperarNumeroDeMinasPendietes];
     [self detenerRelor];
 }
 
 - (void) acabarJuegoSinErrorSinAyuda{
     [self establecerFondoDeVictoria];
-    [self recuperarNumeroDeMinasPendietes];
     [self detenerRelor];
     [self preguntarNombreConTiempo:self.tiempoDeJuegoEnSegundos
                             Nombre:nil
@@ -376,7 +380,6 @@
 
 - (void) acabarJuegoSinErrorConAyuda{
     [self establecerFondoDeVictoria];
-    [self recuperarNumeroDeMinasPendietes];
     [self detenerRelor];
     [self preguntarNombreConTiempo:self.tiempoDeJuegoEnSegundos
                             Nombre:nil
@@ -487,14 +490,7 @@
     }
 }
 
-- (void) recuperarNumeroDeMinasPendietes{
-    
-    
-    self.decenaMinas.valorADibujar = [IRGSettings sharedSettings].numeroDeMinas/10;
-    self.unidadMinas.valorADibujar = [IRGSettings sharedSettings].numeroDeMinas%10;
-}
-
-- (NSInteger) actualizarBotonYBarraDeProgreso{
+- (NSInteger) calcularPorcentajeDeProgreso{
     NSArray *todasLasCeldas = [IRGDatos sharedDatos].todasLasCeldas;
     Float32 totalCeldas = [todasLasCeldas count];
     totalCeldas = totalCeldas - [IRGSettings sharedSettings].numeroDeMinas;
@@ -506,14 +502,7 @@
         }
     }
     Float32 porcentajeDeAvance = (totalCeldasProcesadas/totalCeldas);
-    
-    [self actualizarBotonConProgreso:porcentajeDeAvance];
-    [self actualizarBarraDeProgresoConProgreso:porcentajeDeAvance];
     return porcentajeDeAvance;
-}
-
--(void) iniciarBarraDeProgreso{
-    [self.barraDeProgreso setProgress:0 animated:true];
 }
 
 
@@ -521,8 +510,6 @@
 
 -(void) actualizarBotonConProgreso:(float)porcentajeDeAvance{
     
-    //      [self establecerImagenDelBotonPrincipal:@"modoAyuda"];
-     
     if (porcentajeDeAvance == 1) {
         [self establecerImagenDelBotonPrincipal:@"igualA100"];
     }
@@ -542,10 +529,6 @@
         [self establecerImagenDelBotonPrincipal:@"menorDe20"];
     }
     
-}
-
-- (void) actualizarBarraDeProgresoConProgreso:(float)porcentajeDeAvance{
-    [self.barraDeProgreso setProgress:porcentajeDeAvance animated:true];
 }
 
 

@@ -86,8 +86,7 @@
     NSArray *listaDePath = NSSearchPathForDirectoriesInDomains(NSDocumentDirectory,
                                                                NSUserDomainMask,
                                                                TRUE);
-    //NSString *directorio = listaDePath[0];
-    NSString * directorio = @"/Users/LVS/Desktop/TopScores/";
+    NSString *directorio = listaDePath[0];
    return [directorio stringByAppendingString:@"Resultados.irg"];
 }
 

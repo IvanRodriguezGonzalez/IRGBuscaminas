@@ -48,13 +48,9 @@
     [self.delegado.gestionarBotonera desactivarBotonMostrarMinas];
     [self.delegado.gestionarBotonera activarBotonMejoresTiempos];
     [self.delegado.gestionarBotonera activarBotonPrincipal];
-    [self.delegado.gestionarBotonera activarTextFieldNumeroDeMinas];
     [self.delegado.gestionarBotonera desactivarBotonPausar];
     [self.delegado.gestionarBotonera activarSettings];
-
-
 }
-
 
 - (void) accionJugar{
     [self.gestorDeEstados establecerEstado:self.gestorDeEstados.estadoDelJuegoEnJuego];

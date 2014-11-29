@@ -47,11 +47,8 @@
     [self.delegado.gestionarBotonera desactivarBotonMostrarMinas];
     [self.delegado.gestionarBotonera activarBotonMejoresTiempos];
     [self.delegado.gestionarBotonera activarBotonPrincipal];
-    [self.delegado.gestionarBotonera activarTextFieldNumeroDeMinas];
     [self.delegado.gestionarBotonera desactivarBotonPausar];
     [self.delegado.gestionarBotonera activarSettings];
-
-
 }
 
 
@@ -66,12 +63,10 @@
 
 -(void) celdaPulsada:(IRGCeldaViewController *)celdaViewController{
     [NSException exceptionWithName:@"accion incorrecta" reason:@"El estado no la soporta" userInfo:nil];
-    
 }
 
 - (void) celdaDoblePulsada:(IRGCeldaViewController *)celdaViewController{
     [NSException exceptionWithName:@"accion incorrecta" reason:@"El estado no la soporta" userInfo:nil];
-    
 }
 
 -(void) accionPausar{

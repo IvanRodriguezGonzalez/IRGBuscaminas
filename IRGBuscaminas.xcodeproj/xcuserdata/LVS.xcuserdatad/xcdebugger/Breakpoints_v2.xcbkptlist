@@ -10,11 +10,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "IRGBuscaminas/IRGEstadoDelJuegoAyuda.m"
-            timestampString = "438898053.360388"
+            timestampString = "438946516.996995"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "139"
-            endingLineNumber = "139"
+            startingLineNumber = "136"
+            endingLineNumber = "136"
             landmarkName = "-descontarContador"
             landmarkType = "5">
          </BreakpointContent>

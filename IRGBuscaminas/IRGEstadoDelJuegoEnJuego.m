@@ -55,7 +55,6 @@
         }
     [self.delegado.gestionarBotonera desactivarBotonMejoresTiempos];
     [self.delegado.gestionarBotonera activarBotonPrincipal];
-    [self.delegado.gestionarBotonera desactivarTextFieldNumeroDeMinas];
     [self.delegado.gestionarBotonera activarBotonPausar];
     [self.delegado.gestionarBotonera desactivarSettings];
 
@@ -63,7 +62,6 @@
 }
 
 - (void) accionJugar{
-    [self.delegado recuperarNumeroDeMinasPendietes];
     [self.delegado iniciarJuego];
     [self.gestorDeEstados establecerEstado:self.gestorDeEstados.estadoDelJuegoEnJuego];
 }
@@ -83,7 +81,8 @@
         }
         else {
             [self.delegado propagaTouch:celdaViewController];
-            NSInteger porcentajeDeAvance =[self.delegado actualizarBotonYBarraDeProgreso];
+            NSInteger porcentajeDeAvance =[self.delegado calcularPorcentajeDeProgreso];
+            [self.delegado actualizarBotonConProgreso:porcentajeDeAvance];
             if (porcentajeDeAvance == 1){
                 [self.gestorDeEstados establecerEstado:self.gestorDeEstados.estadoDelJuegoFinalizadoSinErrorSinAyuda];
                 [self.delegado acabarJuegoSinErrorSinAyuda];

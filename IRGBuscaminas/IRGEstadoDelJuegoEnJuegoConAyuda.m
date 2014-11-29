@@ -37,7 +37,7 @@
 
 #pragma mark - Overrides
 -(NSString *) description{
-    return @"En juego... (pero con ayuda :-) )";
+    return @"En juego...con ayuda :-)";
 }
 #pragma mark Metodos del protocolo
 
@@ -45,11 +45,8 @@
     [self.delegado.gestionarBotonera desactivarBotonMostrarMinas];
     [self.delegado.gestionarBotonera desactivarBotonMejoresTiempos];
     [self.delegado.gestionarBotonera activarBotonPrincipal];
-    [self.delegado.gestionarBotonera desactivarTextFieldNumeroDeMinas];
     [self.delegado.gestionarBotonera desactivarBotonPausar];
     [self.delegado.gestionarBotonera desactivarSettings];
-
-
 }
 
 
@@ -90,7 +87,8 @@
         }
         else {
             [self.delegado propagaTouch:celdaViewController];
-            NSInteger porcentajeDeAvance =[self.delegado actualizarBotonYBarraDeProgreso];
+            NSInteger porcentajeDeAvance =[self.delegado calcularPorcentajeDeProgreso];
+            [self.delegado actualizarBotonConProgreso:porcentajeDeAvance];
             if (porcentajeDeAvance == 1){
                 [self.gestorDeEstados establecerEstado:self.gestorDeEstados.estadoDelJuegoFinalizadoSinErrorConAyuda];
                 [self.delegado acabarJuegoSinErrorConAyuda];

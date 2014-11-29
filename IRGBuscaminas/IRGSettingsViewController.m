@@ -13,6 +13,8 @@
 @property (weak, nonatomic) IBOutlet UITextField *numeroDeMinas;
 @property (weak, nonatomic) IBOutlet UITextField *tiempoDeAyuda;
 @property (weak, nonatomic) IBOutlet UISegmentedControl *activarAyuda;
+@property (weak, nonatomic) IBOutlet UISegmentedControl *nivelDeDificultad;
+
 @property (weak, nonatomic) IBOutlet UIView *vistaDatos;
 @property (nonatomic) UIViewController * controllerPrincipal;
 
@@ -27,17 +29,27 @@
     return self;
 }
 
+
+
 - (void)viewDidLoad {
     [super viewDidLoad];
     self.numeroDeMinas.text = [NSString stringWithFormat:@"%d",[IRGSettings sharedSettings].numeroDeMinas];
     self.tiempoDeAyuda.text = [NSString stringWithFormat:@"%d",[IRGSettings sharedSettings].tiempoDeAyuda];
+    if ([IRGSettings sharedSettings].activarAyuda){
+        self.activarAyuda.selectedSegmentIndex = 0;
+    }
+    else {
+        self.activarAyuda.selectedSegmentIndex =1;
+    }
+    self.nivelDeDificultad.selectedSegmentIndex =[IRGSettings sharedSettings].dificultad-1;
     self.vistaDatos.layer.borderWidth = 1;
     self.vistaDatos.layer.borderColor = [UIColor blackColor].CGColor;
     self.vistaDatos.layer.cornerRadius = 30;
     self.vistaDatos.layer.masksToBounds = YES;
     
-    [UIApplication sharedApplication];
-}
+    [self.nivelDeDificultad addTarget:self
+                         action:@selector(actualizaNivelDeDificultad)
+               forControlEvents:UIControlEventValueChanged];}
 
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
@@ -55,8 +67,15 @@
     else {
         [IRGSettings sharedSettings].activarAyuda  = false ;
     }
+    [IRGSettings sharedSettings].dificultad = self.nivelDeDificultad.selectedSegmentIndex+1;
     [[IRGSettings sharedSettings] guardarSettings];
     [self.view removeFromSuperview];
+}
+
+-(void) actualizaNivelDeDificultad{
+    self.numeroDeMinas.text = [NSString stringWithFormat: @"%d",[[IRGSettings sharedSettings] numeroDeMInasPorDefectoDelNivel:self.nivelDeDificultad.selectedSegmentIndex+1]];
+    self.tiempoDeAyuda.text = [NSString stringWithFormat: @"%d",[[IRGSettings sharedSettings] tiempoDeAyudaPorDefectoDelNivel:self.nivelDeDificultad.selectedSegmentIndex+1]];
+    
 }
 
 @end

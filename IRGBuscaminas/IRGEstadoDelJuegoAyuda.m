@@ -71,7 +71,6 @@
     [self.delegado.gestionarBotonera desactivarBotonMostrarMinas];
     [self.delegado.gestionarBotonera desactivarBotonMejoresTiempos];
     [self.delegado.gestionarBotonera desactivarBotonPrincipal];
-    [self.delegado.gestionarBotonera desactivarTextFieldNumeroDeMinas];
     [self.delegado.gestionarBotonera desactivarBotonPausar];
     [self.delegado.gestionarBotonera desactivarSettings];
 
@@ -115,12 +114,10 @@
                                    separacionVerticalDelSegmentoConLaVista:0
                                                      colorDelTrazoDelBorde:[UIColor grayColor]
                                                            colorDelRelleno:[UIColor whiteColor]transparenciaDelRelleno:.99];
-     
-  //[self.sieteSegmentosViewController establecerEfecto3ConColorDelTrazoDelBordeConLuz:[UIColor whiteColor] conColortDelTrazoDelBordeConSombra:[UIColor blackColor]];
     self.contador =[IRGSettings sharedSettings].tiempoDeAyuda;;
     self.sieteSegmentosViewController.valorADibujar = self.contador;
-
 }
+
 -(void) iniciarReloj{
     self.relojDeEspera = [NSTimer scheduledTimerWithTimeInterval:1
                                                       target:self
