@@ -9,8 +9,11 @@
 #import "IRGLienzo.h"
 #import "IRGSettings.h"
 
+#pragma mark - Constantes
+
 # define ALTO_DE_LA_CELDA 50
 # define ANCHO_DE_LA_CELDA 50
+
 # define FILAS_DEL_LIENZO_Nivel_1 8
 # define COLUMNAS_DEL_LIENZO_Nivel_1 8
 
@@ -20,16 +23,12 @@
 # define FILAS_DEL_LIENZO_Nivel_3 15
 # define COLUMNAS_DEL_LIENZO_Nivel_3 15
 
-
-
-# define TAMANO_MINIMO_PARA_PINTAR_BORDE 5
-
-
-
+#pragma mark -
 @implementation IRGLienzo
+#pragma mark -
 
 
-#pragma mark Inicializadores
+#pragma mark  - Inicializadores
 
 -(instancetype) init {
     [NSException exceptionWithName:@"Invalid init" reason:@"Use [IRGLienzo sharedLienzo]" userInfo:nil];
@@ -54,8 +53,6 @@
 }
 
 #pragma mark - Accesors
-
-
 
 -(NSInteger) filasDelLienzo {
     if ([IRGSettings sharedSettings].dificultad == 1){
@@ -91,8 +88,5 @@
 -(NSInteger) altoCelda{
   return ALTO_DE_LA_CELDA;
 }
-
-#pragma mark - Propios Publicos
-
 
 @end

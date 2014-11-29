@@ -7,14 +7,15 @@
 //
 
 #import "IRGGestionarBotonera.h"
-#import "IRGPincel.h"
+#import "IRGSettings.h"
 #import "IRGVentanaPrincipalViewController.h"
-
+#import <UIKit/UIKit.h>
 @interface IRGGestionarBotonera ()
-@property (nonatomic) IRGVentanaPrincipalViewController *delegado;
-
+    #pragma mark - Propiedades privadas
+    @property (nonatomic) IRGVentanaPrincipalViewController *delegado;
 @end
 
+#pragma mark -
 @implementation IRGGestionarBotonera
 
 
@@ -33,10 +34,11 @@
 }
 
 
-# pragma mark - Metodos de activar y desactivar botones
+# pragma mark - Metodos Publicos de activar y desactivar botones
 -(void) activarBotonPrincipal{
     self.delegado.botonPrincipal.enabled = true;
     self.delegado.etiquetaBotonPrincipal.enabled = true;
+    self.delegado.etiquetaBotonPrincipal.textColor = [IRGSettings sharedSettings].colorEtiquetaDeBoton;
 }
 
 -(void) desactivarBotonPrincipal{
@@ -47,6 +49,7 @@
 -(void) activarBotonPausar{
     self.delegado.botonPausar.enabled = true;
     self.delegado.etiquetaBotonPausar.enabled = true;
+    self.delegado.etiquetaBotonPausar.textColor = [IRGSettings sharedSettings].colorEtiquetaDeBoton;
 }
 
 -(void) desactivarBotonPausar{
@@ -57,6 +60,7 @@
 - (void) activarBotonMejoresTiempos{
     self.delegado.botonMostrarMejoresTiempos.enabled = true;
     self.delegado.etiquetaBotonMostrarMejoresTiempos.enabled = true;
+    self.delegado.etiquetaBotonMostrarMejoresTiempos.textColor = [IRGSettings sharedSettings].colorEtiquetaDeBoton;
 }
 
 - (void) desactivarBotonMejoresTiempos{
@@ -67,6 +71,7 @@
 - (void) activarBotonMostrarMinas{
     self.delegado.botonMostrarMinas.enabled = TRUE;
     self.delegado.etiquetaBotonMostrarMinas.enabled = true;
+    self.delegado.etiquetaBotonMostrarMinas.textColor = [IRGSettings sharedSettings].colorEtiquetaDeBoton;
 }
 
 - (void) desactivarBotonMostrarMinas{
@@ -77,15 +82,12 @@
 - (void) activarSettings{
     self.delegado.botonSettings.enabled = true;
     self.delegado.etiquetaSettings.enabled = true;
+    self.delegado.etiquetaSettings.textColor = [IRGSettings sharedSettings].colorEtiquetaDeBoton;
 }
 
 - (void) desactivarSettings{
     self.delegado.botonSettings.enabled = false;
     self.delegado.etiquetaSettings.enabled = false;
-}
-
--(void) establecerBotonYEtiquetaBotonMostrarMinasModoNormal{
-    self.delegado.etiquetaBotonMostrarMinas.textColor = [IRGPincel sharedPincel].colorEtiquetaDeBotonNormal;
 }
 
 

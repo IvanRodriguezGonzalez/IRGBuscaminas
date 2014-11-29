@@ -7,22 +7,49 @@
 //
 
 #import "IRGSieteSegmentos.h"
-#define COLOR_DE_RELLENO_DE_LA_VENTANA_POR_DEFECTO grayColor
+
+#pragma mark  Constantes de la clase
+#define GROSOR_POR_DEFECTO_DEL_TRAZO    2
+#define GROSOR_POR_DEFECTO_DEL_SEGMENTO self.bounds.size.width/10
+
+#define SEPARACION_POR_DEFECTO_ENTRE_SEGMENTOS                      0
+#define SEPARACION_POR_DEFECTO_HORIZONTAL_DEL_SEGMENTO_CON_LA_VISTA self.bounds.size.width/10
+#define SEPARACION_POR_DEFECTO_VERTICAL_DEL_SEGMENTO_CON_LA_VISTA   self.bounds.size.height/10
+
+#define COLOR_POR_DEFECTO_DE_RELLENO_DE_LA_VENTANA  [UIColor grayColor]
+#define COLOR_POR_DEFECTO_DEL_BORDE_DEL_SEGMENTO    [UIColor blackColor]
+#define COLOR_POR_DEFECTO_DE_RELLENO_DEL_SEGMENTO   [UIColor redColor]
+
+#pragma mark -
 
 @interface IRGSieteSegmentos ()
-@property (nonatomic) NSInteger valor;
-
+    #pragma mark - Propiedades privadas
+    @property (nonatomic) NSInteger valor;
 
 @end
 
-@implementation IRGSieteSegmentos
+#pragma mark -
 
+@implementation IRGSieteSegmentos
 
 #pragma mark - Inicializadores
 
+//designated initializer
 -(instancetype) initWithFrame:(CGRect)frame{
     self = [super initWithFrame:frame];
     if (self){
+        _grosorDelSegmento =    GROSOR_POR_DEFECTO_DEL_SEGMENTO;
+        _grosorDelTrazo =       GROSOR_POR_DEFECTO_DEL_TRAZO;
+
+        
+        _separacionEntreSegmentos =                     SEPARACION_POR_DEFECTO_ENTRE_SEGMENTOS;
+        _separacionHorizontalDeLosSegmentosConLaVista = SEPARACION_POR_DEFECTO_HORIZONTAL_DEL_SEGMENTO_CON_LA_VISTA;
+        _separacionVerticalDeLosSegmentosConLaVista =   SEPARACION_POR_DEFECTO_HORIZONTAL_DEL_SEGMENTO_CON_LA_VISTA;
+        
+        _colorDelTrazoDelBorde =        COLOR_POR_DEFECTO_DEL_BORDE_DEL_SEGMENTO;
+        _colorDelRellenoDelSegmento =   COLOR_POR_DEFECTO_DE_RELLENO_DEL_SEGMENTO;
+        self.backgroundColor =          COLOR_POR_DEFECTO_DE_RELLENO_DE_LA_VENTANA;
+        
         
     }
     return self;
@@ -30,48 +57,45 @@
 
 #pragma mark - Overrides
 
-
-    - (void)drawRect:(CGRect)rect {
+- (void)drawRect:(CGRect)rect {
     switch (self.valor) {
         case 0:
-            [self cero];
+            [self dibujarElNumeroCero];
             break;
         case 1:
-            [self uno];
+            [self dibujarElNumeroUno];
             break;
         case 2:
-            [self dos];
+            [self dibujarElNumeroDos];
             break;
         case 3:
-            [self tres];
+            [self dibujarElNumeroTres];
             break;
         case 4:
-            [self cuatro];
+            [self dibujarElNumeroCuatro];
             break;
         case 5:
-            [self cinco];
+            [self dibujarElNumeroCinco];
             break;
         case 6:
-            [self seis];
+            [self dibujarElNumeroSeis];
             break;
         case 7:
-            [self siete];
+            [self dibujarElNumeroSiete];
             break;
         case 8:
-            [self ocho];
+            [self dibujarElNumeroOcho];
             break;
         case 9:
-            [self nueve];
+            [self dibujarElNumeroNueve];
             break;
-
-
         default:
             break;
     }
 }
 
 
-#pragma mmark - Auxiliares de primer nivel
+#pragma mark - Metodos publicos
 
 -(void) dibujarNumero:(NSInteger)valor{
     self.valor = valor;
@@ -80,93 +104,97 @@
 
 
 
+#pragma mark - Auxiliares de primer nivel
+-(void) dibujarElNumeroCero{
+    [self dibujaSegmentoTop];
+    [self dibujaSegmentoIzquierdoSuperior];
+    [self dibujaSegmentoDerechoSuperior];
+    
+    [self dibujaSegmentoIzquierdoInferior];
+    [self dibujaSegmentoDerechoInferior];
+    [self dibujaSegmentoDown];
+}
+
+-(void) dibujarElNumeroUno{
+    [self dibujaSegmentoDerechoSuperior];
+    [self dibujaSegmentoDerechoInferior];
+}
+-(void) dibujarElNumeroDos{
+    [self dibujaSegmentoTop];
+    [self dibujaSegmentoDerechoSuperior];
+    [self dibujaSegmentoCentral];
+    [self dibujaSegmentoIzquierdoInferior];
+    [self dibujaSegmentoDown];
+}
+
+-(void) dibujarElNumeroTres{
+    [self dibujaSegmentoTop];
+    [self dibujaSegmentoDerechoSuperior];
+    [self dibujaSegmentoCentral];
+    [self dibujaSegmentoDerechoInferior];
+    [self dibujaSegmentoDown];
+}
+
+-(void) dibujarElNumeroCuatro{
+    [self dibujaSegmentoIzquierdoSuperior];
+    [self dibujaSegmentoDerechoSuperior];
+    [self dibujaSegmentoCentral];
+    [self dibujaSegmentoDerechoInferior];
+    
+}
+-(void) dibujarElNumeroCinco{
+    [self dibujaSegmentoTop];
+    [self dibujaSegmentoIzquierdoSuperior];
+    [self dibujaSegmentoCentral];
+    [self dibujaSegmentoDerechoInferior];
+    [self dibujaSegmentoDown];
+}
+-(void) dibujarElNumeroSeis{
+    [self dibujaSegmentoTop];
+    [self dibujaSegmentoIzquierdoSuperior];
+    [self dibujaSegmentoCentral];
+    [self dibujaSegmentoIzquierdoInferior];
+    [self dibujaSegmentoDerechoInferior];
+    [self dibujaSegmentoDown];
+}
+-(void) dibujarElNumeroSiete{
+    [self dibujaSegmentoTop];
+    [self dibujaSegmentoDerechoSuperior];
+    [self dibujaSegmentoDerechoInferior];
+}
+-(void) dibujarElNumeroOcho{
+    [self dibujaSegmentoTop];
+    [self dibujaSegmentoIzquierdoSuperior];
+    [self dibujaSegmentoDerechoSuperior];
+    [self dibujaSegmentoCentral];
+    [self dibujaSegmentoIzquierdoInferior];
+    [self dibujaSegmentoDerechoInferior];
+    [self dibujaSegmentoDown];
+    }
+-(void) dibujarElNumeroNueve{
+    [self dibujaSegmentoTop];
+    [self dibujaSegmentoIzquierdoSuperior];
+    [self dibujaSegmentoDerechoSuperior];
+    [self dibujaSegmentoCentral];
+    [self dibujaSegmentoDerechoInferior];
+    }
+
 #pragma mark - Auxiliares de segundo nivel
--(void) cero{
-    [self dibujaSegmentoTop];
-    [self dibujaSegmentoIzquierdoSuperior];
-    [self dibujaSegmentoDerechoSuperior];
-    
-    [self dibujaSegmentoIzquierdoInferior];
-    [self dibujaSegmentoDerechoInferior];
-    [self dibujaSegmentoDown];
-}
-
--(void) uno{
-    [self dibujaSegmentoDerechoSuperior];
-    [self dibujaSegmentoDerechoInferior];
-}
--(void) dos{
-    [self dibujaSegmentoTop];
-    [self dibujaSegmentoDerechoSuperior];
-    [self dibujaSegmentoCentral];
-    [self dibujaSegmentoIzquierdoInferior];
-    [self dibujaSegmentoDown];
-}
-
--(void) tres{
-    [self dibujaSegmentoTop];
-    [self dibujaSegmentoDerechoSuperior];
-    [self dibujaSegmentoCentral];
-    [self dibujaSegmentoDerechoInferior];
-    [self dibujaSegmentoDown];
-}
-
--(void) cuatro{
-    [self dibujaSegmentoIzquierdoSuperior];
-    [self dibujaSegmentoDerechoSuperior];
-    [self dibujaSegmentoCentral];
-    [self dibujaSegmentoDerechoInferior];
-    
-}
--(void) cinco{
-    [self dibujaSegmentoTop];
-    [self dibujaSegmentoIzquierdoSuperior];
-    [self dibujaSegmentoCentral];
-    [self dibujaSegmentoDerechoInferior];
-    [self dibujaSegmentoDown];
-}
--(void) seis{
-    [self dibujaSegmentoTop];
-    [self dibujaSegmentoIzquierdoSuperior];
-    [self dibujaSegmentoCentral];
-    [self dibujaSegmentoIzquierdoInferior];
-    [self dibujaSegmentoDerechoInferior];
-    [self dibujaSegmentoDown];
-}
--(void) siete{
-    [self dibujaSegmentoTop];
-    [self dibujaSegmentoDerechoSuperior];
-    [self dibujaSegmentoDerechoInferior];
-}
--(void) ocho{
-    [self dibujaSegmentoTop];
-    [self dibujaSegmentoIzquierdoSuperior];
-    [self dibujaSegmentoDerechoSuperior];
-    [self dibujaSegmentoCentral];
-    [self dibujaSegmentoIzquierdoInferior];
-    [self dibujaSegmentoDerechoInferior];
-    [self dibujaSegmentoDown];
-    }
--(void) nueve{
-    [self dibujaSegmentoTop];
-    [self dibujaSegmentoIzquierdoSuperior];
-    [self dibujaSegmentoDerechoSuperior];
-    [self dibujaSegmentoCentral];
-    [self dibujaSegmentoDerechoInferior];
-    }
-
-#pragma mark - Auxiliares de tercer nivel
 
 
 -(void) dibujaSegmentoTop{
     
-    CGPoint puntoSuperiorIzquierdo = CGPointMake(self.separacionHorizontalDeLosSegmentosConLaVista+self.separacionEntreSegmentos, self.separacionVerticalDeLosSegmentosConLaVista);
+    CGPoint puntoSuperiorIzquierdo = CGPointMake(self.separacionHorizontalDeLosSegmentosConLaVista+self.separacionEntreSegmentos,
+                                                 self.separacionVerticalDeLosSegmentosConLaVista);
     
-    CGPoint puntoSuperiorDerecho = CGPointMake(self.frame.size.width-self.separacionHorizontalDeLosSegmentosConLaVista-self.separacionEntreSegmentos, self.separacionVerticalDeLosSegmentosConLaVista);
+    CGPoint puntoSuperiorDerecho = CGPointMake(self.frame.size.width-self.separacionHorizontalDeLosSegmentosConLaVista-self.separacionEntreSegmentos,
+                                               self.separacionVerticalDeLosSegmentosConLaVista);
     
-    CGPoint puntoInferiorDerecho = CGPointMake(self.frame.size.width-self.separacionHorizontalDeLosSegmentosConLaVista-self.grosorDelSegmento-self.separacionEntreSegmentos, self.separacionVerticalDeLosSegmentosConLaVista+self.grosorDelSegmento);
+    CGPoint puntoInferiorDerecho = CGPointMake(self.frame.size.width-self.separacionHorizontalDeLosSegmentosConLaVista-self.grosorDelSegmento-self.separacionEntreSegmentos,
+                                               self.separacionVerticalDeLosSegmentosConLaVista+self.grosorDelSegmento);
     
-    CGPoint puntoInferiorIzquierdo = CGPointMake(self.separacionHorizontalDeLosSegmentosConLaVista+self.grosorDelSegmento+self.separacionEntreSegmentos, self.separacionVerticalDeLosSegmentosConLaVista+self.grosorDelSegmento);
+    CGPoint puntoInferiorIzquierdo = CGPointMake(self.separacionHorizontalDeLosSegmentosConLaVista+self.grosorDelSegmento+self.separacionEntreSegmentos,
+                                                 self.separacionVerticalDeLosSegmentosConLaVista+self.grosorDelSegmento);
     
     
     UIBezierPath * path = [UIBezierPath bezierPath];
@@ -175,25 +203,27 @@
     [path addLineToPoint:puntoInferiorDerecho];
     [path addLineToPoint:puntoInferiorIzquierdo];
     [path addLineToPoint:puntoSuperiorIzquierdo];
-    
-    [self.colorDelTrazoDelBorde setStroke];
-    path.lineWidth = self.grosorDelTrazo;
-    [path stroke];
-    [self.colorDelRellenoDelSegmento setFill];
-    [path fill];
+
+    [self pintarSegmento:path];
 }
 -(void) dibujaSegmentoCentral{
-    CGPoint puntoCentralIzquierdo = CGPointMake(self.separacionHorizontalDeLosSegmentosConLaVista+self.grosorDelSegmento/2+self.separacionEntreSegmentos, self.frame.size.height/2);
+    CGPoint puntoCentralIzquierdo = CGPointMake(self.separacionHorizontalDeLosSegmentosConLaVista+self.grosorDelSegmento/2+self.separacionEntreSegmentos,
+                                                self.frame.size.height/2);
     
-    CGPoint puntoSuperiorIzquierdo = CGPointMake(self.separacionHorizontalDeLosSegmentosConLaVista+self.grosorDelSegmento+self.separacionEntreSegmentos, self.frame.size.height/2-self.grosorDelSegmento/2);
+    CGPoint puntoSuperiorIzquierdo = CGPointMake(self.separacionHorizontalDeLosSegmentosConLaVista+self.grosorDelSegmento+self.separacionEntreSegmentos,
+                                                 self.frame.size.height/2-self.grosorDelSegmento/2);
     
-    CGPoint puntoInferiorIzquierdo = CGPointMake(self.separacionHorizontalDeLosSegmentosConLaVista+self.grosorDelSegmento+self.separacionEntreSegmentos, self.frame.size.height/2+self.grosorDelSegmento/2);
+    CGPoint puntoInferiorIzquierdo = CGPointMake(self.separacionHorizontalDeLosSegmentosConLaVista+self.grosorDelSegmento+self.separacionEntreSegmentos,
+                                                 self.frame.size.height/2+self.grosorDelSegmento/2);
     
-    CGPoint puntoSuperiorDerecho = CGPointMake(self.frame.size.width-self.separacionHorizontalDeLosSegmentosConLaVista-self.grosorDelSegmento-self.separacionEntreSegmentos, self.frame.size.height /2-self.grosorDelSegmento/2);
+    CGPoint puntoSuperiorDerecho = CGPointMake(self.frame.size.width-self.separacionHorizontalDeLosSegmentosConLaVista-self.grosorDelSegmento-self.separacionEntreSegmentos,
+                                               self.frame.size.height /2-self.grosorDelSegmento/2);
     
-    CGPoint puntoInferiorDerecho = CGPointMake(self.frame.size.width-self.separacionHorizontalDeLosSegmentosConLaVista-self.grosorDelSegmento-self.separacionEntreSegmentos, self.frame.size.height/2+self.grosorDelSegmento/2);
+    CGPoint puntoInferiorDerecho = CGPointMake(self.frame.size.width-self.separacionHorizontalDeLosSegmentosConLaVista-self.grosorDelSegmento-self.separacionEntreSegmentos,
+                                               self.frame.size.height/2+self.grosorDelSegmento/2);
     
-    CGPoint puntoCentralDerecho = CGPointMake(self.frame.size.width-self.separacionHorizontalDeLosSegmentosConLaVista-self.grosorDelSegmento/2 - self.separacionEntreSegmentos, self.frame.size.height/2);
+    CGPoint puntoCentralDerecho = CGPointMake(self.frame.size.width-self.separacionHorizontalDeLosSegmentosConLaVista-self.grosorDelSegmento/2 - self.separacionEntreSegmentos,
+                                              self.frame.size.height/2);
     
     UIBezierPath * path = [UIBezierPath bezierPath];
     [path moveToPoint:puntoCentralIzquierdo];
@@ -204,22 +234,22 @@
     [path addLineToPoint:puntoInferiorIzquierdo];
     [path addLineToPoint:puntoCentralIzquierdo];
     
-    [self.colorDelTrazoDelBorde setStroke];
-    path.lineWidth = self.grosorDelTrazo;
-    [path stroke];
-    [self.colorDelRellenoDelSegmento setFill];
-    [path fill];
+    [self pintarSegmento:path];
 }
 
 - (void) dibujaSegmentoDown{
     
-    CGPoint puntoInferiorIzquierdo = CGPointMake(self.separacionHorizontalDeLosSegmentosConLaVista+self.separacionEntreSegmentos, self.frame.size.height-self.separacionVerticalDeLosSegmentosConLaVista);
+    CGPoint puntoInferiorIzquierdo = CGPointMake(self.separacionHorizontalDeLosSegmentosConLaVista+self.separacionEntreSegmentos,
+                                                 self.frame.size.height-self.separacionVerticalDeLosSegmentosConLaVista);
     
-    CGPoint puntoSuperiorIzquierdo = CGPointMake(self.separacionHorizontalDeLosSegmentosConLaVista+self.grosorDelSegmento+self.separacionEntreSegmentos, self.frame.size.height-self.separacionVerticalDeLosSegmentosConLaVista-self.grosorDelSegmento);
+    CGPoint puntoSuperiorIzquierdo = CGPointMake(self.separacionHorizontalDeLosSegmentosConLaVista+self.grosorDelSegmento+self.separacionEntreSegmentos,
+                                                 self.frame.size.height-self.separacionVerticalDeLosSegmentosConLaVista-self.grosorDelSegmento);
     
-    CGPoint puntoSuperiorDerecho = CGPointMake(self.frame.size.width-self.separacionHorizontalDeLosSegmentosConLaVista-self.grosorDelSegmento-self.separacionEntreSegmentos,self.frame.size.height-self.separacionVerticalDeLosSegmentosConLaVista-self.grosorDelSegmento);
+    CGPoint puntoSuperiorDerecho = CGPointMake(self.frame.size.width-self.separacionHorizontalDeLosSegmentosConLaVista-self.grosorDelSegmento-self.separacionEntreSegmentos,
+                                               self.frame.size.height-self.separacionVerticalDeLosSegmentosConLaVista-self.grosorDelSegmento);
     
-    CGPoint puntoInferiorDerecho = CGPointMake(self.frame.size.width-self.separacionHorizontalDeLosSegmentosConLaVista-self.separacionEntreSegmentos, self.frame.size.height-self.separacionVerticalDeLosSegmentosConLaVista);
+    CGPoint puntoInferiorDerecho = CGPointMake(self.frame.size.width-self.separacionHorizontalDeLosSegmentosConLaVista-self.separacionEntreSegmentos,
+                                               self.frame.size.height-self.separacionVerticalDeLosSegmentosConLaVista);
     
     UIBezierPath * path = [UIBezierPath bezierPath];
     
@@ -228,27 +258,26 @@
     [path addLineToPoint:puntoSuperiorDerecho];
     [path addLineToPoint:puntoInferiorDerecho];
     [path addLineToPoint:puntoInferiorIzquierdo];
- 
     
-    [self.colorDelTrazoDelBorde setStroke];
-    path.lineWidth = self.grosorDelTrazo;
-    [path stroke];
-    [self.colorDelRellenoDelSegmento setFill];
-    [path fill];
-
+    [self pintarSegmento:path];
 }
 
 -(void) dibujaSegmentoIzquierdoSuperior{
     
-    CGPoint puntoSuperioIzquierdo = CGPointMake(self.separacionHorizontalDeLosSegmentosConLaVista, self.separacionVerticalDeLosSegmentosConLaVista+self.separacionEntreSegmentos);
+    CGPoint puntoSuperioIzquierdo = CGPointMake(self.separacionHorizontalDeLosSegmentosConLaVista,
+                                                self.separacionVerticalDeLosSegmentosConLaVista+self.separacionEntreSegmentos);
     
-    CGPoint puntoSuperioDerecho = CGPointMake(self.separacionHorizontalDeLosSegmentosConLaVista+self.grosorDelSegmento, self.separacionVerticalDeLosSegmentosConLaVista+self.grosorDelSegmento+self.separacionEntreSegmentos);
+    CGPoint puntoSuperioDerecho = CGPointMake(self.separacionHorizontalDeLosSegmentosConLaVista+self.grosorDelSegmento,
+                                              self.separacionVerticalDeLosSegmentosConLaVista+self.grosorDelSegmento+self.separacionEntreSegmentos);
     
-    CGPoint puntoInferiorIzquierdo = CGPointMake(self.separacionHorizontalDeLosSegmentosConLaVista, self.frame.size.height/2-self.grosorDelSegmento/2-self.separacionEntreSegmentos);
+    CGPoint puntoInferiorIzquierdo = CGPointMake(self.separacionHorizontalDeLosSegmentosConLaVista,
+                                                 self.frame.size.height/2-self.grosorDelSegmento/2-self.separacionEntreSegmentos);
     
-    CGPoint puntoInferiorDerecho = CGPointMake(self.separacionHorizontalDeLosSegmentosConLaVista+self.grosorDelSegmento, self.frame.size.height/2-self.grosorDelSegmento/2-self.separacionEntreSegmentos);
+    CGPoint puntoInferiorDerecho = CGPointMake(self.separacionHorizontalDeLosSegmentosConLaVista+self.grosorDelSegmento,
+                                               self.frame.size.height/2-self.grosorDelSegmento/2-self.separacionEntreSegmentos);
     
-    CGPoint puntoInferiorCentral = CGPointMake(self.separacionHorizontalDeLosSegmentosConLaVista+self.grosorDelSegmento/2, self.frame.size.height/2-self.separacionEntreSegmentos);
+    CGPoint puntoInferiorCentral = CGPointMake(self.separacionHorizontalDeLosSegmentosConLaVista+self.grosorDelSegmento/2,
+                                               self.frame.size.height/2-self.separacionEntreSegmentos);
     
     
     UIBezierPath * path = [UIBezierPath bezierPath];
@@ -259,25 +288,25 @@
     [path addLineToPoint:puntoInferiorIzquierdo];
     [path addLineToPoint:puntoSuperioIzquierdo];
     
-    [self.colorDelTrazoDelBorde setStroke];
-    path.lineWidth = self.grosorDelTrazo;
-    [path stroke];
-    [self.colorDelRellenoDelSegmento setFill];
-    [path fill];
-   
+    [self pintarSegmento:path];
 }
 
 -(void) dibujaSegmentoIzquierdoInferior{
    
-    CGPoint puntoSuperiorIzquierdo = CGPointMake(self.separacionHorizontalDeLosSegmentosConLaVista, self.frame.size.height/2+self.grosorDelSegmento/2+self.separacionEntreSegmentos);
+    CGPoint puntoSuperiorIzquierdo = CGPointMake(self.separacionHorizontalDeLosSegmentosConLaVista,
+                                                 self.frame.size.height/2+self.grosorDelSegmento/2+self.separacionEntreSegmentos);
     
-    CGPoint puntoSuperioDerecho = CGPointMake(self.separacionHorizontalDeLosSegmentosConLaVista+self.grosorDelSegmento, self.frame.size.height/2+self.grosorDelSegmento/2+self.separacionEntreSegmentos);
+    CGPoint puntoSuperioDerecho = CGPointMake(self.separacionHorizontalDeLosSegmentosConLaVista+self.grosorDelSegmento,
+                                              self.frame.size.height/2+self.grosorDelSegmento/2+self.separacionEntreSegmentos);
     
-    CGPoint puntoSuperiorCentral = CGPointMake(self.separacionHorizontalDeLosSegmentosConLaVista+self.grosorDelSegmento/2, self.frame.size.height/2+self.separacionEntreSegmentos);
+    CGPoint puntoSuperiorCentral = CGPointMake(self.separacionHorizontalDeLosSegmentosConLaVista+self.grosorDelSegmento/2,
+                                               self.frame.size.height/2+self.separacionEntreSegmentos);
     
-    CGPoint puntoInferiorIzquierdo  = CGPointMake(self.separacionHorizontalDeLosSegmentosConLaVista, self.frame.size.height-self.separacionVerticalDeLosSegmentosConLaVista -self.separacionEntreSegmentos);
+    CGPoint puntoInferiorIzquierdo  = CGPointMake(self.separacionHorizontalDeLosSegmentosConLaVista,
+                                                  self.frame.size.height-self.separacionVerticalDeLosSegmentosConLaVista -self.separacionEntreSegmentos);
     
-    CGPoint puntoInferiorDerecho = CGPointMake(self.separacionHorizontalDeLosSegmentosConLaVista+self.grosorDelSegmento, self.frame.size.height-self.grosorDelSegmento-self.separacionEntreSegmentos-self.separacionVerticalDeLosSegmentosConLaVista);
+    CGPoint puntoInferiorDerecho = CGPointMake(self.separacionHorizontalDeLosSegmentosConLaVista+self.grosorDelSegmento,
+                                               self.frame.size.height-self.grosorDelSegmento-self.separacionEntreSegmentos-self.separacionVerticalDeLosSegmentosConLaVista);
     
     UIBezierPath * path = [UIBezierPath bezierPath];
     [path moveToPoint:puntoSuperiorIzquierdo];
@@ -287,11 +316,7 @@
     [path addLineToPoint:puntoInferiorIzquierdo];
     [path addLineToPoint:puntoSuperiorIzquierdo];
     
-    [self.colorDelTrazoDelBorde setStroke];
-    path.lineWidth = self.grosorDelTrazo;
-    [path stroke];
-    [self.colorDelRellenoDelSegmento setFill];
-    [path fill];
+    [self pintarSegmento:path];
 
     
 }
@@ -299,15 +324,20 @@
 
 -(void) dibujaSegmentoDerechoInferior{
     
-    CGPoint puntoSuperiorIzquierdo = CGPointMake(self.frame.size.width-self.separacionHorizontalDeLosSegmentosConLaVista-self.grosorDelSegmento, self.frame.size.height/2+self.grosorDelSegmento/2+self.separacionEntreSegmentos);
+    CGPoint puntoSuperiorIzquierdo = CGPointMake(self.frame.size.width-self.separacionHorizontalDeLosSegmentosConLaVista-self.grosorDelSegmento,
+                                                 self.frame.size.height/2+self.grosorDelSegmento/2+self.separacionEntreSegmentos);
     
-    CGPoint puntoSuperiorCentral = CGPointMake(self.frame.size.width-self.separacionHorizontalDeLosSegmentosConLaVista-self.grosorDelSegmento/2, self.frame.size.height/2+self.separacionEntreSegmentos);
+    CGPoint puntoSuperiorCentral = CGPointMake(self.frame.size.width-self.separacionHorizontalDeLosSegmentosConLaVista-self.grosorDelSegmento/2,
+                                               self.frame.size.height/2+self.separacionEntreSegmentos);
     
-    CGPoint puntoSuperiorDerecho = CGPointMake(self.frame.size.width-self.separacionHorizontalDeLosSegmentosConLaVista, self.frame.size.height/2+self.grosorDelSegmento/2+self.separacionEntreSegmentos);
+    CGPoint puntoSuperiorDerecho = CGPointMake(self.frame.size.width-self.separacionHorizontalDeLosSegmentosConLaVista,
+                                               self.frame.size.height/2+self.grosorDelSegmento/2+self.separacionEntreSegmentos);
     
-    CGPoint puntoInferiorDerecho = CGPointMake(self.frame.size.width-self.separacionHorizontalDeLosSegmentosConLaVista, self.frame.size.height-self.separacionVerticalDeLosSegmentosConLaVista);
+    CGPoint puntoInferiorDerecho = CGPointMake(self.frame.size.width-self.separacionHorizontalDeLosSegmentosConLaVista,
+                                               self.frame.size.height-self.separacionVerticalDeLosSegmentosConLaVista);
     
-    CGPoint puntoInferiorIzquierdo = CGPointMake(self.frame.size.width-self.separacionHorizontalDeLosSegmentosConLaVista-self.grosorDelSegmento,self.frame.size.height-self.separacionVerticalDeLosSegmentosConLaVista-self.grosorDelSegmento-self.separacionEntreSegmentos);
+    CGPoint puntoInferiorIzquierdo = CGPointMake(self.frame.size.width-self.separacionHorizontalDeLosSegmentosConLaVista-self.grosorDelSegmento,
+                                                 self.frame.size.height-self.separacionVerticalDeLosSegmentosConLaVista-self.grosorDelSegmento-self.separacionEntreSegmentos);
     
     UIBezierPath * path = [UIBezierPath bezierPath];
     [path moveToPoint:puntoSuperiorIzquierdo];
@@ -317,25 +347,26 @@
     [path addLineToPoint:puntoInferiorIzquierdo];
     [path addLineToPoint:puntoSuperiorIzquierdo];
     
-    [self.colorDelTrazoDelBorde setStroke];
-    path.lineWidth = self.grosorDelTrazo;
-    [path stroke];
-    [self.colorDelRellenoDelSegmento setFill];
-    [path fill];
+    [self pintarSegmento:path];
 
 }
 
 -(void) dibujaSegmentoDerechoSuperior{
     
-    CGPoint puntoSuperioIzquierdo = CGPointMake(self.frame.size.width-self.separacionHorizontalDeLosSegmentosConLaVista-self.grosorDelSegmento,self.separacionVerticalDeLosSegmentosConLaVista+self.grosorDelSegmento+self.separacionEntreSegmentos);
+    CGPoint puntoSuperioIzquierdo = CGPointMake(self.frame.size.width-self.separacionHorizontalDeLosSegmentosConLaVista-self.grosorDelSegmento,
+                                                self.separacionVerticalDeLosSegmentosConLaVista+self.grosorDelSegmento+self.separacionEntreSegmentos);
     
-    CGPoint puntoSuperioDerecho = CGPointMake(self.frame.size.width-self.separacionHorizontalDeLosSegmentosConLaVista,self.separacionVerticalDeLosSegmentosConLaVista+self.separacionEntreSegmentos);
+    CGPoint puntoSuperioDerecho = CGPointMake(self.frame.size.width-self.separacionHorizontalDeLosSegmentosConLaVista,
+                                              self.separacionVerticalDeLosSegmentosConLaVista+self.separacionEntreSegmentos);
     
-    CGPoint puntoInferiorIzquierdo = CGPointMake(self.frame.size.width-self.separacionHorizontalDeLosSegmentosConLaVista-self.grosorDelSegmento,self.frame.size.height/2-self.grosorDelSegmento/2-self.separacionEntreSegmentos);
+    CGPoint puntoInferiorIzquierdo = CGPointMake(self.frame.size.width-self.separacionHorizontalDeLosSegmentosConLaVista-self.grosorDelSegmento,
+                                                 self.frame.size.height/2-self.grosorDelSegmento/2-self.separacionEntreSegmentos);
     
-    CGPoint puntoInferiorDerecho = CGPointMake(self.frame.size.width-self.separacionHorizontalDeLosSegmentosConLaVista,self.frame.size.height/2-self.grosorDelSegmento/2-self.separacionEntreSegmentos);
+    CGPoint puntoInferiorDerecho = CGPointMake(self.frame.size.width-self.separacionHorizontalDeLosSegmentosConLaVista,
+                                               self.frame.size.height/2-self.grosorDelSegmento/2-self.separacionEntreSegmentos);
     
-    CGPoint puntoInferiorCentral = CGPointMake(self.frame.size.width-self.separacionHorizontalDeLosSegmentosConLaVista-self.grosorDelSegmento/2,self.frame.size.height/2-self.separacionEntreSegmentos);
+    CGPoint puntoInferiorCentral = CGPointMake(self.frame.size.width-self.separacionHorizontalDeLosSegmentosConLaVista-self.grosorDelSegmento/2,
+                                               self.frame.size.height/2-self.separacionEntreSegmentos);
     
     UIBezierPath * path = [UIBezierPath bezierPath];
  
@@ -345,78 +376,21 @@
     [path addLineToPoint:puntoInferiorCentral];
     [path addLineToPoint:puntoInferiorIzquierdo];
     [path addLineToPoint:puntoSuperioIzquierdo];
+
+    [self pintarSegmento:path];
+}
+
+
+
+#pragma mark - Auxiliares de tercer nivel
+
+-(void) pintarSegmento:(UIBezierPath *)path{
     
     [self.colorDelTrazoDelBorde setStroke];
+    [self.colorDelRellenoDelSegmento setFill];
     path.lineWidth = self.grosorDelTrazo;
     [path stroke];
-    [self.colorDelRellenoDelSegmento setFill];
     [path fill];
-   }
-
-
-
-#pragma mark - Auxiliares de cuarto nivel
-
-
-#pragma mark - Accesors
-
-@synthesize colorDeFondo = _colorDeFondo;
-
--(NSInteger) grosorDelSegmento{
-    if (_grosorDelSegmento==0) {
-        _grosorDelSegmento = self.bounds.size.width/10;
-    }
-    return _grosorDelSegmento;
-}
--(NSInteger) separacionEntreSegmentos{
-    if (_separacionEntreSegmentos==0) {
-        _separacionEntreSegmentos = 0;
-    }
-    return _separacionEntreSegmentos;
-}
--(NSInteger) separacionVerticalDeLosSegmentosConLaVista{
-    if (_separacionVerticalDeLosSegmentosConLaVista==0) {
-        _separacionVerticalDeLosSegmentosConLaVista = self.bounds.size.width/10;
-    }
-    return _separacionVerticalDeLosSegmentosConLaVista;
-}
-
--(NSInteger) separacionHorizontalDeLosSegmentosConLaVista{
-    if (_separacionHorizontalDeLosSegmentosConLaVista==0) {
-        _separacionHorizontalDeLosSegmentosConLaVista = self.bounds.size.width/10;
-    }
-    return _separacionHorizontalDeLosSegmentosConLaVista;
-}
-
--(UIColor *) colorDelTrazoDelBorde{
-    if (!_colorDelTrazoDelBorde ) {
-        _colorDelTrazoDelBorde = [UIColor blackColor];
-    }
-    return _colorDelTrazoDelBorde;
-}
--(UIColor *) colorDelTrazoDelBordeConLuz{
-    if (!_colorDelTrazoDelBordeConLuz ) {
-        _colorDelTrazoDelBordeConLuz = [UIColor whiteColor];
-    }
-    return _colorDelTrazoDelBordeConLuz;
-}
--(UIColor *) colorDelTrazoDelBordeConSombra{
-    if (!_colorDelTrazoDelBordeConSombra) {
-        _colorDelTrazoDelBordeConSombra = [UIColor blackColor];
-    }
-    return _colorDelTrazoDelBordeConSombra;
-}
--(NSInteger) grosorDelTrazo{
-    if (_grosorDelSegmento==0) {
-        _grosorDelTrazo = 2;
-    }
-    return _grosorDelTrazo;
-}
--(UIColor *)colorDelRellenoDelSegmento{
-    if (_colorDelRellenoDelSegmento==nil) {
-        _colorDelRellenoDelSegmento = [UIColor redColor];
-    }
-    return _colorDelRellenoDelSegmento;
 }
 
 

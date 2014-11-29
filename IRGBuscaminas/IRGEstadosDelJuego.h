@@ -12,7 +12,7 @@
 @class IRGVentanaPrincipalViewController;
 
 @protocol IRGEstadosDelJuego  <NSObject>
-
+#pragma mark - Metodos del protocolo obligatorios
 -(void)accionJugar;
 -(void)accionMostrarMinas;
 -(void) accionPausar;

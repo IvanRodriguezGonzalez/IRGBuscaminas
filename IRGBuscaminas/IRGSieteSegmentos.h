@@ -9,25 +9,21 @@
 #import <UIKit/UIKit.h>
 
 @interface IRGSieteSegmentos : UIView
--(void) dibujarNumero:(NSInteger )valor;
 
-#pragma mark - Propiedades configurables por el usuario
+#pragma mark - Propiedades publicas
 
 @property(nonatomic) NSInteger grosorDelSegmento;
+@property (nonatomic) NSInteger grosorDelTrazo;
+
 @property(nonatomic) NSInteger separacionEntreSegmentos;
 @property(nonatomic) NSInteger separacionVerticalDeLosSegmentosConLaVista;
 @property(nonatomic) NSInteger separacionHorizontalDeLosSegmentosConLaVista;
+
 @property(nonatomic) UIColor * colorDelTrazoDelBorde;
-@property(nonatomic) UIColor * colorDelTrazoDelBordeConLuz;
-@property(nonatomic) UIColor * colorDelTrazoDelBordeConSombra;
 @property(nonatomic) UIColor * colorDelRellenoDelSegmento;
-@property (nonatomic) NSInteger grosorDelTrazo;
-@property(nonatomic) UIColor *colorDeFondo;
-@property (nonatomic) bool efecto3D;
 
 
-
-
-
+#pragma mark - Metodos publicos
+-(void) dibujarNumero:(NSInteger )valor;
 
 @end

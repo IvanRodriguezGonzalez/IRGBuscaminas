@@ -9,6 +9,7 @@
 #import <UIKit/UIKit.h>
 
 @interface IRGSettingsViewController : UIViewController
+#pragma mark - Propiedades publicas
 @property (nonatomic) UIView *barraDeBotones;
 
 @end

@@ -14,15 +14,17 @@
 #define TAMANO_Y_VENTANA_DISPLAY_SIETE_SEGMENTOS 250
 
 @interface IRGEstadoDelJuegoAyuda()
-@property (nonatomic,strong) IRGVentanaPrincipalViewController *delegado;
-@property (nonatomic,strong) IRGGestorDeEstados * gestorDeEstados;
-@property (nonatomic)  NSTimer * relojDeEspera;
-@property (nonatomic) NSInteger contador;
-@property (nonatomic) IRGNUmeroSieteSegmentosViewController *sieteSegmentosViewController;
+    #pragma mark - Propiedades privadas
+    @property (nonatomic,strong) IRGVentanaPrincipalViewController *delegado;
+    @property (nonatomic,strong) IRGGestorDeEstados * gestorDeEstados;
+    @property (nonatomic)  NSTimer * relojDeEspera;
+    @property (nonatomic) NSInteger contador;
+    @property (nonatomic) IRGNUmeroSieteSegmentosViewController *sieteSegmentosViewController;
 @end
 
+#pragma mark -
 @implementation IRGEstadoDelJuegoAyuda
-#pragma mark Inicializadores
+#pragma mark - Inicializadores
 
 //designated initizalizer
 
@@ -65,7 +67,7 @@
     return @"Ayuda!";
 }
 
-#pragma mark Metodos del protocolo
+#pragma mark - Metodos del protocolo
 
 - (void) establecerBotones{
     [self.delegado.gestionarBotonera desactivarBotonMostrarMinas];
@@ -98,6 +100,7 @@
 }
 -(void) accionPausar{
     [NSException exceptionWithName:@"accion incorrecta" reason:@"El estado no la soporta" userInfo:nil];
+    
 }
 #pragma mark auxiliares primer nivel
 
@@ -115,7 +118,7 @@
                                                      colorDelTrazoDelBorde:[UIColor grayColor]
                                                            colorDelRelleno:[UIColor whiteColor]transparenciaDelRelleno:.99];
     self.contador =[IRGSettings sharedSettings].tiempoDeAyuda;;
-    self.sieteSegmentosViewController.valorADibujar = self.contador;
+    [self.sieteSegmentosViewController dibujarNumero : self.contador ];
 }
 
 -(void) iniciarReloj{
@@ -136,7 +139,7 @@
         self.contador = [IRGSettings sharedSettings].tiempoDeAyuda;
     }
     else {
-        self.sieteSegmentosViewController.valorADibujar = self.contador;
+        [self.sieteSegmentosViewController dibujarNumero : self.contador ];
     }
 }
 

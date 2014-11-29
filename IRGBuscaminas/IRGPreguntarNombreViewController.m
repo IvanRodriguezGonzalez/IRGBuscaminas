@@ -12,6 +12,7 @@
 #import "IRGMetodosComunes.h"
 
 @interface IRGPreguntarNombreViewController ()
+#pragma mark - Propiedades privadas
 @property (weak, nonatomic) IBOutlet UITextField *nombreTextField;
 @property (weak, nonatomic) IBOutlet UITextField *tiempoTextField;
 @property (weak, nonatomic) IBOutlet UITextField *numeroDeCeldasTextField;
@@ -20,10 +21,11 @@
 
 @end
 
+#pragma mark -
 @implementation IRGPreguntarNombreViewController
 
 
-# pragma mark Navigation
+# pragma mark - Navigation
 - (IBAction)accionGrabar:(UIButton *)sender {
     [self registrarMejorTiempo:self.datoDelMejorTiempo.tiempo
                         Nombre:self.nombreTextField.text
@@ -33,7 +35,7 @@
     [self.presentingViewController dismissViewControllerAnimated:TRUE completion:nil];
 }
 
-#  pragma mark Overrides
+#  pragma mark - Overrides
 
 - (void)viewDidLoad {
     [super viewDidLoad];
@@ -51,23 +53,8 @@
 
 }
 
-- (void)didReceiveMemoryWarning {
-    [super didReceiveMemoryWarning];
-    // Dispose of any resources that can be recreated.
-}
 
-/*
-#pragma mark - Navigation
-
-// In a storyboard-based application, you will often want to do a little preparation before navigation
-- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
-    // Get the new view controller using [segue destinationViewController].
-    // Pass the selected object to the new view controller.
-}
-*/
-
-
-#pragma mark Delegado Primer Nivel
+#pragma mark - Delegado Primer Nivel
 - (NSInteger)tableView:(UITableView *)tableView
  numberOfRowsInSection:(NSInteger)section{
     
@@ -84,8 +71,6 @@
     IRGDatoDelMejorTiempo *mejorTiempo =[IRGMejoresTiempos sharedMejoresTiempos].todosLosMejoresTiempos[filaDeLaTabla];
     
     NSString * timepoDeJuegoFormateado =  [IRGMetodosComunes formatearTiempoDeJuegoEnSegundos:mejorTiempo.tiempo];
-    
-    
     NSString *conAyuda;
     if(mejorTiempo.conAyuda){
         conAyuda = @"Si";
@@ -93,8 +78,6 @@
     else{
         conAyuda = @"No";
     }
-    
-    
     NSString * detalle = [NSString stringWithFormat:@"Tiempo:%@ Celdas:%ld Minas:%ld Con ayuda:%@",timepoDeJuegoFormateado,(long)mejorTiempo.numeroDeCeldas,(long)mejorTiempo.numeroDeMinas,conAyuda];
     
     celda.textLabel.text = mejorTiempo.nombre;
@@ -103,7 +86,7 @@
     return celda;
 }
 
-# pragma mark Auxiliares primer nivel
+# pragma mark - Auxiliares primer nivel
 - (void) registrarMejorTiempo: (NSInteger)mejorTiempo
                        Nombre:(NSString *)nombre
                numeroDeCeldas:(NSInteger)numeroDeCeldas

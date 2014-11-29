@@ -10,6 +10,7 @@
 #import <UIKit/UIKit.h>
 
 @interface IRGLienzo : NSObject
+#pragma mark - Propiedades publicas
 
 @property (nonatomic) NSInteger filasDelLienzo;
 @property (nonatomic) NSInteger columnasDelLienzo;
@@ -17,9 +18,8 @@
 @property (nonatomic,readonly) NSInteger anchoCelda;
 
 
-
-
-
+#pragma mark - Inicializadores
+//designated initializer
 + (instancetype) sharedLienzo;
 
 

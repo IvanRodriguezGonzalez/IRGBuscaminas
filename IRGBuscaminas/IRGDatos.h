@@ -13,21 +13,19 @@
 
 @interface IRGDatos : NSObject
 
+#pragma mark - Inicializadores
 //designated initializer
 + (instancetype) sharedDatos;
 
+#pragma mark - Metodos publicos
 
-- (NSInteger) numeroDeMinasAlrededor:(IRGCeldaViewController *) celdaViewcontroller;
-- (BOOL) tieneMinasAlrededor:(IRGCeldaViewController *) celdaViewcontroller;
-- (NSArray *) celdasAlrededorDe:(IRGCeldaViewController *)celdaViewcontroller;
-- (NSArray *) celdasSinMinasAlrededorDe: (IRGCeldaViewController *) celdaViewcontroller
-                     incluyendoEsquinas:(bool)incluirEsquinas;
-
-- (IRGCeldaViewController *) celdaDeLaFila:(NSInteger) fila
-                                columna:(NSInteger) columna;
-
-- (void) anadirCeldaViewController:(IRGCeldaViewController *)celdaViewControllerNuevo;
-- (void) borrarJuego;
 - (NSArray *) todasLasCeldas;
+- (void) borrarJuego;
+
+- (NSInteger)   numeroDeMinasAlrededor:(IRGCeldaViewController *) celdaViewcontroller;
+- (BOOL)        tieneMinasAlrededor:(IRGCeldaViewController *) celdaViewcontroller;
+- (NSArray *)   celdasSinMinasAlrededorDe: (IRGCeldaViewController *) celdaViewcontroller
+                     incluyendoEsquinas:(bool)incluirEsquinas;
+- (void) anadirCeldaViewController:(IRGCeldaViewController *)celdaViewControllerNuevo;
 
 @end

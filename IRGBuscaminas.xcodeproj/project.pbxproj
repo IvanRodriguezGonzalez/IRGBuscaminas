@@ -38,7 +38,6 @@
 		E1CD31AD1A0BCCF900D317A8 /* IRGCelda.m in Sources */ = {isa = PBXBuildFile; fileRef = E1CD31AC1A0BCCF900D317A8 /* IRGCelda.m */; };
 		E1D41DC51A0BEF6B0059C46C /* IRGCeldaViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = E1D41DC41A0BEF6B0059C46C /* IRGCeldaViewController.m */; };
 		E1D41DCA1A0BF0050059C46C /* IRGLienzo.m in Sources */ = {isa = PBXBuildFile; fileRef = E1D41DC71A0BF0050059C46C /* IRGLienzo.m */; };
-		E1D41DCB1A0BF0050059C46C /* IRGPincel.m in Sources */ = {isa = PBXBuildFile; fileRef = E1D41DC91A0BF0050059C46C /* IRGPincel.m */; };
 		E1D41DCE1A0BFEC30059C46C /* IRGDatos.m in Sources */ = {isa = PBXBuildFile; fileRef = E1D41DCD1A0BFEC30059C46C /* IRGDatos.m */; };
 		E1FE2CE71A112C1D004333F9 /* IRGEstadoDelJuegoAyuda.m in Sources */ = {isa = PBXBuildFile; fileRef = E1FE2CE61A112C1D004333F9 /* IRGEstadoDelJuegoAyuda.m */; };
 		E1FE2CEA1A114242004333F9 /* IRGEstadoDelJuegoEnJuegoConAyuda.m in Sources */ = {isa = PBXBuildFile; fileRef = E1FE2CE91A114242004333F9 /* IRGEstadoDelJuegoEnJuegoConAyuda.m */; };
@@ -114,8 +113,6 @@
 		E1D41DC41A0BEF6B0059C46C /* IRGCeldaViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = IRGCeldaViewController.m; sourceTree = "<group>"; };
 		E1D41DC61A0BF0050059C46C /* IRGLienzo.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IRGLienzo.h; sourceTree = "<group>"; };
 		E1D41DC71A0BF0050059C46C /* IRGLienzo.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = IRGLienzo.m; sourceTree = "<group>"; };
-		E1D41DC81A0BF0050059C46C /* IRGPincel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IRGPincel.h; sourceTree = "<group>"; };
-		E1D41DC91A0BF0050059C46C /* IRGPincel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = IRGPincel.m; sourceTree = "<group>"; };
 		E1D41DCC1A0BFEC30059C46C /* IRGDatos.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IRGDatos.h; sourceTree = "<group>"; };
 		E1D41DCD1A0BFEC30059C46C /* IRGDatos.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = IRGDatos.m; sourceTree = "<group>"; };
 		E1FE2CE51A112C1D004333F9 /* IRGEstadoDelJuegoAyuda.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IRGEstadoDelJuegoAyuda.h; sourceTree = "<group>"; };
@@ -279,22 +276,22 @@
 				E12E5D3E1A10FD0F0047FCCF /* Estados del juego */,
 				E1CD31871A0BCB8900D317A8 /* AppDelegate.h */,
 				E1CD31881A0BCB8900D317A8 /* AppDelegate.m */,
-				E1A9A5CA1A13CB9B0020AE98 /* IRGNUmeroSieteSegmentosViewController.h */,
-				E1A9A5CB1A13CB9B0020AE98 /* IRGNUmeroSieteSegmentosViewController.m */,
-				E1CD31A31A0BCBF800D317A8 /* IRGVentanaPrincipalViewController.h */,
-				E1CD31A41A0BCBF800D317A8 /* IRGVentanaPrincipalViewController.m */,
-				E1923B711A1AA3C4000E69B2 /* IRGSettingsViewController.h */,
-				E1923B721A1AA3C4000E69B2 /* IRGSettingsViewController.m */,
-				E1CB22A61A126BAC00D9EF6F /* IRGGestionarBotonera.h */,
-				E1CB22A71A126BAC00D9EF6F /* IRGGestionarBotonera.m */,
-				32A1DB0F1A0FAFAB00AA33CE /* IRGPreguntarNombreViewController.h */,
-				32A1DB101A0FAFAB00AA33CE /* IRGPreguntarNombreViewController.m */,
 				E1D41DC31A0BEF6B0059C46C /* IRGCeldaViewController.h */,
 				E1D41DC41A0BEF6B0059C46C /* IRGCeldaViewController.m */,
-				3203343F1A0EBDF3000FFAEF /* IRGPrincipalNavigationViewController.h */,
-				320334401A0EBDF3000FFAEF /* IRGPrincipalNavigationViewController.m */,
+				E1CB22A61A126BAC00D9EF6F /* IRGGestionarBotonera.h */,
+				E1CB22A71A126BAC00D9EF6F /* IRGGestionarBotonera.m */,
 				320334421A0EC9A7000FFAEF /* IRGMejoresTiemposViewController.h */,
 				320334431A0EC9A7000FFAEF /* IRGMejoresTiemposViewController.m */,
+				E1A9A5CA1A13CB9B0020AE98 /* IRGNUmeroSieteSegmentosViewController.h */,
+				E1A9A5CB1A13CB9B0020AE98 /* IRGNUmeroSieteSegmentosViewController.m */,
+				32A1DB0F1A0FAFAB00AA33CE /* IRGPreguntarNombreViewController.h */,
+				32A1DB101A0FAFAB00AA33CE /* IRGPreguntarNombreViewController.m */,
+				3203343F1A0EBDF3000FFAEF /* IRGPrincipalNavigationViewController.h */,
+				320334401A0EBDF3000FFAEF /* IRGPrincipalNavigationViewController.m */,
+				E1923B711A1AA3C4000E69B2 /* IRGSettingsViewController.h */,
+				E1923B721A1AA3C4000E69B2 /* IRGSettingsViewController.m */,
+				E1CD31A31A0BCBF800D317A8 /* IRGVentanaPrincipalViewController.h */,
+				E1CD31A41A0BCBF800D317A8 /* IRGVentanaPrincipalViewController.m */,
 			);
 			name = Controlador;
 			sourceTree = "<group>";
@@ -306,8 +303,6 @@
 				E131A7EB1A1F18BD006EFED3 /* IRGSettings.m */,
 				E1D41DC61A0BF0050059C46C /* IRGLienzo.h */,
 				E1D41DC71A0BF0050059C46C /* IRGLienzo.m */,
-				E1D41DC81A0BF0050059C46C /* IRGPincel.h */,
-				E1D41DC91A0BF0050059C46C /* IRGPincel.m */,
 				E1D41DCC1A0BFEC30059C46C /* IRGDatos.h */,
 				E1D41DCD1A0BFEC30059C46C /* IRGDatos.m */,
 				320334361A0EB854000FFAEF /* IRGMejoresTiempos.h */,
@@ -427,7 +422,6 @@
 				E1A9A5CF1A13CC100020AE98 /* IRGSieteSegmentos.m in Sources */,
 				E1CD31AD1A0BCCF900D317A8 /* IRGCelda.m in Sources */,
 				320334451A0EC9A7000FFAEF /* IRGMejoresTiemposViewController.m in Sources */,
-				E1D41DCB1A0BF0050059C46C /* IRGPincel.m in Sources */,
 				E1D41DCE1A0BFEC30059C46C /* IRGDatos.m in Sources */,
 				E1C543611A12043100D5B23A /* IRGEstadoDelJuegoFinalizadoConError.m in Sources */,
 				320334411A0EBDF3000FFAEF /* IRGPrincipalNavigationViewController.m in Sources */,

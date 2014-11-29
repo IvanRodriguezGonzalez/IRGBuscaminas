@@ -10,11 +10,13 @@
 #import "IRGSieteSegmentos.h"
 
 @interface IRGNUmeroSieteSegmentosViewController ()
-@property (nonatomic) IRGSieteSegmentos *vistaSieteSegmentos;
-@property (nonatomic) CGRect frameDeLaVista;
-@property (nonatomic) NSInteger redondeoDeLasEsquinas;
-
+    #pragma mark - Propiedades privadas
+    @property (nonatomic) IRGSieteSegmentos *vistaSieteSegmentos;
+    @property (nonatomic) CGRect frameDeLaVista;
+    @property (nonatomic) NSInteger redondeoDeLasEsquinas;
 @end
+
+#pragma mark -
 
 @implementation IRGNUmeroSieteSegmentosViewController
 
@@ -24,31 +26,26 @@
 -(instancetype) initWithNibName:(NSString *)nibNameOrNil
                          bundle:(NSBundle *)nibBundleOrNil
                       withFrame:(CGRect) frame
-      withRedondeoDeLasEsquinas:(NSInteger)redondeoDeLasEsquinas
-{
-    self = [super initWithNibName:nibNameOrNil
-                            bundle:nibBundleOrNil];
+      withRedondeoDeLasEsquinas:(NSInteger)redondeoDeLasEsquinas {
+    
+    self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
     if (self){
         _frameDeLaVista = frame;
         _redondeoDeLasEsquinas = redondeoDeLasEsquinas;
-          }
+    }
     return self;
 }
 
 -(instancetype) initWithNibName:(NSString *)nibNameOrNil
                          bundle:(NSBundle *)nibBundleOrNil{
-    
-    return [self initWithNibName:nibNameOrNil
-                          bundle:nibBundleOrNil
-                       withFrame:[UIApplication sharedApplication].keyWindow.frame
-            withRedondeoDeLasEsquinas:0];
+    [NSException exceptionWithName:@"Invalid init" reason:@"Singleton" userInfo:nil];
+    return false;
 };
 
 
-#pragma mark Overrides
+#pragma mark - Overrides
 -(void)loadView{
     CGRect frameDelDisplay =self.frameDeLaVista;
-    
     IRGSieteSegmentos * display = [[IRGSieteSegmentos alloc]initWithFrame:frameDelDisplay];
     self.view = display;
     self.vistaSieteSegmentos = display;
@@ -56,31 +53,15 @@
 }
 - (void)viewDidLoad {
     [super viewDidLoad];
-    // Do any additional setup after loading the view.
     self.view.layer.cornerRadius = self.redondeoDeLasEsquinas;;
-        self.view.layer.masksToBounds = YES;
+    self.view.layer.masksToBounds = YES;
 }
 
-- (void)didReceiveMemoryWarning {
-    [super didReceiveMemoryWarning];
-    // Dispose of any resources that can be recreated.
-}
+#pragma mark - Metodos Publicos
 
-#pragma mark Accesors
-
--(void) setValorADibujar:(NSInteger)valorADibujar{
-    _valorADibujar = valorADibujar;
-    [self.vistaSieteSegmentos dibujarNumero:valorADibujar];
-}
-
-
-#pragma mark - Auxiliares nivel uno
-
--(void) establecerEfecto3ConColorDelTrazoDelBordeConLuz:(UIColor *)colorDelTrazoDelBordeConLuz
-                     conColortDelTrazoDelBordeConSombra:(UIColor *)colorDelTrazoDelBordeConSombra{
-    self.vistaSieteSegmentos.efecto3D = true;
-    self.vistaSieteSegmentos.colorDelTrazoDelBordeConLuz =colorDelTrazoDelBordeConLuz;
-    self.vistaSieteSegmentos.colorDelTrazoDelBordeConSombra = colorDelTrazoDelBordeConSombra;
+- (void) establecerVentanaConTransparencia:(float)porcentajeDeTransparencia
+                              colorDeFondo:(UIColor *)colorDeFondo{
+    self.vistaSieteSegmentos.backgroundColor = [colorDeFondo colorWithAlphaComponent:porcentajeDeTransparencia];
 }
 
 -(void) establecerSegmentoConGrosorDelTrazo:(NSInteger)grosorDelTrazo
@@ -100,11 +81,8 @@
     self.vistaSieteSegmentos.colorDelRellenoDelSegmento = [colorDelRelleno colorWithAlphaComponent:transparenciaDelRelleno];
 }
 
-- (void) establecerVentanaConTransparencia:(float)porcentajeDeTransparencia
-                              colorDeFondo:(UIColor *)colorDeFondo{
-    
-    self.vistaSieteSegmentos.backgroundColor = [colorDeFondo colorWithAlphaComponent:porcentajeDeTransparencia];
-
+-(void) dibujarNumero:(NSInteger) numero{
+    [self.vistaSieteSegmentos dibujarNumero:numero];
 }
 
 @end

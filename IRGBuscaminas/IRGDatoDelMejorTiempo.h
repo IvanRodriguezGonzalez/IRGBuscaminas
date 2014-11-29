@@ -9,12 +9,14 @@
 #import <Foundation/Foundation.h>
 
 @interface IRGDatoDelMejorTiempo : NSObject<NSCoding>
+#pragma mark Propiedades publicas
 @property (nonatomic) NSInteger tiempo;
 @property (nonatomic) NSString * nombre;
 @property (nonatomic) NSInteger numeroDeCeldas;
 @property (nonatomic )NSInteger numeroDeMinas;
 @property (nonatomic) BOOL conAyuda;
 
+#pragma mark - Inicializadores
 //designated initializer
 - (instancetype) initConTiempo: (NSInteger)tiempo
                         nombre:(NSString *)nombre

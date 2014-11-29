@@ -8,14 +8,14 @@
 
 #import "IRGGestorDeEstados.h"
 
-
 @interface IRGGestorDeEstados ()
-
-@property (nonatomic) IRGVentanaPrincipalViewController *delegado;
-@property (nonatomic) id<IRGEstadosDelJuego> estadoDelJuego;
+    #pragma mark - Propiedades privadas
+    @property (nonatomic) IRGVentanaPrincipalViewController *delegado;
+    @property (nonatomic) id<IRGEstadosDelJuego> estadoDelJuego;
 
 @end
 
+#pragma mark -
 @implementation IRGGestorDeEstados
 
 
@@ -60,6 +60,10 @@
     [self.estadoDelJuego accionMostrarMinas];
 }
 
+-(void) accionPausar{
+    [self.estadoDelJuego accionPausar];
+}
+
 -(void) ponerBandera:(IRGCeldaViewController *)celdaViewController{
     [self.estadoDelJuego ponerBandera:celdaViewController];
 }
@@ -72,11 +76,8 @@
     [self.estadoDelJuego establecerBotones];
 }
 
--(void) accionPausar{
-    [self.estadoDelJuego accionPausar];
-}
 
-#pragma mark - Meotodos de primer nivel
+#pragma mark - Accesors
 
 
 -(void) setEstadoDelJuego:(id<IRGEstadosDelJuego>)estadoDelJuego{

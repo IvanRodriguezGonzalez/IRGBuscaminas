@@ -12,16 +12,18 @@
 #import "IRGSettings.h"
 
 @interface IRGEstadoDelJuegoEnJuego()
-@property (nonatomic,strong) IRGVentanaPrincipalViewController *delegado;
-@property (nonatomic,strong) IRGGestorDeEstados * gestorDeEstados;
+#pragma mark - Propiedades privadas
+
+    @property (nonatomic,strong) IRGVentanaPrincipalViewController *delegado;
+    @property (nonatomic,strong) IRGGestorDeEstados * gestorDeEstados;
 
 
 @end
 
-
+#pragma mark -
 @implementation IRGEstadoDelJuegoEnJuego
 
-#pragma mark Inicializadores
+#pragma mark - Inicializadores
 //designated initizalizer
 -(instancetype) initConGestorDeEstados: (IRGGestorDeEstados *)gestorDeEstados
                                 delegado:(IRGVentanaPrincipalViewController *)sender{
@@ -44,7 +46,7 @@
     return @"En juego...";
 }
 
-#pragma mark Metodos del protocolo
+#pragma mark - Metodos del protocolo
 
 - (void) establecerBotones{
     if ([IRGSettings sharedSettings].activarAyuda){
@@ -57,8 +59,6 @@
     [self.delegado.gestionarBotonera activarBotonPrincipal];
     [self.delegado.gestionarBotonera activarBotonPausar];
     [self.delegado.gestionarBotonera activarSettings];
-
-
 }
 
 - (void) accionJugar{

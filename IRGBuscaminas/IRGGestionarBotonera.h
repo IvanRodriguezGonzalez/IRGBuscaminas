@@ -11,11 +11,13 @@
 
 @interface IRGGestionarBotonera : NSObject
 
+#pragma mark - Inicializadores
+
 //designatedInitializer
 -(instancetype) initConSender:(IRGVentanaPrincipalViewController *)sender;
 
 
-#pragma mark - Metodos de activar y desactivar botones
+#pragma mark - Metodos publicos de activar y desactivar botones
 
 -(void) activarBotonPrincipal;
 
@@ -36,11 +38,5 @@
 - (void) activarSettings;
 
 - (void) desactivarSettings;
-
-
--(void) establecerBotonYEtiquetaBotonMostrarMinasModoNormal;
-
-
-
 
 @end

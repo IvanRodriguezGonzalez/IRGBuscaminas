@@ -12,12 +12,15 @@
 
 
 @interface IRGEstadoDelJuegoEnJuegoConAyuda()
-@property (nonatomic,strong) IRGVentanaPrincipalViewController *delegado;
-@property (nonatomic,strong) IRGGestorDeEstados * gestorDeEstados;
+    #pragma mark - Propiedades privadas
+    @property (nonatomic,strong) IRGVentanaPrincipalViewController *delegado;
+    @property (nonatomic,strong) IRGGestorDeEstados * gestorDeEstados;
 @end
 
+#pragma mark -
 @implementation IRGEstadoDelJuegoEnJuegoConAyuda
-#pragma mark Inicializadores
+
+#pragma mark - Inicializadores
 //designated initizalizer
 -(instancetype) initConGestorDeEstados: (IRGGestorDeEstados *)gestorDeEstados
                               delegado:(IRGVentanaPrincipalViewController *)sender{
@@ -39,10 +42,10 @@
 -(NSString *) description{
     return @"En juego...con ayuda :-)";
 }
-#pragma mark Metodos del protocolo
+#pragma mark - Metodos del protocolo
 
 - (void) establecerBotones{
-    [self.delegado.gestionarBotonera desactivarBotonMostrarMinas];
+    [self.delegado.gestionarBotonera activarBotonMostrarMinas];
     [self.delegado.gestionarBotonera desactivarBotonMejoresTiempos];
     [self.delegado.gestionarBotonera activarBotonPrincipal];
     [self.delegado.gestionarBotonera desactivarBotonPausar];

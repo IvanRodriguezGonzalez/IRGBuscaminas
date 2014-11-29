@@ -11,7 +11,7 @@
 
 #import "IRGVentanaPrincipalViewController.h"
 #import "IRGMetodosComunes.h"
-#import "IRGPincel.h"
+#import "IRGSettings.h"
 #import "IRGLienzo.h"
 #import "IRGCeldaViewController.h"
 #import "IRGDatos.h"
@@ -50,8 +50,6 @@
 
 @property (weak, nonatomic) IBOutlet UITextField *separadorMinutosDeSegundos;
 
-
-
 @end
 
 @implementation IRGVentanaPrincipalViewController
@@ -63,7 +61,7 @@
     [self iniciarGestorDeEstados];
     [self iniciarTotalMinasSieteSegmentos];
     [self iniciarTiempoDeJuegoSieteSegmentos];
-    self.barraBotonera.backgroundColor = [ [IRGPincel sharedPincel].colorDeRellenoDeLaBarraDeBotones  colorWithAlphaComponent:[IRGSettings sharedSettings].porcerntajeDeTransparenciaDelMenu];
+    self.barraBotonera.backgroundColor = [ [IRGSettings sharedSettings].colorDeRellenoDeLaBarraDeBotones  colorWithAlphaComponent:[IRGSettings sharedSettings].porcerntajeDeTransparenciaDelMenu];
     }
 
 - (void)didReceiveMemoryWarning {
@@ -119,15 +117,11 @@
 
 -(void) mostrarMinas{
     [self mostrarTodasLasMinas];
-    [self establecerFondoDeAyuda];
     [self actualizarBotonConProgreso:0];
-    [self establecerBotonYEtiquetaBotonMostrarMinasModoMostrandoAyuda];
 }
 
 -(void) ocultarMinas{
     [self ocultarTodasLasMinas];
-    [self establecerFondoNeutro];
-    [self.gestionarBotonera establecerBotonYEtiquetaBotonMostrarMinasModoNormal];
 }
 
 -(void) mostrarTodasLasMinas{
@@ -173,7 +167,9 @@
             NSArray * celdasSinMinasAlrededorAPropagar= [[NSMutableArray alloc]init];
             celdasSinMinasAlrededorAPropagar =[[IRGDatos sharedDatos] celdasSinMinasAlrededorDe:celdaViewController incluyendoEsquinas:true];
             for (IRGCeldaViewController * celdeViewControllerTmp in celdasSinMinasAlrededorAPropagar ){
-                [self propagaTouch:celdeViewControllerTmp];
+                if (celdeViewControllerTmp.estado !=procesado){
+                    [self propagaTouch:celdeViewControllerTmp];
+                }
             }
         }
         else {
@@ -192,8 +188,8 @@
     NSInteger banderasPendientes = [IRGSettings sharedSettings].numeroDeMinas;
     banderasPendientes = banderasPendientes-banderasPuestas;
     
-    self.decenaMinas.valorADibujar = banderasPendientes/10;
-    self.unidadMinas.valorADibujar = banderasPendientes%10;
+    [self.decenaMinas dibujarNumero: banderasPendientes/10];
+    [self.unidadMinas dibujarNumero : banderasPendientes%10];
 }
 #pragma mark - Auxiliares primer nivel
 
@@ -248,8 +244,8 @@
                                                colorDelRelleno:colorSegmentosDelReloj
                                    transparenciaDelRelleno:1];
     
-    self.unidadSegundos.valorADibujar = 0;
-    self.decenasSegundos.valorADibujar = 0;
+    [self.unidadSegundos dibujarNumero: 0];
+    [self.decenasSegundos dibujarNumero:0];
     
     CGRect unidadMinutosFrame = CGRectMake(self.tiempoDeJuegoMinutos.frame.size.width/2,0,self.tiempoDeJuegoMinutos.frame.size.width/2,self.tiempoDeJuegoMinutos.frame.size.height);
     
@@ -290,8 +286,8 @@
                                               colorDelRelleno:colorSegmentosDelReloj
                                        transparenciaDelRelleno:1];
     
-    self.unidadMinutos.valorADibujar = 0;
-    self.decenasMinutos.valorADibujar = 0;
+    [self.unidadMinutos dibujarNumero: 0];
+    [self.decenasMinutos dibujarNumero:0];
     
     self.separadorMinutosDeSegundos.backgroundColor = [UIColor clearColor];
     self.separadorMinutosDeSegundos.textColor = colorSegmentosDelReloj;
@@ -359,7 +355,6 @@
     
     [self actualizarBotonConProgreso:[self calcularPorcentajeDeProgreso]];
     [self actualizaMinasPendientes];
-    [self establecerFondoNeutro];
     [self inicializarTiempoDeJuego];
     [self iniciarReloj];
 }
@@ -367,12 +362,10 @@
 -(void) acabarJuegoConError{
     [self mostrarTodasLasMinas];
     [self establecerImagenDelBotonPrincipal:@"minaApagada"];
-    [self establecerFondoDeError];
     [self detenerRelor];
 }
 
 - (void) acabarJuegoSinErrorSinAyuda{
-    [self establecerFondoDeVictoria];
     [self detenerRelor];
     [self preguntarNombreConTiempo:self.tiempoDeJuegoEnSegundos
                             Nombre:nil
@@ -382,7 +375,6 @@
 }
 
 - (void) acabarJuegoSinErrorConAyuda{
-    [self establecerFondoDeVictoria];
     [self detenerRelor];
     [self preguntarNombreConTiempo:self.tiempoDeJuegoEnSegundos
                             Nombre:nil
@@ -458,22 +450,6 @@
             [vistaDelCanvas removeFromSuperview];
         }
     }
-}
--(void) establecerFondoNeutro{
-    self.canvas.backgroundColor = [IRGPincel sharedPincel].colorDeRellenoDePantallaNormal;
-}
-
-- (void) establecerFondoDeError{
-
-    self.canvas.backgroundColor = [IRGPincel sharedPincel].colorDeRellenoDePantallaDeError;
-}
-
-- (void) establecerFondoDeVictoria {
-    self.canvas.backgroundColor = [IRGPincel sharedPincel].colorDeRellenoDePantallaDeVictoria;
-}
-
--(void) establecerFondoDeAyuda{
-    self.canvas.backgroundColor = [IRGPincel sharedPincel].colorDeRellenoDePantallaDeModoAyuda;
 }
 
 
@@ -572,13 +548,13 @@
     }
     int segundosEnJuego = self.tiempoDeJuegoEnSegundos % 60;
     
-    self.unidadSegundos.valorADibujar = segundosEnJuego %10;
-    self.decenasSegundos.valorADibujar = segundosEnJuego /10;
+    [self.unidadSegundos  dibujarNumero: segundosEnJuego %10];
+    [self.decenasSegundos dibujarNumero:segundosEnJuego /10 ];
     
     int minutosEnJuego =(self.tiempoDeJuegoEnSegundos /60) % 60;
     
-    self.unidadMinutos.valorADibujar = minutosEnJuego %10;
-    self.decenasMinutos.valorADibujar = minutosEnJuego /10;
+    [self.unidadMinutos dibujarNumero : minutosEnJuego %10];
+    [self.decenasMinutos dibujarNumero : minutosEnJuego /10];
 }
 
 - (void) mostrarImagenDeBloqueo:(NSString *)imagen {
@@ -607,9 +583,5 @@
 -(void) ocultarrBarraDeNavegacion{
     [self.navigationController setNavigationBarHidden:true animated:false];
 }
-- (void) establecerBotonYEtiquetaBotonMostrarMinasModoMostrandoAyuda{
-    self.etiquetaBotonMostrarMinas.textColor = [IRGPincel sharedPincel].colorEtiquetaDeBotonSeleccionado;
-}
-
 
 @end

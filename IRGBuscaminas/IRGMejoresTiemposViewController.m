@@ -11,12 +11,11 @@
 #import "IRGMejoresTiempos.h"
 #import "IRGDatoDelMejorTiempo.h"
 
-@interface IRGMejoresTiemposViewController ()
 
-@end
 
 @implementation IRGMejoresTiemposViewController
 
+#pragma mark - Overrides
 - (void)viewDidLoad {
     [super viewDidLoad];
 }
@@ -36,7 +35,7 @@
 }
 */
 
-#pragma mark Delegado Primer Nivel
+#pragma mark - Delegado
 - (NSInteger)tableView:(UITableView *)tableView
  numberOfRowsInSection:(NSInteger)section{
     
@@ -53,7 +52,6 @@
     IRGDatoDelMejorTiempo *mejorTiempo =[IRGMejoresTiempos sharedMejoresTiempos].todosLosMejoresTiempos[filaDeLaTabla];
    
     NSString * timepoDeJuegoFormateado =  [IRGMetodosComunes formatearTiempoDeJuegoEnSegundos:mejorTiempo.tiempo];
-
     
     NSString *conAyuda;
     if(mejorTiempo.conAyuda){
@@ -64,13 +62,17 @@
     }
     
     
-    NSString * detalle = [NSString stringWithFormat:@"Tiempo:%@ Celdas:%ld Minas:%ld Con ayuda:%@",timepoDeJuegoFormateado,(long)mejorTiempo.numeroDeCeldas,(long)mejorTiempo.numeroDeMinas,conAyuda];
+    NSString * detalle = [NSString stringWithFormat:@"Tiempo:%@ Celdas:%ld Minas:%ld Con ayuda:%@",
+                          timepoDeJuegoFormateado,
+                          (long)mejorTiempo.numeroDeCeldas,
+                          (long)mejorTiempo.numeroDeMinas,conAyuda];
     
     celda.textLabel.text = mejorTiempo.nombre;
     celda.detailTextLabel.text = detalle;
-    
     return celda;
 }
+
+#pragma mark - Navigation
 - (IBAction)accionCerrarVentana:(id)sender {
     [self.presentingViewController dismissViewControllerAnimated:TRUE
                                                       completion:nil];

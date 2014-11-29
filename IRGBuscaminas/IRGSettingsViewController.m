@@ -9,9 +9,16 @@
 #import "IRGSettingsViewController.h"
 #import "IRGSettings.h"
 #import "IRGDatos.h"
-#import "IRGPincel.h"
+#import "IRGSettings.h"
 
+#pragma mark - Constantes
+#define REDONDEO_DE_LAS_ESQUINAS_DE_LA_VENTANA 20
+#define COLOR_DEL_BORDE_DE_LA_VENTANA [UIColor lightGrayColor]
+#define GROSOR_DEL_BORDER_DE_LA_VENTANA 1
+
+#pragma mark -
 @interface IRGSettingsViewController ()
+#pragma mark - Propiedades privadas
 
 @property (weak, nonatomic) IBOutlet UITextField *numeroDeMinas;
 @property (weak, nonatomic) IBOutlet UITextField *tiempoDeAyuda;
@@ -28,8 +35,10 @@
 
 @end
 
+#pragma mark -
 @implementation IRGSettingsViewController
 
+#pragma mark - Inicializadores
 -(instancetype) init{
     self = [super init];
     self.view.frame = [[UIScreen mainScreen] applicationFrame];
@@ -37,7 +46,7 @@
     return self;
 }
 
-
+#pragma mark - Overrides
 
 - (void)viewDidLoad {
     [super viewDidLoad];
@@ -60,17 +69,15 @@
     self.sensibilidadDelTap.value = [IRGSettings sharedSettings].sensibilidadDelTap;
     self.porcentajeDeTransparenciaDelMenu.value =1-[IRGSettings sharedSettings].porcerntajeDeTransparenciaDelMenu;
     
-    self.vistaDatos.layer.borderWidth = 1;
-    self.vistaDatos.layer.borderColor = [UIColor blackColor].CGColor;
-    self.vistaDatos.layer.cornerRadius = 30;
+    self.vistaDatos.layer.borderWidth = GROSOR_DEL_BORDER_DE_LA_VENTANA;
+    self.vistaDatos.layer.borderColor = COLOR_DEL_BORDE_DE_LA_VENTANA.CGColor;
+    self.vistaDatos.layer.cornerRadius = REDONDEO_DE_LAS_ESQUINAS_DE_LA_VENTANA;
     self.vistaDatos.layer.masksToBounds = YES;
     
     [self.nivelDeDificultad addTarget:self
                          action:@selector(actualizarMinasSegunElNivelDeDificultad)
                forControlEvents:UIControlEventValueChanged];
 }
-
-
 
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
@@ -110,12 +117,12 @@
 - (IBAction)cambiarTransparenciaDeLasCeldas:(UISlider *)sender {
     for (IRGCeldaViewController *celdaViewController in [IRGDatos sharedDatos].todasLasCeldas){
         if (celdaViewController.estado == procesado){
-            celdaViewController.view.backgroundColor = [[IRGPincel sharedPincel].colorDeRellenoDelPincel colorWithAlphaComponent:1-sender.value] ;
+            celdaViewController.view.backgroundColor = [[IRGSettings sharedSettings].colorDeRellenoDeLaCeldaProcesada colorWithAlphaComponent:1-sender.value] ;
         }
     }
 }
 - (IBAction)cambiarTransparenciaDelMenu:(UISlider *)sender {
-    self.barraDeBotones.backgroundColor = [[IRGPincel sharedPincel].colorDeRellenoDeLaBarraDeBotones colorWithAlphaComponent:1-self.porcentajeDeTransparenciaDelMenu.value ];
+    self.barraDeBotones.backgroundColor = [[IRGSettings sharedSettings].colorDeRellenoDeLaBarraDeBotones colorWithAlphaComponent:1-self.porcentajeDeTransparenciaDelMenu.value ];
 }
 
 @end

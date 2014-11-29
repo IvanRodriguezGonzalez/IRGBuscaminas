@@ -11,18 +11,18 @@
 
 @interface IRGCelda : UIView
 
-@property (nonatomic) UIColor *colorDelBorde;
-@property (nonatomic) NSUInteger grosorDelTrazoDeLaCelda;
+#pragma mark - Propiedades publicas
+
 @property (nonatomic) UILabel * numeroDeMinasAlrededor;
 @property (nonatomic) UIImageView *imagenDeMina;
 @property (nonatomic) bool procesada;
 
-
+#pragma mark - Inicializadores
+//designated initializer
 - (instancetype) initWithFrame:(CGRect)frame
-                 colorDelBorde:(UIColor *)colorDelBorde
-                grosorDelTrazo:(NSUInteger) grosorDelTrazo
                      procesada:(bool) procesada;
 
+#pragma mark - Metodos publicos
 -(void) dibujarBorderCeldaProcesada;
 
 @end

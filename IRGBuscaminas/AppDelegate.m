@@ -10,11 +10,9 @@
 #import "IRGPrincipalNavigationViewController.h"
 #import "IRGVentanaPrincipalViewController.h"
 
-@interface AppDelegate ()
-
-@end
 
 @implementation AppDelegate
+#pragma mark -
 
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {

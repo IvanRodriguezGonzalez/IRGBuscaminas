@@ -8,6 +8,9 @@
 
 #import "IRGSettings.h"
 
+#pragma mark - Constantes de la clase
+
+
 #define NIVEL_DIFICULTAD_POR_DEFECTO 2
 #define NUMERO_DE_MINAS_POR_DEFECTO 15
 #define AYUDAS_ACTIVAS true
@@ -22,14 +25,17 @@
 #define PORCENTAJE_DE_TRANSPARENCIA_DEL_MENU_POR_DEFECTO 1
 #define TAP_PONE_BANDERA_POR_DEFECTO true;
 #define SENSIBILIDAD_TAP_POR_DEFECTO .2
+//Colores
+#define COLOR_DE_RELLENO_DE_LA_CELDA_PROCESADA [[UIColor alloc]initWithRed:.8 green:.8 blue:.8 alpha:1]
+#define COLOR_DE_RELLENO_DE_LA_CELDA_NO_PROCESADA [[UIColor alloc]initWithRed:.7 green:.7 blue:.7 alpha:1]
+#define COLOR_DE_LA_ETIQUETA_DEL_BOTON [[UIColor alloc] initWithRed:0 green:0 blue:1 alpha:1]
+#define COLOR_DE_RELLENO_DE_LA_BARRA_DE_BOTONES [UIColor lightGrayColor]
 
 
-@interface IRGSettings ()
-
-
-@end
-
+#pragma mark -
 @implementation IRGSettings
+#pragma mark -
+
 #pragma mark - Inicializadores
 
 -(instancetype) init {
@@ -67,26 +73,64 @@
     return self;
 }
 
-#pragma mark Auxiliares de primer nivel
+#pragma mark - Accesors
 
--(NSString *) obtenerPath{
-    NSArray *listaDePath = NSSearchPathForDirectoriesInDomains(NSDocumentDirectory,
-                                                               NSUserDomainMask,
-                                                               TRUE);
-    NSString *directorio = listaDePath[0];
-    return [directorio stringByAppendingString:@"Configuracion.irg"];
+- (UIColor *) colorPorDefectoDelNumeroDeMinasAlrededorDeUnaCelda{
+    return [UIColor blackColor];
 }
 
--(BOOL) existeArchivo:(NSString *)pathArchivo{
+- (UIColor *) colorDeRellenoDeLaCeldaProcesada{
+    return[COLOR_DE_RELLENO_DE_LA_CELDA_PROCESADA colorWithAlphaComponent:[IRGSettings sharedSettings].porcerntajeDeTransparenciaDeLasCeldas];
+}
+
+- (UIColor *) colorDeRellenoDeLaCeldaNoProcesada{
+    return COLOR_DE_RELLENO_DE_LA_CELDA_NO_PROCESADA;
+}
+
+-(UIColor *) colorEtiquetaDeBoton{
+    return COLOR_DE_LA_ETIQUETA_DEL_BOTON;
+}
+
+
+-(UIColor *) colorDeRellenoDeLaBarraDeBotones{
+    return COLOR_DE_RELLENO_DE_LA_BARRA_DE_BOTONES;
+}
+
+
+#pragma mark - metodos publicos
+
+-(NSInteger)numeroDeMInasPorDefectoDelNivel:(NSInteger)nivelDeDificultad{
+    NSInteger minasADevolver=NUMERO_DE_MINAS_POR_DEFECTO;
     
-    NSFileManager *fileManagerPrincipal = [NSFileManager defaultManager];
-    if ([fileManagerPrincipal fileExistsAtPath:[self obtenerPath]]){
-        return TRUE;
+    if (nivelDeDificultad == 1){
+        minasADevolver = MINAS_POR_DEFECTO_DEL_NIVEL_1;
     }
-    else{
-        return FALSE;
+    if (nivelDeDificultad == 2){
+        minasADevolver = MINAS_POR_DEFECTO_DEL_NIVEL_2;
     }
+    if (nivelDeDificultad == 3){
+        minasADevolver = MINAS_POR_DEFECTO_DEL_NIVEL_3;
+    }
+    return minasADevolver;
 }
+
+-(NSInteger)tiempoDeAyudaPorDefectoDelNivel:(NSInteger)nivelDeDificultad{
+    NSInteger minasADevolver=TIEMPO_DE_AYUDA_POR_DEFECTO;
+    
+    if (nivelDeDificultad == 1){
+        minasADevolver = TIEMPO_DE_AYUDA_POR_DEFECTO_DEL_NIVEL_1;
+    }
+    if (nivelDeDificultad == 2){
+        minasADevolver = TIEMPO_DE_AYUDA_POR_DEFECTO_DEL_NIVEL_2;
+    }
+    if (nivelDeDificultad == 3){
+        minasADevolver = TIEMPO_DE_AYUDA_POR_DEFECTO_DEL_NIVEL_3;
+    }
+    return minasADevolver;
+}
+
+
+#pragma mark - Recuperar y guardar Settings
 
 -(instancetype) recuperarSettings:(NSString *)path{
     return   [NSKeyedUnarchiver unarchiveObjectWithFile:path];
@@ -126,34 +170,26 @@
                                        toFile:path];
 }
 
--(NSInteger)numeroDeMInasPorDefectoDelNivel:(NSInteger)nivelDeDificultad{
-    NSInteger minasADevolver=NUMERO_DE_MINAS_POR_DEFECTO;
-    
-    if (nivelDeDificultad == 1){
-        minasADevolver = MINAS_POR_DEFECTO_DEL_NIVEL_1;
-    }
-    if (nivelDeDificultad == 2){
-        minasADevolver = MINAS_POR_DEFECTO_DEL_NIVEL_2;
-    }
-    if (nivelDeDificultad == 3){
-        minasADevolver = MINAS_POR_DEFECTO_DEL_NIVEL_3;
-    }
-    return minasADevolver;
+
+#pragma mark - Auxiliares de primer nivel
+
+-(NSString *) obtenerPath{
+    NSArray *listaDePath = NSSearchPathForDirectoriesInDomains(NSDocumentDirectory,
+                                                               NSUserDomainMask,
+                                                               TRUE);
+    NSString *directorio = listaDePath[0];
+    return [directorio stringByAppendingString:@"Configuracion.irg"];
 }
 
--(NSInteger)tiempoDeAyudaPorDefectoDelNivel:(NSInteger)nivelDeDificultad{
-    NSInteger minasADevolver=TIEMPO_DE_AYUDA_POR_DEFECTO;
+-(BOOL) existeArchivo:(NSString *)pathArchivo{
     
-    if (nivelDeDificultad == 1){
-        minasADevolver = TIEMPO_DE_AYUDA_POR_DEFECTO_DEL_NIVEL_1;
+    NSFileManager *fileManagerPrincipal = [NSFileManager defaultManager];
+    if ([fileManagerPrincipal fileExistsAtPath:[self obtenerPath]]){
+        return TRUE;
     }
-    if (nivelDeDificultad == 2){
-        minasADevolver = TIEMPO_DE_AYUDA_POR_DEFECTO_DEL_NIVEL_2;
+    else{
+        return FALSE;
     }
-    if (nivelDeDificultad == 3){
-        minasADevolver = TIEMPO_DE_AYUDA_POR_DEFECTO_DEL_NIVEL_3;
-    }
-    return minasADevolver;
 }
 
 @end

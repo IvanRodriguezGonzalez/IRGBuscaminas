@@ -14,6 +14,8 @@
 
 @interface IRGEstadoDelJuegoInicio : NSObject<IRGEstadosDelJuego>
 
+#pragma mark - Inicializadores
+//designated initializer
 -(instancetype) initConGestorDeEstados: (IRGGestorDeEstados *)gestorDeEstados
                                 delegado:(IRGVentanaPrincipalViewController *)sender;
 @end

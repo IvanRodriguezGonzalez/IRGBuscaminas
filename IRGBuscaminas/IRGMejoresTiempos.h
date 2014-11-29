@@ -10,9 +10,10 @@
 
 @interface IRGMejoresTiempos : NSObject
 
+#pragma mark - Incializadores
 + (instancetype) sharedMejoresTiempos;
 
-
+#pragma mark Metodos publicos
 - (void) anadirTiempo:(NSInteger)tiempo
                Nombre:(NSString *)nombre
        numeroDeCeldas:(NSInteger)numeroDeCeldas

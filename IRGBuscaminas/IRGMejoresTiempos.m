@@ -9,13 +9,14 @@
 #import "IRGMejoresTiempos.h"
 #import "IRGDatoDelMejorTiempo.h"
 
+#pragma mark -
 @interface IRGMejoresTiempos ()
-@property (nonatomic) NSMutableArray *mejoresTiempos;
-
+#pragma mark Propiedades privadas
+    @property (nonatomic) NSMutableArray *mejoresTiempos;
 @end
 
 
-
+#pragma mark -
 @implementation IRGMejoresTiempos
 
 #pragma mark - Inicializadores
@@ -48,11 +49,7 @@
    return self;
 }
 
-#pragma mark - Auxiliares primer nivel
-
-- (void) inicializarMejoresTiempos{
-    self.mejoresTiempos = [[NSMutableArray alloc]init];
-}
+#pragma mark - Metodos publicos
 
 - (void) anadirTiempo:(NSInteger)tiempo
                Nombre:(NSString *)nombre
@@ -72,15 +69,19 @@
     return self.mejoresTiempos;
 }
 
-#pragma mark Auxiliares primer nivel
--(bool) guardarMejoresTiempos{
+- (bool) guardarMejoresTiempos{
     NSString *path = [self obtenerPath];
     return [NSKeyedArchiver archiveRootObject:self.mejoresTiempos
                                        toFile:path];
 }
 
 
-#pragma mark Funciones auxiliares
+#pragma mark - Auxiliares primer nivel
+
+- (void) inicializarMejoresTiempos{
+    self.mejoresTiempos = [[NSMutableArray alloc]init];
+}
+
 
 -(NSString *) obtenerPath{
     NSArray *listaDePath = NSSearchPathForDirectoriesInDomains(NSDocumentDirectory,
@@ -104,4 +105,5 @@
 -(NSMutableArray *) recuperarMejoresTiempos:(NSString *)path{
     return   [NSKeyedUnarchiver unarchiveObjectWithFile:path];
 }
+
 @end

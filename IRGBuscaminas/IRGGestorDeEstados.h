@@ -21,7 +21,7 @@
 
 
 @interface IRGGestorDeEstados : NSObject<IRGEstadosDelJuego>
-
+#pragma mark - Propiedades publicas
 
 @property (nonatomic) IRGEstadoDelJuegoInicio *estadoDelJuegoInicio;
 @property (nonatomic) IRGEstadoDelJuegoEnJuego * estadoDelJuegoEnJuego;
@@ -32,11 +32,11 @@
 @property (nonatomic) IRGEstadoDelJuegoFinalizadoConError* estadoDelJuegoFinalizadoConError;
 @property (nonatomic) IRGEstadoDelJuegoEnPausa* estadoDelJuegoEnPausa;
 
-
+#pragma mark - Inicializadores
+//designated initializer
 -(instancetype) initConDelegado:(IRGVentanaPrincipalViewController *)sender;
 
-
-
+#pragma mark - Metodos publicos
 -(void) establecerEstado:(id<IRGEstadosDelJuego>)nuevoEstado;
 
 @end

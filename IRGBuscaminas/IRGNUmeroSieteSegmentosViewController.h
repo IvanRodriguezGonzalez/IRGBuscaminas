@@ -10,18 +10,18 @@
 @class IRGSieteSegmentos;
 
 @interface IRGNUmeroSieteSegmentosViewController : UIViewController
-@property (nonatomic) NSInteger valorADibujar;
 
-
+#pragma mark - Inicializadores
 //designated initializer
 -(instancetype) initWithNibName:(NSString *)nibNameOrNil
                          bundle:(NSBundle *)nibBundleOrNil
                       withFrame:(CGRect) frame
       withRedondeoDeLasEsquinas:(NSInteger)redondeoDeLasEsquinas;
 
+#pragma mark - metodos publicos
 
--(void) establecerEfecto3ConColorDelTrazoDelBordeConLuz:(UIColor *)colorDelTrazoDelBordeConLuz
-                     conColortDelTrazoDelBordeConSombra:(UIColor *)colorDelTrazoDelBordeConSombra;
+- (void) establecerVentanaConTransparencia:(float)porcentajeDeTransparencia
+                              colorDeFondo:(UIColor *)colorDeFondo;
 
 -(void) establecerSegmentoConGrosorDelTrazo:(NSInteger)grosorDelTrazo
                           grosorDelSegmento:(NSInteger)grosorDelSegmento
@@ -32,6 +32,6 @@
                             colorDelRelleno:(UIColor *)colorDelRelleno
                     transparenciaDelRelleno:(float)transparenciaDelRelleno;
 
-- (void) establecerVentanaConTransparencia:(float)porcentajeDeTransparencia
-                              colorDeFondo:(UIColor *)colorDeFondo;
+-(void) dibujarNumero:(NSInteger) numero;
+
 @end

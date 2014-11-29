@@ -10,6 +10,7 @@
 
 @implementation IRGDatoDelMejorTiempo
 
+#pragma mark - Inicializadores
 -(instancetype) int{
     [NSException exceptionWithName:@"Invalid init" reason:@"Singleton" userInfo:nil];
     return false;
@@ -44,7 +45,7 @@
     return self;
 }
 
-#pragma mark Overrides
+#pragma mark - Overrides
 
 - (void) encodeWithCoder:(NSCoder *)aCoder{
     [aCoder encodeInteger:self.tiempo forKey:@"tiempo"];

@@ -10,13 +10,15 @@
 #import "IRGGestorDeEstados.h"
 
 @interface IRGEstadoDelJuegoFinalizadoSinErrorSinAyuda()
-@property (nonatomic,strong) IRGVentanaPrincipalViewController *delegado;
-@property (nonatomic,strong) IRGGestorDeEstados * gestorDeEstados;
+    #pragma mark - Propiedades privadas
+    @property (nonatomic,strong) IRGVentanaPrincipalViewController *delegado;
+    @property (nonatomic,strong) IRGGestorDeEstados * gestorDeEstados;
 @end
 
+#pragma mark -
 @implementation IRGEstadoDelJuegoFinalizadoSinErrorSinAyuda
 
-#pragma mark Inicializadores
+#pragma mark - Inicializadores
 //designated initizalizer
 -(instancetype) initConGestorDeEstados: (IRGGestorDeEstados *)gestorDeEstados
                               delegado:(IRGVentanaPrincipalViewController *)sender{

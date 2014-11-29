@@ -9,14 +9,19 @@
 #import "IRGDatos.h"
 #import "IRGLienzo.h"
 
+#pragma mark Constantes
+
 #define NUMERO_DE_MINAS_POR_DEFECTO 1
 
+#pragma mark -
 @interface IRGDatos ()
-@property (nonatomic) NSMutableArray * celdasDelJuego;
-
+#pragma mark Propiedades privadas
+    @property (nonatomic) NSMutableArray * celdasDelJuego;
 @end
 
+#pragma mark -
 @implementation IRGDatos
+#pragma mark -
 
 #pragma mark - Inicializadores
 
@@ -51,19 +56,49 @@
     return _celdasDelJuego;
 }
 
-#pragma mark - Porpios Publicos
+#pragma mark - Metodos publicos
 
--(void) anadirCeldaViewController:(IRGCeldaViewController *)celdaViewControllerNuevo{
-    [self.celdasDelJuego addObject:celdaViewControllerNuevo];
+
+- (NSArray *) todasLasCeldas{
+    return self.celdasDelJuego;
 }
 
 - (void) borrarJuego{
     self.celdasDelJuego = [[NSMutableArray alloc]init];
 }
 
-- (NSArray *) todasLasCeldas{
-    return self.celdasDelJuego;
+- (BOOL) tieneMinasAlrededor:(IRGCeldaViewController *) celdaViewcontroller{
+    
+    NSArray * celdasAlrededor = [[NSMutableArray alloc] init];
+    NSArray *celdasAlrededorSinMinas = [[NSMutableArray alloc] init];
+    celdasAlrededor = [[IRGDatos sharedDatos] celdasAlrededorDe:celdaViewcontroller];
+    celdasAlrededorSinMinas = [[IRGDatos sharedDatos]celdasSinMinasAlrededorDe:celdaViewcontroller incluyendoEsquinas:true];
+    return ([celdasAlrededor count] == [celdasAlrededorSinMinas count]);
 }
+
+- (NSInteger) numeroDeMinasAlrededor:(IRGCeldaViewController *) celdaViewcontroller{
+    return [[self celdasAlrededorDe:celdaViewcontroller]count] -[[self celdasSinMinasAlrededorDe:celdaViewcontroller incluyendoEsquinas:true] count];
+}
+
+- (NSArray *) celdasSinMinasAlrededorDe: (IRGCeldaViewController *) celdaViewcontroller
+                     incluyendoEsquinas:(bool)incluirEsquinas{
+    
+    NSMutableArray * conjuntoDeCeldasSinMinas = [[NSMutableArray alloc]init];
+    NSArray * conjuntoDeCeldasAlrededor = [self celdasAlrededorDe:celdaViewcontroller];
+    
+    for (IRGCeldaViewController * celdaViewController in conjuntoDeCeldasAlrededor){
+        if (!celdaViewController.tieneMina){
+            [conjuntoDeCeldasSinMinas addObject:celdaViewController];
+        }
+    }
+    return conjuntoDeCeldasSinMinas;
+}
+
+-(void) anadirCeldaViewController:(IRGCeldaViewController *)celdaViewControllerNuevo{
+    [self.celdasDelJuego addObject:celdaViewControllerNuevo];
+}
+
+#pragma  mark - Auxiliares primer nival
 
 - (IRGCeldaViewController *) celdaDeLaFila:(NSInteger) fila
                                    columna:(NSInteger) columna{
@@ -77,44 +112,12 @@
     }
 }
 
-- (BOOL) tieneMinasAlrededor:(IRGCeldaViewController *) celdaViewcontroller{
-    
-    NSArray * celdasAlrededor = [[NSMutableArray alloc] init];
-    NSArray *celdasAlrededorSinMinas = [[NSMutableArray alloc] init];
-    
-    celdasAlrededor = [[IRGDatos sharedDatos] celdasAlrededorDe:celdaViewcontroller];
-    celdasAlrededorSinMinas = [[IRGDatos sharedDatos]celdasSinMinasAlrededorDe:celdaViewcontroller incluyendoEsquinas:true];
-    
-    return ([celdasAlrededor count] == [celdasAlrededorSinMinas count]);
-    
-}
-
-- (NSInteger) numeroDeMinasAlrededor:(IRGCeldaViewController *) celdaViewcontroller{
-    return [[self celdasAlrededorDe:celdaViewcontroller]count] -[[self celdasSinMinasAlrededorDe:celdaViewcontroller incluyendoEsquinas:true] count];
-}
-
-- (NSArray *) celdasSinMinasAlrededorDe: (IRGCeldaViewController *) celdaViewcontroller
-                     incluyendoEsquinas:(bool)incluirEsquinas{
-    
-    NSMutableArray * conjuntoDeCeldasSinMinas = [[NSMutableArray alloc]init];
-    
-    NSArray * conjuntoDeCeldasAlrededor = [self celdasAlrededorDe:celdaViewcontroller];
-    
-    for (IRGCeldaViewController * cvc in conjuntoDeCeldasAlrededor){
-        if (!cvc.tieneMina){
-            [conjuntoDeCeldasSinMinas addObject:cvc];
-        }
-    }
-    return conjuntoDeCeldasSinMinas;
-}
-
 - (NSArray *) celdasAlrededorDe:(IRGCeldaViewController *)celdaViewcontroller{
     
     NSMutableArray * conjuntoDeCeldas = [[NSMutableArray alloc]init];
     
     IRGCeldaViewController *celdaSuperioIzquierda =[self celdaDeLaFila:celdaViewcontroller.numeroDeFila-1
                                                                columna:celdaViewcontroller.numeroDeColumna-1];
-    
     IRGCeldaViewController *celdaSuperior =[self celdaDeLaFila:celdaViewcontroller.numeroDeFila-1
                                                        columna:celdaViewcontroller.numeroDeColumna];
     IRGCeldaViewController *celdaSuperiorDerecha =[self celdaDeLaFila:celdaViewcontroller.numeroDeFila-1
@@ -137,7 +140,7 @@
         [conjuntoDeCeldas addObject:celdaSuperiorDerecha];
     }
     if (celdaInferiorIzquierda!=nil){
-            [conjuntoDeCeldas addObject:celdaInferiorIzquierda];
+        [conjuntoDeCeldas addObject:celdaInferiorIzquierda];
     }
     if (celdaInferiorDerecha!=nil){
         [conjuntoDeCeldas addObject:celdaInferiorDerecha];
@@ -157,7 +160,5 @@
     }
     return conjuntoDeCeldas;
 }
-
-
 
 @end

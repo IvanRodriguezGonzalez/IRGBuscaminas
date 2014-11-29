@@ -9,7 +9,7 @@
 #import <UIKit/UIKit.h>
 
 @interface AppDelegate : UIResponder <UIApplicationDelegate>
-
+#pragma mark - Propiedades publicas
 @property (strong, nonatomic) UIWindow *window;
 
 

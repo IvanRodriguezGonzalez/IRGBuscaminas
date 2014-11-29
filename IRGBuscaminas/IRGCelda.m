@@ -8,15 +8,22 @@
 
 #import "IRGCelda.h"
 
+#pragma mark  Constantes de la clase
 
-@interface IRGCelda ()
+#define GROSOR_DEL_BORDE_DE_LA_CELDA_PROCESADA 1
+#define GROSOR_DEL_BORDE_DE_LA_CELDA_NO_PROCESADA 5
+#define COLOR_DEL_BORDE_OSCURO [[UIColor alloc] initWithRed:.5 green:.5 blue:.5 alpha:1]
+#define COLOR_DEL_BORDE_CLARO [[UIColor alloc] initWithRed:.9 green:.9 blue:.9 alpha:1]
+
+#define TAMANO_DEL_TEXTO_DE_LA_CELDA 35
+#define POSCIION_X_DEL_TEXTO_DE_LA_CELDA 15
+#define POSICION_Y_DEL_TEXTO_DE_LA_CELDA 2
+
+#define POSICION_X_DE_LA_IMAGEN_DE_LA_CELDA 2
+#define POSICION_Y_DE_LA_IMAGEN_DE_LA_CELDA 2
 
 
-@property (nonatomic,readonly) float posicionX;
-@property (nonatomic,readonly) float posicionY;
-
-
-@end
+#pragma mark -
 
 @implementation IRGCelda
 
@@ -24,51 +31,45 @@
 
 - (instancetype) initWithFrame:(CGRect)frame{
     return [self initWithFrame:frame
-                 colorDelBorde:[UIColor redColor]
-                grosorDelTrazo:1
                      procesada:FALSE];
 }
 
 
 //designated initializer
 - (instancetype) initWithFrame:(CGRect)frame
-                 colorDelBorde:(UIColor *)colorDelBorde
-                grosorDelTrazo:(NSUInteger) grosorDelTrazo
                      procesada:(bool) procesada; {
 
     self = [super initWithFrame:frame];
     if (self){
-        _colorDelBorde = colorDelBorde;
-        _grosorDelTrazoDeLaCelda = grosorDelTrazo;
         _procesada = procesada;
 
-        CGRect frame = CGRectMake(12 ,0, self.frame.size.width, self.frame.size.height);
-        UILabel * numeroDeMinasAlrededor = [[UILabel alloc] initWithFrame:frame];
-        numeroDeMinasAlrededor.font = [UIFont  systemFontOfSize:30];
+        //texto de la celda
+        CGRect frameTextoDeLaCelda = CGRectMake(POSCIION_X_DEL_TEXTO_DE_LA_CELDA ,
+                                                POSICION_Y_DEL_TEXTO_DE_LA_CELDA,
+                                                self.frame.size.width,
+                                                self.frame.size.height);
+        UILabel * textoDeLaCelda = [[UILabel alloc] initWithFrame:frameTextoDeLaCelda];
+        textoDeLaCelda.font = [UIFont  systemFontOfSize:TAMANO_DEL_TEXTO_DE_LA_CELDA];
+        [self addSubview:textoDeLaCelda];
+        self.numeroDeMinasAlrededor = textoDeLaCelda;
         
-        CGRect frame1 = CGRectMake(2, 2, self.frame.size.width-4,self.frame.size.height-4);
-        UIImage *imagen =nil;
-        UIImageView * imagenDeMina  = [[UIImageView alloc]initWithImage:imagen];
-        imagenDeMina.frame = frame1;
-        
-        [self addSubview:numeroDeMinasAlrededor];
-        [self addSubview:imagenDeMina];
-        
-        self.numeroDeMinasAlrededor = numeroDeMinasAlrededor;
-        self.imagenDeMina = imagenDeMina;
+        //imagen de la celda
+        CGRect frameDeLaImagenDeLaCelda = CGRectMake(POSICION_X_DE_LA_IMAGEN_DE_LA_CELDA,
+                                                     POSICION_Y_DE_LA_IMAGEN_DE_LA_CELDA,
+                                                     self.frame.size.width-2*POSICION_X_DE_LA_IMAGEN_DE_LA_CELDA,
+                                                     self.frame.size.height-2*POSICION_Y_DE_LA_IMAGEN_DE_LA_CELDA);
+        UIImage *imagenVacia =nil;
+        UIImageView * imagenDeLaCelda  = [[UIImageView alloc]initWithImage:imagenVacia];
+        imagenDeLaCelda.frame = frameDeLaImagenDeLaCelda;
+        [self addSubview:imagenDeLaCelda];
+        self.imagenDeMina = imagenDeLaCelda;
     }
     return self;
 }
 
 # pragma mark - Overrides
 
-
-
-// Only override drawRect: if you perform custom drawing.
-// An empty implementation adversely affects performance during animation.
 - (void)drawRect:(CGRect)rect {
-    // Drawing code
-    
     if (!self.procesada){
         [self dibujarBorderCeldaNoProcesada];
   }
@@ -77,32 +78,24 @@
     }
 }
 
-# pragma mark - Accesors
--(float) posicionX{
-    return self.frame.origin.x;
+#pragma mark - Metodos publicos
+
+-(void) dibujarBorderCeldaProcesada{
+    
+    [self dibujarLineaSuperiorOscuraConGrosor:GROSOR_DEL_BORDE_DE_LA_CELDA_PROCESADA];
+    [self dibujarLineaIzquierdaOscuraConGrosor:GROSOR_DEL_BORDE_DE_LA_CELDA_PROCESADA];
+    [self dibujarLineaInferiorClaraConGrosor:GROSOR_DEL_BORDE_DE_LA_CELDA_PROCESADA];
+    [self dibujarLineaDerechaClaraConGrosor:GROSOR_DEL_BORDE_DE_LA_CELDA_PROCESADA];
 }
 
--(float) posicionY{
-    return self.frame.origin.y;
-}
 
 #pragma mark - Auxiliares primer nivel
 -(void) dibujarBorderCeldaNoProcesada{
-    NSInteger grosorDeLaLinea = 3;
     
-    [self dibujarLineaSuperiorClaraConGrosor:grosorDeLaLinea];
-    [self dibujarLineaIzquierdaClaraConGrosor:grosorDeLaLinea];
-    [self dibujarLineaInferiorOscuraConGrosor:grosorDeLaLinea];
-    [self dibujarLineaDerechaOscuraConGrosor:grosorDeLaLinea];
-}
-    
--(void) dibujarBorderCeldaProcesada{
-    
-    NSInteger grosorDeLaLinea = 1;
-    [self dibujarLineaSuperiorOscuraConGrosor:grosorDeLaLinea];
-    [self dibujarLineaIzquierdaOscuraConGrosor:grosorDeLaLinea];
-    [self dibujarLineaInferiorClaraConGrosor:grosorDeLaLinea];
-    [self dibujarLineaDerechaClaraConGrosor:grosorDeLaLinea];
+    [self dibujarLineaSuperiorClaraConGrosor:GROSOR_DEL_BORDE_DE_LA_CELDA_NO_PROCESADA];
+    [self dibujarLineaIzquierdaClaraConGrosor:GROSOR_DEL_BORDE_DE_LA_CELDA_NO_PROCESADA];
+    [self dibujarLineaInferiorOscuraConGrosor:GROSOR_DEL_BORDE_DE_LA_CELDA_NO_PROCESADA];
+    [self dibujarLineaDerechaOscuraConGrosor:GROSOR_DEL_BORDE_DE_LA_CELDA_NO_PROCESADA];
 }
 
 #pragma mark - Auxiliares segundo nivel
@@ -140,7 +133,6 @@
                   conGrosor:grosor];
 }
 
-
 - (void) dibujarLineaIzquierdaOscuraConGrosor:(NSInteger)grosor{
     CGPoint puntoInicial = CGPointMake(0, 0);
     CGPoint puntoFinal = CGPointMake(0,self.bounds.size.height);
@@ -155,8 +147,6 @@
                       hasta:(puntoFinal)
                   conGrosor:grosor];
 }
-
-
 
 - (void) dibujarLineaDerechaOscuraConGrosor:(NSInteger)grosor{
     CGPoint puntoInicial = CGPointMake(self.bounds.size.width, 0);
@@ -179,20 +169,18 @@
 - (void) dibujarLineaOscuraDesde:(CGPoint) puntoInicial
                            hasta:(CGPoint) puntoFinal
                        conGrosor:(NSInteger) grosor{
-    UIColor * lineaOscura =[[UIColor alloc] initWithRed:.5 green:.5 blue:.5 alpha:1];
     [self dibujarLineaDesde:puntoInicial
                       hasta:(puntoFinal)
-                   conColor:lineaOscura
+                   conColor:COLOR_DEL_BORDE_OSCURO
                   conGrosor:grosor];
 }
 
 - (void) dibujarLineaClaraDesde:(CGPoint) puntoInicial
                            hasta:(CGPoint) puntoFinal
                        conGrosor:(NSInteger) grosor{
-    UIColor * lineaClara = [[UIColor alloc] initWithRed:.9 green:.9 blue:.9 alpha:1];
     [self dibujarLineaDesde:puntoInicial
                       hasta:(puntoFinal)
-                   conColor:lineaClara
+                   conColor:COLOR_DEL_BORDE_CLARO
                   conGrosor:grosor];
 }
 

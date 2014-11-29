@@ -10,15 +10,15 @@
 #import "IRGGestorDeEstados.h"
 
 @interface  IRGEstadoDelJuegoFinalizadoConError()
-
-
-@property (nonatomic,strong) IRGVentanaPrincipalViewController *delegado;
-@property (nonatomic,strong) IRGGestorDeEstados * gestorDeEstados;
+    #pragma mark - Propiedades privadas
+    @property (nonatomic,strong) IRGVentanaPrincipalViewController *delegado;
+    @property (nonatomic,strong) IRGGestorDeEstados * gestorDeEstados;
 @end
 
+#pragma mark -
 @implementation IRGEstadoDelJuegoFinalizadoConError
 
-#pragma mark Inicializadores
+#pragma mark - Inicializadores
 //designated initizalizer
 -(instancetype) initConGestorDeEstados: (IRGGestorDeEstados *)gestorDeEstados
                               delegado:(IRGVentanaPrincipalViewController *)sender{
@@ -41,7 +41,7 @@
     return @"Ohhh... Vuelve a intentarlo!";
 }
 
-#pragma mark Metodos del protocolo
+#pragma mark - Metodos del protocolo
 
 - (void) establecerBotones{
     [self.delegado.gestionarBotonera desactivarBotonMostrarMinas];

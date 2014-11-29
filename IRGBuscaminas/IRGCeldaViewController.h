@@ -18,6 +18,7 @@ typedef enum {
 @class IRGVentanaPrincipalViewController;
 
 @interface IRGCeldaViewController : UIViewController
+#pragma mark - Propiedades publicas
 
 @property (nonatomic) NSInteger numeroDeFila;
 @property (nonatomic) NSInteger numeroDeColumna;
@@ -25,10 +26,14 @@ typedef enum {
 @property (nonatomic) IRGEstados estado;
 @property (nonatomic) IRGVentanaPrincipalViewController *delegado;
 
+#pragma mark - Inicializadores
+
 //designated initializer
 - (instancetype) initConNumeroDeFila:(NSInteger)numeroDeFila
                      numeroDeColumna:(NSInteger)numeroDeColumna
                          conDelegado:(IRGVentanaPrincipalViewController*)delegado;
+
+#pragma mark - Metodos publicos
 
 - (void) mostrarNumeroDeMinas;
 - (void) mostrarMina;

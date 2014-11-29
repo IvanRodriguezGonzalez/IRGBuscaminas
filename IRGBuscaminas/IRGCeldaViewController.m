@@ -11,13 +11,13 @@
 #import "IRGCelda.h"
 #import "IRGLienzo.h"
 #import "IRGDatos.h"
-#import "IRGPincel.h"
+#import "IRGSettings.h"
 #import "IRGVentanaPrincipalViewController.h"
 #import "IRGSettings.h"
 
 
 @interface IRGCeldaViewController ()
-
+#pragma mark - Propiedades privadas
 @property (nonatomic) CGRect frameCelda;
 @property (nonatomic) IRGCelda * celda;
 @property (nonatomic) NSTimeInterval tiempoInicio;
@@ -26,6 +26,7 @@
 
 @end
 
+#pragma mark -
 @implementation IRGCeldaViewController
 
 #pragma mark - Inicializadores
@@ -68,17 +69,6 @@
     [self crearCeldaComoVista];
 }
 
-- (void)viewDidLoad {
-    [super viewDidLoad];
-    // Do any additional setup after loading the view.
-}
-
-- (void)didReceiveMemoryWarning {
-    [super didReceiveMemoryWarning];
-    // Dispose of any resources that can be recreated.
-}
-
-
 #pragma mark - Navigation
 
 - (void) touchesBegan:(NSSet *)touches
@@ -97,7 +87,7 @@
 
 -(void) pulsacionLarga{
     [self.celda setProcesada:true];
-    self.celda.backgroundColor = [IRGPincel sharedPincel].colorDeRellenoDelPincel;
+    self.celda.backgroundColor = [IRGSettings sharedSettings].colorDeRellenoDeLaCeldaProcesada;
     [self.celda setNeedsDisplay];
 }
 
@@ -113,11 +103,11 @@
             (posicionXDelTouch >0) &
             (posicionYDelTouch >0)){
             self.celda.procesada = true;
-            self.celda.backgroundColor = [IRGPincel sharedPincel].colorDeRellenoDelPincel;
+            self.celda.backgroundColor = [IRGSettings sharedSettings].colorDeRellenoDeLaCeldaProcesada;
         }
         else {
             self.celda.procesada = false;
-            self.celda.backgroundColor = [IRGPincel sharedPincel].colorDeRellenoDeLaCeldaVacia;
+            self.celda.backgroundColor = [IRGSettings sharedSettings].colorDeRellenoDeLaCeldaNoProcesada;
         }
         [self.celda setNeedsDisplay];
     }
@@ -129,7 +119,7 @@
     if (self.estado != procesado){
         
         self.celda.procesada = false;
-        self.celda.backgroundColor = [IRGPincel sharedPincel].colorDeRellenoDeLaCeldaVacia;
+        self.celda.backgroundColor = [IRGSettings sharedSettings].colorDeRellenoDeLaCeldaNoProcesada;
         [self.celda setNeedsDisplay];
         
         UITouch *objeto = touches.anyObject;
@@ -162,7 +152,7 @@
     }
 }
 
-# pragma mark - Publicos
+# pragma mark - Accesors
 
 - (void) setEstado:(IRGEstados)estado{
     
@@ -175,13 +165,14 @@
     }
     [self dibujarEstado];
 }
+# pragma mark - Metodos publicos
 
 - (void) mostrarNumeroDeMinas{
     
     NSInteger numeroDeMinasAlrededor = [[IRGDatos sharedDatos] numeroDeMinasAlrededor:self];
     self.celda.numeroDeMinasAlrededor.text = [NSString stringWithFormat:@"%ld",(long)numeroDeMinasAlrededor];
     
-    self.celda.numeroDeMinasAlrededor.textColor = [IRGPincel sharedPincel].colorDelNumeroDeMInas;
+    self.celda.numeroDeMinasAlrededor.textColor = [IRGSettings sharedSettings].colorPorDefectoDelNumeroDeMinasAlrededorDeUnaCelda;
     
     if (numeroDeMinasAlrededor==0){
         self.celda.numeroDeMinasAlrededor.text = @"";
@@ -222,20 +213,6 @@
 }
 
 
-# pragma mark - Auxiliares
-
-- (void) crearCeldaComoVista{
-    
-    IRGCelda *celdaTemporal;
-     celdaTemporal = [[IRGCelda alloc]initWithFrame:self.frameCelda
-                                      colorDelBorde:[IRGPincel sharedPincel].colorDeTrazoDelPincel
-                                      grosorDelTrazo:[IRGPincel sharedPincel].grosorDelTrazoDelPincel
-                                          procesada:false];
-    self.view = celdaTemporal;
-    self.celda = celdaTemporal;;
-    [self dibujarEstado];
-}
-
 -(void) dibujarEstado{
     UIImage *imagenConBandera = [UIImage imageNamed:@"bandera"];
     UIImage *imagenConDuda = [UIImage imageNamed:@"duda"];
@@ -243,21 +220,21 @@
     {
         case libre:
             self.celda.imagenDeMina.image = nil;
-            self.celda.backgroundColor = [IRGPincel sharedPincel].colorDeRellenoDeLaCeldaVacia;
+            self.celda.backgroundColor = [IRGSettings sharedSettings].colorDeRellenoDeLaCeldaNoProcesada;
             [self.celda setNeedsDisplay];
             break;
         case conBandera:
             self.celda.imagenDeMina.image= imagenConBandera;
-            [self.celda setBackgroundColor:[IRGPincel sharedPincel].colorDeRellenoDeLaCeldaVacia];
+            [self.celda setBackgroundColor:[IRGSettings sharedSettings].colorDeRellenoDeLaCeldaNoProcesada];
             [self.celda setNeedsDisplay];
             break;
         case conDuda:
             self.celda.imagenDeMina.image= imagenConDuda;
-            self.celda.backgroundColor = [IRGPincel sharedPincel].colorDeRellenoDeLaCeldaVacia;
+            self.celda.backgroundColor = [IRGSettings sharedSettings].colorDeRellenoDeLaCeldaNoProcesada;
             [self.celda setNeedsDisplay];
             break;
         case procesado:
-            self.celda.backgroundColor = [IRGPincel sharedPincel].colorDeRellenoDelPincel;
+            self.celda.backgroundColor = [IRGSettings sharedSettings].colorDeRellenoDeLaCeldaProcesada;
             [self mostrarNumeroDeMinas];
             [self.celda setNeedsDisplay];
             break;
@@ -269,6 +246,19 @@
     self.celda.numeroDeMinasAlrededor.text = @"";
     self.celda.imagenDeMina.image = [UIImage imageNamed:@"candado"];
     [self.celda setNeedsDisplay];
+}
+
+
+# pragma mark - Auxiliares
+
+- (void) crearCeldaComoVista{
+    
+    IRGCelda *celdaTemporal;
+     celdaTemporal = [[IRGCelda alloc]initWithFrame:self.frameCelda
+                                          procesada:false];
+    self.view = celdaTemporal;
+    self.celda = celdaTemporal;;
+    [self dibujarEstado];
 }
 
 @end
