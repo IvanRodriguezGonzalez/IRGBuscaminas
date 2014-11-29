@@ -82,60 +82,66 @@
 
 - (void) touchesBegan:(NSSet *)touches
             withEvent:(UIEvent *)event{
-    UITouch *objeto = touches.anyObject;
-    self.tiempoInicio = objeto.timestamp;
-    [self.celda setProcesada:true];
-    self.celda.backgroundColor = [IRGPincel sharedPincel].colorDeRellenoDelPincel;
-    [self.celda setNeedsDisplay];
+    if (self.estado != procesado){
+        UITouch *objeto = touches.anyObject;
+        self.tiempoInicio = objeto.timestamp;
+        [self.celda setProcesada:true];
+        self.celda.backgroundColor = [IRGPincel sharedPincel].colorDeRellenoDelPincel;
+        [self.celda setNeedsDisplay];
+    }
 }
 
 -(void) touchesMoved:(NSSet *)touches
            withEvent:(UIEvent *)event{
-    UITouch *objeto = touches.anyObject;
-    CGFloat posicionXDelTouch = [objeto locationInView:self.celda].x;
-    CGFloat posicionYDelTouch = [objeto locationInView:self.celda].y;
+    if (self.estado != procesado){
+        UITouch *objeto = touches.anyObject;
+        CGFloat posicionXDelTouch = [objeto locationInView:self.celda].x;
+        CGFloat posicionYDelTouch = [objeto locationInView:self.celda].y;
     
-    if ((posicionXDelTouch< self.celda.frame.size.width) &
-        (posicionYDelTouch<self.celda.frame.size.height) &
-        (posicionXDelTouch >0) &
-        (posicionYDelTouch >0)){
-        self.celda.procesada = true;
-        self.celda.backgroundColor = [IRGPincel sharedPincel].colorDeRellenoDelPincel;
+        if ((posicionXDelTouch< self.celda.frame.size.width) &
+            (posicionYDelTouch<self.celda.frame.size.height) &
+            (posicionXDelTouch >0) &
+            (posicionYDelTouch >0)){
+            self.celda.procesada = true;
+            self.celda.backgroundColor = [IRGPincel sharedPincel].colorDeRellenoDelPincel;
+        }
+        else {
+            self.celda.procesada = false;
+            self.celda.backgroundColor = [IRGPincel sharedPincel].colorDeRellenoDeLaCeldaVacia;
+        }
+        [self.celda setNeedsDisplay];
     }
-    else {
-        self.celda.procesada = false;
-        self.celda.backgroundColor = [IRGPincel sharedPincel].colorDeRellenoDeLaCeldaVacia;
-    }
-    [self.celda setNeedsDisplay];
-
 }
 
 - (void) touchesEnded:(NSSet *)touches
             withEvent:(UIEvent *)event{
-    UITouch *objeto = touches.anyObject;
-    CGFloat posicionXDelTouch = [objeto locationInView:self.celda].x;
-    CGFloat posicionYDelTouch = [objeto locationInView:self.celda].y;
-    
-    if ((posicionXDelTouch< self.celda.frame.size.width) &
-        (posicionYDelTouch<self.celda.frame.size.height) &
-        (posicionXDelTouch >0) &
-        (posicionYDelTouch >0)){
+    if (self.estado != procesado){
         
-        NSTimeInterval duracion;
-        duracion = objeto.timestamp-self.tiempoInicio;
-        if (duracion > .2){
-            [self.delegado despejarCelda:self];
-        }
-        else {
-            [self.delegado ponerBandera:self];
-        }
-    }
-    else {
         self.celda.procesada = false;
         self.celda.backgroundColor = [IRGPincel sharedPincel].colorDeRellenoDeLaCeldaVacia;
         [self.celda setNeedsDisplay];
-    }
+        
+        UITouch *objeto = touches.anyObject;
+        CGFloat posicionXDelTouch = [objeto locationInView:self.celda].x;
+        CGFloat posicionYDelTouch = [objeto locationInView:self.celda].y;
     
+        if ((posicionXDelTouch< self.celda.frame.size.width) &
+            (posicionYDelTouch<self.celda.frame.size.height) &
+            (posicionXDelTouch >0) &
+            (posicionYDelTouch >0)){
+        
+            NSTimeInterval duracion;
+            duracion = objeto.timestamp-self.tiempoInicio;
+            if (duracion > .1){
+                [self.delegado despejarCelda:self];
+            }
+            else {
+                [self.delegado ponerBandera:self];
+            }
+        }
+        else {
+        }
+    }
 }
 
 # pragma mark - Publicos

@@ -88,7 +88,9 @@
 
 -(void) calcularPuntosDeDibujo{
     self.esquinaSuperiorIzquierda = CGPointMake(self.grosorDelSegmento/2+self.separacionHorizontalDeLosSegmentosConLaVista,self.grosorDelSegmento/2+self.separacionVerticalDeLosSegmentosConLaVista);
+    
     self.esquinaSuperiorDerecha = CGPointMake(self.bounds.size.width-self.grosorDelSegmento/2-self.separacionHorizontalDeLosSegmentosConLaVista, self.grosorDelSegmento/2+self.separacionVerticalDeLosSegmentosConLaVista);
+    
     self.esquinaCentralIzquierda = CGPointMake(self.grosorDelSegmento/2+self.separacionHorizontalDeLosSegmentosConLaVista, self.bounds.size.height/2);
     
     self.esquinaCentralDerecha = CGPointMake(self.bounds.size.width-self.grosorDelSegmento/2-self.separacionHorizontalDeLosSegmentosConLaVista, self.frame.size.height/2);

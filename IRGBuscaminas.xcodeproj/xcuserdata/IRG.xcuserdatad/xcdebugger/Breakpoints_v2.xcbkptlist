@@ -10,12 +10,12 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "IRGBuscaminas/IRGVentanaPrincipalViewController.m"
-            timestampString = "438905845.208545"
+            timestampString = "438972459.609243"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "345"
-            endingLineNumber = "345"
-            landmarkName = "-iniciarJuego"
+            startingLineNumber = "344"
+            endingLineNumber = "344"
+            landmarkName = "-iniciarGestorDeEstados"
             landmarkType = "5">
          </BreakpointContent>
       </BreakpointProxy>
@@ -104,11 +104,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "IRGBuscaminas/IRGVentanaPrincipalViewController.m"
-            timestampString = "438905853.186709"
+            timestampString = "438972459.609243"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "286"
-            endingLineNumber = "286"
+            startingLineNumber = "285"
+            endingLineNumber = "285"
             landmarkName = "-iniciarTiempoDeJuegoSieteSegmentos"
             landmarkType = "5">
          </BreakpointContent>
