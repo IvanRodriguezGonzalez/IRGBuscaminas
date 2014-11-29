@@ -47,7 +47,7 @@
         numeroDeMinasAlrededor.font = [UIFont  systemFontOfSize:30];
      //   [numeroDeMinasAlrededor setAdjustsFontSizeToFitWidth:true];
 
-        CGRect frame1 = CGRectMake(1, 1, self.frame.size.width-2,self.frame.size.height-2);
+        CGRect frame1 = CGRectMake(2, 2, self.frame.size.width-4,self.frame.size.height-4);
         UIImage *imagen =nil;
         UIImageView * imagenDeMina  = [[UIImageView alloc]initWithImage:imagen];
         imagenDeMina.frame = frame1;

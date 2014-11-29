@@ -60,12 +60,12 @@
     [self.estadoDelJuego accionMostrarMinas];
 }
 
--(void) celdaPulsada:(IRGCeldaViewController *)celdaViewController{
-    [self.estadoDelJuego celdaPulsada:celdaViewController];
+-(void) ponerBandera:(IRGCeldaViewController *)celdaViewController{
+    [self.estadoDelJuego ponerBandera:celdaViewController];
 }
 
--(void) celdaDoblePulsada:(IRGCeldaViewController *)celdaViewController{
-    [self.estadoDelJuego celdaDoblePulsada:celdaViewController];
+-(void) despejarCelda:(IRGCeldaViewController *)celdaViewController{
+    [self.estadoDelJuego despejarCelda:celdaViewController];
 }
 
 -(void) establecerBotones{

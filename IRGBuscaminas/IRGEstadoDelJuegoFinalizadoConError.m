@@ -61,11 +61,11 @@
     [NSException exceptionWithName:@"accion incorrecta" reason:@"El estado no la soporta" userInfo:nil];
 }
 
--(void) celdaPulsada:(IRGCeldaViewController *)celdaViewController{
+-(void) ponerBandera:(IRGCeldaViewController *)celdaViewController{
     [NSException exceptionWithName:@"accion incorrecta" reason:@"El estado no la soporta" userInfo:nil];
 }
 
-- (void) celdaDoblePulsada:(IRGCeldaViewController *)celdaViewController{
+- (void) despejarCelda:(IRGCeldaViewController *)celdaViewController{
     [NSException exceptionWithName:@"accion incorrecta" reason:@"El estado no la soporta" userInfo:nil];
 }
 

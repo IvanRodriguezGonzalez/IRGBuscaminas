@@ -60,7 +60,7 @@
     [self.gestorDeEstados establecerEstado:self.gestorDeEstados.estadoDelJuegoAyuda];
 }
 
--(void) celdaPulsada:(IRGCeldaViewController *)celdaViewController{
+-(void) ponerBandera:(IRGCeldaViewController *)celdaViewController{
     switch (celdaViewController.estado)
     {
         case libre:
@@ -79,7 +79,7 @@
     [self.delegado actualizaMinasPendientes];
 }
 
-- (void) celdaDoblePulsada:(IRGCeldaViewController *)celdaViewController{
+- (void) despejarCelda:(IRGCeldaViewController *)celdaViewController{
     if (celdaViewController.estado == libre){
         if ((celdaViewController.tieneMina) ){
             [self.gestorDeEstados establecerEstado:self.gestorDeEstados.estadoDelJuegoFinalizadoConError];

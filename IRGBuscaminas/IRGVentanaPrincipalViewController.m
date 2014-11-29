@@ -150,12 +150,12 @@
 
 #pragma mark - Delegado primer nivel
 
-- (void) celdaDoblePulsada:(IRGCeldaViewController *)celdaPulsada{
-    [self.gestorDeEstados celdaDoblePulsada:celdaPulsada];
+- (void) despejarCelda:(IRGCeldaViewController *)celda{
+    [self.gestorDeEstados despejarCelda:celda];
 }
 
-- (void) celdaPulsada:(IRGCeldaViewController *)celdaDoblePulsada{
-    [self.gestorDeEstados celdaPulsada:celdaDoblePulsada];
+- (void) ponerBandera:(IRGCeldaViewController *)celda{
+    [self.gestorDeEstados ponerBandera:celda];
 }
 
 # pragma mark Delegado segundo nivel

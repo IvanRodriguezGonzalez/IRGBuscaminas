@@ -38,8 +38,8 @@
 
 
 
--(void) celdaPulsada:(IRGCeldaViewController *)celdaPulsada;
--(void) celdaDoblePulsada: (IRGCeldaViewController *)celdaDoblePulsada;
+-(void) ponerBandera:(IRGCeldaViewController *)celda;
+-(void) despejarCelda: (IRGCeldaViewController *)celda;
 - (void) propagaTouch:(IRGCeldaViewController *)celdaViewController;
 
 

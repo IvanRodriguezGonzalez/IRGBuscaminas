@@ -23,4 +23,6 @@
                 grosorDelTrazo:(NSUInteger) grosorDelTrazo
                      procesada:(bool) proesada;
 
+-(void) dibujarBorderCeldaProcesada;
+
 @end

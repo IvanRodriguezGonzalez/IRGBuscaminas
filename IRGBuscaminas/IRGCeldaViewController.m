@@ -20,6 +20,8 @@
 
 @property (nonatomic) CGRect frameCelda;
 @property (nonatomic) IRGCelda * celda;
+@property (nonatomic) NSTimeInterval tiempoInicio;
+@property (nonatomic) NSInteger movimiento;
 
 @end
 
@@ -52,7 +54,6 @@
         NSInteger anchoCelda = [IRGLienzo sharedLienzo].anchoCelda;
         NSInteger altoCelda = [IRGLienzo sharedLienzo].altoCelda;
         
-
         _frameCelda = CGRectMake(posicionX, posicionY, anchoCelda, altoCelda);
         _estado = libre;
     
@@ -64,27 +65,20 @@
 
 - (void) loadView{
     [self crearCeldaComoVista];
-    [self.view setMultipleTouchEnabled:YES];
-    
-
 }
 
 - (void)viewDidLoad {
     [super viewDidLoad];
     // Do any additional setup after loading the view.
     
-
-    UILongPressGestureRecognizer *longTapRecognizer = [[UILongPressGestureRecognizer alloc] initWithTarget:self
+    /*UILongPressGestureRecognizer *longTapRecognizer = [[UILongPressGestureRecognizer alloc] initWithTarget:self
                                                                                           action:@selector(longTap:)];
     longTapRecognizer.minimumPressDuration =.1;
-    
     UITapGestureRecognizer  *tapGestureRecognizer = [[UITapGestureRecognizer alloc] initWithTarget:self
                                                                                                               action:@selector(tapGestureRecognizer:)];
-   //[tapGestureRecognizer requireGestureRecognizerToFail:longTapRecognizer];
-    
     [self.view addGestureRecognizer:tapGestureRecognizer];
     [self.view addGestureRecognizer:longTapRecognizer];
-    
+    */
 
 }
 
@@ -96,13 +90,42 @@
 
 #pragma mark - Navigation
 
+- (void) touchesBegan:(NSSet *)touches
+            withEvent:(UIEvent *)event{
+    UITouch *objeto = touches.anyObject;
+    self.tiempoInicio = objeto.timestamp;
+    self.movimiento =0;
+    self.celda.backgroundColor = [UIColor lightGrayColor];
+}
+
+-(void) touchesMoved:(NSSet *)touches
+           withEvent:(UIEvent *)event{
+    self.movimiento++;
+}
+
+- (void) touchesEnded:(NSSet *)touches
+            withEvent:(UIEvent *)event{
+    
+    if (self.movimiento <10){
+        NSTimeInterval duracion;
+        UITouch *objeto = touches.anyObject;
+        duracion = objeto.timestamp-self.tiempoInicio;
+        if (duracion > .2){
+            [self.delegado despejarCelda:self];
+        }
+        else {
+            [self.delegado ponerBandera:self];
+        }
+    }
+    
+}
 -(void) longTap:(UILongPressGestureRecognizer *)gesture{
-    [self.delegado celdaDoblePulsada:self];
+    [self.delegado despejarCelda:self];
     NSLog(@"largo");
 }
 
 -(void) tapGestureRecognizer : (UITapGestureRecognizer *) gesture{
-    [self.delegado celdaPulsada:self];
+    [self.delegado ponerBandera:self];
 }
 
 
