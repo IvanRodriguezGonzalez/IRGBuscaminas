@@ -585,8 +585,10 @@
     if (!self.vistaDeBloqueo){
         self.vistaDeBloqueo = [[UIView alloc]initWithFrame:frame];
     }
-    self.vistaDeBloqueo.backgroundColor = [[UIColor redColor] colorWithAlphaComponent:.5];
+    self.vistaDeBloqueo.backgroundColor = [[UIColor lightGrayColor] colorWithAlphaComponent:1];
     [[UIApplication sharedApplication].keyWindow.rootViewController.view addSubview:self.vistaDeBloqueo];
+    UIImage *imagenDeBloqueo = [UIImage imageNamed:@"bloqueo"];
+    self.vistaDeBloqueo.
     
     /*
     self.imagenDeBloqueo.image = [UIImage imageNamed:imagen];
