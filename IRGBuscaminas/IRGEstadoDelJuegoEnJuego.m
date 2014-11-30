@@ -113,6 +113,6 @@
 -(void) accionPausar{
     [self.delegado.reloj invalidate];
     [self.gestorDeEstados establecerEstado:self.gestorDeEstados.estadoDelJuegoEnPausa];
-    [self.delegado mostrarImagenDeBloqueo:@"imagenDeBloqueo3"];
+    [self.delegado mostrarImagenDeBloqueo:@"imagenDeBloqueo"];
 }
 @end

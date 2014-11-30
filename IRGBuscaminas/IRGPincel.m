@@ -49,7 +49,7 @@
 
 
 -(UIColor *) colorDeRellenoDePantallaNormal{
-    return [[UIColor alloc]initWithRed:.8 green:.8 blue:.8 alpha:1];
+    return [UIColor clearColor];
 }
 
 - (UIColor *) colorDeRellenoDelPincel{
@@ -62,15 +62,15 @@
 }
 
 -(UIColor *) colorDeRellenoDePantallaDeError{
-    return [[UIColor alloc] initWithRed:.8 green:.1 blue:.2  alpha:1];
+    return [UIColor clearColor];
 }
 
 -(UIColor *) colorDeRellenoDePantallaDeVictoria{
-    return [[UIColor alloc] initWithRed:0 green:.5 blue:0 alpha:1];;
+    return [UIColor clearColor];
 }
 
 -(UIColor *) colorDeRellenoDePantallaDeModoAyuda{
-    return [[UIColor alloc] initWithRed:0 green:.5 blue:.5 alpha:1];
+    return [UIColor clearColor];
 }
 
 -(UIColor *) colorEtiquetaDeBotonSeleccionado{

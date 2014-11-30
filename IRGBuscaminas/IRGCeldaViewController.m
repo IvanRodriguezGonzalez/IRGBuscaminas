@@ -13,7 +13,7 @@
 #import "IRGDatos.h"
 #import "IRGPincel.h"
 #import "IRGVentanaPrincipalViewController.h"
-
+#define TIEMPO_PULSACION 0.1
 
 
 @interface IRGCeldaViewController ()
@@ -21,6 +21,7 @@
 @property (nonatomic) CGRect frameCelda;
 @property (nonatomic) IRGCelda * celda;
 @property (nonatomic) NSTimeInterval tiempoInicio;
+@property (nonatomic) NSTimer *temporizador;
 @property (nonatomic) UIColor *colorDeFondoAntiguo;
 
 @end
@@ -85,10 +86,20 @@
     if (self.estado != procesado){
         UITouch *objeto = touches.anyObject;
         self.tiempoInicio = objeto.timestamp;
-        [self.celda setProcesada:true];
-        self.celda.backgroundColor = [IRGPincel sharedPincel].colorDeRellenoDelPincel;
-        [self.celda setNeedsDisplay];
+
+        self.temporizador = [NSTimer scheduledTimerWithTimeInterval:TIEMPO_PULSACION
+                                                              target:self
+                                                            selector:@selector(pulsacionLarga)
+                                                            userInfo:nil
+                                                             repeats:false];
+        
     }
+}
+
+-(void) pulsacionLarga{
+    [self.celda setProcesada:true];
+    self.celda.backgroundColor = [IRGPincel sharedPincel].colorDeRellenoDelPincel;
+    [self.celda setNeedsDisplay];
 }
 
 -(void) touchesMoved:(NSSet *)touches
@@ -115,6 +126,7 @@
 
 - (void) touchesEnded:(NSSet *)touches
             withEvent:(UIEvent *)event{
+    [self.temporizador invalidate];
     if (self.estado != procesado){
         
         self.celda.procesada = false;
@@ -132,7 +144,7 @@
         
             NSTimeInterval duracion;
             duracion = objeto.timestamp-self.tiempoInicio;
-            if (duracion > .2){
+            if (duracion > TIEMPO_PULSACION){
                 [self.delegado despejarCelda:self];
             }
             else {

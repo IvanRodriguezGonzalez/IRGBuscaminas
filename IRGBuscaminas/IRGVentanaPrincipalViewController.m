@@ -33,7 +33,7 @@
 
 @property (nonatomic) IRGGestorDeEstados *gestorDeEstados;
 
-@property (nonatomic) UIView *vistaDeBloqueo;
+@property (nonatomic) UIImageView *vistaDeBloqueo;
 
 @property (weak, nonatomic) IBOutlet UITextField *tiempoDeJuegoSegundos;
 @property (weak, nonatomic) IBOutlet UITextField *tiempoDeJuegoMinutos;
@@ -291,7 +291,7 @@
     self.unidadMinutos.valorADibujar = 0;
     self.decenasMinutos.valorADibujar = 0;
     
-    self.separadorMinutosDeSegundos.backgroundColor = [colorFondoReloj colorWithAlphaComponent:alphaDelColorDelFondoDelReloj];
+    self.separadorMinutosDeSegundos.backgroundColor = [UIColor clearColor];
     self.separadorMinutosDeSegundos.textColor = colorSegmentosDelReloj;
     
 }
@@ -581,19 +581,16 @@
 
 - (void) mostrarImagenDeBloqueo:(NSString *)imagen {
     
-    CGRect frame = self.canvas.frame;
+    CGRect frame = CGRectMake(0, 0, self.canvas.frame.size.width, self.canvas.frame.size.height);
     if (!self.vistaDeBloqueo){
-        self.vistaDeBloqueo = [[UIView alloc]initWithFrame:frame];
+        self.vistaDeBloqueo = [[UIImageView alloc]initWithFrame:frame];
     }
     self.vistaDeBloqueo.backgroundColor = [[UIColor lightGrayColor] colorWithAlphaComponent:1];
-    [[UIApplication sharedApplication].keyWindow.rootViewController.view addSubview:self.vistaDeBloqueo];
-    UIImage *imagenDeBloqueo = [UIImage imageNamed:@"bloqueo"];
-    self.vistaDeBloqueo.
+    [self.canvas addSubview:self.vistaDeBloqueo];
+    UIImage *imagenDeBloqueo = [UIImage imageNamed:imagen];
+    self.vistaDeBloqueo.image = imagenDeBloqueo;
     
-    /*
-    self.imagenDeBloqueo.image = [UIImage imageNamed:imagen];
-    self.imagenDeBloqueo.backgroundColor = [UIColor lightGrayColor];
-    [self.canvas bringSubviewToFront:self.imagenDeBloqueo];*/
+
 }
 
 -(void) eliminarImagenDeBloqueo{
