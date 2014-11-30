@@ -13,7 +13,7 @@
 #import "IRGDatos.h"
 #import "IRGPincel.h"
 #import "IRGVentanaPrincipalViewController.h"
-#define TIEMPO_PULSACION 0.2
+#import "IRGSettings.h"
 
 
 @interface IRGCeldaViewController ()
@@ -87,7 +87,7 @@
         UITouch *objeto = touches.anyObject;
         self.tiempoInicio = objeto.timestamp;
 
-        self.temporizador = [NSTimer scheduledTimerWithTimeInterval:TIEMPO_PULSACION
+        self.temporizador = [NSTimer scheduledTimerWithTimeInterval:[IRGSettings sharedSettings].sensibilidadDelTap
                                                               target:self
                                                             selector:@selector(pulsacionLarga)
                                                             userInfo:nil
@@ -144,11 +144,18 @@
         
             NSTimeInterval duracion;
             duracion = objeto.timestamp-self.tiempoInicio;
-            if (duracion > TIEMPO_PULSACION){
-                [self.delegado despejarCelda:self];
+            bool esUnTap;
+            if (duracion < [IRGSettings sharedSettings].sensibilidadDelTap){
+                esUnTap = true;
             }
             else {
+                esUnTap = false;
+            }
+            if ((esUnTap & [IRGSettings sharedSettings].tapPoneBandera)  || (!esUnTap & ![IRGSettings sharedSettings].tapPoneBandera)){
                 [self.delegado ponerBandera:self];
+            }
+            else {
+              [self.delegado despejarCelda:self];
             }
         }
         else {

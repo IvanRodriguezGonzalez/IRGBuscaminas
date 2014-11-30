@@ -63,6 +63,7 @@
     [self iniciarGestorDeEstados];
     [self iniciarTotalMinasSieteSegmentos];
     [self iniciarTiempoDeJuegoSieteSegmentos];
+    self.barraBotonera.backgroundColor = [ [IRGPincel sharedPincel].colorDeRellenoDeLaBarraDeBotones  colorWithAlphaComponent:[IRGSettings sharedSettings].porcerntajeDeTransparenciaDelMenu];
     }
 
 - (void)didReceiveMemoryWarning {
@@ -78,19 +79,7 @@
 
 - (IBAction)mostrarConfiguracion:(UIButton *)sender {
     self.vistaDeConfiguracion =[[IRGSettingsViewController alloc]init];
-    
-    /*
-    [self.canvas addSubview:self.vistaDeConfiguracion.view];
-    
-    float posicionX =(self.canvas.frame.size.width-self.vistaDeConfiguracion.view.frame.size.width)/2;
-    float posicionY = (self.canvas.frame.size.height-self.vistaDeConfiguracion.view.frame.size.height)/2;
-    float ancho = self.vistaDeConfiguracion.view.frame.size.width;
-    float alto = self.vistaDeConfiguracion.view.frame.size.height;
-    CGRect settingsFrame = CGRectMake(posicionX, posicionY, ancho, alto);
-//    self.vistaDeConfiguracion.view.frame = settingsFrame;
-
-    [self.gestionarBotonera desactivarSettings];
-*/
+    self.vistaDeConfiguracion.barraDeBotones = self.barraBotonera;
 }
 
 

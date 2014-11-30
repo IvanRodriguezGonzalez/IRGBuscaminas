@@ -14,8 +14,10 @@
 @property (nonatomic) bool activarAyuda;
 @property (nonatomic) NSInteger tiempoDeAyuda;
 @property (nonatomic) NSInteger dificultad;
-@property (nonatomic) float porcerntajeDeTransparencia;
+@property (nonatomic) float porcerntajeDeTransparenciaDeLasCeldas;
+@property (nonatomic) float porcerntajeDeTransparenciaDelMenu;
 @property (nonatomic) BOOL tapPoneBandera;
+@property (nonatomic) float sensibilidadDelTap;
 
 
 + (instancetype) sharedSettings;

@@ -33,10 +33,6 @@
 
 - (void) desactivarBotonMostrarMinas;
 
-- (void) activarTextFieldNumeroDeMinas;
-
-- (void) desactivarTextFieldNumeroDeMinas;
-
 - (void) activarSettings;
 
 - (void) desactivarSettings;

@@ -21,6 +21,7 @@
 @property (nonatomic) UIColor * colorDeRellenoDePantallaDeError;
 @property (nonatomic) UIColor * colorDeRellenoDePantallaDeVictoria;
 @property (nonatomic) UIColor * colorDeRellenoDePantallaDeModoAyuda;
+@property (nonatomic) UIColor * colorDeRellenoDeLaBarraDeBotones;
 
 @property (nonatomic) UIColor * colorEtiquetaDeBotonSeleccionado;
 @property (nonatomic) UIColor * colorEtiquetaDeBotonNormal;

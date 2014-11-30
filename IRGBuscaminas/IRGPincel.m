@@ -54,7 +54,7 @@
 
 - (UIColor *) colorDeRellenoDelPincel{
    // return [UIColor clearColor];
-    return[[[UIColor alloc]initWithRed:.8 green:.8 blue:.8 alpha:1] colorWithAlphaComponent:[IRGSettings sharedSettings].porcerntajeDeTransparencia];
+    return[[[UIColor alloc]initWithRed:.8 green:.8 blue:.8 alpha:1] colorWithAlphaComponent:[IRGSettings sharedSettings].porcerntajeDeTransparenciaDeLasCeldas];
 }
 
 - (UIColor *) colorDeRellenoDeLaCeldaVacia{
@@ -79,5 +79,9 @@
 
 -(UIColor *) colorEtiquetaDeBotonNormal{
     return [[UIColor alloc] initWithRed:0 green:0 blue:0 alpha:1];
+}
+
+-(UIColor *) colorDeRellenoDeLaBarraDeBotones{
+    return [UIColor lightGrayColor];
 }
 @end

@@ -9,5 +9,6 @@
 #import <UIKit/UIKit.h>
 
 @interface IRGSettingsViewController : UIViewController
+@property (nonatomic) UIView *barraDeBotones;
 
 @end
