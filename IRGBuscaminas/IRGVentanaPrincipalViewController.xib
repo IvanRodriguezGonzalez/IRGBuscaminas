@@ -35,7 +35,7 @@
                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="b0v-7u-4Wx">
                     <rect key="frame" x="0.0" y="20" width="770" height="715"/>
                     <subviews>
-                        <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="fondo1" translatesAutoresizingMaskIntoConstraints="NO" id="jh8-Ee-EbS">
+                        <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="fondo5" translatesAutoresizingMaskIntoConstraints="NO" id="jh8-Ee-EbS">
                             <rect key="frame" x="0.0" y="0.0" width="770" height="715"/>
                         </imageView>
                         <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="hIG-gz-8Ow">
@@ -215,7 +215,7 @@
                                     <nil key="highlightedColor"/>
                                 </label>
                             </subviews>
-                            <color key="backgroundColor" red="0.40000000596046448" green="0.80000001192092896" blue="1" alpha="0.29999999999999999" colorSpace="calibratedRGB"/>
+                            <color key="backgroundColor" red="0.0" green="1" blue="1" alpha="0.5" colorSpace="calibratedRGB"/>
                             <constraints>
                                 <constraint firstItem="Qdt-QI-beK" firstAttribute="width" secondItem="zgi-zC-f8X" secondAttribute="width" id="0N5-Jk-yPm"/>
                                 <constraint firstItem="phd-fm-tez" firstAttribute="leading" secondItem="NmP-We-SRI" secondAttribute="trailing" id="0Po-kB-RAK"/>
@@ -369,7 +369,7 @@
     </objects>
     <resources>
         <image name="SystemPreferences" width="1024" height="1024"/>
-        <image name="fondo1" width="1024" height="1024"/>
+        <image name="fondo5" width="1024" height="1024"/>
         <image name="help normal" width="1024" height="1024"/>
         <image name="mejoresTiempos" width="1024" height="1024"/>
         <image name="minaApagada" width="128" height="128"/>

@@ -91,8 +91,7 @@
                                                               target:self
                                                             selector:@selector(pulsacionLarga)
                                                             userInfo:nil
-                                                             repeats:false];
-        
+                                                            repeats:false];
     }
 }
 

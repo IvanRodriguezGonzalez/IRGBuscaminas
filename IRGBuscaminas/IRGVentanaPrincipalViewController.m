@@ -75,6 +75,19 @@
 }
 
 
+- (void) touchesBegan:(NSSet *)touches
+            withEvent:(UIEvent *)event{
+    if (self.barraBotonera.alpha ==1){
+        self.barraBotonera.alpha =0;
+    }
+    else {
+        self.barraBotonera.alpha = 1;
+    }
+    
+}
+
+
+
 #pragma mark - Navigation primer nivel
 
 - (IBAction)mostrarConfiguracion:(UIButton *)sender {
