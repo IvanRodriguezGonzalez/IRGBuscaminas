@@ -10,7 +10,6 @@
 #define NUMERO_DE_COLUMNAS_POR_DEFECTO 10
 
 #import "IRGVentanaPrincipalViewController.h"
-#import "IRGMetodosComunes.h"
 #import "IRGSettings.h"
 #import "IRGLienzo.h"
 #import "IRGCeldaViewController.h"
@@ -23,18 +22,22 @@
 #import "IRGGestionarBotonera.h"
 #import "IRGSettingsViewController.h"
 #import "IRGSettings.h"
+#import "IRGHoraYMinutosSieteSegmentosViewController.h"
 #import "IRGDisplaySieteSegmentosViewController.h"
-#import "IRGNUmeroSieteSegmentosViewController.h"
 
+
+#define REDONDEO_DE_LAS_ESQUINAS_DEL_RELOJ 2
 #define COLOR_DEL_FONDO_DE_LA_VENTANA_DEL_RELOJ [UIColor blueColor]
 #define TRANSPARENCIA_DEL_COLOR_DE_FONDO_DE_LA_VENTANA_DEL_RELOJ .5
-#define TRANSPARENCIA_DEL_COLOR_DE_RELLENO_DE_LOS_SEGMENTOS .5
+#define TRANSPARENCIA_DEL_COLOR_DE_RELLENO_DE_LOS_SEGMENTOS 1
 #define COLOR_DE_RELENO_DE_LOS_SEGMENTOS_DEL_RELOJ  [UIColor whiteColor]
 #define COLOR_DEL_BORDE_DE_LOS_SEGMENTOS_DEL_RELOJ [UIColor blackColor]
 #define GROSOR_DE_LOS_SEGMENTOS_DEL_RELOJ 8
 #define SEPARACION_ENTRE_SEGMENTOS 0
 #define SEPARACION_HORIZONTAL_DE_LOS_SEGMENTOS_CON_LA_VISTA_CONTENEDORA 5
 #define SEPARACION_VERTICAL_DE_LOS_SEGMENTOS_CON_LA_VISTA_CONTENEDORA 5
+
+#define COLOR_DE_RELENO_DE_LOS_SEGMENTOS_DE_LAS_MINAS [UIColor redColor]
 
 
 @interface IRGVentanaPrincipalViewController ()
@@ -46,16 +49,13 @@
 
 @property (nonatomic) UIImageView *vistaDeBloqueo;
 
-@property (weak, nonatomic) IBOutlet UITextField *segundosDeTiempoDeJuegoTextField;
-@property (weak, nonatomic) IBOutlet UITextField *minutosDeTiempoDeJuegoTextField;
+@property (weak, nonatomic) IBOutlet UITextField *tiempoDeJuegoTextField;
 
 @property (nonatomic) IRGSettingsViewController * vistaDeConfiguracion;
 
-@property (nonatomic) IRGNUmeroSieteSegmentosViewController * unidadMinas;
-@property (nonatomic) IRGNUmeroSieteSegmentosViewController * decenaMinas;
+@property (nonatomic) IRGDisplaySieteSegmentosViewController * minas7SViewController;
 
-@property (nonatomic) IRGDisplaySieteSegmentosViewController * display7SDeLosSegundosEnJuego;
-@property (nonatomic) IRGDisplaySieteSegmentosViewController * display7SDeLosMinutosEnJuego;
+@property (nonatomic) IRGHoraYMinutosSieteSegmentosViewController * tiempoDeJuego7SViewController;
 
 @property (weak, nonatomic) IBOutlet UITextField *separadorMinutosDeSegundos;
 
@@ -197,8 +197,7 @@
     NSInteger banderasPendientes = [IRGSettings sharedSettings].numeroDeMinas;
     banderasPendientes = banderasPendientes-banderasPuestas;
     
-    [self.decenaMinas dibujarNumero: banderasPendientes/10];
-    [self.unidadMinas dibujarNumero : banderasPendientes%10];
+    [self.minas7SViewController dibujarNumero: banderasPendientes];
 }
 
 #pragma mark - Auxiliares primer nivel
@@ -206,22 +205,24 @@
 -(void) iniciarTiempoDeJuegoSieteSegmentos{
     
     
-    CGRect frameSegundosDelReloj = CGRectMake(0, 0,
-                                              self.tiempoDeJuegoSegundos.frame.size.width,
-                                              self.tiempoDeJuegoSegundos.frame.size.height);
     
-    self.unidadSegundos = [[IRGDisplaySieteSegmentosViewController alloc] initWithNibName:nil
-                                                                                  bundle:nil
-                                                                                withFrame:frameSegundosDelReloj
-                                                               withRedondeoDeLasEsquinas:10
-                                                                         numeroDeDisplays:2];
     
-    [self.tiempoDeJuegoSegundos addSubview:self.unidadSegundos.view];
+    CGRect frameTiempoDeJuego7S = CGRectMake(0, 0,
+                                              self.tiempoDeJuegoTextField.frame.size.width,
+                                              self.tiempoDeJuegoTextField.frame.size.height);
+    
+    self.tiempoDeJuego7SViewController = [[IRGHoraYMinutosSieteSegmentosViewController alloc]
+                                          initWithNibName:nil
+                                          bundle:nil
+                                          withFrame:frameTiempoDeJuego7S
+                                          withRedondeoDeLasEsquinas:REDONDEO_DE_LAS_ESQUINAS_DEL_RELOJ];
+                                          
+    [self.tiempoDeJuegoTextField addSubview:self.tiempoDeJuego7SViewController.view];
 
-    [self.unidadSegundos establecerVentanaConTransparencia:TRANSPARENCIA_DEL_COLOR_DE_FONDO_DE_LA_VENTANA_DEL_RELOJ
+    [self.tiempoDeJuego7SViewController establecerVentanaConTransparencia:TRANSPARENCIA_DEL_COLOR_DE_FONDO_DE_LA_VENTANA_DEL_RELOJ
                                               colorDeFondo:COLOR_DEL_FONDO_DE_LA_VENTANA_DEL_RELOJ];
     
-    [self.unidadSegundos  establecerSegmentoConGrosorDelTrazo:1
+    [self.tiempoDeJuego7SViewController  establecerSegmentoConGrosorDelTrazo:1
                                             grosorDelSegmento:GROSOR_DE_LOS_SEGMENTOS_DEL_RELOJ
                                      separacionEntreSegmentos:SEPARACION_ENTRE_SEGMENTOS
                     separacionHorizontalDelSegmentoConLaVista:SEPARACION_HORIZONTAL_DE_LOS_SEGMENTOS_CON_LA_VISTA_CONTENEDORA
@@ -230,96 +231,35 @@
                                               colorDelRelleno:COLOR_DE_RELENO_DE_LOS_SEGMENTOS_DEL_RELOJ
                                       transparenciaDelRelleno:TRANSPARENCIA_DEL_COLOR_DE_RELLENO_DE_LOS_SEGMENTOS];
 
-    [self.unidadSegundos dibujarNumero: 00];
-    
+    [self.tiempoDeJuego7SViewController mostrarHoraYMinutos: 0];
        
-    CGRect unidadMinutosFrame = CGRectMake(self.tiempoDeJuegoMinutos.frame.size.width/2,0,self.tiempoDeJuegoMinutos.frame.size.width/2,self.tiempoDeJuegoMinutos.frame.size.height);
-    
-    CGRect decenasMinutosFrame = CGRectMake(0,0,self.tiempoDeJuegoMinutos.frame.size.width/2,self.tiempoDeJuegoMinutos.frame.size.height);
-    self.unidadMinutos = [[IRGNUmeroSieteSegmentosViewController alloc] initWithNibName:nil
-                                                                                  bundle:nil
-                                                                               withFrame:unidadMinutosFrame
-                                                               withRedondeoDeLasEsquinas:0];
-    
-    self.decenasMinutos = [[IRGNUmeroSieteSegmentosViewController alloc] initWithNibName:nil
-                                                                                   bundle:nil
-                                                                                withFrame:decenasMinutosFrame
-                                                                withRedondeoDeLasEsquinas:0];
-    
-    [self.tiempoDeJuegoMinutos addSubview:self.unidadMinutos.view];
-    [self.tiempoDeJuegoMinutos addSubview:self.decenasMinutos.view];
-    
-    [self.unidadMinutos establecerVentanaConTransparencia:alphaDelColorDelFondoDelReloj
-                                              colorDeFondo:colorFondoReloj];
-    [self.decenasMinutos establecerVentanaConTransparencia:alphaDelColorDelFondoDelReloj
-                                               colorDeFondo:colorFondoReloj];
-    
-    [self.unidadMinutos  establecerSegmentoConGrosorDelTrazo:1
-                                            grosorDelSegmento:grosorDelSegmentoDelReloj
-                                     separacionEntreSegmentos:separacionEntreSegmentos
-                    separacionHorizontalDelSegmentoConLaVista:separacionHorizontalDelSegmentoConLaVista
-                      separacionVerticalDelSegmentoConLaVista:separacionVerticalDelSegmentoConLaVista
-                                        colorDelTrazoDelBorde:colorBordeSegmentosDelReloj
-                                             colorDelRelleno:colorSegmentosDelReloj
-                                      transparenciaDelRelleno:1];
-    
-    [self.decenasMinutos  establecerSegmentoConGrosorDelTrazo:1
-                                             grosorDelSegmento:grosorDelSegmentoDelReloj
-                                      separacionEntreSegmentos:separacionEntreSegmentos
-                     separacionHorizontalDelSegmentoConLaVista:separacionHorizontalDelSegmentoConLaVista
-                       separacionVerticalDelSegmentoConLaVista:separacionVerticalDelSegmentoConLaVista
-                                         colorDelTrazoDelBorde:colorBordeSegmentosDelReloj
-                                              colorDelRelleno:colorSegmentosDelReloj
-                                       transparenciaDelRelleno:1];
-    
-    [self.unidadMinutos dibujarNumero: 0];
-    [self.decenasMinutos dibujarNumero:0];
-    
     self.separadorMinutosDeSegundos.backgroundColor = [UIColor clearColor];
-    self.separadorMinutosDeSegundos.textColor = colorSegmentosDelReloj;
+    self.separadorMinutosDeSegundos.textColor = COLOR_DEL_BORDE_DE_LOS_SEGMENTOS_DEL_RELOJ;
     
 }
 
 -(void) iniciarTotalMinasSieteSegmentos {
     
-    CGRect unidadMinas = CGRectMake(self.totalMinas.frame.size.width/2,0,self.totalMinas.frame.size.width/2,self.totalMinas.frame.size.height);
-    CGRect decenaMinas = CGRectMake(0,0,self.totalMinas.frame.size.width/2,self.totalMinas.frame.size.height);
-    self.unidadMinas = [[IRGNUmeroSieteSegmentosViewController alloc] initWithNibName:nil
+    CGRect frameMinas7S = CGRectMake(0,0,self.totalMinas.frame.size.width,self.totalMinas.frame.size.height);
+    
+    self.minas7SViewController = [[IRGDisplaySieteSegmentosViewController alloc] initWithNibName:nil
                                                                                bundle:nil
-                                                                            withFrame:unidadMinas
-                                                            withRedondeoDeLasEsquinas:0];
+                                                                            withFrame:frameMinas7S
+                                                            withRedondeoDeLasEsquinas:REDONDEO_DE_LAS_ESQUINAS_DEL_RELOJ
+                                                                              cantidadDeCeldas7S:2];
+    [self.totalMinas addSubview:self.minas7SViewController.view];
     
-    self.decenaMinas = [[IRGNUmeroSieteSegmentosViewController alloc] initWithNibName:nil
-                                                                               bundle:nil
-                                                                            withFrame:decenaMinas
-                                                            withRedondeoDeLasEsquinas:0];
-    
-    [self.totalMinas addSubview:self.unidadMinas.view];
-    [self.totalMinas addSubview:self.decenaMinas.view];
-    
-    [self.unidadMinas establecerVentanaConTransparencia:.5
-                                           colorDeFondo:[UIColor lightGrayColor]];
-    [self.decenaMinas establecerVentanaConTransparencia:.5
+    [self.minas7SViewController establecerVentanaConTransparencia:TRANSPARENCIA_DEL_COLOR_DE_FONDO_DE_LA_VENTANA_DEL_RELOJ
                                            colorDeFondo:[UIColor lightGrayColor]];
     
-    [self.unidadMinas  establecerSegmentoConGrosorDelTrazo:1
-                                         grosorDelSegmento:8
-                                  separacionEntreSegmentos:0
-                 separacionHorizontalDelSegmentoConLaVista:5
-                   separacionVerticalDelSegmentoConLaVista:5
-                                     colorDelTrazoDelBorde:[UIColor blackColor]
-                                           colorDelRelleno:[UIColor redColor]
-                                   transparenciaDelRelleno:1];
-    
-    [self.decenaMinas  establecerSegmentoConGrosorDelTrazo:1
-                                         grosorDelSegmento:8
-                                  separacionEntreSegmentos:0
-                 separacionHorizontalDelSegmentoConLaVista:5
-                   separacionVerticalDelSegmentoConLaVista:5
-                                     colorDelTrazoDelBorde:[UIColor blackColor]
-                                           colorDelRelleno:[UIColor redColor]
-                                   transparenciaDelRelleno:1];
-
+    [self.minas7SViewController  establecerSegmentoConGrosorDelTrazo:1
+                                                   grosorDelSegmento:GROSOR_DE_LOS_SEGMENTOS_DEL_RELOJ
+                                            separacionEntreSegmentos:SEPARACION_ENTRE_SEGMENTOS
+                           separacionHorizontalDelSegmentoConLaVista:SEPARACION_HORIZONTAL_DE_LOS_SEGMENTOS_CON_LA_VISTA_CONTENEDORA
+                             separacionVerticalDelSegmentoConLaVista:SEPARACION_VERTICAL_DE_LOS_SEGMENTOS_CON_LA_VISTA_CONTENEDORA
+                                               colorDelTrazoDelBorde:COLOR_DEL_BORDE_DE_LOS_SEGMENTOS_DEL_RELOJ
+                                                     colorDelRelleno:COLOR_DE_RELENO_DE_LOS_SEGMENTOS_DE_LAS_MINAS
+                                             transparenciaDelRelleno:TRANSPARENCIA_DEL_COLOR_DE_RELLENO_DE_LOS_SEGMENTOS];
 }
 
 
@@ -532,15 +472,7 @@
     if (self.tiempoDeJuegoEnSegundos > ((59*60)+59)){
         self.tiempoDeJuegoEnSegundos = 59*60+59;
     }
-    int segundosEnJuego = self.tiempoDeJuegoEnSegundos % 60;
-    
-    [self.unidadSegundos  dibujarNumero: segundosEnJuego %10];
-    [self.decenasSegundos dibujarNumero:segundosEnJuego /10 ];
-    
-    int minutosEnJuego =(self.tiempoDeJuegoEnSegundos /60) % 60;
-    
-    [self.unidadMinutos dibujarNumero : minutosEnJuego %10];
-    [self.decenasMinutos dibujarNumero : minutosEnJuego /10];
+    [self.tiempoDeJuego7SViewController mostrarHoraYMinutos:self.tiempoDeJuegoEnSegundos];
 }
 
 - (void) mostrarImagenDeBloqueo:(NSString *)imagen {

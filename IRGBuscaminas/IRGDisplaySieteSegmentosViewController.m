@@ -10,12 +10,11 @@
 #import "IRGNUmeroSieteSegmentosViewController.h"
 
 @interface IRGDisplaySieteSegmentosViewController ()
-
-#pragma mark - Propiedades privadas
-@property (nonatomic) CGRect frameDeLaVista;
-@property (nonatomic) NSInteger redondeoDeLasEsquinas;
-@property (nonatomic) NSInteger numeroDeDisplays;
-@property (nonatomic) NSMutableArray * listaDeSegmentos;
+    #pragma mark - Propiedades privadas
+    @property (nonatomic) CGRect frameDelDisplay7S;
+    @property (nonatomic) NSInteger redondeoDeLasEsquinas;
+    @property (nonatomic) NSInteger cantidadDeCeldas7S;
+    @property (nonatomic) NSMutableArray * listaDeCeldas7S;
 @end
 
 #pragma mark -
@@ -28,15 +27,15 @@
                          bundle:(NSBundle *)nibBundleOrNil
                       withFrame:(CGRect) frame
       withRedondeoDeLasEsquinas:(NSInteger)redondeoDeLasEsquinas
-               numeroDeDisplays:(NSInteger) numeroDeDisplays;
+             cantidadDeCeldas7S:(NSInteger) cantidadDeCeldas7S;
 {
     
     self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
     if (self){
-        _frameDeLaVista = frame;
+        _frameDelDisplay7S = frame;
         _redondeoDeLasEsquinas = redondeoDeLasEsquinas;
-        _numeroDeDisplays = numeroDeDisplays;
-        _listaDeSegmentos = [[NSMutableArray alloc] init];
+        _cantidadDeCeldas7S = cantidadDeCeldas7S;
+        _listaDeCeldas7S = [[NSMutableArray alloc] init];
     }
     return self;
 }
@@ -51,44 +50,34 @@
 #pragma mark - Overrides
 
 -(void)loadView{
-    CGRect frameDelDisplay =self.frameDeLaVista;
-    UIView * displaySieteSegmentos = [[UIView alloc]initWithFrame:frameDelDisplay];
-    self.view = displaySieteSegmentos;
     
-    IRGNUmeroSieteSegmentosViewController *numeroSieteSegmentosViewController;
-    float anchoDeCadaNumero = self.frameDeLaVista.size.width/self.numeroDeDisplays;
+    self.view = [[UIView alloc]initWithFrame:self.frameDelDisplay7S];
     
-    for (int numeroDeSieteSegmentos = 0;numeroDeSieteSegmentos< self.numeroDeDisplays;numeroDeSieteSegmentos++){
-        
-        
-        CGRect frameDelDisplaySieteSegmengos = CGRectMake(numeroDeSieteSegmentos*anchoDeCadaNumero
+    IRGNUmeroSieteSegmentosViewController *celda7SViewController;
+    float anchoDeLaCelda7S = self.frameDelDisplay7S.size.width/self.cantidadDeCeldas7S;
+    
+    for (int  numeroDeCelda7S= 0;numeroDeCelda7S< self.cantidadDeCeldas7S;numeroDeCelda7S++){
+        CGRect frameDeLaCeldaDeNumero7S = CGRectMake(numeroDeCelda7S*anchoDeLaCelda7S
                                                           , 0
-                                                          , anchoDeCadaNumero
-                                                          , self.frameDeLaVista.size.height);
+                                                          , anchoDeLaCelda7S
+                                                          , self.frameDelDisplay7S.size.height);
         
-        numeroSieteSegmentosViewController = [[IRGNUmeroSieteSegmentosViewController alloc] initWithNibName:nil
+        celda7SViewController = [[IRGNUmeroSieteSegmentosViewController alloc] initWithNibName:nil
                                                                                                       bundle:nil
-                                                                                                   withFrame:frameDelDisplaySieteSegmengos
+                                                                                                   withFrame:frameDeLaCeldaDeNumero7S
                                                                                    withRedondeoDeLasEsquinas:self.redondeoDeLasEsquinas];
-        [self.listaDeSegmentos insertObject:numeroSieteSegmentosViewController atIndex:0];
-        [self.view addSubview:numeroSieteSegmentosViewController.view];
+        [self.listaDeCeldas7S insertObject:celda7SViewController atIndex:0];
+        [self.view addSubview:celda7SViewController.view];
     }
-    
 }
-
-- (void)viewDidLoad {
-    [super viewDidLoad];
-    // Do any additional setup after loading the view.
-}
-
 
 #pragma mark - Metodos publicos
 
 - (void) establecerVentanaConTransparencia:(float)porcentajeDeTransparencia
                               colorDeFondo:(UIColor *)colorDeFondo{
     
-    for (IRGNUmeroSieteSegmentosViewController * numeroSieteSegmentos in self.listaDeSegmentos){
-        [numeroSieteSegmentos establecerVentanaConTransparencia:porcentajeDeTransparencia
+    for (IRGNUmeroSieteSegmentosViewController * celda7S in self.listaDeCeldas7S){
+        [celda7S establecerVentanaConTransparencia:porcentajeDeTransparencia
                                                    colorDeFondo:colorDeFondo];
     }
 }
@@ -102,8 +91,8 @@
                             colorDelRelleno:(UIColor *)colorDelRelleno
                     transparenciaDelRelleno:(float)transparenciaDelRelleno{
     
-    for (IRGNUmeroSieteSegmentosViewController * numeroSieteSegmentos in self.listaDeSegmentos){
-        [numeroSieteSegmentos  establecerSegmentoConGrosorDelTrazo:grosorDelTrazo
+    for (IRGNUmeroSieteSegmentosViewController * celda7S in self.listaDeCeldas7S){
+        [celda7S  establecerSegmentoConGrosorDelTrazo:grosorDelTrazo
                                                 grosorDelSegmento:grosorDelSegmento
                                          separacionEntreSegmentos:separacionEntreSegmentos
                         separacionHorizontalDelSegmentoConLaVista:separacionHorizontalDelSegmentoConLaVista
@@ -114,13 +103,11 @@
     }
 }
 
--(void) dibujarNumero:(NSInteger) numero{
-    for (int numeroDeSegmento = 0;numeroDeSegmento<self.listaDeSegmentos.count;numeroDeSegmento++){
-        [self.listaDeSegmentos[numeroDeSegmento] dibujarNumero:(numero % 10)];
-        numero  = numero/10;
+-(void) dibujarNumero:(NSInteger) valorAMostrar{
+    for (int numeroDeCelda7S = 0;numeroDeCelda7S<self.listaDeCeldas7S.count;numeroDeCelda7S++){
+        [self.listaDeCeldas7S[numeroDeCelda7S] dibujarNumero:(valorAMostrar % 10)];
+        valorAMostrar  = valorAMostrar/10;
     }
 }
-
-
 
 @end

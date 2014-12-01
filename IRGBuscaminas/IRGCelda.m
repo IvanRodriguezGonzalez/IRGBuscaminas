@@ -191,10 +191,11 @@
                   conColor:(UIColor *)color
                  conGrosor:(NSInteger) grosor{
     
-    CGRect  linea = CGRectMake(puntoInicial.x,puntoInicial.y,puntoFinal.x,puntoFinal.y);
-    [color setStroke];
-    UIBezierPath * path = [UIBezierPath bezierPathWithRect:linea];
+    
+    UIBezierPath * path = [UIBezierPath bezierPath];
     [path moveToPoint:puntoInicial];
+    [path addLineToPoint:puntoFinal];
+    [color setStroke];
     path.lineWidth = grosor;
     [path stroke];
 }

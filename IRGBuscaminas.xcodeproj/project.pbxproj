@@ -12,9 +12,11 @@
 		320334411A0EBDF3000FFAEF /* IRGPrincipalNavigationViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 320334401A0EBDF3000FFAEF /* IRGPrincipalNavigationViewController.m */; };
 		320334451A0EC9A7000FFAEF /* IRGMejoresTiemposViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 320334431A0EC9A7000FFAEF /* IRGMejoresTiemposViewController.m */; };
 		320334461A0EC9A7000FFAEF /* IRGMejoresTiemposViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 320334441A0EC9A7000FFAEF /* IRGMejoresTiemposViewController.xib */; };
-		320334491A0F20A4000FFAEF /* IRGMetodosComunes.m in Sources */ = {isa = PBXBuildFile; fileRef = 320334481A0F20A4000FFAEF /* IRGMetodosComunes.m */; };
 		32A1DB121A0FAFAB00AA33CE /* IRGPreguntarNombreViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 32A1DB101A0FAFAB00AA33CE /* IRGPreguntarNombreViewController.m */; };
 		32A1DB131A0FAFAB00AA33CE /* IRGPreguntarNombreViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 32A1DB111A0FAFAB00AA33CE /* IRGPreguntarNombreViewController.xib */; };
+		32B9B5481A2CFAC5008AAD51 /* IRGHoraYMinutosSieteSegmentosViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 32B9B5471A2CFAC5008AAD51 /* IRGHoraYMinutosSieteSegmentosViewController.m */; };
+		32B9B54C1A2D07A5008AAD51 /* IRGMetodosComunes.m in Sources */ = {isa = PBXBuildFile; fileRef = 32B9B54B1A2D07A5008AAD51 /* IRGMetodosComunes.m */; };
+		32B9B54F1A2D0F5D008AAD51 /* IRGSeparador.m in Sources */ = {isa = PBXBuildFile; fileRef = 32B9B54E1A2D0F5D008AAD51 /* IRGSeparador.m */; };
 		32C15C3B1A2A0D7F0098A012 /* IRGNumeroSieteSegmentos.m in Sources */ = {isa = PBXBuildFile; fileRef = 32C15C3A1A2A0D7F0098A012 /* IRGNumeroSieteSegmentos.m */; };
 		32C15C3E1A2A0F770098A012 /* IRGDisplaySieteSegmentosViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 32C15C3D1A2A0F770098A012 /* IRGDisplaySieteSegmentosViewController.m */; };
 		E12E5D3A1A10F36E0047FCCF /* IRGEstadoDelJuegoEnJuego.m in Sources */ = {isa = PBXBuildFile; fileRef = E12E5D391A10F36E0047FCCF /* IRGEstadoDelJuegoEnJuego.m */; };
@@ -64,11 +66,15 @@
 		320334421A0EC9A7000FFAEF /* IRGMejoresTiemposViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IRGMejoresTiemposViewController.h; sourceTree = "<group>"; };
 		320334431A0EC9A7000FFAEF /* IRGMejoresTiemposViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = IRGMejoresTiemposViewController.m; sourceTree = "<group>"; };
 		320334441A0EC9A7000FFAEF /* IRGMejoresTiemposViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = IRGMejoresTiemposViewController.xib; sourceTree = "<group>"; };
-		320334471A0F20A4000FFAEF /* IRGMetodosComunes.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IRGMetodosComunes.h; sourceTree = "<group>"; };
-		320334481A0F20A4000FFAEF /* IRGMetodosComunes.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = IRGMetodosComunes.m; sourceTree = "<group>"; };
 		32A1DB0F1A0FAFAB00AA33CE /* IRGPreguntarNombreViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IRGPreguntarNombreViewController.h; sourceTree = "<group>"; };
 		32A1DB101A0FAFAB00AA33CE /* IRGPreguntarNombreViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = IRGPreguntarNombreViewController.m; sourceTree = "<group>"; };
 		32A1DB111A0FAFAB00AA33CE /* IRGPreguntarNombreViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = IRGPreguntarNombreViewController.xib; sourceTree = "<group>"; };
+		32B9B5461A2CFAC5008AAD51 /* IRGHoraYMinutosSieteSegmentosViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IRGHoraYMinutosSieteSegmentosViewController.h; sourceTree = "<group>"; };
+		32B9B5471A2CFAC5008AAD51 /* IRGHoraYMinutosSieteSegmentosViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = IRGHoraYMinutosSieteSegmentosViewController.m; sourceTree = "<group>"; };
+		32B9B54A1A2D07A5008AAD51 /* IRGMetodosComunes.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IRGMetodosComunes.h; sourceTree = "<group>"; };
+		32B9B54B1A2D07A5008AAD51 /* IRGMetodosComunes.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = IRGMetodosComunes.m; sourceTree = "<group>"; };
+		32B9B54D1A2D0F5D008AAD51 /* IRGSeparador.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IRGSeparador.h; sourceTree = "<group>"; };
+		32B9B54E1A2D0F5D008AAD51 /* IRGSeparador.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = IRGSeparador.m; sourceTree = "<group>"; };
 		32C15C391A2A0D7F0098A012 /* IRGNumeroSieteSegmentos.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IRGNumeroSieteSegmentos.h; sourceTree = "<group>"; };
 		32C15C3A1A2A0D7F0098A012 /* IRGNumeroSieteSegmentos.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = IRGNumeroSieteSegmentos.m; sourceTree = "<group>"; };
 		32C15C3C1A2A0F770098A012 /* IRGDisplaySieteSegmentosViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IRGDisplaySieteSegmentosViewController.h; sourceTree = "<group>"; };
@@ -145,10 +151,25 @@
 		3203344A1A0F20A9000FFAEF /* Comunes */ = {
 			isa = PBXGroup;
 			children = (
-				320334471A0F20A4000FFAEF /* IRGMetodosComunes.h */,
-				320334481A0F20A4000FFAEF /* IRGMetodosComunes.m */,
+				32B9B54A1A2D07A5008AAD51 /* IRGMetodosComunes.h */,
+				32B9B54B1A2D07A5008AAD51 /* IRGMetodosComunes.m */,
 			);
 			name = Comunes;
+			sourceTree = "<group>";
+		};
+		32B9B5491A2CFAE1008AAD51 /* Siete Segmentos */ = {
+			isa = PBXGroup;
+			children = (
+				32C15C3C1A2A0F770098A012 /* IRGDisplaySieteSegmentosViewController.h */,
+				32C15C3D1A2A0F770098A012 /* IRGDisplaySieteSegmentosViewController.m */,
+				32B9B54D1A2D0F5D008AAD51 /* IRGSeparador.h */,
+				32B9B54E1A2D0F5D008AAD51 /* IRGSeparador.m */,
+				32B9B5461A2CFAC5008AAD51 /* IRGHoraYMinutosSieteSegmentosViewController.h */,
+				32B9B5471A2CFAC5008AAD51 /* IRGHoraYMinutosSieteSegmentosViewController.m */,
+				E1A9A5CA1A13CB9B0020AE98 /* IRGNUmeroSieteSegmentosViewController.h */,
+				E1A9A5CB1A13CB9B0020AE98 /* IRGNUmeroSieteSegmentosViewController.m */,
+			);
+			name = "Siete Segmentos";
 			sourceTree = "<group>";
 		};
 		E12E5D3E1A10FD0F0047FCCF /* Estados del juego */ = {
@@ -276,19 +297,16 @@
 		E1CD31A91A0BCC1300D317A8 /* Controlador */ = {
 			isa = PBXGroup;
 			children = (
+				32B9B5491A2CFAE1008AAD51 /* Siete Segmentos */,
 				E12E5D3E1A10FD0F0047FCCF /* Estados del juego */,
 				E1CD31871A0BCB8900D317A8 /* AppDelegate.h */,
 				E1CD31881A0BCB8900D317A8 /* AppDelegate.m */,
 				E1D41DC31A0BEF6B0059C46C /* IRGCeldaViewController.h */,
 				E1D41DC41A0BEF6B0059C46C /* IRGCeldaViewController.m */,
-				32C15C3C1A2A0F770098A012 /* IRGDisplaySieteSegmentosViewController.h */,
-				32C15C3D1A2A0F770098A012 /* IRGDisplaySieteSegmentosViewController.m */,
 				E1CB22A61A126BAC00D9EF6F /* IRGGestionarBotonera.h */,
 				E1CB22A71A126BAC00D9EF6F /* IRGGestionarBotonera.m */,
 				320334421A0EC9A7000FFAEF /* IRGMejoresTiemposViewController.h */,
 				320334431A0EC9A7000FFAEF /* IRGMejoresTiemposViewController.m */,
-				E1A9A5CA1A13CB9B0020AE98 /* IRGNUmeroSieteSegmentosViewController.h */,
-				E1A9A5CB1A13CB9B0020AE98 /* IRGNUmeroSieteSegmentosViewController.m */,
 				32A1DB0F1A0FAFAB00AA33CE /* IRGPreguntarNombreViewController.h */,
 				32A1DB101A0FAFAB00AA33CE /* IRGPreguntarNombreViewController.m */,
 				3203343F1A0EBDF3000FFAEF /* IRGPrincipalNavigationViewController.h */,
@@ -422,14 +440,15 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				32B9B54C1A2D07A5008AAD51 /* IRGMetodosComunes.m in Sources */,
 				E12E5D3D1A10FD090047FCCF /* IRGEstadoDelJuegoInicio.m in Sources */,
 				E1FE2CEA1A114242004333F9 /* IRGEstadoDelJuegoEnJuegoConAyuda.m in Sources */,
 				E1CD31AD1A0BCCF900D317A8 /* IRGCelda.m in Sources */,
 				320334451A0EC9A7000FFAEF /* IRGMejoresTiemposViewController.m in Sources */,
+				32B9B5481A2CFAC5008AAD51 /* IRGHoraYMinutosSieteSegmentosViewController.m in Sources */,
 				E1D41DCE1A0BFEC30059C46C /* IRGDatos.m in Sources */,
 				E1C543611A12043100D5B23A /* IRGEstadoDelJuegoFinalizadoConError.m in Sources */,
 				320334411A0EBDF3000FFAEF /* IRGPrincipalNavigationViewController.m in Sources */,
-				320334491A0F20A4000FFAEF /* IRGMetodosComunes.m in Sources */,
 				E1CB22A81A126BAC00D9EF6F /* IRGGestionarBotonera.m in Sources */,
 				E1D41DC51A0BEF6B0059C46C /* IRGCeldaViewController.m in Sources */,
 				E1A9A5CC1A13CB9B0020AE98 /* IRGNUmeroSieteSegmentosViewController.m in Sources */,
@@ -449,6 +468,7 @@
 				E1C5435E1A12030C00D5B23A /* IRGEstadoDelJuegoFinalizadoSinErrorConAyuda.m in Sources */,
 				32C15C3E1A2A0F770098A012 /* IRGDisplaySieteSegmentosViewController.m in Sources */,
 				E1CD31861A0BCB8900D317A8 /* main.m in Sources */,
+				32B9B54F1A2D0F5D008AAD51 /* IRGSeparador.m in Sources */,
 				32C15C3B1A2A0D7F0098A012 /* IRGNumeroSieteSegmentos.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
