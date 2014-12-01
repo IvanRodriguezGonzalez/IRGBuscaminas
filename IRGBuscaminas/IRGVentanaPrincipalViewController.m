@@ -26,9 +26,9 @@
 #import "IRGDisplaySieteSegmentosViewController.h"
 
 
-#define REDONDEO_DE_LAS_ESQUINAS_DEL_RELOJ 2
+#define REDONDEO_DE_LAS_ESQUINAS_DEL_RELOJ 0
 #define COLOR_DEL_FONDO_DE_LA_VENTANA_DEL_RELOJ [UIColor blueColor]
-#define TRANSPARENCIA_DEL_COLOR_DE_FONDO_DE_LA_VENTANA_DEL_RELOJ .5
+#define TRANSPARENCIA_DEL_COLOR_DE_FONDO_DE_LA_VENTANA_DEL_RELOJ .2
 #define TRANSPARENCIA_DEL_COLOR_DE_RELLENO_DE_LOS_SEGMENTOS 1
 #define COLOR_DE_RELENO_DE_LOS_SEGMENTOS_DEL_RELOJ  [UIColor whiteColor]
 #define COLOR_DEL_BORDE_DE_LOS_SEGMENTOS_DEL_RELOJ [UIColor blackColor]
@@ -38,7 +38,7 @@
 #define SEPARACION_VERTICAL_DE_LOS_SEGMENTOS_CON_LA_VISTA_CONTENEDORA 5
 
 #define COLOR_DE_RELENO_DE_LOS_SEGMENTOS_DE_LAS_MINAS [UIColor redColor]
-
+#define COLOR_DEL_FONDO_DE_LA_VENTANA_DE_LAS_MINAS [UIColor lightGrayColor]
 
 @interface IRGVentanaPrincipalViewController ()
 @property (nonatomic)  NSInteger numeroDeFilas;
@@ -220,7 +220,7 @@
     [self.tiempoDeJuegoTextField addSubview:self.tiempoDeJuego7SViewController.view];
 
     [self.tiempoDeJuego7SViewController establecerVentanaConTransparencia:TRANSPARENCIA_DEL_COLOR_DE_FONDO_DE_LA_VENTANA_DEL_RELOJ
-                                              colorDeFondo:COLOR_DEL_FONDO_DE_LA_VENTANA_DEL_RELOJ];
+                                              colorDeFondo:COLOR_DEL_FONDO_DE_LA_VENTANA_DE_LAS_MINAS];
     
     [self.tiempoDeJuego7SViewController  establecerSegmentoConGrosorDelTrazo:1
                                             grosorDelSegmento:GROSOR_DE_LOS_SEGMENTOS_DEL_RELOJ
@@ -250,7 +250,7 @@
     [self.totalMinas addSubview:self.minas7SViewController.view];
     
     [self.minas7SViewController establecerVentanaConTransparencia:TRANSPARENCIA_DEL_COLOR_DE_FONDO_DE_LA_VENTANA_DEL_RELOJ
-                                           colorDeFondo:[UIColor lightGrayColor]];
+                                           colorDeFondo:COLOR_DEL_FONDO_DE_LA_VENTANA_DE_LAS_MINAS];
     
     [self.minas7SViewController  establecerSegmentoConGrosorDelTrazo:1
                                                    grosorDelSegmento:GROSOR_DE_LOS_SEGMENTOS_DEL_RELOJ
