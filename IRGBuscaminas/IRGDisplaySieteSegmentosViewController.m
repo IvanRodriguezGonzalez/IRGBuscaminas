@@ -10,12 +10,15 @@
 #import "IRGNUmeroSieteSegmentosViewController.h"
 
 @interface IRGDisplaySieteSegmentosViewController ()
+
+#pragma mark - Propiedades privadas
 @property (nonatomic) CGRect frameDeLaVista;
 @property (nonatomic) NSInteger redondeoDeLasEsquinas;
 @property (nonatomic) NSInteger numeroDeDisplays;
 @property (nonatomic) NSMutableArray * listaDeSegmentos;
 @end
 
+#pragma mark -
 @implementation IRGDisplaySieteSegmentosViewController
 
 #pragma mark - Inicializadores
@@ -45,7 +48,7 @@
 };
 
 
-#pragma mark Overrides
+#pragma mark - Overrides
 
 -(void)loadView{
     CGRect frameDelDisplay =self.frameDeLaVista;
@@ -67,23 +70,17 @@
                                                                                                       bundle:nil
                                                                                                    withFrame:frameDelDisplaySieteSegmengos
                                                                                    withRedondeoDeLasEsquinas:self.redondeoDeLasEsquinas];
-        [self.listaDeSegmentos addObject:numeroSieteSegmentosViewController];
+        [self.listaDeSegmentos insertObject:numeroSieteSegmentosViewController atIndex:0];
         [self.view addSubview:numeroSieteSegmentosViewController.view];
     }
     
 }
-    
-
 
 - (void)viewDidLoad {
     [super viewDidLoad];
     // Do any additional setup after loading the view.
 }
 
-- (void)didReceiveMemoryWarning {
-    [super didReceiveMemoryWarning];
-    // Dispose of any resources that can be recreated.
-}
 
 #pragma mark - Metodos publicos
 
@@ -118,10 +115,10 @@
 }
 
 -(void) dibujarNumero:(NSInteger) numero{
-    for (IRGNUmeroSieteSegmentosViewController * numeroSieteSegmentos in self.listaDeSegmentos){
-        [numeroSieteSegmentos dibujarNumero: 8];
+    for (int numeroDeSegmento = 0;numeroDeSegmento<self.listaDeSegmentos.count;numeroDeSegmento++){
+        [self.listaDeSegmentos[numeroDeSegmento] dibujarNumero:(numero % 10)];
+        numero  = numero/10;
     }
-    [self.view setNeedsDisplay];
 }
 
 

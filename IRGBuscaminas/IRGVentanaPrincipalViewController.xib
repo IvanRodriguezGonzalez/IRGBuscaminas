@@ -20,9 +20,9 @@
                 <outlet property="etiquetaBotonPrincipal" destination="tqR-vs-kuf" id="YHz-6h-opl"/>
                 <outlet property="etiquetaSettings" destination="RF8-s8-M45" id="Y7K-hM-KTL"/>
                 <outlet property="etiquetaTextFieldTotalMinas" destination="PLV-sg-L2k" id="tGU-Pl-7Lh"/>
+                <outlet property="minutosDeTiempoDeJuegoTextField" destination="hSA-zv-iZP" id="Okn-KA-PbG"/>
+                <outlet property="segundosDeTiempoDeJuegoTextField" destination="phd-fm-tez" id="JDE-Mk-Rss"/>
                 <outlet property="separadorMinutosDeSegundos" destination="NmP-We-SRI" id="cP9-tg-ZDA"/>
-                <outlet property="tiempoDeJuegoMinutos" destination="hSA-zv-iZP" id="IUC-aU-ktq"/>
-                <outlet property="tiempoDeJuegoSegundos" destination="phd-fm-tez" id="8Uz-Cl-Sus"/>
                 <outlet property="totalMinas" destination="OW5-p5-RKd" id="c7E-2I-BcO"/>
                 <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
             </connections>
@@ -61,7 +61,7 @@
                                         <action selector="accionMostrarMinas:" destination="-1" eventType="touchUpInside" id="CrQ-Ky-3FC"/>
                                     </connections>
                                 </button>
-                                <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="right" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="OW5-p5-RKd">
+                                <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" textAlignment="right" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="OW5-p5-RKd">
                                     <rect key="frame" x="670" y="20" width="80" height="70"/>
                                     <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                     <constraints>
@@ -93,7 +93,7 @@
                                         <action selector="accionJugar:" destination="-1" eventType="touchUpInside" id="F5n-bw-gSf"/>
                                     </connections>
                                 </button>
-                                <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" enabled="NO" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="phd-fm-tez">
+                                <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" enabled="NO" contentHorizontalAlignment="left" contentVerticalAlignment="center" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="phd-fm-tez">
                                     <rect key="frame" x="582" y="20" width="80" height="70"/>
                                     <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                     <constraints>
@@ -198,7 +198,7 @@
                                     <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                                     <nil key="highlightedColor"/>
                                 </label>
-                                <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" enabled="NO" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="hSA-zv-iZP">
+                                <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" enabled="NO" contentHorizontalAlignment="left" contentVerticalAlignment="center" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="hSA-zv-iZP">
                                     <rect key="frame" x="487" y="20" width="80" height="70"/>
                                     <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                     <constraints>
