@@ -27,7 +27,7 @@
                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="b0v-7u-4Wx">
                     <rect key="frame" x="0.0" y="20" width="770" height="715"/>
                     <subviews>
-                        <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="fondo christmas2" translatesAutoresizingMaskIntoConstraints="NO" id="jh8-Ee-EbS">
+                        <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="my-ipad-mini-wallpaper-hd-simple-2049304152" translatesAutoresizingMaskIntoConstraints="NO" id="jh8-Ee-EbS">
                             <rect key="frame" x="0.0" y="0.0" width="770" height="715"/>
                         </imageView>
                         <view multipleTouchEnabled="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="zp6-fT-8XJ">
@@ -292,10 +292,10 @@
     </objects>
     <resources>
         <image name="SystemPreferences" width="1024" height="1024"/>
-        <image name="fondo christmas2" width="1024" height="1024"/>
         <image name="help normal" width="1024" height="1024"/>
         <image name="mejoresTiempos" width="1024" height="1024"/>
         <image name="minaApagada" width="128" height="128"/>
+        <image name="my-ipad-mini-wallpaper-hd-simple-2049304152" width="1024" height="1024"/>
         <image name="pausa" width="1024" height="1024"/>
     </resources>
 </document>
