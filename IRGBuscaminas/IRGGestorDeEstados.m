@@ -76,6 +76,10 @@
     [self.estadoDelJuego establecerBotones];
 }
 
+- (void) mostrarYOcultarBotones{
+    [self.estadoDelJuego mostrarYOcultarBotones];
+}
+
 
 #pragma mark - Accesors
 
@@ -83,7 +87,6 @@
 -(void) setEstadoDelJuego:(id<IRGEstadosDelJuego>)estadoDelJuego{
     _estadoDelJuego = estadoDelJuego;
     [self establecerBotones];
-    self.delegado.etiquetaBotonPrincipal.text = [NSString stringWithFormat:@"%@",self.estadoDelJuego];
 }
 
 #pragma mark - metodos propios primer nivel

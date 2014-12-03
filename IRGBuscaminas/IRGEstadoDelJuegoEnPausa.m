@@ -76,4 +76,8 @@
     [self.delegado eliminarImagenDeBloqueo];
 }
 
+-(void) mostrarYOcultarBotones{
+    
+};
+
 @end

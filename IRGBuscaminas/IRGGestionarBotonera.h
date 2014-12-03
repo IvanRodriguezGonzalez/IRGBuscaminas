@@ -39,4 +39,17 @@
 
 - (void) desactivarSettings;
 
+-(void) mostrarVistaBotonJugarPrincipal;
+
+- (void) ocultarVistaBotonJugarPrincipal;
+
+- (void) mostrarVistaBotonJugarSecundario;
+
+-(void) ocultarVistaBotonJugarSecundario;
+
+-(void) mostrarBarraDeBotones;
+
+-(void) ocultarBarraDeBotones;
+
+
 @end

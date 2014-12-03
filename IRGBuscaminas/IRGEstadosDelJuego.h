@@ -19,5 +19,6 @@
 -(void) ponerBandera: (IRGCeldaViewController *)celdaViewController;
 -(void) despejarCelda: (IRGCeldaViewController *)celdaViewController;
 -(void) establecerBotones;
+-(void) mostrarYOcultarBotones;
 
 @end

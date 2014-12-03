@@ -73,5 +73,8 @@
     [NSException exceptionWithName:@"accion incorrecta" reason:@"El estado no la soporta" userInfo:nil];
 }
 
+-(void) mostrarYOcultarBotones{
+    
+};
 
 @end

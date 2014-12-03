@@ -59,6 +59,9 @@
     [self.delegado.gestionarBotonera activarBotonPrincipal];
     [self.delegado.gestionarBotonera activarBotonPausar];
     [self.delegado.gestionarBotonera activarSettings];
+    [self.delegado.gestionarBotonera ocultarVistaBotonJugarPrincipal];
+    [self.delegado.gestionarBotonera mostrarVistaBotonJugarSecundario];
+    [self.delegado.gestionarBotonera mostrarBarraDeBotones];
 }
 
 - (void) accionJugar{
@@ -115,4 +118,18 @@
     [self.gestorDeEstados establecerEstado:self.gestorDeEstados.estadoDelJuegoEnPausa];
     [self.delegado mostrarImagenDeBloqueo:@"imagenDeBloqueo"];
 }
+
+-(void) mostrarYOcultarBotones{
+    if (self.delegado.vistaBarraDeBotones.hidden ==YES){
+        [self.delegado.gestionarBotonera  mostrarVistaBotonJugarSecundario];
+        [self.delegado.gestionarBotonera mostrarBarraDeBotones];
+        
+    }
+    else {
+        [self.delegado.gestionarBotonera ocultarVistaBotonJugarSecundario];
+        [self.delegado.gestionarBotonera ocultarBarraDeBotones];
+        
+    }
+};
+
 @end

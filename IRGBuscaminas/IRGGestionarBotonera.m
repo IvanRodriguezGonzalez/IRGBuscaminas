@@ -37,59 +37,67 @@
 # pragma mark - Metodos Publicos de activar y desactivar botones
 -(void) activarBotonPrincipal{
     self.delegado.botonPrincipal.enabled = true;
-    self.delegado.etiquetaBotonPrincipal.enabled = true;
-    self.delegado.etiquetaBotonPrincipal.textColor = [IRGSettings sharedSettings].colorEtiquetaDeBoton;
 }
 
 -(void) desactivarBotonPrincipal{
     self.delegado.botonPrincipal.enabled  = false;
-    self.delegado.etiquetaBotonPrincipal.enabled = false;
 }
 
 -(void) activarBotonPausar{
     self.delegado.botonPausar.enabled = true;
-    self.delegado.etiquetaBotonPausar.enabled = true;
-    self.delegado.etiquetaBotonPausar.textColor = [IRGSettings sharedSettings].colorEtiquetaDeBoton;
 }
 
 -(void) desactivarBotonPausar{
     self.delegado.botonPausar.enabled  = false;
-    self.delegado.etiquetaBotonPausar.enabled = false;
 }
 
 - (void) activarBotonMejoresTiempos{
     self.delegado.botonMostrarMejoresTiempos.enabled = true;
-    self.delegado.etiquetaBotonMostrarMejoresTiempos.enabled = true;
-    self.delegado.etiquetaBotonMostrarMejoresTiempos.textColor = [IRGSettings sharedSettings].colorEtiquetaDeBoton;
 }
 
 - (void) desactivarBotonMejoresTiempos{
     self.delegado.botonMostrarMejoresTiempos.enabled = false;
-    self.delegado.etiquetaBotonMostrarMejoresTiempos.enabled = false;
 }
 
 - (void) activarBotonMostrarMinas{
     self.delegado.botonMostrarMinas.enabled = TRUE;
-    self.delegado.etiquetaBotonMostrarMinas.enabled = true;
-    self.delegado.etiquetaBotonMostrarMinas.textColor = [IRGSettings sharedSettings].colorEtiquetaDeBoton;
 }
 
 - (void) desactivarBotonMostrarMinas{
     self.delegado.botonMostrarMinas.enabled = false;
-    self.delegado.etiquetaBotonMostrarMinas.enabled = false;
 }
 
 - (void) activarSettings{
     self.delegado.botonSettings.enabled = true;
-    self.delegado.etiquetaSettings.enabled = true;
-    self.delegado.etiquetaSettings.textColor = [IRGSettings sharedSettings].colorEtiquetaDeBoton;
 }
 
 - (void) desactivarSettings{
     self.delegado.botonSettings.enabled = false;
-    self.delegado.etiquetaSettings.enabled = false;
 }
 
+-(void) mostrarVistaBotonJugarPrincipal{
+    self.delegado.vistaBotonJugarPrincipal.hidden = NO;
 
+}
+
+- (void) ocultarVistaBotonJugarPrincipal{
+   self.delegado.vistaBotonJugarPrincipal.hidden = YES;
+}
+
+- (void) mostrarVistaBotonJugarSecundario{
+    self.delegado.vistaBotonJugarSecundario.hidden = NO;
+}
+
+-(void) ocultarVistaBotonJugarSecundario{
+    self.delegado.vistaBotonJugarSecundario.hidden = YES ;
+}
+
+-(void) mostrarBarraDeBotones{
+   self.delegado.vistaBarraDeBotones.hidden = NO;
+}
+
+-(void) ocultarBarraDeBotones{
+    self.delegado.vistaBarraDeBotones.hidden = YES;
+}
 
 @end

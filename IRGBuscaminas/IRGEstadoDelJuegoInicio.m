@@ -53,6 +53,11 @@
     [self.delegado.gestionarBotonera activarBotonPrincipal];
     [self.delegado.gestionarBotonera desactivarBotonPausar];
     [self.delegado.gestionarBotonera activarSettings];
+    [self.delegado.gestionarBotonera activarBotonPrincipal];
+    [self.delegado.gestionarBotonera mostrarVistaBotonJugarPrincipal];
+    [self.delegado.gestionarBotonera ocultarVistaBotonJugarSecundario];
+    [self.delegado.gestionarBotonera mostrarBarraDeBotones];
+    
 }
 
 - (void) accionJugar{
@@ -78,4 +83,19 @@
 -(void) accionPausar{
     [NSException exceptionWithName:@"accion incorrecta" reason:@"El estado no la soporta" userInfo:nil];
 }
+-(void) mostrarYOcultarBotones{
+    if (self.delegado.vistaBarraDeBotones.hidden ==YES){
+        [self.delegado.gestionarBotonera  ocultarVistaBotonJugarSecundario];
+        [self.delegado.gestionarBotonera mostrarBarraDeBotones];
+        
+    }
+    else {
+        [self.delegado.gestionarBotonera ocultarVistaBotonJugarSecundario];
+        [self.delegado.gestionarBotonera ocultarBarraDeBotones];
+        
+    }
+    
+};
+
+
 @end

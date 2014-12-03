@@ -70,7 +70,7 @@
     [self iniciarGestorDeEstados];
     [self iniciarTotalMinasSieteSegmentos];
     [self iniciarTiempoDeJuegoSieteSegmentos];
-    self.barraBotonera.backgroundColor = [ [IRGSettings sharedSettings].colorDeRellenoDeLaBarraDeBotones  colorWithAlphaComponent:[IRGSettings sharedSettings].porcerntajeDeTransparenciaDelMenu];
+    self.vistaBarraDeBotones.backgroundColor = [ [IRGSettings sharedSettings].colorDeRellenoDeLaBarraDeBotones  colorWithAlphaComponent:[IRGSettings sharedSettings].porcerntajeDeTransparenciaDelMenu];
     }
 
 - (void)didReceiveMemoryWarning {
@@ -78,28 +78,19 @@
 }
 - (void)viewWillAppear:(BOOL)animated{
     [super viewWillAppear:animated];
-    [self ocultarrBarraDeNavegacion];
 }
 
 
 - (void) touchesBegan:(NSSet *)touches
             withEvent:(UIEvent *)event{
-    if (self.barraBotonera.alpha ==1){
-        self.barraBotonera.alpha =0;
-    }
-    else {
-        self.barraBotonera.alpha = 1;
-    }
-    
+    [self.gestorDeEstados mostrarYOcultarBotones];
 }
-
-
 
 #pragma mark - Navigation primer nivel
 
 - (IBAction)mostrarConfiguracion:(UIButton *)sender {
     self.vistaDeConfiguracion =[[IRGSettingsViewController alloc]init];
-    self.vistaDeConfiguracion.barraDeBotones = self.barraBotonera;
+    self.vistaDeConfiguracion.barraDeBotones = self.vistaBarraDeBotones;
 }
 
 
@@ -115,7 +106,6 @@
 - (IBAction)accionMostarMejoresTiempos:(UIButton *)sender {
    // [self mostrarBarraDeNavegacion];
     [self crearVistaDeMejoresTiempos];
-    
 }
 
 -(IBAction)accionPausar:(UIButton *)sender{

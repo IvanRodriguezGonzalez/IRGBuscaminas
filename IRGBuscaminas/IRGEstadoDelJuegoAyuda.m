@@ -107,7 +107,7 @@
 - (void) anadirVistaSieteSegmentos{
     [self.delegado.canvas addSubview:self.sieteSegmentosViewController.view];
     
-    [self.sieteSegmentosViewController establecerVentanaConTransparencia:.5
+    [self.sieteSegmentosViewController establecerVentanaConTransparencia:.0
                                                             colorDeFondo:[UIColor grayColor]];
 
     [self.sieteSegmentosViewController establecerSegmentoConGrosorDelTrazo:1
@@ -147,5 +147,9 @@
     [self.gestorDeEstados establecerEstado:self.gestorDeEstados.estadoDelJuegoEnJuegoConAyuda];
     [self.delegado ocultarMinas];
 }
+
+-(void) mostrarYOcultarBotones{
+    
+};
 
 @end
