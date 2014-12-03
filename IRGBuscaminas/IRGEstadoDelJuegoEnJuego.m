@@ -60,7 +60,7 @@
     [self.delegado.gestionarBotonera activarBotonPausar];
     [self.delegado.gestionarBotonera activarSettings];
     [self.delegado.gestionarBotonera ocultarVistaBotonJugarPrincipal];
-    [self.delegado.gestionarBotonera mostrarVistaBotonJugarSecundario];
+    [self.delegado.gestionarBotonera ocultarVistaBotonJugarSecundario];
     [self.delegado.gestionarBotonera mostrarBarraDeBotones];
 }
 
@@ -121,7 +121,7 @@
 
 -(void) mostrarYOcultarBotones{
     if (self.delegado.vistaBarraDeBotones.hidden ==YES){
-        [self.delegado.gestionarBotonera  mostrarVistaBotonJugarSecundario];
+        [self.delegado.gestionarBotonera  ocultarVistaBotonJugarSecundario];
         [self.delegado.gestionarBotonera mostrarBarraDeBotones];
         
     }
