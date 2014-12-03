@@ -56,7 +56,7 @@
     [self.delegado.gestionarBotonera activarBotonPrincipal];
     [self.delegado.gestionarBotonera mostrarVistaBotonJugarPrincipal];
     [self.delegado.gestionarBotonera ocultarVistaBotonJugarSecundario];
-    [self.delegado.gestionarBotonera mostrarBarraDeBotones];
+    [self.delegado.gestionarBotonera ocultarBarraDeBotones];
     
 }
 

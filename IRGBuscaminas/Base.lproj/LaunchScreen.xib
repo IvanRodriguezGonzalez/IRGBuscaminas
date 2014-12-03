@@ -10,7 +10,7 @@
             <rect key="frame" x="0.0" y="0.0" width="480" height="1000"/>
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
-                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="imagenDeBloqueo2" translatesAutoresizingMaskIntoConstraints="NO" id="72n-gJ-GSL">
+                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="fondo1" translatesAutoresizingMaskIntoConstraints="NO" id="72n-gJ-GSL">
                     <rect key="frame" x="0.0" y="0.0" width="480" height="1000"/>
                 </imageView>
             </subviews>
@@ -27,6 +27,6 @@
         </view>
     </objects>
     <resources>
-        <image name="imagenDeBloqueo2" width="512" height="512"/>
+        <image name="fondo1" width="1024" height="1024"/>
     </resources>
 </document>

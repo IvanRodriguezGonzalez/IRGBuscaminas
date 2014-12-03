@@ -86,6 +86,7 @@
 
 - (void) mostrarVistaBotonJugarSecundario{
     self.delegado.vistaBotonJugarSecundario.hidden = NO;
+    [self.delegado.canvas bringSubviewToFront: self.delegado.vistaBotonJugarSecundario];
 }
 
 -(void) ocultarVistaBotonJugarSecundario{

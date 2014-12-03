@@ -61,7 +61,7 @@
     [self.delegado.gestionarBotonera activarSettings];
     [self.delegado.gestionarBotonera ocultarVistaBotonJugarPrincipal];
     [self.delegado.gestionarBotonera ocultarVistaBotonJugarSecundario];
-    [self.delegado.gestionarBotonera mostrarBarraDeBotones];
+    [self.delegado.gestionarBotonera ocultarBarraDeBotones];
 }
 
 - (void) accionJugar{
