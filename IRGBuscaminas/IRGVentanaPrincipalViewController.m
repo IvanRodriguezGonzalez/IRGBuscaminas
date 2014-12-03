@@ -40,6 +40,10 @@
 #define COLOR_DE_RELENO_DE_LOS_SEGMENTOS_DE_LAS_MINAS [UIColor redColor]
 #define COLOR_DEL_FONDO_DE_LA_VENTANA_DE_LAS_MINAS [UIColor lightGrayColor]
 
+#define REDONDEO_DE_LAS_ESQUINAS_DE_LA_VENTANA 10
+#define COLOR_DEL_BORDE_DE_LA_VENTANA [UIColor lightGrayColor]
+#define GROSOR_DEL_BORDER_DE_LA_VENTANA 0
+
 @interface IRGVentanaPrincipalViewController ()
 @property (nonatomic)  NSInteger numeroDeFilas;
 @property (nonatomic)  NSInteger numeroDeColumnas;
@@ -71,6 +75,10 @@
     [self iniciarTotalMinasSieteSegmentos];
     [self iniciarTiempoDeJuegoSieteSegmentos];
     self.vistaBarraDeBotones.backgroundColor = [ [IRGSettings sharedSettings].colorDeRellenoDeLaBarraDeBotones  colorWithAlphaComponent:[IRGSettings sharedSettings].porcerntajeDeTransparenciaDelMenu];
+    self.vistaBarraDeBotones.layer.borderWidth = GROSOR_DEL_BORDER_DE_LA_VENTANA;
+    self.vistaBarraDeBotones.layer.borderColor = COLOR_DEL_BORDE_DE_LA_VENTANA.CGColor;
+    self.vistaBarraDeBotones.layer.cornerRadius = REDONDEO_DE_LAS_ESQUINAS_DE_LA_VENTANA;
+    self.vistaBarraDeBotones.layer.masksToBounds = YES;
     }
 
 - (void)didReceiveMemoryWarning {
