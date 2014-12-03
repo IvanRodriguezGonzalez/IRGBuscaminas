@@ -101,4 +101,12 @@
     self.delegado.vistaBarraDeBotones.hidden = YES;
 }
 
+-(void) mostrarVistaTiempoYMinas{
+    self.delegado.vistaTiempoYMinas.hidden = NO;
+}
+
+- (void) ocultarVistaTiempoYMinas{
+    self.delegado.vistaTiempoYMinas.hidden = YES;
+}
+
 @end

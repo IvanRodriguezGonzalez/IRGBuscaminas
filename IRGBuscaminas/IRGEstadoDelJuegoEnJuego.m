@@ -62,6 +62,8 @@
     [self.delegado.gestionarBotonera ocultarVistaBotonJugarPrincipal];
     [self.delegado.gestionarBotonera ocultarVistaBotonJugarSecundario];
     [self.delegado.gestionarBotonera ocultarBarraDeBotones];
+    [self.delegado.gestionarBotonera mostrarVistaTiempoYMinas];
+
 }
 
 - (void) accionJugar{
@@ -121,7 +123,7 @@
 
 -(void) mostrarYOcultarBotones{
     if (self.delegado.vistaBarraDeBotones.hidden ==YES){
-        [self.delegado.gestionarBotonera  ocultarVistaBotonJugarSecundario];
+        [self.delegado.gestionarBotonera  mostrarVistaBotonJugarSecundario];
         [self.delegado.gestionarBotonera mostrarBarraDeBotones];
         
     }

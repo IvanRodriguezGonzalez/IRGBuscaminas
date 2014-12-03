@@ -93,7 +93,8 @@
 
 
 -(UIColor *) colorDeRellenoDeLaBarraDeBotones{
-    return COLOR_DE_RELLENO_DE_LA_BARRA_DE_BOTONES;
+   // return COLOR_DE_RELLENO_DE_LA_BARRA_DE_BOTONES;
+    return _colorDeRellenoDeLaBarraDeBotones;
 }
 
 

@@ -51,5 +51,9 @@
 
 -(void) ocultarBarraDeBotones;
 
+-(void) mostrarVistaTiempoYMinas;
+
+- (void) ocultarVistaTiempoYMinas;
+
 
 @end
