@@ -11,8 +11,8 @@
 
 #pragma mark - Constantes
 
-# define ALTO_DE_LA_CELDA 50
-# define ANCHO_DE_LA_CELDA 50
+# define ALTO_DE_LA_CELDA 45
+# define ANCHO_DE_LA_CELDA 45
 
 # define FILAS_DEL_LIENZO_Nivel_1 8
 # define COLUMNAS_DEL_LIENZO_Nivel_1 8
