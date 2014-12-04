@@ -16,21 +16,33 @@
 
 @property (weak, nonatomic) IBOutlet UIView *canvas;
 @property (weak, nonatomic) IBOutlet UIButton *botonSettings;
+@property (weak, nonatomic) IBOutlet UIButton *botonSettingsVertical;
+
 @property (weak, nonatomic) IBOutlet UITextField *totalMinas;
 @property (weak, nonatomic) IBOutlet UIButton *botonPrincipal;
 @property (weak, nonatomic) IBOutlet UIButton *botonMostrarMinas;
+@property (weak, nonatomic) IBOutlet UIButton *botonMostrarMinasVertical;
+
+@property (weak, nonatomic) IBOutlet UIButton *botonMostrarMejoresTiempoVertical;
 @property (weak, nonatomic) IBOutlet UIButton *botonMostrarMejoresTiempos;
+
 @property (weak, nonatomic) IBOutlet UIButton *botonPausar;
+@property (weak, nonatomic) IBOutlet UIButton *botonPausarVertical;
+
 @property (weak, nonatomic) IBOutlet UIView *cuentaAtras;
 
 @property (nonatomic,weak) NSTimer *reloj;
 
 @property (nonatomic) IRGGestionarBotonera *gestionarBotonera;
-
 @property (weak, nonatomic) IBOutlet UIView *vistaBotonJugarPrincipal;
 @property (weak, nonatomic) IBOutlet UIView *vistaBotonJugarSecundario;
+@property (weak, nonatomic) IBOutlet UIView *vistaBotonJugarSecundarioVertical;
+
 @property (weak, nonatomic) IBOutlet UIView *vistaBarraDeBotones;
 @property (weak, nonatomic) IBOutlet UIView *vistaTiempoYMinas;
+@property (nonatomic) IBOutlet UIView *vistaCanvasDeLasCeldas;
+
+@property (weak, nonatomic) IBOutlet UIView *vistaBarraDeBotonesVertical;
 
 
 

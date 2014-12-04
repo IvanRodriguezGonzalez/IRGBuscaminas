@@ -45,34 +45,42 @@
 
 -(void) activarBotonPausar{
     self.delegado.botonPausar.enabled = true;
+    self.delegado.botonPausarVertical.enabled = true;
 }
 
 -(void) desactivarBotonPausar{
     self.delegado.botonPausar.enabled  = false;
+    self.delegado.botonPausarVertical.enabled = false;
 }
 
 - (void) activarBotonMejoresTiempos{
     self.delegado.botonMostrarMejoresTiempos.enabled = true;
+    self.delegado.botonMostrarMejoresTiempoVertical.enabled = true;
 }
 
 - (void) desactivarBotonMejoresTiempos{
     self.delegado.botonMostrarMejoresTiempos.enabled = false;
+    self.delegado.botonMostrarMejoresTiempoVertical.enabled = false;
 }
 
 - (void) activarBotonMostrarMinas{
     self.delegado.botonMostrarMinas.enabled = TRUE;
+    self.delegado.botonMostrarMinasVertical.enabled = true;
 }
 
 - (void) desactivarBotonMostrarMinas{
     self.delegado.botonMostrarMinas.enabled = false;
+    self.delegado.botonMostrarMinasVertical.enabled = false;
 }
 
 - (void) activarSettings{
     self.delegado.botonSettings.enabled = true;
+    self.delegado.botonSettingsVertical.enabled = true;
 }
 
 - (void) desactivarSettings{
     self.delegado.botonSettings.enabled = false;
+    self.delegado.botonSettingsVertical.enabled = false;
 }
 
 -(void) mostrarVistaBotonJugarPrincipal{
@@ -87,18 +95,31 @@
 - (void) mostrarVistaBotonJugarSecundario{
     self.delegado.vistaBotonJugarSecundario.hidden = NO;
     [self.delegado.canvas bringSubviewToFront: self.delegado.vistaBotonJugarSecundario];
+    
+    self.delegado.vistaBotonJugarSecundarioVertical.hidden = NO;
+    [self.delegado.canvas bringSubviewToFront: self.delegado.vistaBotonJugarSecundarioVertical];
 }
 
 -(void) ocultarVistaBotonJugarSecundario{
     self.delegado.vistaBotonJugarSecundario.hidden = YES ;
+    self.delegado.vistaBotonJugarSecundarioVertical.hidden = YES;
 }
 
 -(void) mostrarBarraDeBotones{
-   self.delegado.vistaBarraDeBotones.hidden = NO;
+    
+    if ([self iPadVertical]){
+        self.delegado.vistaBarraDeBotones.hidden = NO;
+        self.delegado.vistaBarraDeBotonesVertical.hidden= YES;
+}
+    else{
+        self.delegado.vistaBarraDeBotones.hidden = YES;
+        self.delegado.vistaBarraDeBotonesVertical.hidden = NO;;
+    }
 }
 
 -(void) ocultarBarraDeBotones{
     self.delegado.vistaBarraDeBotones.hidden = YES;
+    self.delegado.vistaBarraDeBotonesVertical.hidden = YES;
 }
 
 -(void) mostrarVistaTiempoYMinas{
@@ -107,6 +128,17 @@
 
 - (void) ocultarVistaTiempoYMinas{
     self.delegado.vistaTiempoYMinas.hidden = YES;
+}
+
+- (BOOL) iPadVertical{
+    
+    UIInterfaceOrientation newOrientation =  [UIApplication sharedApplication].statusBarOrientation;
+    if ((newOrientation == UIInterfaceOrientationLandscapeLeft || newOrientation == UIInterfaceOrientationLandscapeRight)){
+        return false;
+    }
+    else {
+        return true;
+    }
 }
 
 @end

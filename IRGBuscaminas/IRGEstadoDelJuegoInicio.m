@@ -85,7 +85,7 @@
     [NSException exceptionWithName:@"accion incorrecta" reason:@"El estado no la soporta" userInfo:nil];
 }
 -(void) mostrarYOcultarBotones{
-    if (self.delegado.vistaBarraDeBotones.hidden ==YES){
+    if ((self.delegado.vistaBarraDeBotones.hidden ==YES) & (self.delegado.vistaBarraDeBotonesVertical.hidden ==YES)){
         //[self.delegado.gestionarBotonera  ocultarVistaBotonJugarSecundario];
         [self.delegado.gestionarBotonera mostrarBarraDeBotones];
         
@@ -93,7 +93,6 @@
     else {
         //[self.delegado.gestionarBotonera ocultarVistaBotonJugarSecundario];
         [self.delegado.gestionarBotonera ocultarBarraDeBotones];
-        
     }
     
 };

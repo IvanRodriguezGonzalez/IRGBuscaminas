@@ -1,24 +1,31 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="6250" systemVersion="14B25" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="6254" systemVersion="14B25" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES">
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="6244"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="6247"/>
         <capability name="Aspect ratio constraints" minToolsVersion="5.1"/>
     </dependencies>
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="IRGVentanaPrincipalViewController">
             <connections>
+                <outlet property="botonMostrarMejoresTiempoVertical" destination="KGA-8F-OeJ" id="gvz-n4-nyv"/>
                 <outlet property="botonMostrarMejoresTiempos" destination="g0l-vu-kiX" id="eLh-QO-01J"/>
                 <outlet property="botonMostrarMinas" destination="RNV-JR-Uw3" id="Tqa-zl-5Tk"/>
+                <outlet property="botonMostrarMinasVertical" destination="ujJ-X7-iWa" id="Mrg-WX-seO"/>
                 <outlet property="botonPausar" destination="zgi-zC-f8X" id="2X3-Tf-Eug"/>
+                <outlet property="botonPausarVertical" destination="nOR-sf-ttw" id="ZFq-IQ-K0X"/>
                 <outlet property="botonPrincipal" destination="Efd-Dz-d6X" id="w4c-cO-y6L"/>
                 <outlet property="botonSettings" destination="Qdt-QI-beK" id="oWd-J0-MAZ"/>
+                <outlet property="botonSettingsVertical" destination="ljI-Js-IMg" id="mLf-z7-K8u"/>
                 <outlet property="canvas" destination="zp6-fT-8XJ" id="TSy-iL-j2s"/>
                 <outlet property="tiempoDeJuegoTextField" destination="phd-fm-tez" id="eqy-Hp-8l2"/>
                 <outlet property="totalMinas" destination="OW5-p5-RKd" id="c7E-2I-BcO"/>
                 <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
                 <outlet property="vistaBarraDeBotones" destination="hIG-gz-8Ow" id="kj1-yD-LHV"/>
+                <outlet property="vistaBarraDeBotonesVertical" destination="9HN-GC-ekE" id="6Eh-lg-aFQ"/>
                 <outlet property="vistaBotonJugarPrincipal" destination="8xn-uj-fOo" id="pc4-mu-Yix"/>
                 <outlet property="vistaBotonJugarSecundario" destination="1x8-JR-3La" id="mvf-cQ-gjS"/>
+                <outlet property="vistaBotonJugarSecundarioVertical" destination="aMy-dQ-xIh" id="MGe-XY-GxZ"/>
+                <outlet property="vistaCanvasDeLasCeldas" destination="k1h-1u-mTQ" id="4gr-Tm-79j"/>
                 <outlet property="vistaTiempoYMinas" destination="tpS-bL-P0p" id="qkx-eh-lSt"/>
             </connections>
         </placeholder>
@@ -777,6 +784,14 @@
                                 </mask>
                             </variation>
                         </view>
+                        <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="k1h-1u-mTQ">
+                            <rect key="frame" x="650" y="494" width="100" height="100"/>
+                            <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                            <constraints>
+                                <constraint firstAttribute="height" constant="100" id="S1f-Y6-e30"/>
+                                <constraint firstAttribute="width" constant="100" id="e20-Hk-35s"/>
+                            </constraints>
+                        </view>
                     </subviews>
                     <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                     <gestureRecognizers/>
@@ -791,10 +806,13 @@
                         <constraint firstAttribute="centerX" secondItem="8xn-uj-fOo" secondAttribute="centerX" id="RCi-40-6ZD"/>
                         <constraint firstAttribute="centerX" secondItem="8xn-uj-fOo" secondAttribute="centerX" id="RMX-2j-pZr"/>
                         <constraint firstAttribute="centerX" secondItem="8xn-uj-fOo" secondAttribute="centerX" id="Veg-mh-wYq"/>
+                        <constraint firstAttribute="centerX" secondItem="k1h-1u-mTQ" secondAttribute="centerX" id="dlL-zX-UTy"/>
                         <constraint firstAttribute="centerY" secondItem="8xn-uj-fOo" secondAttribute="centerY" id="fgY-PZ-9NN"/>
                         <constraint firstAttribute="centerY" secondItem="8xn-uj-fOo" secondAttribute="centerY" id="gkg-fB-6nx"/>
+                        <constraint firstAttribute="centerY" secondItem="k1h-1u-mTQ" secondAttribute="centerY" id="jwd-QR-lEt"/>
                         <constraint firstAttribute="centerY" secondItem="8xn-uj-fOo" secondAttribute="centerY" id="lbp-c6-Zzo"/>
                         <constraint firstItem="9HN-GC-ekE" firstAttribute="leading" secondItem="zp6-fT-8XJ" secondAttribute="leading" constant="20" symbolic="YES" id="nIa-Hg-JkJ"/>
+                        <constraint firstAttribute="trailing" secondItem="k1h-1u-mTQ" secondAttribute="trailing" constant="20" symbolic="YES" id="o1q-a1-Loa"/>
                         <constraint firstAttribute="centerY" secondItem="8xn-uj-fOo" secondAttribute="centerY" id="rRj-pd-2rX"/>
                         <constraint firstItem="9HN-GC-ekE" firstAttribute="top" secondItem="tpS-bL-P0p" secondAttribute="bottom" constant="8" symbolic="YES" id="sWx-6b-LiG"/>
                         <constraint firstAttribute="centerY" secondItem="9HN-GC-ekE" secondAttribute="centerY" id="vYi-ZJ-jy6"/>
@@ -809,6 +827,7 @@
                             <exclude reference="fgY-PZ-9NN"/>
                             <exclude reference="gkg-fB-6nx"/>
                             <exclude reference="lbp-c6-Zzo"/>
+                            <exclude reference="dlL-zX-UTy"/>
                         </mask>
                     </variation>
                 </view>

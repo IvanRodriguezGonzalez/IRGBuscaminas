@@ -74,12 +74,26 @@
     [self iniciarGestorDeEstados];
     [self iniciarTotalMinasSieteSegmentos];
     [self iniciarTiempoDeJuegoSieteSegmentos];
+
+    
+    [IRGSettings sharedSettings].colorDeRellenoDeLaBarraDeBotones = [self.vistaBarraDeBotonesVertical.backgroundColor colorWithAlphaComponent:[IRGSettings sharedSettings].porcerntajeDeTransparenciaDelMenu];
+    self.vistaBarraDeBotonesVertical.layer.borderWidth = GROSOR_DEL_BORDER_DE_LA_VENTANA;
+    self.vistaBarraDeBotonesVertical.layer.borderColor = COLOR_DEL_BORDE_DE_LA_VENTANA.CGColor;
+    self.vistaBarraDeBotonesVertical.layer.cornerRadius = REDONDEO_DE_LAS_ESQUINAS_DE_LA_VENTANA;
+    self.vistaBarraDeBotonesVertical.layer.masksToBounds = YES;
+    
+    
     [IRGSettings sharedSettings].colorDeRellenoDeLaBarraDeBotones = [self.vistaBarraDeBotones.backgroundColor colorWithAlphaComponent:[IRGSettings sharedSettings].porcerntajeDeTransparenciaDelMenu];
     self.vistaBarraDeBotones.layer.borderWidth = GROSOR_DEL_BORDER_DE_LA_VENTANA;
     self.vistaBarraDeBotones.layer.borderColor = COLOR_DEL_BORDE_DE_LA_VENTANA.CGColor;
     self.vistaBarraDeBotones.layer.cornerRadius = REDONDEO_DE_LAS_ESQUINAS_DE_LA_VENTANA;
     self.vistaBarraDeBotones.layer.masksToBounds = YES;
-    }
+   
+    [[NSNotificationCenter defaultCenter] addObserver:self
+                                             selector:@selector(deviceOrientationDidChange:)
+                                                 name:UIDeviceOrientationDidChangeNotification
+                                               object:nil];
+}
 
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
@@ -95,6 +109,21 @@
 }
 
 #pragma mark - Navigation primer nivel
+
+-(void) deviceOrientationDidChange:(NSNotification *)sender{
+    NSInteger anchoDelCanvasDeLasCeldas = [IRGLienzo sharedLienzo].filasDelLienzo*[IRGLienzo sharedLienzo].anchoCelda;
+    NSInteger altoDelCanvasDeLasCeldas = [IRGLienzo sharedLienzo].columnasDelLienzo*[IRGLienzo sharedLienzo].altoCelda;
+    NSInteger margenX =([UIApplication sharedApplication].keyWindow.frame.size.width -anchoDelCanvasDeLasCeldas)/2;
+    NSInteger margenY = ([UIApplication sharedApplication].keyWindow.frame.size.height -altoDelCanvasDeLasCeldas)/2;
+    
+    CGRect frameCanvasDeLasCeldas = CGRectMake(margenX, margenY, anchoDelCanvasDeLasCeldas, altoDelCanvasDeLasCeldas);
+    self.vistaCanvasDeLasCeldas.frame = frameCanvasDeLasCeldas;
+    
+    
+    if ((self.vistaBarraDeBotones.hidden == NO) || (self.vistaBarraDeBotonesVertical.hidden == NO)){
+        [self.gestionarBotonera  mostrarBarraDeBotones];
+    }
+}
 
 - (IBAction)mostrarConfiguracion:(UIButton *)sender {
     self.vistaDeConfiguracion =[[IRGSettingsViewController alloc]init];
@@ -356,6 +385,18 @@
     
 }
 - (void) generarCanvas{
+   // [self.vistaCanvasDeLasCeldas removeFromSuperview];
+    NSInteger anchoDelCanvasDeLasCeldas = [IRGLienzo sharedLienzo].filasDelLienzo*[IRGLienzo sharedLienzo].anchoCelda;
+    NSInteger altoDelCanvasDeLasCeldas = [IRGLienzo sharedLienzo].columnasDelLienzo*[IRGLienzo sharedLienzo].altoCelda;
+    NSInteger margenX =([UIApplication sharedApplication].keyWindow.frame.size.width -anchoDelCanvasDeLasCeldas)/2;
+    NSInteger margenY = ([UIApplication sharedApplication].keyWindow.frame.size.height -altoDelCanvasDeLasCeldas)/2;
+    
+    CGRect frameCanvasDeLasCeldas = CGRectMake(margenX, margenY, anchoDelCanvasDeLasCeldas, altoDelCanvasDeLasCeldas);
+    self.vistaCanvasDeLasCeldas.frame = frameCanvasDeLasCeldas;
+  //  [self.canvas addSubview:self.vistaCanvasDeLasCeldas];
+    
+   
+    
     for (NSInteger fila = 0;fila < [IRGLienzo sharedLienzo].filasDelLienzo;fila++){
         for (NSInteger columna = 0; columna< [IRGLienzo sharedLienzo].columnasDelLienzo;columna++){
             
@@ -369,7 +410,7 @@
 }
 
 - (void) borrarCanvas{
-    for (UIView * vistaDelCanvas in self.canvas.subviews){
+    for (UIView * vistaDelCanvas in self.vistaCanvasDeLasCeldas.subviews){
         if (vistaDelCanvas.class == [IRGCelda class]){
             [vistaDelCanvas removeFromSuperview];
         }
@@ -446,7 +487,7 @@
 }
 
 - (void) anadirAlCanvasElCeldaViewController:(IRGCeldaViewController *)celdaViewController{
-    [self.canvas addSubview:celdaViewController.view];
+    [self.vistaCanvasDeLasCeldas addSubview:celdaViewController.view];
 }
 
 
@@ -483,8 +524,6 @@
     [self.canvas addSubview:self.vistaDeBloqueo];
     UIImage *imagenDeBloqueo = [UIImage imageNamed:imagen];
     self.vistaDeBloqueo.image = imagenDeBloqueo;
-    
-
 }
 
 -(void) eliminarImagenDeBloqueo{
