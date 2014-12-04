@@ -21,6 +21,7 @@
 @property (nonatomic) float     porcerntajeDeTransparenciaDeLasCeldas;
 @property (nonatomic) BOOL      tapPoneBandera;
 @property (nonatomic) float     sensibilidadDelTap;
+@property (nonatomic) NSInteger desplazamientoXDelCanvasEnModoHorizontal;
 
 
 #pragma mark Colores

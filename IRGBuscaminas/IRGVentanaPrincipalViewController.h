@@ -65,8 +65,13 @@
 - (void) mostrarImagenDeBloqueo:(NSString *)imagen;
 - (void) eliminarImagenDeBloqueo;
 
+
 - (NSInteger) calcularPorcentajeDeProgreso;
 -(void) actualizarBotonConProgreso:(float)porcentajeDeAvance;
+
+- (void)cambiarTransparenciaDelMenu:(float) porcentajeDeTransparencia;
+
+- (BOOL) iPadVertical;
 
 
 @end

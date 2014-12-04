@@ -7,9 +7,12 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "IRGVentanaPrincipalViewController.h"
 
 @interface IRGSettingsViewController : UIViewController
 #pragma mark - Propiedades publicas
-@property (nonatomic) UIView *barraDeBotones;
+@property (nonatomic) IRGVentanaPrincipalViewController *senderViewController;
+@property (weak, nonatomic) IBOutlet UIView *vistaDatos;
+
 
 @end

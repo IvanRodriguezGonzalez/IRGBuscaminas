@@ -28,7 +28,6 @@
 
 @property (weak, nonatomic) IBOutlet UISlider *porcentajeDeTransparenciaDelMenu;
 
-@property (weak, nonatomic) IBOutlet UIView *vistaDatos;
 @property (nonatomic) UIViewController * controllerPrincipal;
 @property (weak, nonatomic) IBOutlet UISegmentedControl *accionTap;
 @property (weak, nonatomic) IBOutlet UISlider *sensibilidadDelTap;
@@ -42,7 +41,7 @@
 -(instancetype) init{
     self = [super init];
     self.view.frame = [[UIScreen mainScreen] applicationFrame];
-    [[UIApplication sharedApplication].keyWindow.rootViewController.view addSubview:self.view];
+
     return self;
 }
 
@@ -74,9 +73,20 @@
     self.vistaDatos.layer.cornerRadius = REDONDEO_DE_LAS_ESQUINAS_DE_LA_VENTANA;
     self.vistaDatos.layer.masksToBounds = YES;
     
+  
+    [[UIApplication sharedApplication].keyWindow.rootViewController.view addSubview:self.view];
+
     [self.nivelDeDificultad addTarget:self
                          action:@selector(actualizarMinasSegunElNivelDeDificultad)
                forControlEvents:UIControlEventValueChanged];
+    [[NSNotificationCenter defaultCenter] addObserver:self
+                                             selector:@selector(deviceOrientationDidChange:)
+                                                 name:UIDeviceOrientationDidChangeNotification
+                                               object:nil];
+    [[NSNotificationCenter defaultCenter] addObserver:self
+                                             selector:@selector(deviceOrientationDidChange:)
+                                                 name:UIDeviceOrientationDidChangeNotification
+                                               object:nil];
 }
 
 - (void)didReceiveMemoryWarning {
@@ -85,6 +95,20 @@
 }
 
 #pragma mark - Navigation
+
+
+-(void) deviceOrientationDidChange:(NSNotification *)sender{
+    
+    if ([self iPadVertical]){
+        self.vistaDatos.center = CGPointMake([UIApplication sharedApplication].keyWindow.frame.size.width/2,
+                                       [UIApplication sharedApplication].keyWindow.frame.size.height /2);
+    }
+    else {
+        self.vistaDatos.center = CGPointMake([UIApplication sharedApplication].keyWindow.frame.size.width/2+[IRGSettings sharedSettings].desplazamientoXDelCanvasEnModoHorizontal,
+                                       [UIApplication sharedApplication].keyWindow.frame.size.height /2);
+    }
+    
+}
 
 - (IBAction)guardarResultados:(UIButton *)sender {
     [IRGSettings sharedSettings].numeroDeMinas = self.numeroDeMinas.text.integerValue;
@@ -122,7 +146,19 @@
     }
 }
 - (IBAction)cambiarTransparenciaDelMenu:(UISlider *)sender {
-    self.barraDeBotones.backgroundColor = [[IRGSettings sharedSettings].colorDeRellenoDeLaBarraDeBotones colorWithAlphaComponent:1-self.porcentajeDeTransparenciaDelMenu.value ];
+    [self.senderViewController cambiarTransparenciaDelMenu:sender.value];
 }
 
+#pragma mark - Auxiliares
+
+- (BOOL) iPadVertical{
+    
+    UIInterfaceOrientation newOrientation =  [UIApplication sharedApplication].statusBarOrientation;
+    if ((newOrientation == UIInterfaceOrientationLandscapeLeft || newOrientation == UIInterfaceOrientationLandscapeRight)){
+        return false;
+    }
+    else {
+        return true;
+    }
+}
 @end

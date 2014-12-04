@@ -31,6 +31,8 @@
 #define COLOR_DE_LA_ETIQUETA_DEL_BOTON [[UIColor alloc] initWithRed:0 green:0 blue:1 alpha:1]
 #define COLOR_DE_RELLENO_DE_LA_BARRA_DE_BOTONES [UIColor lightGrayColor]
 
+#define DESPLAZAMIENTO_X_DEL_CANVAS_DE_CELDAS_EN_MODO_HORIZONTAL 50
+
 
 #pragma mark -
 @implementation IRGSettings
@@ -74,6 +76,10 @@
 }
 
 #pragma mark - Accesors
+
+-(NSInteger) desplazamientoXDelCanvasEnModoHorizontal{
+    return DESPLAZAMIENTO_X_DEL_CANVAS_DE_CELDAS_EN_MODO_HORIZONTAL;
+}
 
 - (UIColor *) colorPorDefectoDelNumeroDeMinasAlrededorDeUnaCelda{
     return [UIColor blackColor];

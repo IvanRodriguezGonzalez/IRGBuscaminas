@@ -20,11 +20,11 @@
         </placeholder>
         <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
         <view clearsContextBeforeDrawing="NO" contentMode="scaleToFill" id="i5M-Pr-FkT">
-            <rect key="frame" x="0.0" y="0.0" width="730" height="730"/>
+            <rect key="frame" x="0.0" y="0.0" width="443" height="570"/>
             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
             <subviews>
                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="UU4-1G-79J">
-                    <rect key="frame" x="165" y="180" width="400" height="370"/>
+                    <rect key="frame" x="22" y="100" width="400" height="370"/>
                     <subviews>
                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Ayuda" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="RvN-Cs-RgH">
                             <rect key="frame" x="20" y="23" width="49" height="21"/>
@@ -222,10 +222,16 @@
             <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
             <constraints>
                 <constraint firstAttribute="centerX" secondItem="UU4-1G-79J" secondAttribute="centerX" id="R6K-fh-j0l"/>
+                <constraint firstAttribute="centerX" secondItem="UU4-1G-79J" secondAttribute="centerX" id="TyL-00-5Fj"/>
                 <constraint firstAttribute="centerY" secondItem="UU4-1G-79J" secondAttribute="centerY" id="cKy-PT-h4Y"/>
             </constraints>
             <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
-            <point key="canvasLocation" x="-928" y="294"/>
+            <variation key="default">
+                <mask key="constraints">
+                    <exclude reference="R6K-fh-j0l"/>
+                </mask>
+            </variation>
+            <point key="canvasLocation" x="-596.5" y="5"/>
         </view>
     </objects>
 </document>

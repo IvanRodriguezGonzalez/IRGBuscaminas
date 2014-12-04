@@ -116,6 +116,10 @@
     NSInteger margenX =([UIApplication sharedApplication].keyWindow.frame.size.width -anchoDelCanvasDeLasCeldas)/2;
     NSInteger margenY = ([UIApplication sharedApplication].keyWindow.frame.size.height -altoDelCanvasDeLasCeldas)/2;
     
+    if (![self iPadVertical]){
+        margenX = margenX+[IRGSettings sharedSettings].desplazamientoXDelCanvasEnModoHorizontal;
+    }
+    
     CGRect frameCanvasDeLasCeldas = CGRectMake(margenX, margenY, anchoDelCanvasDeLasCeldas, altoDelCanvasDeLasCeldas);
     self.vistaCanvasDeLasCeldas.frame = frameCanvasDeLasCeldas;
     
@@ -127,7 +131,19 @@
 
 - (IBAction)mostrarConfiguracion:(UIButton *)sender {
     self.vistaDeConfiguracion =[[IRGSettingsViewController alloc]init];
-    self.vistaDeConfiguracion.barraDeBotones = self.vistaBarraDeBotones;
+    self.vistaDeConfiguracion.view.frame = self.canvas.frame;
+    self.vistaDeConfiguracion.senderViewController = self;
+    
+    if ([self iPadVertical]){
+        self.vistaDeConfiguracion.vistaDatos.center = CGPointMake([UIApplication sharedApplication].keyWindow.frame.size.width/2,
+                                             [UIApplication sharedApplication].keyWindow.frame.size.height /2);
+    }
+    else {
+        self.vistaDeConfiguracion.vistaDatos.center = CGPointMake([UIApplication sharedApplication].keyWindow.frame.size.width/2+[IRGSettings sharedSettings].desplazamientoXDelCanvasEnModoHorizontal,
+                                             [UIApplication sharedApplication].keyWindow.frame.size.height /2);
+    }
+    [self.vistaDeConfiguracion.vistaDatos setNeedsDisplay];
+    
 }
 
 
@@ -391,6 +407,10 @@
     NSInteger margenX =([UIApplication sharedApplication].keyWindow.frame.size.width -anchoDelCanvasDeLasCeldas)/2;
     NSInteger margenY = ([UIApplication sharedApplication].keyWindow.frame.size.height -altoDelCanvasDeLasCeldas)/2;
     
+    if (![self iPadVertical]){
+        margenX = margenX+[IRGSettings sharedSettings].desplazamientoXDelCanvasEnModoHorizontal;
+    }
+    
     CGRect frameCanvasDeLasCeldas = CGRectMake(margenX, margenY, anchoDelCanvasDeLasCeldas, altoDelCanvasDeLasCeldas);
     self.vistaCanvasDeLasCeldas.frame = frameCanvasDeLasCeldas;
   //  [self.canvas addSubview:self.vistaCanvasDeLasCeldas];
@@ -539,4 +559,21 @@
     [self.navigationController setNavigationBarHidden:true animated:false];
 }
 
+
+
+- (BOOL) iPadVertical{
+    
+    UIInterfaceOrientation newOrientation =  [UIApplication sharedApplication].statusBarOrientation;
+    if ((newOrientation == UIInterfaceOrientationLandscapeLeft || newOrientation == UIInterfaceOrientationLandscapeRight)){
+        return false;
+    }
+    else {
+        return true;
+    }
+}
+
+- (void)cambiarTransparenciaDelMenu:(float) porcentajeDeTransparencia{
+    self.vistaBarraDeBotones.backgroundColor = [[IRGSettings sharedSettings].colorDeRellenoDeLaBarraDeBotones colorWithAlphaComponent:1-porcentajeDeTransparencia ];
+    self.vistaBarraDeBotonesVertical.backgroundColor = [[IRGSettings sharedSettings].colorDeRellenoDeLaBarraDeBotones colorWithAlphaComponent:1-porcentajeDeTransparencia];
+}
 @end
