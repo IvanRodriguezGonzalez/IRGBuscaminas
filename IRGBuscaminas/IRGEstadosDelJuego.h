@@ -16,6 +16,7 @@
 -(void)accionJugar;
 -(void)accionMostrarMinas;
 -(void) accionPausar;
+-(void) accionConfigurar;
 -(void) ponerBandera: (IRGCeldaViewController *)celdaViewController;
 -(void) despejarCelda: (IRGCeldaViewController *)celdaViewController;
 -(void) establecerBotones;

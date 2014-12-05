@@ -19,6 +19,8 @@
 #import "IRGEstadoDelJuegoFinalizadoConError.h"
 #import "IRGEstadoDelJuegoEnPausa.h"
 
+#import "IRGEstadoDelJuegoConfiguracion.h"
+
 
 @interface IRGGestorDeEstados : NSObject<IRGEstadosDelJuego>
 #pragma mark - Propiedades publicas
@@ -31,12 +33,16 @@
 @property (nonatomic) IRGEstadoDelJuegoFinalizadoSinErrorConAyuda * estadoDelJuegoFinalizadoSinErrorConAyuda;
 @property (nonatomic) IRGEstadoDelJuegoFinalizadoConError* estadoDelJuegoFinalizadoConError;
 @property (nonatomic) IRGEstadoDelJuegoEnPausa* estadoDelJuegoEnPausa;
+@property (nonatomic) IRGEstadoDelJuegoConfiguracion* estadoDelJuegoConfiguracion;
+
 
 #pragma mark - Inicializadores
 //designated initializer
--(instancetype) initConDelegado:(IRGVentanaPrincipalViewController *)sender;
+-(instancetype) initConSender:(IRGVentanaPrincipalViewController *)sender;
 
 #pragma mark - Metodos publicos
+
 -(void) establecerEstado:(id<IRGEstadosDelJuego>)nuevoEstado;
+- (id<IRGEstadosDelJuego>) estadoDelJuegoAnterior ;
 
 @end

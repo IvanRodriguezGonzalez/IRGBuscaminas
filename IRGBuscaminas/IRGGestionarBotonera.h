@@ -23,6 +23,10 @@
 
 -(void) desactivarBotonPrincipal;
 
+-(void) activarBotonJugarSecundario;
+
+-(void) desactivarBotonJugarSecundario;
+
 -(void) activarBotonPausar;
 
 -(void) desactivarBotonPausar;
@@ -54,6 +58,11 @@
 -(void) mostrarVistaTiempoYMinas;
 
 - (void) ocultarVistaTiempoYMinas;
+
+- (void) bloquearBotones;
+
+-(void) desbloquearBotones;
+
 
 
 @end

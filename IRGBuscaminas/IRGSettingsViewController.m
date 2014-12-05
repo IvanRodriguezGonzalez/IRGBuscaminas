@@ -40,8 +40,6 @@
 #pragma mark - Inicializadores
 -(instancetype) init{
     self = [super init];
-    self.view.frame = [[UIScreen mainScreen] applicationFrame];
-
     return self;
 }
 
@@ -73,9 +71,7 @@
     self.vistaDatos.layer.cornerRadius = REDONDEO_DE_LAS_ESQUINAS_DE_LA_VENTANA;
     self.vistaDatos.layer.masksToBounds = YES;
     
-  
-    [[UIApplication sharedApplication].keyWindow.rootViewController.view addSubview:self.view];
-
+    
     [self.nivelDeDificultad addTarget:self
                          action:@selector(actualizarMinasSegunElNivelDeDificultad)
                forControlEvents:UIControlEventValueChanged];
@@ -99,15 +95,6 @@
 
 -(void) deviceOrientationDidChange:(NSNotification *)sender{
     
-    if ([self iPadVertical]){
-        self.vistaDatos.center = CGPointMake([UIApplication sharedApplication].keyWindow.frame.size.width/2,
-                                       [UIApplication sharedApplication].keyWindow.frame.size.height /2);
-    }
-    else {
-        self.vistaDatos.center = CGPointMake([UIApplication sharedApplication].keyWindow.frame.size.width/2+[IRGSettings sharedSettings].desplazamientoXDelCanvasEnModoHorizontal,
-                                       [UIApplication sharedApplication].keyWindow.frame.size.height /2);
-    }
-    
 }
 
 - (IBAction)guardarResultados:(UIButton *)sender {
@@ -130,7 +117,21 @@
     }
     [IRGSettings sharedSettings].sensibilidadDelTap = self.sensibilidadDelTap.value;
     [[IRGSettings sharedSettings] guardarSettings];
+    
+    [self.senderViewController.gestorDeEstados establecerEstado:self.senderViewController.gestorDeEstados.estadoDelJuegoEnJuego];
+    
+    [self.senderViewController iniciarJuego];
+    
+    
     [self.view removeFromSuperview];
+    
+}
+- (IBAction)cancelar:(UIButton *)sender {
+    [self.senderViewController restaurarEstado];
+    [self restablecerTransparenciaDeLasCeldas];
+    [self restaurarTransparenciaDelMenu];
+    [self.view removeFromSuperview];
+
 }
 
 -(void) actualizarMinasSegunElNivelDeDificultad{
@@ -146,8 +147,10 @@
     }
 }
 - (IBAction)cambiarTransparenciaDelMenu:(UISlider *)sender {
-    [self.senderViewController cambiarTransparenciaDelMenu:sender.value];
+    [self.senderViewController cambiarTransparenciaDelMenu:1-sender.value];
 }
+
+
 
 #pragma mark - Auxiliares
 
@@ -160,5 +163,18 @@
     else {
         return true;
     }
+}
+
+- (void) restablecerTransparenciaDeLasCeldas{
+    for (IRGCeldaViewController *celdaViewController in [IRGDatos sharedDatos].todasLasCeldas){
+        if (celdaViewController.estado == procesado){
+            celdaViewController.view.backgroundColor = [[IRGSettings sharedSettings].colorDeRellenoDeLaCeldaProcesada colorWithAlphaComponent:[IRGSettings sharedSettings].porcerntajeDeTransparenciaDeLasCeldas];
+        }
+    }
+}
+
+-(void) restaurarTransparenciaDelMenu{
+    [self.senderViewController cambiarTransparenciaDelMenu:[IRGSettings sharedSettings].porcerntajeDeTransparenciaDelMenu];
+
 }
 @end

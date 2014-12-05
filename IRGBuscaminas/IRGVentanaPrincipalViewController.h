@@ -8,6 +8,9 @@
 
 #import <UIKit/UIKit.h>
 #import "IRGGestionarBotonera.h"
+#import "IRGSettingsViewController.h"
+#import "IRGGestorDeEstados.h"
+
 
 @class IRGCeldaViewController;
 
@@ -44,7 +47,12 @@
 
 @property (weak, nonatomic) IBOutlet UIView *vistaBarraDeBotonesVertical;
 
+@property (nonatomic) IRGGestorDeEstados *gestorDeEstados;
 
+
+@property (weak, nonatomic) IBOutlet UIButton *botonJugarSecundarioVertical;
+
+@property (weak, nonatomic) IBOutlet UIButton *botonJugarSecundario;
 
 -(void) ponerBandera:(IRGCeldaViewController *)celda;
 -(void) despejarCelda: (IRGCeldaViewController *)celda;
@@ -64,6 +72,9 @@
 - (void) detenerRelor;
 - (void) mostrarImagenDeBloqueo:(NSString *)imagen;
 - (void) eliminarImagenDeBloqueo;
+
+-(void) mostrarVentanaDeConfiguracion;
+- (void) restaurarEstado;
 
 
 - (NSInteger) calcularPorcentajeDeProgreso;

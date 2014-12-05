@@ -56,9 +56,10 @@
             [self.delegado.gestionarBotonera desactivarBotonMostrarMinas];
         }
     [self.delegado.gestionarBotonera desactivarBotonMejoresTiempos];
-    [self.delegado.gestionarBotonera activarBotonPrincipal];
+    [self.delegado.gestionarBotonera activarBotonJugarSecundario];
     [self.delegado.gestionarBotonera activarBotonPausar];
     [self.delegado.gestionarBotonera activarSettings];
+    
     [self.delegado.gestionarBotonera ocultarVistaBotonJugarPrincipal];
     [self.delegado.gestionarBotonera mostrarVistaBotonJugarSecundario];
     [self.delegado.gestionarBotonera mostrarBarraDeBotones];
@@ -132,5 +133,10 @@
         [self.delegado.gestionarBotonera ocultarBarraDeBotones];
     }
 }
+
+-(void) accionConfigurar{
+    [self.delegado mostrarVentanaDeConfiguracion];
+}
+
 
 @end

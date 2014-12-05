@@ -12,6 +12,9 @@
     #pragma mark - Propiedades privadas
     @property (nonatomic) IRGVentanaPrincipalViewController *delegado;
     @property (nonatomic) id<IRGEstadosDelJuego> estadoDelJuego;
+    @property (nonatomic) id<IRGEstadosDelJuego> antiguoEstadoDelJuego;
+
+
 
 @end
 
@@ -20,7 +23,8 @@
 
 
 #pragma mark - Inicializadores
--(instancetype) initConDelegado:(IRGVentanaPrincipalViewController *)sender{
+
+-(instancetype) initConSender:(IRGVentanaPrincipalViewController *)sender{
     self = [super init];
     if (self) {
         self.delegado = sender;
@@ -40,8 +44,10 @@
         
         self.estadoDelJuegoEnPausa = [[IRGEstadoDelJuegoEnPausa alloc] initConGestorDeEstados:self delegado:self.delegado];
         
+        self.estadoDelJuegoConfiguracion = [[IRGEstadoDelJuegoConfiguracion alloc]initConGestorDeEstados:self delegado:self.delegado];
         
         self.estadoDelJuego = self.estadoDelJuegoInicio;
+        self.antiguoEstadoDelJuego = self.estadoDelJuegoInicio;
     }
     return self;
 }
@@ -80,11 +86,16 @@
     [self.estadoDelJuego mostrarYOcultarBotones];
 }
 
+- (void) accionConfigurar{
+    [self.estadoDelJuego accionConfigurar];
+}
+
 
 #pragma mark - Accesors
 
 
 -(void) setEstadoDelJuego:(id<IRGEstadosDelJuego>)estadoDelJuego{
+    _antiguoEstadoDelJuego = _estadoDelJuego;
     _estadoDelJuego = estadoDelJuego;
     [self establecerBotones];
 }
@@ -95,5 +106,8 @@
     self.estadoDelJuego = nuevoEstado;
 }
 
+- (id<IRGEstadosDelJuego>) estadoDelJuegoAnterior {
+    return _antiguoEstadoDelJuego;
+}
 
 @end

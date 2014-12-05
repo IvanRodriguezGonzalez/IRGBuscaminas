@@ -6,22 +6,21 @@
 //  Copyright (c) 2014 Ivan Rodriguez Gonzalez. All rights reserved.
 //
 
-#import "IRGEstadoDelJuegoInicio.h"
+#import "IRGEstadoDelJuegoConfiguracion.h"
 #import "IRGDatos.h"
 #import "IRGVentanaPrincipalViewController.h"
 #import "IRGGestorDeEstados.h"
-#import "IRGSettingsViewController.h"
 
 
 
-@interface IRGEstadoDelJuegoInicio()
+@interface IRGEstadoDelJuegoConfiguracion()
     #pragma mark - Propiedades privadas
     @property (nonatomic,strong) IRGVentanaPrincipalViewController *delegado;
     @property (nonatomic,strong) IRGGestorDeEstados * gestorDeEstados;
 @end
 
 #pragma mark -
-@implementation IRGEstadoDelJuegoInicio
+@implementation IRGEstadoDelJuegoConfiguracion
 
 
 #pragma mark - Inicializadores
@@ -50,22 +49,20 @@
 
 - (void) establecerBotones{
     [self.delegado.gestionarBotonera desactivarBotonMostrarMinas];
-    [self.delegado.gestionarBotonera activarBotonMejoresTiempos];
-    [self.delegado.gestionarBotonera activarBotonJugarSecundario];
+    [self.delegado.gestionarBotonera desactivarBotonMejoresTiempos];
+    [self.delegado.gestionarBotonera desactivarBotonJugarSecundario];
     [self.delegado.gestionarBotonera desactivarBotonPausar];
-    [self.delegado.gestionarBotonera activarSettings];
-    [self.delegado.gestionarBotonera activarBotonPrincipal];
+    [self.delegado.gestionarBotonera desactivarSettings];
     
-    [self.delegado.gestionarBotonera mostrarVistaBotonJugarPrincipal];
+    [self.delegado.gestionarBotonera ocultarVistaBotonJugarPrincipal];
     [self.delegado.gestionarBotonera mostrarVistaBotonJugarSecundario];
     [self.delegado.gestionarBotonera mostrarBarraDeBotones];
-    [self.delegado.gestionarBotonera ocultarVistaTiempoYMinas];
+    [self.delegado.gestionarBotonera mostrarVistaTiempoYMinas];
     
 }
 
 - (void) accionJugar{
-    [self.gestorDeEstados establecerEstado:self.gestorDeEstados.estadoDelJuegoEnJuego];
-    [self.delegado iniciarJuego];
+    [NSException exceptionWithName:@"accion incorrecta" reason:@"El estado no la soporta" userInfo:nil];
 }
 
 -(void) accionMostrarMinas{
@@ -87,19 +84,12 @@
     [NSException exceptionWithName:@"accion incorrecta" reason:@"El estado no la soporta" userInfo:nil];
 }
 -(void) mostrarYOcultarBotones{
-    if ((self.delegado.vistaBarraDeBotones.hidden ==YES) & (self.delegado.vistaBarraDeBotonesVertical.hidden ==YES)){
-        //[self.delegado.gestionarBotonera  ocultarVistaBotonJugarSecundario];
-        [self.delegado.gestionarBotonera mostrarBarraDeBotones];
-        
-    }
-    else {
-        //[self.delegado.gestionarBotonera ocultarVistaBotonJugarSecundario];
-        [self.delegado.gestionarBotonera ocultarBarraDeBotones];
-    }
-    
 };
 
 -(void) accionConfigurar{
-    [self.delegado mostrarVentanaDeConfiguracion];
+    [NSException exceptionWithName:@"accion incorrecta" reason:@"El estado no la soporta" userInfo:nil];
 }
+
+
+
 @end

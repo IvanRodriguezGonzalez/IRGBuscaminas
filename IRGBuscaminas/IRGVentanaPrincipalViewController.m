@@ -18,7 +18,6 @@
 #import "IRGMejoresTiemposViewController.h"
 #import "IRGMejoresTiempos.h"
 #import "IRGPreguntarNombreViewController.h"
-#import "IRGGestorDeEstados.h"
 #import "IRGGestionarBotonera.h"
 #import "IRGSettingsViewController.h"
 #import "IRGSettings.h"
@@ -49,19 +48,18 @@
 @property (nonatomic)  NSInteger numeroDeColumnas;
 @property (nonatomic) int tiempoDeJuegoEnSegundos;
 
-@property (nonatomic) IRGGestorDeEstados *gestorDeEstados;
 
 @property (nonatomic) UIImageView *vistaDeBloqueo;
 
 @property (weak, nonatomic) IBOutlet UITextField *tiempoDeJuegoTextField;
-
-@property (nonatomic) IRGSettingsViewController * vistaDeConfiguracion;
 
 @property (nonatomic) IRGDisplaySieteSegmentosViewController * minas7SViewController;
 
 @property (nonatomic) IRGHoraYMinutosSieteSegmentosViewController * tiempoDeJuego7SViewController;
 
 @property (weak, nonatomic) IBOutlet UITextField *separadorMinutosDeSegundos;
+
+@property (nonatomic) IRGSettingsViewController * vistaDeConfiguracion;
 
 @end
 
@@ -130,20 +128,7 @@
 }
 
 - (IBAction)mostrarConfiguracion:(UIButton *)sender {
-    self.vistaDeConfiguracion =[[IRGSettingsViewController alloc]init];
-    self.vistaDeConfiguracion.view.frame = self.canvas.frame;
-    self.vistaDeConfiguracion.senderViewController = self;
-    
-    if ([self iPadVertical]){
-        self.vistaDeConfiguracion.vistaDatos.center = CGPointMake([UIApplication sharedApplication].keyWindow.frame.size.width/2,
-                                             [UIApplication sharedApplication].keyWindow.frame.size.height /2);
-    }
-    else {
-        self.vistaDeConfiguracion.vistaDatos.center = CGPointMake([UIApplication sharedApplication].keyWindow.frame.size.width/2+[IRGSettings sharedSettings].desplazamientoXDelCanvasEnModoHorizontal,
-                                             [UIApplication sharedApplication].keyWindow.frame.size.height /2);
-    }
-    [self.vistaDeConfiguracion.vistaDatos setNeedsDisplay];
-    
+    [self.gestorDeEstados accionConfigurar];
 }
 
 
@@ -311,7 +296,7 @@
 }
 
 - (void) iniciarGestorDeEstados{
-    self.gestorDeEstados = [[IRGGestorDeEstados alloc]initConDelegado:self];
+    self.gestorDeEstados = [[IRGGestorDeEstados alloc]initConSender:self];
 }
 
 - (void) iniciarJuego{
@@ -535,19 +520,23 @@
 }
 
 - (void) mostrarImagenDeBloqueo:(NSString *)imagen {
+    /*
     
-    CGRect frame = CGRectMake(0, 0, self.canvas.frame.size.width, self.canvas.frame.size.height);
+    CGRect frame = CGRectMake(0, 0, self.vistaCanvasDeLasCeldas.frame.size.width, self.vistaCanvasDeLasCeldas.frame.size.height);
     if (!self.vistaDeBloqueo){
         self.vistaDeBloqueo = [[UIImageView alloc]initWithFrame:frame];
     }
     self.vistaDeBloqueo.backgroundColor = [[UIColor lightGrayColor] colorWithAlphaComponent:1];
-    [self.canvas addSubview:self.vistaDeBloqueo];
+    [self.vistaCanvasDeLasCeldas addSubview:self.vistaDeBloqueo];
     UIImage *imagenDeBloqueo = [UIImage imageNamed:imagen];
-    self.vistaDeBloqueo.image = imagenDeBloqueo;
+    self.vistaDeBloqueo.image = imagenDeBloqueo;*/
+    self.vistaCanvasDeLasCeldas.hidden = YES;
 }
 
 -(void) eliminarImagenDeBloqueo{
-    [self.vistaDeBloqueo removeFromSuperview];
+    self.vistaCanvasDeLasCeldas.hidden = NO;
+
+ //   [self.vistaDeBloqueo removeFromSuperview];
 }
 
 #pragma mark - Activacion y Desactivacion de botones y barras
@@ -573,7 +562,20 @@
 }
 
 - (void)cambiarTransparenciaDelMenu:(float) porcentajeDeTransparencia{
-    self.vistaBarraDeBotones.backgroundColor = [[IRGSettings sharedSettings].colorDeRellenoDeLaBarraDeBotones colorWithAlphaComponent:1-porcentajeDeTransparencia ];
-    self.vistaBarraDeBotonesVertical.backgroundColor = [[IRGSettings sharedSettings].colorDeRellenoDeLaBarraDeBotones colorWithAlphaComponent:1-porcentajeDeTransparencia];
+    self.vistaBarraDeBotones.backgroundColor = [[IRGSettings sharedSettings].colorDeRellenoDeLaBarraDeBotones colorWithAlphaComponent:porcentajeDeTransparencia ];
+    self.vistaBarraDeBotonesVertical.backgroundColor = [[IRGSettings sharedSettings].colorDeRellenoDeLaBarraDeBotones colorWithAlphaComponent:porcentajeDeTransparencia];
+}
+
+-(void) mostrarVentanaDeConfiguracion{
+    [self.gestorDeEstados establecerEstado:self.gestorDeEstados.estadoDelJuegoConfiguracion];
+    self.vistaDeConfiguracion =[[IRGSettingsViewController alloc]init];
+    self.vistaDeConfiguracion.view.center = CGPointMake(self.vistaCanvasDeLasCeldas.frame.size.width/2,
+                                                                 self.vistaCanvasDeLasCeldas.frame.size.height/2);
+    self.vistaDeConfiguracion.senderViewController = self;
+    [self.vistaCanvasDeLasCeldas addSubview:self.vistaDeConfiguracion.view];
+}
+
+- (void) restaurarEstado{
+    [self.gestorDeEstados establecerEstado:[self.gestorDeEstados estadoDelJuegoAnterior]];
 }
 @end

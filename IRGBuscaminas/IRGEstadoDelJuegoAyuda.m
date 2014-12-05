@@ -72,7 +72,7 @@
 - (void) establecerBotones{
     [self.delegado.gestionarBotonera desactivarBotonMostrarMinas];
     [self.delegado.gestionarBotonera desactivarBotonMejoresTiempos];
-    [self.delegado.gestionarBotonera desactivarBotonPrincipal];
+    [self.delegado.gestionarBotonera desactivarBotonJugarSecundario];
     [self.delegado.gestionarBotonera desactivarBotonPausar];
     [self.delegado.gestionarBotonera desactivarSettings];
 
@@ -151,5 +151,9 @@
 -(void) mostrarYOcultarBotones{
     
 };
+
+-(void) accionConfigurar{
+    [NSException exceptionWithName:@"accion incorrecta" reason:@"El estado no la soporta" userInfo:nil];
+}
 
 @end

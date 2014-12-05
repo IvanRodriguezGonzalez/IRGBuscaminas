@@ -13,6 +13,7 @@
 @interface IRGGestionarBotonera ()
     #pragma mark - Propiedades privadas
     @property (nonatomic) IRGVentanaPrincipalViewController *delegado;
+@property (nonatomic) UIView * cortinilla;
 @end
 
 #pragma mark -
@@ -42,6 +43,18 @@
 -(void) desactivarBotonPrincipal{
     self.delegado.botonPrincipal.enabled  = false;
 }
+
+-(void) activarBotonJugarSecundario{
+    self.delegado.botonJugarSecundario.enabled = true;
+    self.delegado.botonJugarSecundarioVertical.enabled = true;
+}
+
+-(void) desactivarBotonJugarSecundario{
+    self.delegado.botonJugarSecundario.enabled = false;
+    self.delegado.botonJugarSecundarioVertical.enabled = FALSE;
+}
+
+
 
 -(void) activarBotonPausar{
     self.delegado.botonPausar.enabled = true;
@@ -140,5 +153,7 @@
         return true;
     }
 }
+
+
 
 @end

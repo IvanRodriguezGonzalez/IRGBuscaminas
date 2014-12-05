@@ -1,12 +1,14 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="6250" systemVersion="14B25" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="6254" systemVersion="14B25" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES">
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="6244"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="6247"/>
         <capability name="Aspect ratio constraints" minToolsVersion="5.1"/>
     </dependencies>
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="IRGVentanaPrincipalViewController">
             <connections>
+                <outlet property="botonJugarSecundario" destination="OFO-Yp-BfR" id="Pk6-S3-ffF"/>
+                <outlet property="botonJugarSecundarioVertical" destination="x4B-g0-7Lf" id="uiZ-JI-DGr"/>
                 <outlet property="botonMostrarMejoresTiempoVertical" destination="KGA-8F-OeJ" id="gvz-n4-nyv"/>
                 <outlet property="botonMostrarMejoresTiempos" destination="g0l-vu-kiX" id="eLh-QO-01J"/>
                 <outlet property="botonMostrarMinas" destination="RNV-JR-Uw3" id="Tqa-zl-5Tk"/>
@@ -462,7 +464,7 @@
                                 </mask>
                             </variation>
                         </view>
-                        <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="9HN-GC-ekE" userLabel="vistaBarraDeBotones">
+                        <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="9HN-GC-ekE" userLabel="vistaBarraDeBotonesVertical">
                             <rect key="frame" x="20" y="334" width="120" height="420"/>
                             <subviews>
                                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ujJ-X7-iWa" userLabel="verMinas">
@@ -784,12 +786,12 @@
                                 </mask>
                             </variation>
                         </view>
-                        <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="k1h-1u-mTQ">
-                            <rect key="frame" x="650" y="494" width="100" height="100"/>
+                        <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="k1h-1u-mTQ" userLabel="vistaDeLasCeldas">
+                            <rect key="frame" x="135" y="294" width="500" height="500"/>
                             <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                             <constraints>
-                                <constraint firstAttribute="height" constant="100" id="S1f-Y6-e30"/>
-                                <constraint firstAttribute="width" constant="100" id="e20-Hk-35s"/>
+                                <constraint firstAttribute="height" constant="500" id="S1f-Y6-e30"/>
+                                <constraint firstAttribute="width" constant="500" id="e20-Hk-35s"/>
                             </constraints>
                         </view>
                     </subviews>
@@ -799,6 +801,7 @@
                         <constraint firstItem="tpS-bL-P0p" firstAttribute="top" secondItem="zp6-fT-8XJ" secondAttribute="top" id="1TI-zL-cx6"/>
                         <constraint firstAttribute="centerX" secondItem="hIG-gz-8Ow" secondAttribute="centerX" id="6py-aj-QSl"/>
                         <constraint firstAttribute="trailing" secondItem="tpS-bL-P0p" secondAttribute="trailing" id="70Z-lU-gjT"/>
+                        <constraint firstAttribute="centerX" secondItem="k1h-1u-mTQ" secondAttribute="centerX" id="FeQ-8R-CNh"/>
                         <constraint firstAttribute="centerX" secondItem="8xn-uj-fOo" secondAttribute="centerX" id="HtN-xS-YjG"/>
                         <constraint firstAttribute="centerX" secondItem="9HN-GC-ekE" secondAttribute="centerX" id="Hzd-Ki-mCV"/>
                         <constraint firstItem="tpS-bL-P0p" firstAttribute="leading" secondItem="zp6-fT-8XJ" secondAttribute="leading" id="NH4-96-OaL"/>
@@ -819,6 +822,8 @@
                     </constraints>
                     <variation key="default">
                         <mask key="constraints">
+                            <exclude reference="dlL-zX-UTy"/>
+                            <exclude reference="o1q-a1-Loa"/>
                             <exclude reference="Hzd-Ki-mCV"/>
                             <exclude reference="sWx-6b-LiG"/>
                             <exclude reference="HtN-xS-YjG"/>
@@ -827,7 +832,6 @@
                             <exclude reference="fgY-PZ-9NN"/>
                             <exclude reference="gkg-fB-6nx"/>
                             <exclude reference="lbp-c6-Zzo"/>
-                            <exclude reference="dlL-zX-UTy"/>
                         </mask>
                     </variation>
                 </view>
@@ -850,7 +854,7 @@
                     <exclude reference="qt0-UT-1jZ"/>
                 </mask>
             </variation>
-            <point key="canvasLocation" x="448" y="-161.5"/>
+            <point key="canvasLocation" x="436" y="-171.5"/>
         </view>
     </objects>
     <resources>

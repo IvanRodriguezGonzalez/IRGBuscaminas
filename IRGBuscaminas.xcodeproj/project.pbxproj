@@ -22,6 +22,7 @@
 		E12E5D3A1A10F36E0047FCCF /* IRGEstadoDelJuegoEnJuego.m in Sources */ = {isa = PBXBuildFile; fileRef = E12E5D391A10F36E0047FCCF /* IRGEstadoDelJuegoEnJuego.m */; };
 		E12E5D3D1A10FD090047FCCF /* IRGEstadoDelJuegoInicio.m in Sources */ = {isa = PBXBuildFile; fileRef = E12E5D3C1A10FD090047FCCF /* IRGEstadoDelJuegoInicio.m */; };
 		E12E5D411A1113FD0047FCCF /* IRGGestorDeEstados.m in Sources */ = {isa = PBXBuildFile; fileRef = E12E5D401A1113FD0047FCCF /* IRGGestorDeEstados.m */; };
+		E12FBAAC1A31A1EC00B5465C /* IRGEstadoDelJuegoConfiguracion.m in Sources */ = {isa = PBXBuildFile; fileRef = E12FBAAB1A31A1EC00B5465C /* IRGEstadoDelJuegoConfiguracion.m */; };
 		E131A7EC1A1F18BD006EFED3 /* IRGSettings.m in Sources */ = {isa = PBXBuildFile; fileRef = E131A7EB1A1F18BD006EFED3 /* IRGSettings.m */; };
 		E1923B741A1AA3C4000E69B2 /* IRGSettingsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = E1923B721A1AA3C4000E69B2 /* IRGSettingsViewController.m */; };
 		E1923B751A1AA3C4000E69B2 /* IRGSettingsViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = E1923B731A1AA3C4000E69B2 /* IRGSettingsViewController.xib */; };
@@ -86,6 +87,8 @@
 		E12E5D3C1A10FD090047FCCF /* IRGEstadoDelJuegoInicio.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = IRGEstadoDelJuegoInicio.m; sourceTree = "<group>"; };
 		E12E5D3F1A1113FD0047FCCF /* IRGGestorDeEstados.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IRGGestorDeEstados.h; sourceTree = "<group>"; };
 		E12E5D401A1113FD0047FCCF /* IRGGestorDeEstados.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = IRGGestorDeEstados.m; sourceTree = "<group>"; };
+		E12FBAAA1A31A1EC00B5465C /* IRGEstadoDelJuegoConfiguracion.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IRGEstadoDelJuegoConfiguracion.h; sourceTree = "<group>"; };
+		E12FBAAB1A31A1EC00B5465C /* IRGEstadoDelJuegoConfiguracion.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = IRGEstadoDelJuegoConfiguracion.m; sourceTree = "<group>"; };
 		E131A7EA1A1F18BD006EFED3 /* IRGSettings.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IRGSettings.h; sourceTree = "<group>"; };
 		E131A7EB1A1F18BD006EFED3 /* IRGSettings.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = IRGSettings.m; sourceTree = "<group>"; };
 		E1923B711A1AA3C4000E69B2 /* IRGSettingsViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IRGSettingsViewController.h; sourceTree = "<group>"; };
@@ -194,6 +197,7 @@
 				E1C543591A1201E000D5B23A /* IRGEstadoDelJuegoFinalizadoSinErrorSinAyuda.h */,
 				E1C5435C1A12030C00D5B23A /* IRGEstadoDelJuegoFinalizadoSinErrorConAyuda.h */,
 				E1C5435F1A12043100D5B23A /* IRGEstadoDelJuegoFinalizadoConError.h */,
+				E12FBAAA1A31A1EC00B5465C /* IRGEstadoDelJuegoConfiguracion.h */,
 			);
 			name = Header;
 			sourceTree = "<group>";
@@ -210,6 +214,7 @@
 				E1C5435A1A1201E000D5B23A /* IRGEstadoDelJuegoFinalizadoSinErrorSinAyuda.m */,
 				E1C5435D1A12030C00D5B23A /* IRGEstadoDelJuegoFinalizadoSinErrorConAyuda.m */,
 				E1C543601A12043100D5B23A /* IRGEstadoDelJuegoFinalizadoConError.m */,
+				E12FBAAB1A31A1EC00B5465C /* IRGEstadoDelJuegoConfiguracion.m */,
 			);
 			name = Implementation;
 			sourceTree = "<group>";
@@ -445,6 +450,7 @@
 				E1FE2CEA1A114242004333F9 /* IRGEstadoDelJuegoEnJuegoConAyuda.m in Sources */,
 				E1CD31AD1A0BCCF900D317A8 /* IRGCelda.m in Sources */,
 				320334451A0EC9A7000FFAEF /* IRGMejoresTiemposViewController.m in Sources */,
+				E12FBAAC1A31A1EC00B5465C /* IRGEstadoDelJuegoConfiguracion.m in Sources */,
 				32B9B5481A2CFAC5008AAD51 /* IRGHoraYMinutosSieteSegmentosViewController.m in Sources */,
 				E1D41DCE1A0BFEC30059C46C /* IRGDatos.m in Sources */,
 				E1C543611A12043100D5B23A /* IRGEstadoDelJuegoFinalizadoConError.m in Sources */,
