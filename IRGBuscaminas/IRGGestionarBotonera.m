@@ -54,8 +54,6 @@
     self.delegado.botonJugarSecundarioVertical.enabled = FALSE;
 }
 
-
-
 -(void) activarBotonPausar{
     self.delegado.botonPausar.enabled = true;
     self.delegado.botonPausarVertical.enabled = true;
@@ -154,6 +152,13 @@
     }
 }
 
+-(void) mostrarIndicadorModoAyuda{
+    self.delegado.vistaModoAyuda.hidden = NO;
+}
 
+
+-(void) ocultarIndicadorModoAyuda{
+    self.delegado.vistaModoAyuda.hidden = YES;
+}
 
 @end

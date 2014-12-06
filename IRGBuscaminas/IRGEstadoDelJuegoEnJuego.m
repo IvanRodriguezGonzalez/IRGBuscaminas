@@ -59,6 +59,8 @@
     [self.delegado.gestionarBotonera activarBotonJugarSecundario];
     [self.delegado.gestionarBotonera activarBotonPausar];
     [self.delegado.gestionarBotonera activarSettings];
+    [self.delegado.gestionarBotonera ocultarIndicadorModoAyuda];
+
     
     [self.delegado.gestionarBotonera ocultarVistaBotonJugarPrincipal];
     [self.delegado.gestionarBotonera mostrarVistaBotonJugarSecundario];

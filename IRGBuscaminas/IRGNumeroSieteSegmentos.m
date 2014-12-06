@@ -334,7 +334,7 @@
                                                self.frame.size.height/2+self.grosorDelSegmento/2+self.separacionEntreSegmentos);
     
     CGPoint puntoInferiorDerecho = CGPointMake(self.frame.size.width-self.separacionHorizontalDeLosSegmentosConLaVista,
-                                               self.frame.size.height-self.separacionVerticalDeLosSegmentosConLaVista);
+                                               self.frame.size.height-self.separacionVerticalDeLosSegmentosConLaVista-self.separacionEntreSegmentos);
     
     CGPoint puntoInferiorIzquierdo = CGPointMake(self.frame.size.width-self.separacionHorizontalDeLosSegmentosConLaVista-self.grosorDelSegmento,
                                                  self.frame.size.height-self.separacionVerticalDeLosSegmentosConLaVista-self.grosorDelSegmento-self.separacionEntreSegmentos);

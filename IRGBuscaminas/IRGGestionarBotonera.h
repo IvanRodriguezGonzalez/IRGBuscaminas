@@ -19,17 +19,17 @@
 
 #pragma mark - Metodos publicos de activar y desactivar botones
 
--(void) activarBotonPrincipal;
+- (void) activarBotonPrincipal;
 
--(void) desactivarBotonPrincipal;
+- (void) desactivarBotonPrincipal;
 
--(void) activarBotonJugarSecundario;
+- (void) activarBotonJugarSecundario;
 
--(void) desactivarBotonJugarSecundario;
+- (void) desactivarBotonJugarSecundario;
 
--(void) activarBotonPausar;
+- (void) activarBotonPausar;
 
--(void) desactivarBotonPausar;
+- (void) desactivarBotonPausar;
 
 - (void) activarBotonMejoresTiempos;
 
@@ -43,26 +43,28 @@
 
 - (void) desactivarSettings;
 
--(void) mostrarVistaBotonJugarPrincipal;
+- (void) mostrarVistaBotonJugarPrincipal;
 
 - (void) ocultarVistaBotonJugarPrincipal;
 
 - (void) mostrarVistaBotonJugarSecundario;
 
--(void) ocultarVistaBotonJugarSecundario;
+- (void) ocultarVistaBotonJugarSecundario;
 
--(void) mostrarBarraDeBotones;
+- (void) mostrarBarraDeBotones;
 
--(void) ocultarBarraDeBotones;
+- (void) ocultarBarraDeBotones;
 
--(void) mostrarVistaTiempoYMinas;
+- (void) mostrarVistaTiempoYMinas;
 
 - (void) ocultarVistaTiempoYMinas;
 
 - (void) bloquearBotones;
 
--(void) desbloquearBotones;
+- (void) desbloquearBotones;
 
+- (void) mostrarIndicadorModoAyuda;
 
+- (void) ocultarIndicadorModoAyuda;
 
 @end

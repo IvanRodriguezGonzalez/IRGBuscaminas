@@ -127,6 +127,8 @@
     }
 }
 
+
+
 - (IBAction)mostrarConfiguracion:(UIButton *)sender {
     [self.gestorDeEstados accionConfigurar];
 }
@@ -386,7 +388,6 @@
     
 }
 - (void) generarCanvas{
-   // [self.vistaCanvasDeLasCeldas removeFromSuperview];
     NSInteger anchoDelCanvasDeLasCeldas = [IRGLienzo sharedLienzo].filasDelLienzo*[IRGLienzo sharedLienzo].anchoCelda;
     NSInteger altoDelCanvasDeLasCeldas = [IRGLienzo sharedLienzo].columnasDelLienzo*[IRGLienzo sharedLienzo].altoCelda;
     NSInteger margenX =([UIApplication sharedApplication].keyWindow.frame.size.width -anchoDelCanvasDeLasCeldas)/2;

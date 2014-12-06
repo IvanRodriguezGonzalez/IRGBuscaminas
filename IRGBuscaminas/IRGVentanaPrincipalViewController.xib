@@ -28,6 +28,7 @@
                 <outlet property="vistaBotonJugarSecundario" destination="1x8-JR-3La" id="mvf-cQ-gjS"/>
                 <outlet property="vistaBotonJugarSecundarioVertical" destination="aMy-dQ-xIh" id="MGe-XY-GxZ"/>
                 <outlet property="vistaCanvasDeLasCeldas" destination="k1h-1u-mTQ" id="4gr-Tm-79j"/>
+                <outlet property="vistaModoAyuda" destination="16j-Sr-n6l" id="2uD-ZH-oPY"/>
                 <outlet property="vistaTiempoYMinas" destination="tpS-bL-P0p" id="qkx-eh-lSt"/>
             </connections>
         </placeholder>
@@ -84,14 +85,25 @@
                                         </mask>
                                     </variation>
                                 </textField>
+                                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="treasury_map-100" translatesAutoresizingMaskIntoConstraints="NO" id="16j-Sr-n6l">
+                                    <rect key="frame" x="178" y="28" width="25" height="25"/>
+                                    <constraints>
+                                        <constraint firstAttribute="height" constant="25" id="cMx-iJ-K61"/>
+                                        <constraint firstAttribute="width" constant="25" id="h0Z-X3-8Rn"/>
+                                    </constraints>
+                                </imageView>
                             </subviews>
                             <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                             <constraints>
+                                <constraint firstItem="16j-Sr-n6l" firstAttribute="centerY" secondItem="phd-fm-tez" secondAttribute="centerY" id="2Vt-yg-rRa"/>
+                                <constraint firstItem="16j-Sr-n6l" firstAttribute="leading" secondItem="phd-fm-tez" secondAttribute="trailing" constant="8" symbolic="YES" id="33c-TL-Agi"/>
                                 <constraint firstAttribute="width" constant="304" id="441-IL-NuY"/>
                                 <constraint firstItem="phd-fm-tez" firstAttribute="width" secondItem="OW5-p5-RKd" secondAttribute="width" id="5jg-zq-jFQ"/>
                                 <constraint firstItem="phd-fm-tez" firstAttribute="leading" secondItem="tpS-bL-P0p" secondAttribute="leading" constant="20" symbolic="YES" id="7uq-0w-ete"/>
                                 <constraint firstItem="phd-fm-tez" firstAttribute="top" relation="greaterThanOrEqual" secondItem="tpS-bL-P0p" secondAttribute="top" constant="20" symbolic="YES" id="9si-Hw-DAT"/>
                                 <constraint firstAttribute="trailing" secondItem="OW5-p5-RKd" secondAttribute="trailing" constant="16" id="FJe-vh-z4u"/>
+                                <constraint firstAttribute="centerX" secondItem="16j-Sr-n6l" secondAttribute="centerX" id="KQ9-hw-Hzi"/>
+                                <constraint firstAttribute="centerY" secondItem="16j-Sr-n6l" secondAttribute="centerY" id="Oi3-G6-mZn"/>
                                 <constraint firstAttribute="centerY" secondItem="OW5-p5-RKd" secondAttribute="centerY" id="RlI-ra-nc0"/>
                                 <constraint firstItem="phd-fm-tez" firstAttribute="top" secondItem="tpS-bL-P0p" secondAttribute="top" constant="20" symbolic="YES" id="SZF-C9-Yv0"/>
                                 <constraint firstItem="phd-fm-tez" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="tpS-bL-P0p" secondAttribute="leading" constant="20" symbolic="YES" id="Wg6-sa-Gct"/>
@@ -114,6 +126,8 @@
                                     <exclude reference="SZF-C9-Yv0"/>
                                     <exclude reference="Wg6-sa-Gct"/>
                                     <exclude reference="qWS-G1-JF6"/>
+                                    <exclude reference="KQ9-hw-Hzi"/>
+                                    <exclude reference="Oi3-G6-mZn"/>
                                     <exclude reference="FJe-vh-z4u"/>
                                     <exclude reference="YKM-f6-D5e"/>
                                     <exclude reference="nLf-He-kpX"/>
@@ -854,7 +868,7 @@
                     <exclude reference="qt0-UT-1jZ"/>
                 </mask>
             </variation>
-            <point key="canvasLocation" x="436" y="-171.5"/>
+            <point key="canvasLocation" x="376" y="-186.5"/>
         </view>
     </objects>
     <resources>
@@ -865,5 +879,6 @@
         <image name="mejoresTiempos" width="1024" height="1024"/>
         <image name="pausa" width="1024" height="1024"/>
         <image name="startbutton" width="256" height="256"/>
+        <image name="treasury_map-100" width="100" height="100"/>
     </resources>
 </document>

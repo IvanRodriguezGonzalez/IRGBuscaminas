@@ -47,20 +47,20 @@
 #pragma mark Accesors
 
 -(IRGNUmeroSieteSegmentosViewController *) sieteSegmentosViewController{
+    
     if (!_sieteSegmentosViewController ){
         CGRect frame = CGRectMake(
-                                  (self.delegado.canvas.frame.size.width-TAMANO_X_VENTANA_DISPLAY_SIETE_SEGMENTOS)/2,
-                                  (self.delegado.canvas.frame.size.height -TAMANO_Y_VENTANA_DISPLAY_SIETE_SEGMENTOS)/2 ,
+                                  (self.delegado.vistaCanvasDeLasCeldas.frame.size.width-TAMANO_X_VENTANA_DISPLAY_SIETE_SEGMENTOS)/2,
+                                  (self.delegado.vistaCanvasDeLasCeldas.frame.size.height -TAMANO_Y_VENTANA_DISPLAY_SIETE_SEGMENTOS)/2 ,
                                   TAMANO_X_VENTANA_DISPLAY_SIETE_SEGMENTOS,
                                   TAMANO_Y_VENTANA_DISPLAY_SIETE_SEGMENTOS);
         _sieteSegmentosViewController = [[IRGNUmeroSieteSegmentosViewController alloc] initWithNibName:nil
                                                                                                 bundle:nil
                                                                                              withFrame:frame
-                                         withRedondeoDeLasEsquinas:10];
+                                                                             withRedondeoDeLasEsquinas:10];
     }
     return  _sieteSegmentosViewController;
 }
-
 
 #pragma mark - Overrides
 -(NSString *) description{
@@ -105,18 +105,18 @@
 #pragma mark auxiliares primer nivel
 
 - (void) anadirVistaSieteSegmentos{
-    [self.delegado.canvas addSubview:self.sieteSegmentosViewController.view];
+    [self.delegado.vistaCanvasDeLasCeldas addSubview:self.sieteSegmentosViewController.view];
     
     [self.sieteSegmentosViewController establecerVentanaConTransparencia:.0
                                                             colorDeFondo:[UIColor grayColor]];
 
     [self.sieteSegmentosViewController establecerSegmentoConGrosorDelTrazo:1
-                                                         grosorDelSegmento:30
-                                                  separacionEntreSegmentos:0
+                                                         grosorDelSegmento:40
+                                                  separacionEntreSegmentos:2
                                  separacionHorizontalDelSegmentoConLaVista:0
                                    separacionVerticalDelSegmentoConLaVista:0
-                                                     colorDelTrazoDelBorde:[UIColor grayColor]
-                                                           colorDelRelleno:[UIColor whiteColor]transparenciaDelRelleno:.99];
+                                                     colorDelTrazoDelBorde:[UIColor blackColor]
+                                                           colorDelRelleno:[UIColor blueColor]transparenciaDelRelleno:.70];
     self.contador =[IRGSettings sharedSettings].tiempoDeAyuda;;
     [self.sieteSegmentosViewController dibujarNumero : self.contador ];
 }

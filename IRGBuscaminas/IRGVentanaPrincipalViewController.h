@@ -54,6 +54,10 @@
 
 @property (weak, nonatomic) IBOutlet UIButton *botonJugarSecundario;
 
+@property (weak, nonatomic) IBOutlet UIImageView *vistaModoAyuda;
+
+
+
 -(void) ponerBandera:(IRGCeldaViewController *)celda;
 -(void) despejarCelda: (IRGCeldaViewController *)celda;
 - (void) propagaTouch:(IRGCeldaViewController *)celdaViewController;

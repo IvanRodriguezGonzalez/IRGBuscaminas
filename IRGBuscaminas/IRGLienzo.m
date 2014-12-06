@@ -11,8 +11,15 @@
 
 #pragma mark - Constantes
 
-# define ALTO_DE_LA_CELDA 45
-# define ANCHO_DE_LA_CELDA 45
+# define ALTO_DE_LA_CELDA_NIVEL1 84
+# define ANCHO_DE_LA_CELDA_NIVEL1 84
+
+
+# define ALTO_DE_LA_CELDA_NIVEL2 56
+# define ANCHO_DE_LA_CELDA_NIVEL2 56
+
+# define ALTO_DE_LA_CELDA_NIVEL3 42
+# define ANCHO_DE_LA_CELDA_NIVEL3 42
 
 # define FILAS_DEL_LIENZO_Nivel_1 8
 # define COLUMNAS_DEL_LIENZO_Nivel_1 8
@@ -20,8 +27,8 @@
 # define FILAS_DEL_LIENZO_Nivel_2 12
 # define COLUMNAS_DEL_LIENZO_Nivel_2 12
 
-# define FILAS_DEL_LIENZO_Nivel_3 15
-# define COLUMNAS_DEL_LIENZO_Nivel_3 15
+# define FILAS_DEL_LIENZO_Nivel_3 16
+# define COLUMNAS_DEL_LIENZO_Nivel_3 16
 
 #pragma mark -
 @implementation IRGLienzo
@@ -82,11 +89,30 @@
 
 
 -(NSInteger) anchoCelda{
-        return  ANCHO_DE_LA_CELDA;
+    if ([IRGSettings sharedSettings].dificultad == 1){
+        _anchoCelda = ANCHO_DE_LA_CELDA_NIVEL1 ;
+    }
+    if ([IRGSettings sharedSettings].dificultad == 2){
+        _anchoCelda = ANCHO_DE_LA_CELDA_NIVEL2 ;
+    }
+    if ([IRGSettings sharedSettings].dificultad == 3){
+        _anchoCelda = ANCHO_DE_LA_CELDA_NIVEL3;
+    }
+        return  _anchoCelda;
 }
 
 -(NSInteger) altoCelda{
-  return ALTO_DE_LA_CELDA;
+    if ([IRGSettings sharedSettings].dificultad == 1){
+        _altoCelda = ALTO_DE_LA_CELDA_NIVEL1 ;
+    }
+    if ([IRGSettings sharedSettings].dificultad == 2){
+        _altoCelda = ALTO_DE_LA_CELDA_NIVEL2 ;
+    }
+    if ([IRGSettings sharedSettings].dificultad == 3){
+        _altoCelda = ALTO_DE_LA_CELDA_NIVEL3;
+    }
+    return  _altoCelda;
+
 }
 
 @end

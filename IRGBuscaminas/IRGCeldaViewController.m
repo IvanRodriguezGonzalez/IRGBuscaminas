@@ -45,13 +45,13 @@
         _numeroDeFila = numeroDeFila;
         _numeroDeColumna = numeroDeColumna;
         
-        NSInteger tamanoXDelJuego = [IRGLienzo sharedLienzo].anchoCelda*[IRGLienzo sharedLienzo].columnasDelLienzo;
-        NSInteger margenX = ([UIApplication sharedApplication].keyWindow.frame.size.width -tamanoXDelJuego)/2;
-        margenX=0;
+      //  NSInteger tamanoXDelJuego = [IRGLienzo sharedLienzo].anchoCelda*[IRGLienzo sharedLienzo].columnasDelLienzo;
+       // NSInteger margenX = ([UIApplication sharedApplication].keyWindow.frame.size.width -tamanoXDelJuego)/2;
+        NSInteger margenX=0;
         
-        NSInteger tamanoYDelJuego = [IRGLienzo sharedLienzo].altoCelda*[IRGLienzo sharedLienzo].filasDelLienzo;
-        NSInteger margenY = (self.delegado.altoDelCanvas-tamanoYDelJuego)/2;
-        margenY=0;
+       // NSInteger tamanoYDelJuego = [IRGLienzo sharedLienzo].altoCelda*[IRGLienzo sharedLienzo].filasDelLienzo;
+     //   NSInteger margenY = (self.delegado.altoDelCanvas-tamanoYDelJuego)/2;
+        NSInteger margenY=0;
         
         NSInteger posicionX = margenX+numeroDeColumna*[IRGLienzo sharedLienzo].anchoCelda;
         NSInteger posicionY = margenY+numeroDeFila*[IRGLienzo sharedLienzo].altoCelda;
