@@ -1,6 +1,6 @@
 //
 //  IRGGestorDeEstados.h
-//  IRGBuscaminas
+//  IRGBuscaminas v1
 //
 //  Created by Leticia Vila Sexto on 10/11/14.
 //  Copyright (c) 2014 Ivan Rodriguez Gonzalez. All rights reserved.
