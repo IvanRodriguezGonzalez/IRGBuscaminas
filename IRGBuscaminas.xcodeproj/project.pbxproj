@@ -43,6 +43,7 @@
 		E1D41DC51A0BEF6B0059C46C /* IRGCeldaViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = E1D41DC41A0BEF6B0059C46C /* IRGCeldaViewController.m */; };
 		E1D41DCA1A0BF0050059C46C /* IRGLienzo.m in Sources */ = {isa = PBXBuildFile; fileRef = E1D41DC71A0BF0050059C46C /* IRGLienzo.m */; };
 		E1D41DCE1A0BFEC30059C46C /* IRGDatos.m in Sources */ = {isa = PBXBuildFile; fileRef = E1D41DCD1A0BFEC30059C46C /* IRGDatos.m */; };
+		E1F722471A345B2B00854883 /* Media.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = E1F722461A345B2B00854883 /* Media.xcassets */; };
 		E1FE2CE71A112C1D004333F9 /* IRGEstadoDelJuegoAyuda.m in Sources */ = {isa = PBXBuildFile; fileRef = E1FE2CE61A112C1D004333F9 /* IRGEstadoDelJuegoAyuda.m */; };
 		E1FE2CEA1A114242004333F9 /* IRGEstadoDelJuegoEnJuegoConAyuda.m in Sources */ = {isa = PBXBuildFile; fileRef = E1FE2CE91A114242004333F9 /* IRGEstadoDelJuegoEnJuegoConAyuda.m */; };
 /* End PBXBuildFile section */
@@ -127,6 +128,7 @@
 		E1D41DC71A0BF0050059C46C /* IRGLienzo.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = IRGLienzo.m; sourceTree = "<group>"; };
 		E1D41DCC1A0BFEC30059C46C /* IRGDatos.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IRGDatos.h; sourceTree = "<group>"; };
 		E1D41DCD1A0BFEC30059C46C /* IRGDatos.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = IRGDatos.m; sourceTree = "<group>"; };
+		E1F722461A345B2B00854883 /* Media.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; name = Media.xcassets; path = ../Media.xcassets; sourceTree = "<group>"; };
 		E1FE2CE51A112C1D004333F9 /* IRGEstadoDelJuegoAyuda.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IRGEstadoDelJuegoAyuda.h; sourceTree = "<group>"; };
 		E1FE2CE61A112C1D004333F9 /* IRGEstadoDelJuegoAyuda.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = IRGEstadoDelJuegoAyuda.m; sourceTree = "<group>"; };
 		E1FE2CE81A114242004333F9 /* IRGEstadoDelJuegoEnJuegoConAyuda.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IRGEstadoDelJuegoEnJuegoConAyuda.h; sourceTree = "<group>"; };
@@ -253,6 +255,7 @@
 				E1CD31A81A0BCC0600D317A8 /* Vista */,
 				E1CD31AA1A0BCC1D00D317A8 /* Modelo */,
 				E1CD318A1A0BCB8900D317A8 /* Images.xcassets */,
+				E1F722461A345B2B00854883 /* Media.xcassets */,
 				E1CD318C1A0BCB8900D317A8 /* LaunchScreen.xib */,
 			);
 			path = IRGBuscaminas;
@@ -424,6 +427,7 @@
 			files = (
 				32A1DB131A0FAFAB00AA33CE /* IRGPreguntarNombreViewController.xib in Resources */,
 				E1CD31A71A0BCBF800D317A8 /* IRGVentanaPrincipalViewController.xib in Resources */,
+				E1F722471A345B2B00854883 /* Media.xcassets in Resources */,
 				E1923B751A1AA3C4000E69B2 /* IRGSettingsViewController.xib in Resources */,
 				E1CD318E1A0BCB8900D317A8 /* LaunchScreen.xib in Resources */,
 				E1CD318B1A0BCB8900D317A8 /* Images.xcassets in Resources */,

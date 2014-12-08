@@ -19,6 +19,5 @@
 -(instancetype) initConGestorDeEstados: (IRGGestorDeEstados *)gestorDeEstados
                                 delegado:(IRGVentanaPrincipalViewController *)sender;
 
-- (id<IRGEstadosDelJuego>) estadoDelJuegoAnterior ;
 
 @end

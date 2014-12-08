@@ -72,20 +72,29 @@
     [self iniciarGestorDeEstados];
     [self iniciarTotalMinasSieteSegmentos];
     [self iniciarTiempoDeJuegoSieteSegmentos];
-
     
     [IRGSettings sharedSettings].colorDeRellenoDeLaBarraDeBotones = [self.vistaBarraDeBotonesVertical.backgroundColor colorWithAlphaComponent:[IRGSettings sharedSettings].porcerntajeDeTransparenciaDelMenu];
+    
+    self.vistaBarraDeBotones.backgroundColor = [IRGSettings sharedSettings].colorDeRellenoDeLaBarraDeBotones;
+    
+    self.vistaBarraDeBotonesVertical.backgroundColor = [IRGSettings sharedSettings].colorDeRellenoDeLaBarraDeBotones;
+    
     self.vistaBarraDeBotonesVertical.layer.borderWidth = GROSOR_DEL_BORDER_DE_LA_VENTANA;
     self.vistaBarraDeBotonesVertical.layer.borderColor = COLOR_DEL_BORDE_DE_LA_VENTANA.CGColor;
     self.vistaBarraDeBotonesVertical.layer.cornerRadius = REDONDEO_DE_LAS_ESQUINAS_DE_LA_VENTANA;
     self.vistaBarraDeBotonesVertical.layer.masksToBounds = YES;
     
-    
-    [IRGSettings sharedSettings].colorDeRellenoDeLaBarraDeBotones = [self.vistaBarraDeBotones.backgroundColor colorWithAlphaComponent:[IRGSettings sharedSettings].porcerntajeDeTransparenciaDelMenu];
     self.vistaBarraDeBotones.layer.borderWidth = GROSOR_DEL_BORDER_DE_LA_VENTANA;
     self.vistaBarraDeBotones.layer.borderColor = COLOR_DEL_BORDE_DE_LA_VENTANA.CGColor;
     self.vistaBarraDeBotones.layer.cornerRadius = REDONDEO_DE_LAS_ESQUINAS_DE_LA_VENTANA;
     self.vistaBarraDeBotones.layer.masksToBounds = YES;
+    
+    self.vistaTiempoYMinas.layer.borderWidth = GROSOR_DEL_BORDER_DE_LA_VENTANA;
+    self.vistaTiempoYMinas.layer.borderColor = COLOR_DEL_BORDE_DE_LA_VENTANA.CGColor;
+    self.vistaTiempoYMinas.layer.cornerRadius = REDONDEO_DE_LAS_ESQUINAS_DE_LA_VENTANA;
+    self.vistaTiempoYMinas.layer.masksToBounds = YES;
+    
+    
    
     [[NSNotificationCenter defaultCenter] addObserver:self
                                              selector:@selector(deviceOrientationDidChange:)
@@ -521,23 +530,11 @@
 }
 
 - (void) mostrarImagenDeBloqueo:(NSString *)imagen {
-    /*
-    
-    CGRect frame = CGRectMake(0, 0, self.vistaCanvasDeLasCeldas.frame.size.width, self.vistaCanvasDeLasCeldas.frame.size.height);
-    if (!self.vistaDeBloqueo){
-        self.vistaDeBloqueo = [[UIImageView alloc]initWithFrame:frame];
-    }
-    self.vistaDeBloqueo.backgroundColor = [[UIColor lightGrayColor] colorWithAlphaComponent:1];
-    [self.vistaCanvasDeLasCeldas addSubview:self.vistaDeBloqueo];
-    UIImage *imagenDeBloqueo = [UIImage imageNamed:imagen];
-    self.vistaDeBloqueo.image = imagenDeBloqueo;*/
     self.vistaCanvasDeLasCeldas.hidden = YES;
 }
 
 -(void) eliminarImagenDeBloqueo{
     self.vistaCanvasDeLasCeldas.hidden = NO;
-
- //   [self.vistaDeBloqueo removeFromSuperview];
 }
 
 #pragma mark - Activacion y Desactivacion de botones y barras

@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
 <document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="6254" systemVersion="14B25" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES">
     <dependencies>
+        <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="6247"/>
         <capability name="Aspect ratio constraints" minToolsVersion="5.1"/>
     </dependencies>
@@ -44,10 +45,10 @@
                     <rect key="frame" x="0.0" y="20" width="770" height="1087"/>
                     <subviews>
                         <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="tpS-bL-P0p" userLabel="vistaDeTiempoYMinas">
-                            <rect key="frame" x="0.0" y="0.0" width="770" height="80"/>
+                            <rect key="frame" x="20" y="20" width="730" height="80"/>
                             <subviews>
                                 <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" enabled="NO" contentHorizontalAlignment="left" contentVerticalAlignment="center" textAlignment="right" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="OW5-p5-RKd" userLabel="tiempoDeJuego">
-                                    <rect key="frame" x="680" y="5" width="70" height="70"/>
+                                    <rect key="frame" x="640" y="5" width="70" height="70"/>
                                     <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                     <constraints>
                                         <constraint firstAttribute="width" constant="70" id="4An-ua-iLg"/>
@@ -135,44 +136,45 @@
                                 </mask>
                             </variation>
                         </view>
+                        <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="k1h-1u-mTQ" userLabel="vistaDeLasCeldas">
+                            <rect key="frame" x="135" y="294" width="500" height="500"/>
+                            <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                            <constraints>
+                                <constraint firstAttribute="height" constant="500" id="S1f-Y6-e30"/>
+                                <constraint firstAttribute="width" constant="500" id="e20-Hk-35s"/>
+                            </constraints>
+                        </view>
                         <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="8xn-uj-fOo" userLabel="vistaBotonJugarPrincipal">
-                            <rect key="frame" x="310" y="469" width="150" height="150"/>
+                            <rect key="frame" x="210" y="369" width="350" height="350"/>
                             <subviews>
                                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Efd-Dz-d6X" userLabel="botonJugarPrincipal">
-                                    <rect key="frame" x="0.0" y="0.0" width="150" height="150"/>
+                                    <rect key="frame" x="0.0" y="0.0" width="350" height="350"/>
                                     <color key="backgroundColor" red="0.40000000600000002" green="0.80000001190000003" blue="1" alpha="0.0" colorSpace="calibratedRGB"/>
-                                    <constraints>
-                                        <constraint firstAttribute="width" constant="150" id="3f3-29-6BU"/>
-                                        <constraint firstAttribute="height" constant="150" id="7oM-kR-ZuT"/>
-                                        <constraint firstAttribute="width" secondItem="Efd-Dz-d6X" secondAttribute="height" multiplier="1:1" id="KYe-eg-zIA"/>
-                                        <constraint firstAttribute="width" secondItem="Efd-Dz-d6X" secondAttribute="height" multiplier="1:1" id="qgA-jE-0nm"/>
-                                    </constraints>
-                                    <state key="normal" image="chromium-nuevo-logo">
+                                    <state key="normal">
                                         <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                     </state>
-                                    <variation key="default">
-                                        <mask key="constraints">
-                                            <exclude reference="3f3-29-6BU"/>
-                                            <exclude reference="7oM-kR-ZuT"/>
-                                            <exclude reference="KYe-eg-zIA"/>
-                                            <exclude reference="qgA-jE-0nm"/>
-                                        </mask>
-                                    </variation>
                                     <connections>
                                         <action selector="accionJugar:" destination="-1" eventType="touchUpInside" id="F5n-bw-gSf"/>
                                     </connections>
                                 </button>
+                                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="startbutton" translatesAutoresizingMaskIntoConstraints="NO" id="hxL-qO-Qbt">
+                                    <rect key="frame" x="0.0" y="0.0" width="350" height="350"/>
+                                </imageView>
                             </subviews>
                             <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                             <constraints>
                                 <constraint firstAttribute="bottom" secondItem="Efd-Dz-d6X" secondAttribute="bottom" id="7gP-AY-xyf"/>
                                 <constraint firstAttribute="centerY" secondItem="Efd-Dz-d6X" secondAttribute="centerY" id="K7A-Zq-dA1"/>
                                 <constraint firstItem="Efd-Dz-d6X" firstAttribute="top" secondItem="8xn-uj-fOo" secondAttribute="top" id="NWL-ql-uwR"/>
-                                <constraint firstAttribute="height" constant="150" id="WJo-HV-Ad7"/>
+                                <constraint firstItem="hxL-qO-Qbt" firstAttribute="leading" secondItem="8xn-uj-fOo" secondAttribute="leading" id="SRd-RC-ftI"/>
+                                <constraint firstAttribute="height" constant="350" id="WJo-HV-Ad7"/>
+                                <constraint firstAttribute="bottom" secondItem="hxL-qO-Qbt" secondAttribute="bottom" id="Yso-BU-LrD"/>
                                 <constraint firstAttribute="trailing" secondItem="Efd-Dz-d6X" secondAttribute="trailing" id="bz8-Cb-Cgi"/>
+                                <constraint firstAttribute="trailing" secondItem="hxL-qO-Qbt" secondAttribute="trailing" id="h3z-aW-fTc"/>
                                 <constraint firstItem="Efd-Dz-d6X" firstAttribute="leading" secondItem="8xn-uj-fOo" secondAttribute="leading" id="iYl-Fl-2eL"/>
                                 <constraint firstAttribute="centerX" secondItem="Efd-Dz-d6X" secondAttribute="centerX" id="mZ7-sY-GUc"/>
-                                <constraint firstAttribute="width" constant="150" id="x7x-Zq-iG4"/>
+                                <constraint firstItem="hxL-qO-Qbt" firstAttribute="top" secondItem="8xn-uj-fOo" secondAttribute="top" id="q4z-Bw-rtG"/>
+                                <constraint firstAttribute="width" constant="350" id="x7x-Zq-iG4"/>
                             </constraints>
                             <variation key="default">
                                 <mask key="constraints">
@@ -800,25 +802,17 @@
                                 </mask>
                             </variation>
                         </view>
-                        <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="k1h-1u-mTQ" userLabel="vistaDeLasCeldas">
-                            <rect key="frame" x="135" y="294" width="500" height="500"/>
-                            <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
-                            <constraints>
-                                <constraint firstAttribute="height" constant="500" id="S1f-Y6-e30"/>
-                                <constraint firstAttribute="width" constant="500" id="e20-Hk-35s"/>
-                            </constraints>
-                        </view>
                     </subviews>
                     <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                     <gestureRecognizers/>
                     <constraints>
-                        <constraint firstItem="tpS-bL-P0p" firstAttribute="top" secondItem="zp6-fT-8XJ" secondAttribute="top" id="1TI-zL-cx6"/>
+                        <constraint firstItem="tpS-bL-P0p" firstAttribute="top" secondItem="zp6-fT-8XJ" secondAttribute="top" constant="20" symbolic="YES" id="1TI-zL-cx6"/>
                         <constraint firstAttribute="centerX" secondItem="hIG-gz-8Ow" secondAttribute="centerX" id="6py-aj-QSl"/>
-                        <constraint firstAttribute="trailing" secondItem="tpS-bL-P0p" secondAttribute="trailing" id="70Z-lU-gjT"/>
+                        <constraint firstAttribute="trailing" secondItem="tpS-bL-P0p" secondAttribute="trailing" constant="20" symbolic="YES" id="70Z-lU-gjT"/>
                         <constraint firstAttribute="centerX" secondItem="k1h-1u-mTQ" secondAttribute="centerX" id="FeQ-8R-CNh"/>
                         <constraint firstAttribute="centerX" secondItem="8xn-uj-fOo" secondAttribute="centerX" id="HtN-xS-YjG"/>
                         <constraint firstAttribute="centerX" secondItem="9HN-GC-ekE" secondAttribute="centerX" id="Hzd-Ki-mCV"/>
-                        <constraint firstItem="tpS-bL-P0p" firstAttribute="leading" secondItem="zp6-fT-8XJ" secondAttribute="leading" id="NH4-96-OaL"/>
+                        <constraint firstItem="tpS-bL-P0p" firstAttribute="leading" secondItem="zp6-fT-8XJ" secondAttribute="leading" constant="20" symbolic="YES" id="NH4-96-OaL"/>
                         <constraint firstAttribute="bottom" secondItem="hIG-gz-8Ow" secondAttribute="bottom" constant="20" symbolic="YES" id="Nap-iW-mhc"/>
                         <constraint firstAttribute="centerX" secondItem="8xn-uj-fOo" secondAttribute="centerX" id="RCi-40-6ZD"/>
                         <constraint firstAttribute="centerX" secondItem="8xn-uj-fOo" secondAttribute="centerX" id="RMX-2j-pZr"/>
@@ -873,7 +867,6 @@
     </objects>
     <resources>
         <image name="SystemPreferences" width="1024" height="1024"/>
-        <image name="chromium-nuevo-logo" width="256" height="256"/>
         <image name="fondo1" width="1024" height="1024"/>
         <image name="help normal" width="1024" height="1024"/>
         <image name="mejoresTiempos" width="1024" height="1024"/>

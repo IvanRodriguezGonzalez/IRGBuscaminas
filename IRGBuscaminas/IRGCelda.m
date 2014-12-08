@@ -11,18 +11,13 @@
 #pragma mark  Constantes de la clase
 
 #define GROSOR_DEL_BORDE_DE_LA_CELDA_PROCESADA 1
-#define GROSOR_DEL_BORDE_DE_LA_CELDA_NO_PROCESADA 5
+#define GROSOR_DEL_BORDE_DE_LA_CELDA_NO_PROCESADA 3
+/*
 #define COLOR_DEL_BORDE_OSCURO [[UIColor alloc] initWithRed:.5 green:.5 blue:.5 alpha:1]
 #define COLOR_DEL_BORDE_CLARO [[UIColor alloc] initWithRed:.9 green:.9 blue:.9 alpha:1]
-
-#define TAMANO_DEL_TEXTO_DE_LA_CELDA 35
-#define POSCIION_X_DEL_TEXTO_DE_LA_CELDA 15
-#define POSICION_Y_DEL_TEXTO_DE_LA_CELDA 2
-
-#define POSICION_X_DE_LA_IMAGEN_DE_LA_CELDA 2
-#define POSICION_Y_DE_LA_IMAGEN_DE_LA_CELDA 2
-
-
+*/
+#define COLOR_DEL_BORDE_OSCURO [UIColor grayColor]
+#define COLOR_DEL_BORDE_CLARO [[UIColor alloc] initWithRed:.9 green:.9 blue:.9 alpha:1]
 #pragma mark -
 
 @implementation IRGCelda
@@ -43,24 +38,28 @@
     if (self){
         _procesada = procesada;
 
-        //texto de la celda
-        CGRect frameTextoDeLaCelda = CGRectMake(POSCIION_X_DEL_TEXTO_DE_LA_CELDA ,
-                                                POSICION_Y_DEL_TEXTO_DE_LA_CELDA,
-                                                self.frame.size.width,
-                                                self.frame.size.height);
+        CGRect frameTextoDeLaCelda = CGRectMake(0 ,
+                                                0,
+                                                self.frame.size.width-4,
+                                                self.frame.size.height-4);
+        
         UILabel * textoDeLaCelda = [[UILabel alloc] initWithFrame:frameTextoDeLaCelda];
-        textoDeLaCelda.font = [UIFont  systemFontOfSize:TAMANO_DEL_TEXTO_DE_LA_CELDA];
+        textoDeLaCelda.center = CGPointMake(self.frame.size.width/2,self.frame.size.height/2);
+        textoDeLaCelda.font = [UIFont  systemFontOfSize:self.frame.size.height-4];
+        textoDeLaCelda.textAlignment = NSTextAlignmentCenter;
         [self addSubview:textoDeLaCelda];
         self.numeroDeMinasAlrededor = textoDeLaCelda;
         
         //imagen de la celda
-        CGRect frameDeLaImagenDeLaCelda = CGRectMake(POSICION_X_DE_LA_IMAGEN_DE_LA_CELDA,
-                                                     POSICION_Y_DE_LA_IMAGEN_DE_LA_CELDA,
-                                                     self.frame.size.width-2*POSICION_X_DE_LA_IMAGEN_DE_LA_CELDA,
-                                                     self.frame.size.height-2*POSICION_Y_DE_LA_IMAGEN_DE_LA_CELDA);
+        CGRect frameDeLaImagenDeLaCelda = CGRectMake(0,
+                                                     0,
+                                                     self.frame.size.width*.8,
+                                                     self.frame.size.height*.8);
         UIImage *imagenVacia =nil;
         UIImageView * imagenDeLaCelda  = [[UIImageView alloc]initWithImage:imagenVacia];
         imagenDeLaCelda.frame = frameDeLaImagenDeLaCelda;
+        imagenDeLaCelda.center = CGPointMake(self.frame.size.width/2,self.frame.size.height/2);
+
         [self addSubview:imagenDeLaCelda];
         self.imagenDeMina = imagenDeLaCelda;
     }

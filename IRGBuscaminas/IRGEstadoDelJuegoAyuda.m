@@ -10,8 +10,8 @@
 #import "IRGGestorDeEstados.h"
 #import "IRGNUmeroSieteSegmentosViewController.h"
 #import "IRGSettings.h"
-#define TAMANO_X_VENTANA_DISPLAY_SIETE_SEGMENTOS 200
-#define TAMANO_Y_VENTANA_DISPLAY_SIETE_SEGMENTOS 250
+#define TAMANO_X_VENTANA_DISPLAY_SIETE_SEGMENTOS 300
+#define TAMANO_Y_VENTANA_DISPLAY_SIETE_SEGMENTOS 450
 
 @interface IRGEstadoDelJuegoAyuda()
     #pragma mark - Propiedades privadas
@@ -49,15 +49,13 @@
 -(IRGNUmeroSieteSegmentosViewController *) sieteSegmentosViewController{
     
     if (!_sieteSegmentosViewController ){
-        CGRect frame = CGRectMake(
-                                  (self.delegado.vistaCanvasDeLasCeldas.frame.size.width-TAMANO_X_VENTANA_DISPLAY_SIETE_SEGMENTOS)/2,
-                                  (self.delegado.vistaCanvasDeLasCeldas.frame.size.height -TAMANO_Y_VENTANA_DISPLAY_SIETE_SEGMENTOS)/2 ,
+        CGRect frame = CGRectMake(0,0,
                                   TAMANO_X_VENTANA_DISPLAY_SIETE_SEGMENTOS,
                                   TAMANO_Y_VENTANA_DISPLAY_SIETE_SEGMENTOS);
         _sieteSegmentosViewController = [[IRGNUmeroSieteSegmentosViewController alloc] initWithNibName:nil
                                                                                                 bundle:nil
                                                                                              withFrame:frame
-                                                                             withRedondeoDeLasEsquinas:10];
+                                                                             withRedondeoDeLasEsquinas:20];
     }
     return  _sieteSegmentosViewController;
 }
@@ -105,18 +103,20 @@
 #pragma mark auxiliares primer nivel
 
 - (void) anadirVistaSieteSegmentos{
-    [self.delegado.vistaCanvasDeLasCeldas addSubview:self.sieteSegmentosViewController.view];
+    UIView * destino = self.delegado.vistaCanvasDeLasCeldas;
+    [destino addSubview:self.sieteSegmentosViewController.view];
+    self.sieteSegmentosViewController.view.center = CGPointMake(destino.frame.size.width/2, destino.frame.size.height/2);
     
-    [self.sieteSegmentosViewController establecerVentanaConTransparencia:.0
-                                                            colorDeFondo:[UIColor grayColor]];
+    [self.sieteSegmentosViewController establecerVentanaConTransparencia:.7
+                                                            colorDeFondo:[UIColor redColor]];
 
     [self.sieteSegmentosViewController establecerSegmentoConGrosorDelTrazo:1
                                                          grosorDelSegmento:40
-                                                  separacionEntreSegmentos:2
-                                 separacionHorizontalDelSegmentoConLaVista:0
-                                   separacionVerticalDelSegmentoConLaVista:0
+                                                  separacionEntreSegmentos:0
+                                 separacionHorizontalDelSegmentoConLaVista:40
+                                   separacionVerticalDelSegmentoConLaVista:40
                                                      colorDelTrazoDelBorde:[UIColor blackColor]
-                                                           colorDelRelleno:[UIColor blueColor]transparenciaDelRelleno:.70];
+                                                           colorDelRelleno:[UIColor whiteColor]transparenciaDelRelleno:.8];
     self.contador =[IRGSettings sharedSettings].tiempoDeAyuda;;
     [self.sieteSegmentosViewController dibujarNumero : self.contador ];
 }

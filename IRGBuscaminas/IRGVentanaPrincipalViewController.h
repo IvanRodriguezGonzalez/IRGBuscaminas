@@ -47,7 +47,7 @@
 
 @property (weak, nonatomic) IBOutlet UIView *vistaBarraDeBotonesVertical;
 
-@property (nonatomic) IRGGestorDeEstados *gestorDeEstados;
+@property (nonatomic) IRGGestorDeEstados * gestorDeEstados;
 
 
 @property (weak, nonatomic) IBOutlet UIButton *botonJugarSecundarioVertical;
