@@ -19,9 +19,7 @@
 
 #pragma mark - Metodos publicos de activar y desactivar botones
 
-- (void) activarBotonPrincipal;
 
-- (void) desactivarBotonPrincipal;
 
 - (void) activarBotonJugarSecundario;
 
@@ -43,9 +41,7 @@
 
 - (void) desactivarSettings;
 
-- (void) mostrarVistaBotonJugarPrincipal;
 
-- (void) ocultarVistaBotonJugarPrincipal;
 
 - (void) mostrarVistaBotonJugarSecundario;
 

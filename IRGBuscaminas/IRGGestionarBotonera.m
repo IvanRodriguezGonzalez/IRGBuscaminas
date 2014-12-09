@@ -36,13 +36,6 @@
 
 
 # pragma mark - Metodos Publicos de activar y desactivar botones
--(void) activarBotonPrincipal{
-    self.delegado.botonPrincipal.enabled = true;
-}
-
--(void) desactivarBotonPrincipal{
-    self.delegado.botonPrincipal.enabled  = false;
-}
 
 -(void) activarBotonJugarSecundario{
     self.delegado.botonJugarSecundario.enabled = true;
@@ -94,14 +87,7 @@
     self.delegado.botonSettingsVertical.enabled = false;
 }
 
--(void) mostrarVistaBotonJugarPrincipal{
-    self.delegado.vistaBotonJugarPrincipal.hidden = NO;
 
-}
-
-- (void) ocultarVistaBotonJugarPrincipal{
-   self.delegado.vistaBotonJugarPrincipal.hidden = YES;
-}
 
 - (void) mostrarVistaBotonJugarSecundario{
     self.delegado.vistaBotonJugarSecundario.hidden = NO;

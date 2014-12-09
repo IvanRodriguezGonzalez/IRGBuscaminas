@@ -54,7 +54,6 @@
     [self.delegado.gestionarBotonera desactivarBotonPausar];
     [self.delegado.gestionarBotonera desactivarSettings];
     
-    [self.delegado.gestionarBotonera ocultarVistaBotonJugarPrincipal];
     [self.delegado.gestionarBotonera mostrarVistaBotonJugarSecundario];
     [self.delegado.gestionarBotonera mostrarBarraDeBotones];
     [self.delegado.gestionarBotonera mostrarVistaTiempoYMinas];

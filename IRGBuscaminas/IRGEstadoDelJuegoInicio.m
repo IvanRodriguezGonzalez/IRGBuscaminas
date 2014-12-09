@@ -51,17 +51,14 @@
 - (void) establecerBotones{
     [self.delegado.gestionarBotonera desactivarBotonMostrarMinas];
     [self.delegado.gestionarBotonera activarBotonMejoresTiempos];
-    [self.delegado.gestionarBotonera desactivarBotonJugarSecundario];
+    [self.delegado.gestionarBotonera activarBotonJugarSecundario];
     [self.delegado.gestionarBotonera desactivarBotonPausar];
     [self.delegado.gestionarBotonera activarSettings];
-    [self.delegado.gestionarBotonera activarBotonPrincipal];
     [self.delegado.gestionarBotonera ocultarIndicadorModoAyuda];
     
-    [self.delegado.gestionarBotonera mostrarVistaBotonJugarPrincipal];
     [self.delegado.gestionarBotonera mostrarVistaBotonJugarSecundario];
-    [self.delegado.gestionarBotonera ocultarBarraDeBotones];
+    [self.delegado.gestionarBotonera mostrarBarraDeBotones];
     [self.delegado.gestionarBotonera mostrarVistaTiempoYMinas];
-    
 }
 
 - (void) accionJugar{

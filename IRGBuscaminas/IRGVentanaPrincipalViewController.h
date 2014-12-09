@@ -9,7 +9,7 @@
 #import <UIKit/UIKit.h>
 #import "IRGGestionarBotonera.h"
 #import "IRGSettingsViewController.h"
-#import "IRGGestorDeEstados.h"
+@class  IRGGestorDeEstados;
 
 
 @class IRGCeldaViewController;
@@ -20,9 +20,7 @@
 @property (weak, nonatomic) IBOutlet UIView *canvas;
 @property (weak, nonatomic) IBOutlet UIButton *botonSettings;
 @property (weak, nonatomic) IBOutlet UIButton *botonSettingsVertical;
-
 @property (weak, nonatomic) IBOutlet UITextField *totalMinas;
-@property (weak, nonatomic) IBOutlet UIButton *botonPrincipal;
 @property (weak, nonatomic) IBOutlet UIButton *botonMostrarMinas;
 @property (weak, nonatomic) IBOutlet UIButton *botonMostrarMinasVertical;
 
@@ -37,7 +35,6 @@
 @property (nonatomic,weak) NSTimer *reloj;
 
 @property (nonatomic) IRGGestionarBotonera *gestionarBotonera;
-@property (weak, nonatomic) IBOutlet UIView *vistaBotonJugarPrincipal;
 @property (weak, nonatomic) IBOutlet UIView *vistaBotonJugarSecundario;
 @property (weak, nonatomic) IBOutlet UIView *vistaBotonJugarSecundarioVertical;
 
@@ -49,12 +46,15 @@
 
 @property (nonatomic) IRGGestorDeEstados * gestorDeEstados;
 
-
 @property (weak, nonatomic) IBOutlet UIButton *botonJugarSecundarioVertical;
 
 @property (weak, nonatomic) IBOutlet UIButton *botonJugarSecundario;
 
 @property (weak, nonatomic) IBOutlet UIImageView *vistaModoAyuda;
+
+@property (nonatomic) NSInteger banderasPuestas;
+
+@property (weak, nonatomic) IBOutlet UIImageView *vistaImagenDeFondo;
 
 
 
@@ -82,7 +82,6 @@
 
 
 - (NSInteger) calcularPorcentajeDeProgreso;
--(void) actualizarBotonConProgreso:(float)porcentajeDeAvance;
 
 - (void)cambiarTransparenciaDelMenu:(float) porcentajeDeTransparencia;
 

@@ -62,11 +62,10 @@
     [self.delegado.gestionarBotonera ocultarIndicadorModoAyuda];
 
     
-    [self.delegado.gestionarBotonera ocultarVistaBotonJugarPrincipal];
     [self.delegado.gestionarBotonera mostrarVistaBotonJugarSecundario];
     [self.delegado.gestionarBotonera mostrarBarraDeBotones];
     [self.delegado.gestionarBotonera mostrarVistaTiempoYMinas];
-
+    
 }
 
 - (void) accionJugar{
@@ -90,7 +89,6 @@
         else {
             [self.delegado propagaTouch:celdaViewController];
             NSInteger porcentajeDeAvance =[self.delegado calcularPorcentajeDeProgreso];
-            [self.delegado actualizarBotonConProgreso:porcentajeDeAvance];
             if (porcentajeDeAvance == 1){
                 [self.gestorDeEstados establecerEstado:self.gestorDeEstados.estadoDelJuegoFinalizadoSinErrorSinAyuda];
                 [self.delegado acabarJuegoSinErrorSinAyuda];
@@ -103,10 +101,17 @@
     switch (celdaViewController.estado)
     {
         case libre:
-            celdaViewController.estado = conBandera;
+            if (self.delegado.banderasPuestas < [IRGSettings sharedSettings].numeroDeMinas){
+                celdaViewController.estado = conBandera;
+                self.delegado.banderasPuestas ++;
+            }
+            else{
+                celdaViewController.estado = conDuda;
+            }
             break;
         case conBandera:
             celdaViewController.estado = conDuda;
+            self.delegado.banderasPuestas --;
             break;
         case conDuda:
             celdaViewController.estado = libre ;

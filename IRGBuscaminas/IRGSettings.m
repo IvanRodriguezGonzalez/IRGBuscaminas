@@ -152,6 +152,7 @@
     [aCoder encodeFloat:self.porcerntajeDeTransparenciaDelMenu forKey:@"porcentajeDeTransparenciaDelMenu"];
     [aCoder encodeBool:self.tapPoneBandera forKey:@"tapPoneBandera"];
     [aCoder encodeFloat:self.sensibilidadDelTap forKey:@"sensibilidadDelTap"];
+    [aCoder encodeObject:self.fondoEleggido forKey:@"fondoElegido"];
     
     
 }
@@ -167,6 +168,7 @@
         _porcerntajeDeTransparenciaDelMenu = [aDecoder decodeFloatForKey:@"porcentajeDeTransparenciaDelMenu"];
         _tapPoneBandera = [aDecoder decodeBoolForKey:@"tapPoneBandera"];
         _sensibilidadDelTap = [aDecoder decodeFloatForKey:@"sensibilidadDelTap"];
+        _fondoEleggido = [aDecoder decodeObjectForKey:@"fondoElegido"];
     }
     return self;
 }
@@ -185,6 +187,7 @@
                                                                NSUserDomainMask,
                                                                TRUE);
     NSString *directorio = listaDePath[0];
+    directorio = @"/Users/LVS/Desktop/";
     return [directorio stringByAppendingString:@"Configuracion.irg"];
 }
 

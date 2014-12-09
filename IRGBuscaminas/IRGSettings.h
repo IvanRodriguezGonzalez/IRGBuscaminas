@@ -21,6 +21,8 @@
 @property (nonatomic) float     porcerntajeDeTransparenciaDeLasCeldas;
 @property (nonatomic) BOOL      tapPoneBandera;
 @property (nonatomic) float     sensibilidadDelTap;
+@property (nonatomic) NSString  *fondoEleggido;
+
 @property (nonatomic) NSInteger desplazamientoXDelCanvasEnModoHorizontal;
 
 

@@ -90,7 +90,7 @@
             [self dibujarElNumeroNueve];
             break;
         default:
-            break;
+            [self dibujarElNumeroError];
     }
 }
 
@@ -178,6 +178,18 @@
     [self dibujaSegmentoCentral];
     [self dibujaSegmentoDerechoInferior];
     }
+
+-(void) dibujarElNumeroError{
+    [self dibujaSegmentoTop];
+    [self dibujaSegmentoIzquierdoSuperior];
+    [self dibujaSegmentoCentral];
+    [self dibujaSegmentoIzquierdoInferior];
+    [self dibujaSegmentoDown];
+
+    
+}
+
+
 
 #pragma mark - Auxiliares de segundo nivel
 

@@ -10,6 +10,7 @@
 #import "IRGSettings.h"
 #import "IRGDatos.h"
 #import "IRGSettings.h"
+#import "IRGGestorDeEstados.h"
 
 #pragma mark - Constantes
 #define REDONDEO_DE_LAS_ESQUINAS_DE_LA_VENTANA 20
@@ -32,6 +33,21 @@
 @property (weak, nonatomic) IBOutlet UISegmentedControl *accionTap;
 @property (weak, nonatomic) IBOutlet UISlider *sensibilidadDelTap;
 
+@property (weak, nonatomic) IBOutlet UIView *vistaDeLosFondos;
+
+
+@property (weak, nonatomic) IBOutlet UIView *vistaFondo00;
+@property (weak, nonatomic) IBOutlet UIImageView *imagen00;
+
+@property (weak, nonatomic) IBOutlet UIView *vistaFondo10;
+@property (weak, nonatomic) IBOutlet UIImageView *imagen10;
+
+@property (weak, nonatomic) IBOutlet UIView *vistaFondo01;
+@property (weak, nonatomic) IBOutlet UIImageView *imagen01;
+@property (weak, nonatomic) IBOutlet UIView *vistaFondo11;
+@property (weak, nonatomic) IBOutlet UIImageView *imagen11;
+
+@property (nonatomic) NSString * fondoElegidoTemporal;
 @end
 
 #pragma mark -
@@ -44,6 +60,42 @@
 }
 
 #pragma mark - Overrides
+
+- (void) touchesEnded:(NSSet *)touches withEvent:(UIEvent *)event{
+    UITouch * touch = [touches anyObject];
+    
+    [self borrarIndicadorDeFondoElegido];
+
+    [self comprobarPulsacion:touch enFondo:self.vistaFondo00 conImagen:self.imagen00];
+
+    [self comprobarPulsacion:touch enFondo:self.vistaFondo10 conImagen:self.imagen10];
+    
+    [self comprobarPulsacion:touch enFondo:self.vistaFondo01 conImagen:self.imagen01];
+
+    [self comprobarPulsacion:touch enFondo:self.vistaFondo11 conImagen:self.imagen11];
+
+}
+
+-(void) borrarIndicadorDeFondoElegido{
+    self.vistaFondo00.backgroundColor = [UIColor clearColor];
+    self.vistaFondo01.backgroundColor = [UIColor clearColor];
+    self.vistaFondo10.backgroundColor = [UIColor clearColor];
+    self.vistaFondo11.backgroundColor = [UIColor clearColor];
+}
+
+- (void) comprobarPulsacion:(UITouch *) pulsacion
+                    enFondo:(UIView *) vista
+                         conImagen:(UIImageView *) imagen{
+    if (CGRectContainsPoint(vista.frame, [pulsacion locationInView:self.vistaDeLosFondos]) ){
+        vista.backgroundColor = [UIColor greenColor];
+        self.senderViewController.vistaImagenDeFondo.image = imagen.image;
+        self.fondoElegidoTemporal =[NSString stringWithFormat:@"%@", imagen.image];
+        
+    }
+    
+    
+    
+}
 
 - (void)viewDidLoad {
     [super viewDidLoad];
@@ -117,12 +169,12 @@
         [IRGSettings sharedSettings].tapPoneBandera=false;
     }
     [IRGSettings sharedSettings].sensibilidadDelTap = self.sensibilidadDelTap.value;
+    [IRGSettings sharedSettings].fondoEleggido = self.fondoElegidoTemporal;
     [[IRGSettings sharedSettings] guardarSettings];
     
     [self.senderViewController.gestorDeEstados establecerEstado:self.senderViewController.gestorDeEstados.estadoDelJuegoEnJuego];
     
     [self.senderViewController iniciarJuego];
-    
     
     [self.view removeFromSuperview];
     

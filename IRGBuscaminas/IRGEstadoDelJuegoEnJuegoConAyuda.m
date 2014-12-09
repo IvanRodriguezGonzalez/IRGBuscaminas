@@ -9,6 +9,7 @@
 #import "IRGEstadoDelJuegoEnJuegoConAyuda.h"
 #import "IRGGestorDeEstados.h"
 #import "IRGCeldaViewController.h"
+#import "IRGSettings.h"
 
 
 @interface IRGEstadoDelJuegoEnJuegoConAyuda()
@@ -52,7 +53,6 @@
     [self.delegado.gestionarBotonera activarSettings];
     [self.delegado.gestionarBotonera mostrarIndicadorModoAyuda];
 
-    
     [self.delegado.gestionarBotonera mostrarVistaBotonJugarSecundario];
     [self.delegado.gestionarBotonera mostrarBarraDeBotones];
     [self.delegado.gestionarBotonera mostrarVistaTiempoYMinas];
@@ -73,10 +73,17 @@
     switch (celdaViewController.estado)
     {
         case libre:
-            celdaViewController.estado = conBandera;
+            if (self.delegado.banderasPuestas < [IRGSettings sharedSettings].numeroDeMinas){
+                celdaViewController.estado = conBandera;
+                self.delegado.banderasPuestas ++;
+            }
+            else{
+                celdaViewController.estado = conDuda;
+            }
             break;
         case conBandera:
             celdaViewController.estado = conDuda;
+            self.delegado.banderasPuestas --;
             break;
         case conDuda:
             celdaViewController.estado = libre ;
@@ -86,6 +93,7 @@
             break;
     }
     [self.delegado actualizaMinasPendientes];
+  
 }
 
 - (void) despejarCelda:(IRGCeldaViewController *)celdaViewController{
@@ -97,7 +105,6 @@
         else {
             [self.delegado propagaTouch:celdaViewController];
             NSInteger porcentajeDeAvance =[self.delegado calcularPorcentajeDeProgreso];
-            [self.delegado actualizarBotonConProgreso:porcentajeDeAvance];
             if (porcentajeDeAvance == 1){
                 [self.gestorDeEstados establecerEstado:self.gestorDeEstados.estadoDelJuegoFinalizadoSinErrorConAyuda];
                 [self.delegado acabarJuegoSinErrorConAyuda];

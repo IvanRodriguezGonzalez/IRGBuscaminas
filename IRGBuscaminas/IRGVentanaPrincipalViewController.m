@@ -23,6 +23,7 @@
 #import "IRGSettings.h"
 #import "IRGHoraYMinutosSieteSegmentosViewController.h"
 #import "IRGDisplaySieteSegmentosViewController.h"
+#import "IRGGestorDeEstados.h"
 
 
 #define REDONDEO_DE_LAS_ESQUINAS_DEL_RELOJ 0
@@ -68,6 +69,7 @@
 #pragma mark - Overrides
 - (void)viewDidLoad {
     [super viewDidLoad];
+    
     [self iniciarGestionarBotonera];
     [self iniciarGestorDeEstados];
     [self iniciarTotalMinasSieteSegmentos];
@@ -94,7 +96,8 @@
     self.vistaTiempoYMinas.layer.cornerRadius = REDONDEO_DE_LAS_ESQUINAS_DE_LA_VENTANA;
     self.vistaTiempoYMinas.layer.masksToBounds = YES;
     
-    
+    self.vistaImagenDeFondo.image = [IRGSettings sharedSettings].fondoEleggido;
+
    
     [[NSNotificationCenter defaultCenter] addObserver:self
                                              selector:@selector(deviceOrientationDidChange:)
@@ -165,7 +168,6 @@
 
 -(void) mostrarMinas{
     [self mostrarTodasLasMinas];
-    [self actualizarBotonConProgreso:0];
 }
 
 -(void) ocultarMinas{
@@ -227,16 +229,7 @@
 }
 
 -(void) actualizaMinasPendientes{
-    int banderasPuestas=0;
-    for (IRGCeldaViewController *celdaViewController in [IRGDatos sharedDatos].todasLasCeldas){
-        if (celdaViewController.estado == conBandera){
-            banderasPuestas++;
-        }
-    }
-    NSInteger banderasPendientes = [IRGSettings sharedSettings].numeroDeMinas;
-    banderasPendientes = banderasPendientes-banderasPuestas;
-    
-    [self.minas7SViewController dibujarNumero: banderasPendientes];
+    [self.minas7SViewController dibujarNumero:[IRGSettings sharedSettings].numeroDeMinas-self.banderasPuestas];
 }
 
 #pragma mark - Auxiliares primer nivel
@@ -312,21 +305,20 @@
 
 - (void) iniciarJuego{
     
-    [self.totalMinas resignFirstResponder];
+    self.banderasPuestas=0;
     [[IRGDatos sharedDatos] borrarJuego];
     [self borrarCanvas];
     [self generarCanvas];
     [self generarMinas];
     
-    [self actualizarBotonConProgreso:[self calcularPorcentajeDeProgreso]];
     [self actualizaMinasPendientes];
     [self inicializarTiempoDeJuego];
     [self iniciarReloj];
+
 }
 
 -(void) acabarJuegoConError{
     [self mostrarTodasLasMinas];
-    [self establecerImagenDelBotonPrincipal:@"minaApagada"];
     [self detenerRelor];
 }
 
@@ -466,34 +458,6 @@
 
 
 # pragma mark - Auxiliares tercer nivel
-
--(void) actualizarBotonConProgreso:(float)porcentajeDeAvance{
-    
-    if (porcentajeDeAvance == 1) {
-        [self establecerImagenDelBotonPrincipal:@"igualA100"];
-    }
-    if (porcentajeDeAvance < 1) {
-        [self establecerImagenDelBotonPrincipal:@"menorDe100"];
-    }
-    if (porcentajeDeAvance < .8) {
-        [self establecerImagenDelBotonPrincipal:@"menorDe80"];
-    }
-    if (porcentajeDeAvance < .60) {
-        [self establecerImagenDelBotonPrincipal:@"menorDe60"];
-    }
-    if (porcentajeDeAvance < .40) {
-        [self establecerImagenDelBotonPrincipal:@"menorDe40"];
-    }
-    if (porcentajeDeAvance < .20) {
-        [self establecerImagenDelBotonPrincipal:@"menorDe20"];
-    }
-    
-}
-
-
-- (void) establecerImagenDelBotonPrincipal:(NSString *)imagenNueva{
-    [self.botonPrincipal setImage:[UIImage imageNamed:imagenNueva] forState:(normal) ];
-}
 
 - (IRGCeldaViewController *) crearCeldaViewControllerConFila:(NSInteger)fila
                                                   conColumna:(NSInteger)columna{

@@ -10,8 +10,8 @@
 #import "IRGGestorDeEstados.h"
 #import "IRGNUmeroSieteSegmentosViewController.h"
 #import "IRGSettings.h"
-#define TAMANO_X_VENTANA_DISPLAY_SIETE_SEGMENTOS 300
-#define TAMANO_Y_VENTANA_DISPLAY_SIETE_SEGMENTOS 450
+#define TAMANO_X_VENTANA_DISPLAY_SIETE_SEGMENTOS 150
+#define TAMANO_Y_VENTANA_DISPLAY_SIETE_SEGMENTOS 225
 
 @interface IRGEstadoDelJuegoAyuda()
     #pragma mark - Propiedades privadas
@@ -107,14 +107,14 @@
     [destino addSubview:self.sieteSegmentosViewController.view];
     self.sieteSegmentosViewController.view.center = CGPointMake(destino.frame.size.width/2, destino.frame.size.height/2);
     
-    [self.sieteSegmentosViewController establecerVentanaConTransparencia:.7
+    [self.sieteSegmentosViewController establecerVentanaConTransparencia:.5
                                                             colorDeFondo:[UIColor redColor]];
 
     [self.sieteSegmentosViewController establecerSegmentoConGrosorDelTrazo:1
-                                                         grosorDelSegmento:40
+                                                         grosorDelSegmento:20
                                                   separacionEntreSegmentos:0
-                                 separacionHorizontalDelSegmentoConLaVista:40
-                                   separacionVerticalDelSegmentoConLaVista:40
+                                 separacionHorizontalDelSegmentoConLaVista:20
+                                   separacionVerticalDelSegmentoConLaVista:20
                                                      colorDelTrazoDelBorde:[UIColor blackColor]
                                                            colorDelRelleno:[UIColor whiteColor]transparenciaDelRelleno:.8];
     self.contador =[IRGSettings sharedSettings].tiempoDeAyuda;;
