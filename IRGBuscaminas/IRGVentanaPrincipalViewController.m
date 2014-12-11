@@ -96,7 +96,7 @@
     self.vistaTiempoYMinas.layer.cornerRadius = REDONDEO_DE_LAS_ESQUINAS_DE_LA_VENTANA;
     self.vistaTiempoYMinas.layer.masksToBounds = YES;
     
-    self.vistaImagenDeFondo.image = [IRGSettings sharedSettings].fondoEleggido;
+  //  self.vistaImagenDeFondo.image = [IRGSettings sharedSettings].fondoEleggido;
 
    
     [[NSNotificationCenter defaultCenter] addObserver:self
