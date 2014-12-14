@@ -405,7 +405,7 @@
         }
     }
     CGRect frameCanvasDeLasCeldas = CGRectMake(margenX, margenY, anchoDelCanvasDeLasCeldas, altoDelCanvasDeLasCeldas);
-    self.vistaCanvasDeLasCeldas.frame = frameCanvasDeLasCeldas;
+   self.vistaCanvasDeLasCeldas.frame = frameCanvasDeLasCeldas;
 }
 
 - (void) generarLasCeldasDelCanvas {

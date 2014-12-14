@@ -8,9 +8,9 @@
 
 #import "IRGEstadoDelJuegoAyuda.h"
 #import "IRGGestorDeEstados.h"
-#import "IRGNUmeroSieteSegmentosViewController.h"
+#import "IRGDisplaySieteSegmentosViewController.h"
 #import "IRGSettings.h"
-#define TAMANO_X_VENTANA_DISPLAY_SIETE_SEGMENTOS 150
+#define TAMANO_X_VENTANA_DISPLAY_SIETE_SEGMENTOS 300
 #define TAMANO_Y_VENTANA_DISPLAY_SIETE_SEGMENTOS 225
 
 @interface IRGEstadoDelJuegoAyuda()
@@ -19,7 +19,7 @@
     @property (nonatomic,strong) IRGGestorDeEstados * gestorDeEstados;
     @property (nonatomic)  NSTimer * relojDeEspera;
     @property (nonatomic) NSInteger contador;
-    @property (nonatomic) IRGNUmeroSieteSegmentosViewController *sieteSegmentosViewController;
+    @property (nonatomic) IRGDisplaySieteSegmentosViewController *sieteSegmentosViewController;
 @end
 
 #pragma mark -
@@ -46,16 +46,18 @@
 
 #pragma mark Accesors
 
--(IRGNUmeroSieteSegmentosViewController *) sieteSegmentosViewController{
+-(IRGDisplaySieteSegmentosViewController *) sieteSegmentosViewController{
     
     if (!_sieteSegmentosViewController ){
         CGRect frame = CGRectMake(0,0,
                                   TAMANO_X_VENTANA_DISPLAY_SIETE_SEGMENTOS,
                                   TAMANO_Y_VENTANA_DISPLAY_SIETE_SEGMENTOS);
-        _sieteSegmentosViewController = [[IRGNUmeroSieteSegmentosViewController alloc] initWithNibName:nil
-                                                                                                bundle:nil
-                                                                                             withFrame:frame
-                                                                             withRedondeoDeLasEsquinas:20];
+        _sieteSegmentosViewController = [[IRGDisplaySieteSegmentosViewController alloc]
+                                         initWithNibName:nil
+                                         bundle:nil
+                                         withFrame:frame
+                                         withRedondeoDeLasEsquinas:0
+                                                    cantidadDeCeldas7S:2];
     }
     return  _sieteSegmentosViewController;
 }

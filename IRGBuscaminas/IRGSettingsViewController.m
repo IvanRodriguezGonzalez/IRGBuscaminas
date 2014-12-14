@@ -12,6 +12,8 @@
 #import "IRGSettings.h"
 #import "IRGGestorDeEstados.h"
 #import "IRGMetodosComunes.h"
+#import "IRGDisplaySieteSegmentosViewController.h"
+
 #pragma mark - Constantes
 #define REDONDEO_DE_LAS_ESQUINAS_DE_LA_VENTANA 20
 #define COLOR_DEL_BORDE_DE_LA_VENTANA [UIColor lightGrayColor]
@@ -21,8 +23,6 @@
 @interface IRGSettingsViewController ()
 #pragma mark - Propiedades privadas
 
-@property (weak, nonatomic) IBOutlet UITextField *numeroDeMinas;
-@property (weak, nonatomic) IBOutlet UITextField *tiempoDeAyuda;
 @property (weak, nonatomic) IBOutlet UISegmentedControl *activarAyuda;
 @property (weak, nonatomic) IBOutlet UISegmentedControl *nivelDeDificultad;
 @property (weak, nonatomic) IBOutlet UISlider *porcentajeDeTransparenciaDeLasCeldas;
@@ -32,7 +32,6 @@
 @property (nonatomic) UIViewController * controllerPrincipal;
 @property (weak, nonatomic) IBOutlet UISegmentedControl *accionTap;
 @property (weak, nonatomic) IBOutlet UISlider *sensibilidadDelTap;
-@property (weak, nonatomic) IBOutlet UITextField *grupoDeImagenesDeLosBotons;
 
 @property (weak, nonatomic) IBOutlet UIView *vistaDeLosFondos;
 
@@ -49,8 +48,14 @@
 @property (weak, nonatomic) IBOutlet UIView *vistaFondo11;
 @property (weak, nonatomic) IBOutlet UIImageView *imagen11;
 
+@property (weak, nonatomic) IBOutlet UIView *vistaNumeroDeMinas;
+@property (nonatomic) IRGDisplaySieteSegmentosViewController * numeroDeMinas7S;
+@property (weak, nonatomic) IBOutlet UIStepper *stepperNumeroDeMinas;
 
 
+@property (weak, nonatomic) IBOutlet UIView *vistaTiempoDeAyuda;
+@property (nonatomic) IRGDisplaySieteSegmentosViewController * tiempoDeAyuda7S;
+@property (weak, nonatomic) IBOutlet UIStepper *stepperTiempoDeAyuda;
 
 @property (nonatomic) UIImage * fondoElegidoTemporal;
 @end
@@ -103,8 +108,9 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    self.numeroDeMinas.text = [NSString stringWithFormat:@"%d",[IRGSettings sharedSettings].numeroDeMinas];
-    self.tiempoDeAyuda.text = [NSString stringWithFormat:@"%d",[IRGSettings sharedSettings].tiempoDeAyuda];
+    [self inicializadorDeNumeroDeMinas];
+    [self inicializadorTiempoDeAyuda];
+
     if ([IRGSettings sharedSettings].activarAyuda){
         self.activarAyuda.selectedSegmentIndex = 0;
     }
@@ -122,7 +128,6 @@
     self.sensibilidadDelTap.value = [IRGSettings sharedSettings].sensibilidadDelTap;
     self.porcentajeDeTransparenciaDelMenu.value =1-[IRGSettings sharedSettings].porcerntajeDeTransparenciaDelMenu;
     
-    self.grupoDeImagenesDeLosBotons.text = [NSString stringWithFormat:@"%d",[IRGSettings sharedSettings].grupoDeImagenesDeLosBotones];
     self.stepperGrupoDeImagenDeLosBotones.value = [IRGSettings sharedSettings].grupoDeImagenesDeLosBotones;
     
     self.vistaDatos.layer.borderWidth = GROSOR_DEL_BORDER_DE_LA_VENTANA;
@@ -132,12 +137,8 @@
     
     
     [self.nivelDeDificultad addTarget:self
-                         action:@selector(actualizarMinasSegunElNivelDeDificultad)
+                         action:@selector(actualizarMinasYTiempoDeAyudaSegunElNivelDeDificultad)
                forControlEvents:UIControlEventValueChanged];
-    [[NSNotificationCenter defaultCenter] addObserver:self
-                                             selector:@selector(deviceOrientationDidChange:)
-                                                 name:UIDeviceOrientationDidChangeNotification
-                                               object:nil];
     
     [[NSNotificationCenter defaultCenter] addObserver:self
                                              selector:@selector(deviceOrientationDidChange:)
@@ -158,8 +159,8 @@
 }
 
 - (IBAction)guardarResultados:(UIButton *)sender {
-    [IRGSettings sharedSettings].numeroDeMinas = self.numeroDeMinas.text.integerValue;
-    [IRGSettings sharedSettings].tiempoDeAyuda = self.tiempoDeAyuda.text.integerValue;
+    [IRGSettings sharedSettings].numeroDeMinas = self.stepperNumeroDeMinas.value;
+    [IRGSettings sharedSettings].tiempoDeAyuda = self.stepperTiempoDeAyuda.value;
     if (self.activarAyuda.selectedSegmentIndex == 0){
     [IRGSettings sharedSettings].activarAyuda  = true ;
     }
@@ -176,7 +177,7 @@
         [IRGSettings sharedSettings].tapPoneBandera=false;
     }
     [IRGSettings sharedSettings].sensibilidadDelTap = self.sensibilidadDelTap.value;
-    [IRGSettings sharedSettings].grupoDeImagenesDeLosBotones = self.grupoDeImagenesDeLosBotons.text.integerValue;
+    [IRGSettings sharedSettings].grupoDeImagenesDeLosBotones = self.stepperGrupoDeImagenDeLosBotones.value;
     [self.senderViewController establecerImagenesDeLosBotones];
     [IRGMetodosComunes guardarImagen:self.fondoElegidoTemporal
                            conNombre:ARCHIVO_IMAGEN_DEL_FONDO];
@@ -198,9 +199,13 @@
 
 }
 
--(void) actualizarMinasSegunElNivelDeDificultad{
-    self.numeroDeMinas.text = [NSString stringWithFormat: @"%d",[[IRGSettings sharedSettings] numeroDeMInasPorDefectoDelNivel:self.nivelDeDificultad.selectedSegmentIndex+1]];
-    self.tiempoDeAyuda.text = [NSString stringWithFormat: @"%d",[[IRGSettings sharedSettings] tiempoDeAyudaPorDefectoDelNivel:self.nivelDeDificultad.selectedSegmentIndex+1]];
+-(void) actualizarMinasYTiempoDeAyudaSegunElNivelDeDificultad{
+    self.stepperNumeroDeMinas.value = [[IRGSettings sharedSettings] numeroDeMInasPorDefectoDelNivel:self.nivelDeDificultad.selectedSegmentIndex+1];
+    [self.numeroDeMinas7S dibujarNumero:self.stepperNumeroDeMinas.value];
+    
+    self.stepperTiempoDeAyuda.value = [[IRGSettings sharedSettings] tiempoDeAyudaPorDefectoDelNivel:self.nivelDeDificultad.selectedSegmentIndex+1];
+    [self.tiempoDeAyuda7S dibujarNumero:self.stepperTiempoDeAyuda.value];
+
 }
 
 - (IBAction)cambiarTransparenciaDeLasCeldas:(UISlider *)sender {
@@ -242,9 +247,84 @@
 
 }
 - (IBAction)cambiarGrupoDeImagenDelMenu:(id)sender {
-    self.grupoDeImagenesDeLosBotons.text = [NSString stringWithFormat:@"%f",self.stepperGrupoDeImagenDeLosBotones.value];
     [IRGSettings sharedSettings].grupoDeImagenesDeLosBotones = self.stepperGrupoDeImagenDeLosBotones.value;
     [self.senderViewController establecerImagenesDeLosBotones];
+}
+
+- (void) inicializadorDeNumeroDeMinas{
+    self.stepperNumeroDeMinas.value = [IRGSettings sharedSettings].numeroDeMinas;
+    [self crear7SDeNumeroDeMinas];
+}
+
+
+-(void) crear7SDeNumeroDeMinas{
+    CGRect frameDelNumeroDeMinas7S  = CGRectMake(0,0,
+                                                self.vistaNumeroDeMinas.frame.size.width,
+                                                self.vistaNumeroDeMinas.frame.size.height);
+    
+    self.numeroDeMinas7S = [[IRGDisplaySieteSegmentosViewController alloc]
+                            initWithNibName:nil
+                            bundle:nil
+                            withFrame:frameDelNumeroDeMinas7S
+                            withRedondeoDeLasEsquinas:0
+                            cantidadDeCeldas7S:2];
+    [self.vistaNumeroDeMinas addSubview:self.numeroDeMinas7S.view];
+    
+    [self.numeroDeMinas7S establecerVentanaConTransparencia:0
+                                               colorDeFondo:[UIColor whiteColor]];
+    
+    [self.numeroDeMinas7S  establecerSegmentoConGrosorDelTrazo:1
+                                             grosorDelSegmento:3
+                                      separacionEntreSegmentos:0
+                     separacionHorizontalDelSegmentoConLaVista:2
+                       separacionVerticalDelSegmentoConLaVista:3
+                                         colorDelTrazoDelBorde:[UIColor blackColor]
+                                               colorDelRelleno:[UIColor redColor]
+                                       transparenciaDelRelleno:1];
+    
+    [self.numeroDeMinas7S dibujarNumero:[IRGSettings sharedSettings].numeroDeMinas];
+    
+}
+- (IBAction)cambiarNumeroDeMinas:(UIStepper *)sender {
+    [self.numeroDeMinas7S dibujarNumero:sender.value];
+}
+
+
+- (void) inicializadorTiempoDeAyuda{
+    self.stepperTiempoDeAyuda.value = [IRGSettings sharedSettings].tiempoDeAyuda;
+    [self crear7SDeTiempoDeAyuda];
+}
+-(void) crear7SDeTiempoDeAyuda{
+    CGRect frameDelTiempoDeAyuda7S  = CGRectMake(0,0,
+                                                 self.vistaTiempoDeAyuda.frame.size.width,
+                                                 self.vistaTiempoDeAyuda.frame.size.height);
+    
+    self.tiempoDeAyuda7S = [[IRGDisplaySieteSegmentosViewController alloc]
+                            initWithNibName:nil
+                            bundle:nil
+                            withFrame:frameDelTiempoDeAyuda7S
+                            withRedondeoDeLasEsquinas:0
+                            cantidadDeCeldas7S:2];
+    
+    [self.vistaTiempoDeAyuda addSubview:self.tiempoDeAyuda7S.view];
+    
+    [self.tiempoDeAyuda7S establecerVentanaConTransparencia:0
+                                               colorDeFondo:[UIColor whiteColor]];
+    
+    [self.tiempoDeAyuda7S  establecerSegmentoConGrosorDelTrazo:1
+                                             grosorDelSegmento:3
+                                      separacionEntreSegmentos:0
+                     separacionHorizontalDelSegmentoConLaVista:2
+                       separacionVerticalDelSegmentoConLaVista:3
+                                         colorDelTrazoDelBorde:[UIColor blackColor]
+                                               colorDelRelleno:[UIColor blueColor]
+                                       transparenciaDelRelleno:1];
+    
+    [self.tiempoDeAyuda7S dibujarNumero:[IRGSettings sharedSettings].tiempoDeAyuda];
+    
+}
+- (IBAction)cambiarTiempoDeAyuda:(UIStepper *)sender {
+    [self.tiempoDeAyuda7S dibujarNumero:sender.value];
 }
 
 
