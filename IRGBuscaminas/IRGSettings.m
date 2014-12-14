@@ -7,31 +7,10 @@
 //
 
 #import "IRGSettings.h"
+#import "IRGMetodosComunes.h"
 
 #pragma mark - Constantes de la clase
 
-
-#define NIVEL_DIFICULTAD_POR_DEFECTO 2
-#define NUMERO_DE_MINAS_POR_DEFECTO 15
-#define AYUDAS_ACTIVAS true
-#define TIEMPO_DE_AYUDA_POR_DEFECTO 5
-#define MINAS_POR_DEFECTO_DEL_NIVEL_1 10
-#define MINAS_POR_DEFECTO_DEL_NIVEL_2 25
-#define MINAS_POR_DEFECTO_DEL_NIVEL_3 40
-#define TIEMPO_DE_AYUDA_POR_DEFECTO_DEL_NIVEL_1 2
-#define TIEMPO_DE_AYUDA_POR_DEFECTO_DEL_NIVEL_2 5
-#define TIEMPO_DE_AYUDA_POR_DEFECTO_DEL_NIVEL_3 9
-#define PORCENTAJE_DE_TRANSPARENCIA_DE_LAS_CELDAS_POR_DEFECTO 1
-#define PORCENTAJE_DE_TRANSPARENCIA_DEL_MENU_POR_DEFECTO 1
-#define TAP_PONE_BANDERA_POR_DEFECTO true;
-#define SENSIBILIDAD_TAP_POR_DEFECTO .2
-//Colores
-#define COLOR_DE_RELLENO_DE_LA_CELDA_PROCESADA [[UIColor alloc]initWithRed:.8 green:.8 blue:.8 alpha:1]
-#define COLOR_DE_RELLENO_DE_LA_CELDA_NO_PROCESADA [[UIColor alloc]initWithRed:.7 green:.7 blue:.7 alpha:1]
-#define COLOR_DE_LA_ETIQUETA_DEL_BOTON [[UIColor alloc] initWithRed:0 green:0 blue:1 alpha:1]
-#define COLOR_DE_RELLENO_DE_LA_BARRA_DE_BOTONES [UIColor lightGrayColor]
-
-#define DESPLAZAMIENTO_X_DEL_CANVAS_DE_CELDAS_EN_MODO_HORIZONTAL 50
 
 
 #pragma mark -
@@ -70,6 +49,7 @@
             _porcerntajeDeTransparenciaDelMenu =PORCENTAJE_DE_TRANSPARENCIA_DEL_MENU_POR_DEFECTO;
             _tapPoneBandera = TAP_PONE_BANDERA_POR_DEFECTO;
             _sensibilidadDelTap = SENSIBILIDAD_TAP_POR_DEFECTO;
+            _grupoDeImagenesDeLosBotones = GRUPO_DE_IMAGENES_DE_LOS_BOTONES_POR_DEFECTO;
         }
     }
     return self;
@@ -93,14 +73,8 @@
     return COLOR_DE_RELLENO_DE_LA_CELDA_NO_PROCESADA;
 }
 
--(UIColor *) colorEtiquetaDeBoton{
-    return COLOR_DE_LA_ETIQUETA_DEL_BOTON;
-}
-
-
 -(UIColor *) colorDeRellenoDeLaBarraDeBotones{
-   // return COLOR_DE_RELLENO_DE_LA_BARRA_DE_BOTONES;
-    return _colorDeRellenoDeLaBarraDeBotones;
+    return COLOR_DE_RELLENO_DE_LA_BARRA_DE_BOTONES;
 }
 
 
@@ -152,9 +126,7 @@
     [aCoder encodeFloat:self.porcerntajeDeTransparenciaDelMenu forKey:@"porcentajeDeTransparenciaDelMenu"];
     [aCoder encodeBool:self.tapPoneBandera forKey:@"tapPoneBandera"];
     [aCoder encodeFloat:self.sensibilidadDelTap forKey:@"sensibilidadDelTap"];
-    [aCoder encodeObject:self.fondoEleggido forKey:@"fondoElegido"];
-    
-    
+    [aCoder encodeInteger:self.grupoDeImagenesDeLosBotones forKey:@"grupoDeImagenesDeLosBotones"];
 }
 
 -(instancetype) initWithCoder:(NSCoder *)aDecoder{
@@ -168,7 +140,7 @@
         _porcerntajeDeTransparenciaDelMenu = [aDecoder decodeFloatForKey:@"porcentajeDeTransparenciaDelMenu"];
         _tapPoneBandera = [aDecoder decodeBoolForKey:@"tapPoneBandera"];
         _sensibilidadDelTap = [aDecoder decodeFloatForKey:@"sensibilidadDelTap"];
-        _fondoEleggido = [aDecoder decodeObjectForKey:@"fondoElegido"];
+        _grupoDeImagenesDeLosBotones = [aDecoder decodeIntegerForKey:@"grupoDeImagenesDeLosBotones"];
     }
     return self;
 }
@@ -187,8 +159,8 @@
                                                                NSUserDomainMask,
                                                                TRUE);
     NSString *directorio = listaDePath[0];
-    directorio = @"/Users/LVS/Desktop/";
-    return [directorio stringByAppendingString:@"Configuracion.irg"];
+    directorio = DIRECTORIO_DE_TRABAJO;
+    return [directorio stringByAppendingString:ARCHIVO_SETTIGS];
 }
 
 -(BOOL) existeArchivo:(NSString *)pathArchivo{

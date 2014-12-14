@@ -11,7 +11,7 @@
 #import "IRGDatos.h"
 #import "IRGSettings.h"
 #import "IRGGestorDeEstados.h"
-
+#import "IRGMetodosComunes.h"
 #pragma mark - Constantes
 #define REDONDEO_DE_LAS_ESQUINAS_DE_LA_VENTANA 20
 #define COLOR_DEL_BORDE_DE_LA_VENTANA [UIColor lightGrayColor]
@@ -32,9 +32,11 @@
 @property (nonatomic) UIViewController * controllerPrincipal;
 @property (weak, nonatomic) IBOutlet UISegmentedControl *accionTap;
 @property (weak, nonatomic) IBOutlet UISlider *sensibilidadDelTap;
+@property (weak, nonatomic) IBOutlet UITextField *grupoDeImagenesDeLosBotons;
 
 @property (weak, nonatomic) IBOutlet UIView *vistaDeLosFondos;
 
+@property (weak, nonatomic) IBOutlet UIStepper *stepperGrupoDeImagenDeLosBotones;
 
 @property (weak, nonatomic) IBOutlet UIView *vistaFondo00;
 @property (weak, nonatomic) IBOutlet UIImageView *imagen00;
@@ -47,7 +49,10 @@
 @property (weak, nonatomic) IBOutlet UIView *vistaFondo11;
 @property (weak, nonatomic) IBOutlet UIImageView *imagen11;
 
-@property (nonatomic) NSString * fondoElegidoTemporal;
+
+
+
+@property (nonatomic) UIImage * fondoElegidoTemporal;
 @end
 
 #pragma mark -
@@ -89,8 +94,7 @@
     if (CGRectContainsPoint(vista.frame, [pulsacion locationInView:self.vistaDeLosFondos]) ){
         vista.backgroundColor = [UIColor greenColor];
         self.senderViewController.vistaImagenDeFondo.image = imagen.image;
-        self.fondoElegidoTemporal =[NSString stringWithFormat:@"%@", imagen.image];
-        
+        self.fondoElegidoTemporal =imagen.image;
     }
     
     
@@ -117,6 +121,9 @@
     }
     self.sensibilidadDelTap.value = [IRGSettings sharedSettings].sensibilidadDelTap;
     self.porcentajeDeTransparenciaDelMenu.value =1-[IRGSettings sharedSettings].porcerntajeDeTransparenciaDelMenu;
+    
+    self.grupoDeImagenesDeLosBotons.text = [NSString stringWithFormat:@"%d",[IRGSettings sharedSettings].grupoDeImagenesDeLosBotones];
+    self.stepperGrupoDeImagenDeLosBotones.value = [IRGSettings sharedSettings].grupoDeImagenesDeLosBotones;
     
     self.vistaDatos.layer.borderWidth = GROSOR_DEL_BORDER_DE_LA_VENTANA;
     self.vistaDatos.layer.borderColor = COLOR_DEL_BORDE_DE_LA_VENTANA.CGColor;
@@ -169,7 +176,11 @@
         [IRGSettings sharedSettings].tapPoneBandera=false;
     }
     [IRGSettings sharedSettings].sensibilidadDelTap = self.sensibilidadDelTap.value;
-    [IRGSettings sharedSettings].fondoEleggido = self.fondoElegidoTemporal;
+    [IRGSettings sharedSettings].grupoDeImagenesDeLosBotones = self.grupoDeImagenesDeLosBotons.text.integerValue;
+    [self.senderViewController establecerImagenesDeLosBotones];
+    [IRGMetodosComunes guardarImagen:self.fondoElegidoTemporal
+                           conNombre:ARCHIVO_IMAGEN_DEL_FONDO];
+    
     [[IRGSettings sharedSettings] guardarSettings];
     
     [self.senderViewController.gestorDeEstados establecerEstado:self.senderViewController.gestorDeEstados.estadoDelJuegoEnJuego];
@@ -230,4 +241,11 @@
     [self.senderViewController cambiarTransparenciaDelMenu:[IRGSettings sharedSettings].porcerntajeDeTransparenciaDelMenu];
 
 }
+- (IBAction)cambiarGrupoDeImagenDelMenu:(id)sender {
+    self.grupoDeImagenesDeLosBotons.text = [NSString stringWithFormat:@"%f",self.stepperGrupoDeImagenDeLosBotones.value];
+    [IRGSettings sharedSettings].grupoDeImagenesDeLosBotones = self.stepperGrupoDeImagenDeLosBotones.value;
+    [self.senderViewController establecerImagenesDeLosBotones];
+}
+
+
 @end

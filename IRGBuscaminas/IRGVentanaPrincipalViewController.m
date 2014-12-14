@@ -24,31 +24,32 @@
 #import "IRGHoraYMinutosSieteSegmentosViewController.h"
 #import "IRGDisplaySieteSegmentosViewController.h"
 #import "IRGGestorDeEstados.h"
-
+#import "IRGMetodosComunes.h"
 
 #define REDONDEO_DE_LAS_ESQUINAS_DEL_RELOJ 0
-#define COLOR_DEL_FONDO_DE_LA_VENTANA_DEL_RELOJ [UIColor blueColor]
+#define COLOR_DEL_FONDO_DE_LA_VENTANA_DEL_RELOJ [UIColor clearColor]
 #define TRANSPARENCIA_DEL_COLOR_DE_FONDO_DE_LA_VENTANA_DEL_RELOJ .0
 #define TRANSPARENCIA_DEL_COLOR_DE_RELLENO_DE_LOS_SEGMENTOS 1
-#define COLOR_DE_RELENO_DE_LOS_SEGMENTOS_DEL_RELOJ  [UIColor whiteColor]
+#define COLOR_DE_RELENO_DE_LOS_SEGMENTOS_DEL_RELOJ  [UIColor blueColor]
 #define COLOR_DEL_BORDE_DE_LOS_SEGMENTOS_DEL_RELOJ [UIColor blackColor]
-#define GROSOR_DE_LOS_SEGMENTOS_DEL_RELOJ 8
+#define GROSOR_DE_LOS_SEGMENTOS_DEL_RELOJ 5
 #define SEPARACION_ENTRE_SEGMENTOS 0
 #define SEPARACION_HORIZONTAL_DE_LOS_SEGMENTOS_CON_LA_VISTA_CONTENEDORA 5
 #define SEPARACION_VERTICAL_DE_LOS_SEGMENTOS_CON_LA_VISTA_CONTENEDORA 5
 
 #define COLOR_DE_RELENO_DE_LOS_SEGMENTOS_DE_LAS_MINAS [UIColor redColor]
-#define COLOR_DEL_FONDO_DE_LA_VENTANA_DE_LAS_MINAS [UIColor lightGrayColor]
+#define COLOR_DEL_FONDO_DE_LA_VENTANA_DE_LAS_MINAS [UIColor clearColor]
+#define TRANSPARENCIA_DEL_COLOR_DE_FONDO_DE_LA_VENTANA_DE_LAS_MINAS .0
+
 
 #define REDONDEO_DE_LAS_ESQUINAS_DE_LA_VENTANA 10
-#define COLOR_DEL_BORDE_DE_LA_VENTANA [UIColor lightGrayColor]
+#define COLOR_DEL_BORDE_DE_LA_VENTANA [UIColor grayColor]
 #define GROSOR_DEL_BORDER_DE_LA_VENTANA 0
 
 @interface IRGVentanaPrincipalViewController ()
 @property (nonatomic)  NSInteger numeroDeFilas;
 @property (nonatomic)  NSInteger numeroDeColumnas;
 @property (nonatomic) int tiempoDeJuegoEnSegundos;
-
 
 @property (nonatomic) UIImageView *vistaDeBloqueo;
 
@@ -57,8 +58,6 @@
 @property (nonatomic) IRGDisplaySieteSegmentosViewController * minas7SViewController;
 
 @property (nonatomic) IRGHoraYMinutosSieteSegmentosViewController * tiempoDeJuego7SViewController;
-
-@property (weak, nonatomic) IBOutlet UITextField *separadorMinutosDeSegundos;
 
 @property (nonatomic) IRGSettingsViewController * vistaDeConfiguracion;
 
@@ -74,12 +73,14 @@
     [self iniciarGestorDeEstados];
     [self iniciarTotalMinasSieteSegmentos];
     [self iniciarTiempoDeJuegoSieteSegmentos];
+    [self establecerImagenesDeLosBotones];
     
     [IRGSettings sharedSettings].colorDeRellenoDeLaBarraDeBotones = [self.vistaBarraDeBotonesVertical.backgroundColor colorWithAlphaComponent:[IRGSettings sharedSettings].porcerntajeDeTransparenciaDelMenu];
     
-    self.vistaBarraDeBotones.backgroundColor = [IRGSettings sharedSettings].colorDeRellenoDeLaBarraDeBotones;
+    self.vistaBarraDeBotones.backgroundColor = [[IRGSettings sharedSettings].colorDeRellenoDeLaBarraDeBotones colorWithAlphaComponent:[IRGSettings sharedSettings].porcerntajeDeTransparenciaDelMenu];
     
-    self.vistaBarraDeBotonesVertical.backgroundColor = [IRGSettings sharedSettings].colorDeRellenoDeLaBarraDeBotones;
+    
+    self.vistaBarraDeBotonesVertical.backgroundColor = [[IRGSettings sharedSettings].colorDeRellenoDeLaBarraDeBotones colorWithAlphaComponent:[IRGSettings sharedSettings].porcerntajeDeTransparenciaDelMenu];;
     
     self.vistaBarraDeBotonesVertical.layer.borderWidth = GROSOR_DEL_BORDER_DE_LA_VENTANA;
     self.vistaBarraDeBotonesVertical.layer.borderColor = COLOR_DEL_BORDE_DE_LA_VENTANA.CGColor;
@@ -93,12 +94,9 @@
     
     self.vistaTiempoYMinas.layer.borderWidth = GROSOR_DEL_BORDER_DE_LA_VENTANA;
     self.vistaTiempoYMinas.layer.borderColor = COLOR_DEL_BORDE_DE_LA_VENTANA.CGColor;
-    self.vistaTiempoYMinas.layer.cornerRadius = REDONDEO_DE_LAS_ESQUINAS_DE_LA_VENTANA;
-    self.vistaTiempoYMinas.layer.masksToBounds = YES;
     
-  //  self.vistaImagenDeFondo.image = [IRGSettings sharedSettings].fondoEleggido;
+    self.vistaImagenDeFondo.image = [IRGMetodosComunes leerImagenConNombre:ARCHIVO_IMAGEN_DEL_FONDO];
 
-   
     [[NSNotificationCenter defaultCenter] addObserver:self
                                              selector:@selector(deviceOrientationDidChange:)
                                                  name:UIDeviceOrientationDidChangeNotification
@@ -121,18 +119,8 @@
 #pragma mark - Navigation primer nivel
 
 -(void) deviceOrientationDidChange:(NSNotification *)sender{
-    NSInteger anchoDelCanvasDeLasCeldas = [IRGLienzo sharedLienzo].filasDelLienzo*[IRGLienzo sharedLienzo].anchoCelda;
-    NSInteger altoDelCanvasDeLasCeldas = [IRGLienzo sharedLienzo].columnasDelLienzo*[IRGLienzo sharedLienzo].altoCelda;
-    NSInteger margenX =([UIApplication sharedApplication].keyWindow.frame.size.width -anchoDelCanvasDeLasCeldas)/2;
-    NSInteger margenY = ([UIApplication sharedApplication].keyWindow.frame.size.height -altoDelCanvasDeLasCeldas)/2;
     
-    if (![self iPadVertical]){
-        margenX = margenX+[IRGSettings sharedSettings].desplazamientoXDelCanvasEnModoHorizontal;
-    }
-    
-    CGRect frameCanvasDeLasCeldas = CGRectMake(margenX, margenY, anchoDelCanvasDeLasCeldas, altoDelCanvasDeLasCeldas);
-    self.vistaCanvasDeLasCeldas.frame = frameCanvasDeLasCeldas;
-    
+    [self establecerFrameDelCanvasDeLasCeldas];
     
     if ((self.vistaBarraDeBotones.hidden == NO) || (self.vistaBarraDeBotonesVertical.hidden == NO)){
         [self.gestionarBotonera  mostrarBarraDeBotones];
@@ -252,7 +240,7 @@
     [self.tiempoDeJuegoTextField addSubview:self.tiempoDeJuego7SViewController.view];
 
     [self.tiempoDeJuego7SViewController establecerVentanaConTransparencia:TRANSPARENCIA_DEL_COLOR_DE_FONDO_DE_LA_VENTANA_DEL_RELOJ
-                                              colorDeFondo:COLOR_DEL_FONDO_DE_LA_VENTANA_DE_LAS_MINAS];
+                                              colorDeFondo:COLOR_DEL_FONDO_DE_LA_VENTANA_DEL_RELOJ];
     
     [self.tiempoDeJuego7SViewController  establecerSegmentoConGrosorDelTrazo:1
                                             grosorDelSegmento:GROSOR_DE_LOS_SEGMENTOS_DEL_RELOJ
@@ -264,10 +252,6 @@
                                       transparenciaDelRelleno:TRANSPARENCIA_DEL_COLOR_DE_RELLENO_DE_LOS_SEGMENTOS];
 
     [self.tiempoDeJuego7SViewController mostrarHoraYMinutos: 0];
-       
-    self.separadorMinutosDeSegundos.backgroundColor = [UIColor clearColor];
-    self.separadorMinutosDeSegundos.textColor = COLOR_DEL_BORDE_DE_LOS_SEGMENTOS_DEL_RELOJ;
-    
 }
 
 -(void) iniciarTotalMinasSieteSegmentos {
@@ -281,7 +265,7 @@
                                                                               cantidadDeCeldas7S:2];
     [self.totalMinas addSubview:self.minas7SViewController.view];
     
-    [self.minas7SViewController establecerVentanaConTransparencia:TRANSPARENCIA_DEL_COLOR_DE_FONDO_DE_LA_VENTANA_DEL_RELOJ
+    [self.minas7SViewController establecerVentanaConTransparencia:TRANSPARENCIA_DEL_COLOR_DE_FONDO_DE_LA_VENTANA_DE_LAS_MINAS
                                            colorDeFondo:COLOR_DEL_FONDO_DE_LA_VENTANA_DE_LAS_MINAS];
     
     [self.minas7SViewController  establecerSegmentoConGrosorDelTrazo:1
@@ -389,20 +373,42 @@
     
 }
 - (void) generarCanvas{
+    
+    [self establecerFrameDelCanvasDeLasCeldas];
+    [self generarLasCeldasDelCanvas];
+    
+  }
+
+- (void) establecerFrameDelCanvasDeLasCeldas{
+    
     NSInteger anchoDelCanvasDeLasCeldas = [IRGLienzo sharedLienzo].filasDelLienzo*[IRGLienzo sharedLienzo].anchoCelda;
     NSInteger altoDelCanvasDeLasCeldas = [IRGLienzo sharedLienzo].columnasDelLienzo*[IRGLienzo sharedLienzo].altoCelda;
-    NSInteger margenX =([UIApplication sharedApplication].keyWindow.frame.size.width -anchoDelCanvasDeLasCeldas)/2;
-    NSInteger margenY = ([UIApplication sharedApplication].keyWindow.frame.size.height -altoDelCanvasDeLasCeldas)/2;
+    NSInteger margenX;
+    NSInteger margenY;
     
-    if (![self iPadVertical]){
-        margenX = margenX+[IRGSettings sharedSettings].desplazamientoXDelCanvasEnModoHorizontal;
+    if ([self iPadVertical]){
+        margenX =(self.canvas.frame.size.width -anchoDelCanvasDeLasCeldas)/2;
+        if ((self.vistaBarraDeBotones.hidden == FALSE) || (self.vistaBarraDeBotonesVertical.hidden == FALSE)){
+            margenY = (self.vistaBarraDeBotones.frame.origin.y -altoDelCanvasDeLasCeldas)/2;
+        }
+        else {
+            margenY = (self.canvas.frame.size.height - altoDelCanvasDeLasCeldas)/2;
+        }
     }
-    
+    else {
+        margenY = (self.canvas.frame.size.height - altoDelCanvasDeLasCeldas)/2;
+        if ((self.vistaBarraDeBotones.hidden == FALSE) || (self.vistaBarraDeBotonesVertical.hidden == FALSE)){
+            margenX = (self.canvas.frame.size.width-self.vistaBarraDeBotonesVertical.frame.origin.x-self.vistaBarraDeBotonesVertical.frame.size.width-anchoDelCanvasDeLasCeldas)/2+self.vistaBarraDeBotonesVertical.frame.origin.x+self.vistaBarraDeBotonesVertical.frame.size.width;
+        }
+        else {
+            margenX = (self.canvas.frame.size.width-anchoDelCanvasDeLasCeldas)/2;
+        }
+    }
     CGRect frameCanvasDeLasCeldas = CGRectMake(margenX, margenY, anchoDelCanvasDeLasCeldas, altoDelCanvasDeLasCeldas);
     self.vistaCanvasDeLasCeldas.frame = frameCanvasDeLasCeldas;
-  //  [self.canvas addSubview:self.vistaCanvasDeLasCeldas];
-    
-   
+}
+
+- (void) generarLasCeldasDelCanvas {
     
     for (NSInteger fila = 0;fila < [IRGLienzo sharedLienzo].filasDelLienzo;fila++){
         for (NSInteger columna = 0; columna< [IRGLienzo sharedLienzo].columnasDelLienzo;columna++){
@@ -510,8 +516,6 @@
     [self.navigationController setNavigationBarHidden:true animated:false];
 }
 
-
-
 - (BOOL) iPadVertical{
     
     UIInterfaceOrientation newOrientation =  [UIApplication sharedApplication].statusBarOrientation;
@@ -525,6 +529,7 @@
 
 - (void)cambiarTransparenciaDelMenu:(float) porcentajeDeTransparencia{
     self.vistaBarraDeBotones.backgroundColor = [[IRGSettings sharedSettings].colorDeRellenoDeLaBarraDeBotones colorWithAlphaComponent:porcentajeDeTransparencia ];
+    
     self.vistaBarraDeBotonesVertical.backgroundColor = [[IRGSettings sharedSettings].colorDeRellenoDeLaBarraDeBotones colorWithAlphaComponent:porcentajeDeTransparencia];
 }
 
@@ -540,4 +545,52 @@
 - (void) restaurarEstado{
     [self.gestorDeEstados establecerEstado:[self.gestorDeEstados estadoDelJuegoAnterior]];
 }
+
+-(void) establecerImagenesDeLosBotones{;
+    
+    NSInteger grupo_imagenes_de_boton = [IRGSettings sharedSettings].grupoDeImagenesDeLosBotones;
+    
+    UIImage *imagenBotonMostrarMinas = [UIImage imageNamed:[NSString stringWithFormat:@"boton_mostrar_minas_%d",grupo_imagenes_de_boton]];
+    
+    UIImage *imagenBotonMostrarHistorial = [UIImage imageNamed:[NSString stringWithFormat:@"boton_historial_%d",grupo_imagenes_de_boton]];
+    
+    UIImage *imagenBotonJugar = [UIImage imageNamed:[NSString stringWithFormat:@"boton_play_%d",grupo_imagenes_de_boton]];
+    
+    UIImage *imagenBotonPausar = [UIImage imageNamed:[NSString stringWithFormat:@"boton_pausa_%d",grupo_imagenes_de_boton]];
+    
+    UIImage *imagenBotonSettings = [UIImage imageNamed:[NSString stringWithFormat:@"boton_settings_%d",grupo_imagenes_de_boton]];
+    
+    [self establecerImagen:imagenBotonMostrarMinas
+                  delBoton:self.botonMostrarMinas];
+    [self establecerImagen:imagenBotonMostrarMinas
+                  delBoton:self.botonMostrarMinasVertical];
+    
+    [self establecerImagen:imagenBotonMostrarHistorial
+                  delBoton:self.botonMostrarMejoresTiempos];
+    [self establecerImagen:imagenBotonMostrarHistorial
+                  delBoton:self.botonMostrarMejoresTiempoVertical];
+    
+    [self establecerImagen:imagenBotonJugar
+                  delBoton:self.botonJugarSecundario];
+    [self establecerImagen:imagenBotonJugar
+                  delBoton:self.botonJugarSecundarioVertical];
+    
+    [self establecerImagen:imagenBotonPausar
+                  delBoton:self.botonPausar];
+    [self establecerImagen:imagenBotonPausar
+                  delBoton:self.botonPausarVertical];
+    
+    [self establecerImagen:imagenBotonSettings
+                  delBoton:self.botonSettings];
+    [self establecerImagen:imagenBotonSettings
+                  delBoton:self.botonSettingsVertical];
+
+}
+
+- (void) establecerImagen: (UIImage *)imagen
+                 delBoton:(UIButton *)boton{
+    [boton setImage:imagen
+           forState:UIControlStateNormal];
+}
+
 @end

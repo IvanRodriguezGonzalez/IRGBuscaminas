@@ -41,12 +41,6 @@
 
 - (void) desactivarSettings;
 
-
-
-- (void) mostrarVistaBotonJugarSecundario;
-
-- (void) ocultarVistaBotonJugarSecundario;
-
 - (void) mostrarBarraDeBotones;
 
 - (void) ocultarBarraDeBotones;

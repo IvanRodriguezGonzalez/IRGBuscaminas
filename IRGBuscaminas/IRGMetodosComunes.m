@@ -8,6 +8,9 @@
 
 #import "IRGMetodosComunes.h"
 
+
+
+
 @implementation IRGMetodosComunes
 
 + (NSString *) formatearTiempoDeJuegoEnSegundos:(NSInteger)tiempoEnSegundos{
@@ -15,7 +18,6 @@
     NSInteger segundos = tiempoEnSegundos - minutos*60;
     NSString * textoDeMinutos;
     NSString * textoDeSegundos;
-    
     if (minutos<10){
         textoDeMinutos = [NSString stringWithFormat:@"0%ld",(long)minutos];
     }
@@ -30,6 +32,45 @@
         textoDeSegundos = [NSString stringWithFormat:@"%ld",(long)segundos];
     }
     return [NSString stringWithFormat:@"%@:%@",textoDeMinutos,textoDeSegundos ];
+}
+
++ (void)guardarImagen: (UIImage*)image conNombre:(NSString *)nombreDeLaImagen
+{
+    if (image != nil)
+    {
+        NSString *documentsDirectory;
+        if (!DIRECTORIO_DE_TRABAJO){
+            NSArray *paths = NSSearchPathForDirectoriesInDomains(NSDocumentDirectory,
+                                                             NSUserDomainMask, YES);
+            documentsDirectory = [paths objectAtIndex:0];
+        }
+        else {
+            documentsDirectory = DIRECTORIO_DE_TRABAJO;
+        }
+
+        NSString * path= [documentsDirectory stringByAppendingPathComponent:
+                              [NSString stringWithString: nombreDeLaImagen] ];
+        
+        NSData* data = UIImagePNGRepresentation(image);
+        [data writeToFile:path atomically:YES];
+    }
+}
+
++ (UIImage*)leerImagenConNombre:(NSString *)nombreDeLaImagen
+{
+    NSString *documentsDirectory;
+    if (!DIRECTORIO_DE_TRABAJO){
+        NSArray *paths = NSSearchPathForDirectoriesInDomains(NSDocumentDirectory,
+                                                             NSUserDomainMask, YES);
+        documentsDirectory = [paths objectAtIndex:0];
+    }
+    else {
+        documentsDirectory = DIRECTORIO_DE_TRABAJO;
+    }
+    NSString* path = [documentsDirectory stringByAppendingPathComponent:
+                      [NSString stringWithString: nombreDeLaImagen] ];
+    UIImage* image = [UIImage imageWithContentsOfFile:path];
+    return image;
 }
 
 @end

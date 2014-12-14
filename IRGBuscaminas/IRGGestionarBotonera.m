@@ -88,35 +88,23 @@
 }
 
 
-
-- (void) mostrarVistaBotonJugarSecundario{
-    self.delegado.vistaBotonJugarSecundario.hidden = NO;
-    [self.delegado.canvas bringSubviewToFront: self.delegado.vistaBotonJugarSecundario];
-    
-    self.delegado.vistaBotonJugarSecundarioVertical.hidden = NO;
-    [self.delegado.canvas bringSubviewToFront: self.delegado.vistaBotonJugarSecundarioVertical];
-}
-
--(void) ocultarVistaBotonJugarSecundario{
-    self.delegado.vistaBotonJugarSecundario.hidden = YES ;
-    self.delegado.vistaBotonJugarSecundarioVertical.hidden = YES;
-}
-
 -(void) mostrarBarraDeBotones{
     
     if ([self iPadVertical]){
         self.delegado.vistaBarraDeBotones.hidden = NO;
         self.delegado.vistaBarraDeBotonesVertical.hidden= YES;
-}
+    }
     else{
         self.delegado.vistaBarraDeBotones.hidden = YES;
-        self.delegado.vistaBarraDeBotonesVertical.hidden = NO;;
+        self.delegado.vistaBarraDeBotonesVertical.hidden = NO;
     }
+    [self.delegado establecerFrameDelCanvasDeLasCeldas];
 }
 
 -(void) ocultarBarraDeBotones{
     self.delegado.vistaBarraDeBotones.hidden = YES;
     self.delegado.vistaBarraDeBotonesVertical.hidden = YES;
+    [self.delegado establecerFrameDelCanvasDeLasCeldas];
 }
 
 -(void) mostrarVistaTiempoYMinas{

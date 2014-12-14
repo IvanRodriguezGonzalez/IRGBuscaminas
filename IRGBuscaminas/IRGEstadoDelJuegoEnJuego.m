@@ -62,7 +62,6 @@
     [self.delegado.gestionarBotonera ocultarIndicadorModoAyuda];
 
     
-    [self.delegado.gestionarBotonera mostrarVistaBotonJugarSecundario];
     [self.delegado.gestionarBotonera mostrarBarraDeBotones];
     [self.delegado.gestionarBotonera mostrarVistaTiempoYMinas];
     
@@ -131,12 +130,9 @@
 
 -(void) mostrarYOcultarBotones{
     if ((self.delegado.vistaBarraDeBotones.hidden ==YES) & (self.delegado.vistaBarraDeBotonesVertical.hidden ==YES)){
-        [self.delegado.gestionarBotonera  mostrarVistaBotonJugarSecundario];
         [self.delegado.gestionarBotonera mostrarBarraDeBotones];
-        
     }
     else {
-        [self.delegado.gestionarBotonera ocultarVistaBotonJugarSecundario];
         [self.delegado.gestionarBotonera ocultarBarraDeBotones];
     }
 }

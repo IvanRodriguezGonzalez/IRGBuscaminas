@@ -11,8 +11,8 @@
 
 #pragma mark - Constantes
 
-# define ALTO_DE_LA_CELDA_NIVEL1 84
-# define ANCHO_DE_LA_CELDA_NIVEL1 84
+# define ALTO_DE_LA_CELDA_NIVEL1 80
+# define ANCHO_DE_LA_CELDA_NIVEL1 80
 
 
 # define ALTO_DE_LA_CELDA_NIVEL2 56
