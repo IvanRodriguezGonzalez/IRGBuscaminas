@@ -738,6 +738,6 @@
         <image name="boton_settings_1" width="256" height="256"/>
         <image name="boton_settings_4" width="512" height="512"/>
         <image name="fondo1" width="1024" height="1024"/>
-        <image name="treasury_map-100" width="512" height="512"/>
+        <image name="treasury_map-100" width="30" height="30"/>
     </resources>
 </document>

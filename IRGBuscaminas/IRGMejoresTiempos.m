@@ -8,6 +8,8 @@
 
 #import "IRGMejoresTiempos.h"
 #import "IRGDatoDelMejorTiempo.h"
+#import "IRGMetodosComunes.h"
+
 
 #pragma mark -
 @interface IRGMejoresTiempos ()
@@ -55,12 +57,15 @@
                Nombre:(NSString *)nombre
        numeroDeCeldas:(NSInteger)numeroDeCeldas
         numeroDeMinas:(NSInteger)numeroDeMinas
-             conAyuda:(bool)conAyuda{
+             conAyuda:(bool)conAyuda
+           dificultad:(NSInteger)dificultad
+{
     IRGDatoDelMejorTiempo * datoDelMejorTiempo = [[IRGDatoDelMejorTiempo alloc]initConTiempo:tiempo
                                                                                     nombre:nombre
                                                                             numeroDeCeldas:numeroDeCeldas
                                                                              numeroDeMinas:numeroDeMinas
-                                                                                    conAyuda:conAyuda];
+                                                                                    conAyuda:conAyuda
+                                                                                  dificultad:dificultad];
     [self.mejoresTiempos addObject:datoDelMejorTiempo];
     [self guardarMejoresTiempos];
 }
@@ -84,11 +89,17 @@
 
 
 -(NSString *) obtenerPath{
-    NSArray *listaDePath = NSSearchPathForDirectoriesInDomains(NSDocumentDirectory,
-                                                               NSUserDomainMask,
-                                                               TRUE);
-    NSString *directorio = listaDePath[0];
-   return [directorio stringByAppendingString:@"Resultados.irg"];
+    NSString *directorio;
+    if (GRABAR_EN_IPAD) {
+        NSArray *listaDePath = NSSearchPathForDirectoriesInDomains(NSDocumentDirectory,
+                                                                   NSUserDomainMask,
+                                                                   TRUE);
+        directorio = listaDePath[0];
+    }
+    else {
+        directorio = DIRECTORIO_DE_TRABAJO;
+    }
+   return [directorio stringByAppendingString:@"/Resultados.irg"];
 }
 
 -(BOOL) existeArchivo:(NSString *)pathArchivo{

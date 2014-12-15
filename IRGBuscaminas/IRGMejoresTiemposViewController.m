@@ -42,32 +42,36 @@
     
     NSInteger filaDeLaTabla  = indexPath.row;
     IRGDatoDelMejorTiempo *mejorTiempo =[IRGMejoresTiempos sharedMejoresTiempos].todosLosMejoresTiempos[filaDeLaTabla];
-    NSLog(@"Ancho: %f Alto: %f",celda.frame.size.width,celda.frame.size.height);
 
     celda.nombreDelJugador.text = mejorTiempo.nombre;
-/*
-    NSInteger filaDeLaTabla  = indexPath.row;
-    IRGDatoDelMejorTiempo *mejorTiempo =[IRGMejoresTiempos sharedMejoresTiempos].todosLosMejoresTiempos[filaDeLaTabla];
-   
-    NSString * timepoDeJuegoFormateado =  [IRGMetodosComunes formatearTiempoDeJuegoEnSegundos:mejorTiempo.tiempo];
-    
-    NSString *conAyuda;
+    celda.tiempoDelJugador.text =[IRGMetodosComunes formatearTiempoDeJuegoEnSegundos:mejorTiempo.tiempo];
+    UIImage *imagenDeDificultad;
+    switch (mejorTiempo.dificultad) {
+        case 1:
+            celda.dificultadDeLaPartida.text = @"Fácil";;
+            imagenDeDificultad = [UIImage imageNamed:@"dificultad_facil.png"];
+            break;
+        case 2:
+            celda.dificultadDeLaPartida.text = @"Media";
+            imagenDeDificultad = [UIImage imageNamed:@"dificultad_media.png"];
+            break;
+        case 3:
+            celda.dificultadDeLaPartida.text = @"Dificil";
+            imagenDeDificultad = [UIImage imageNamed:@"dificultad_dificil.png"];
+            break;
+        default:
+            celda.dificultadDeLaPartida.text = @"";
+            break;
+    }
+    celda.graficoDeDificultad.image = imagenDeDificultad;
+    celda.numeroDeMinas.text = [NSString stringWithFormat:@"%ld", (long)mejorTiempo.numeroDeMinas];
     if(mejorTiempo.conAyuda){
-        conAyuda = @"Si";
+        celda.conAyuda.hidden = FALSE;
     }
     else{
-        conAyuda = @"No";
+        celda.conAyuda.hidden = TRUE;
     }
-    
-    
-    NSString * detalle = [NSString stringWithFormat:@"Tiempo:%@ Celdas:%ld Minas:%ld Con ayuda:%@",
-                          timepoDeJuegoFormateado,
-                          (long)mejorTiempo.numeroDeCeldas,
-                          (long)mejorTiempo.numeroDeMinas,conAyuda];
-    
-    celda.textLabel.text = mejorTiempo.nombre;
-    celda.detailTextLabel.text = detalle;
- */
+    NSLog(@"%f",celda.graficoDeDificultad.frame.size.height);
     return celda;
 }
 

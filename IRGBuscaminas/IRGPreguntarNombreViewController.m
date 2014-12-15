@@ -10,6 +10,8 @@
 #import "IRGMejoresTiempos.h"
 #import "IRGDatoDelMejorTiempo.h"
 #import "IRGMetodosComunes.h"
+#import "IRGSettings.h"
+#import "IRGMejoresTiemposTableViewCell.h"
 
 @interface IRGPreguntarNombreViewController ()
 #pragma mark - Propiedades privadas
@@ -31,7 +33,8 @@
                         Nombre:self.nombreTextField.text
                 numeroDeCeldas:self.datoDelMejorTiempo.numeroDeCeldas
                  numeroDeMinas:self.datoDelMejorTiempo.numeroDeMinas
-                                conAyuda:self.datoDelMejorTiempo.conAyuda];
+                    conAyuda:self.datoDelMejorTiempo.conAyuda
+     dificultad:[IRGSettings sharedSettings].dificultad];
     [self.presentingViewController dismissViewControllerAnimated:TRUE completion:nil];
 }
 
@@ -63,26 +66,47 @@
 
 - (UITableViewCell *)tableView:(UITableView *)tableView
          cellForRowAtIndexPath:(NSIndexPath *)indexPath{
+    IRGMejoresTiemposTableViewCell *celda = [tableView dequeueReusableCellWithIdentifier:@"IRGMejoresTiemposTableViewCell"];
     
-    UITableViewCell *celda = [[UITableViewCell alloc]initWithStyle:UITableViewCellStyleSubtitle
-                                                   reuseIdentifier:@"UITableViewCell"];
+    if (!celda){
+        NSArray *nib = [[NSBundle mainBundle] loadNibNamed:@"IRGMejoresTiemposTableViewCell" owner:self options:nil];
+        celda = (IRGMejoresTiemposTableViewCell *)[nib objectAtIndex:0];
+    }
     
     NSInteger filaDeLaTabla  = indexPath.row;
     IRGDatoDelMejorTiempo *mejorTiempo =[IRGMejoresTiempos sharedMejoresTiempos].todosLosMejoresTiempos[filaDeLaTabla];
     
-    NSString * timepoDeJuegoFormateado =  [IRGMetodosComunes formatearTiempoDeJuegoEnSegundos:mejorTiempo.tiempo];
-    NSString *conAyuda;
+    celda.nombreDelJugador.text = mejorTiempo.nombre;
+    celda.tiempoDelJugador.text =[IRGMetodosComunes formatearTiempoDeJuegoEnSegundos:mejorTiempo.tiempo];
+    UIImage *imagenDeDificultad;
+    switch (mejorTiempo.dificultad) {
+        case 1:
+            celda.dificultadDeLaPartida.text = @"Fácil";;
+            imagenDeDificultad = [UIImage imageNamed:@"dificultad_facil.png"];
+            break;
+        case 2:
+            celda.dificultadDeLaPartida.text = @"Media";
+            imagenDeDificultad = [UIImage imageNamed:@"dificultad_media.png"];
+            break;
+        case 3:
+            celda.dificultadDeLaPartida.text = @"Dificil";
+            imagenDeDificultad = [UIImage imageNamed:@"dificultad_dificil.png"];
+            break;
+        default:
+            celda.dificultadDeLaPartida.text = @"";
+            break;
+    }
+    celda.graficoDeDificultad.image = imagenDeDificultad;
+    celda.numeroDeMinas.text = [NSString stringWithFormat:@"%ld", (long)mejorTiempo.numeroDeMinas];
     if(mejorTiempo.conAyuda){
-        conAyuda = @"Si";
+        celda.conAyuda.hidden = FALSE;
     }
     else{
-        conAyuda = @"No";
+        celda.conAyuda.hidden = TRUE;
     }
-    NSString * detalle = [NSString stringWithFormat:@"Tiempo:%@ Celdas:%ld Minas:%ld Con ayuda:%@",timepoDeJuegoFormateado,(long)mejorTiempo.numeroDeCeldas,(long)mejorTiempo.numeroDeMinas,conAyuda];
-    
-    celda.textLabel.text = mejorTiempo.nombre;
-    celda.detailTextLabel.text = detalle;
-    
+    NSLog(@"%f",celda.graficoDeDificultad.frame.size.height);
+    return celda;
+
     return celda;
 }
 
@@ -91,13 +115,15 @@
                        Nombre:(NSString *)nombre
                numeroDeCeldas:(NSInteger)numeroDeCeldas
                 numeroDeMinas:(NSInteger)numeroDeMinas
-                     conAyuda:(bool)conAyuda{
+                     conAyuda:(bool)conAyuda
+                   dificultad:(NSInteger) dificultad{
     
     [[IRGMejoresTiempos sharedMejoresTiempos] anadirTiempo:mejorTiempo
                                                     Nombre:nombre
                                             numeroDeCeldas:numeroDeCeldas
                                              numeroDeMinas:numeroDeMinas
-                                                  conAyuda:conAyuda];
+                                                  conAyuda:conAyuda
+                                                dificultad:dificultad];
 }
 
 @end

@@ -11,4 +11,12 @@
 @interface IRGMejoresTiemposTableViewCell : UITableViewCell
 @property (weak, nonatomic) IBOutlet UILabel *nombreDelJugador;
 
+@property (weak, nonatomic) IBOutlet UILabel *tiempoDelJugador;
+
+@property (weak, nonatomic) IBOutlet UIImageView *graficoDeDificultad;
+
+@property (weak, nonatomic) IBOutlet UILabel *dificultadDeLaPartida;
+@property (weak, nonatomic) IBOutlet UILabel *numeroDeMinas;
+@property (weak, nonatomic) IBOutlet UIImageView *conAyuda;
+
 @end

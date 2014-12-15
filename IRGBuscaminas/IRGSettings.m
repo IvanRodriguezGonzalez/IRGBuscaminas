@@ -155,11 +155,16 @@
 #pragma mark - Auxiliares de primer nivel
 
 -(NSString *) obtenerPath{
-    NSArray *listaDePath = NSSearchPathForDirectoriesInDomains(NSDocumentDirectory,
+    NSString *directorio ;
+    if(GRABAR_EN_IPAD){
+        NSArray *listaDePath = NSSearchPathForDirectoriesInDomains(NSDocumentDirectory,
                                                                NSUserDomainMask,
                                                                TRUE);
-    NSString *directorio = listaDePath[0];
-    directorio = DIRECTORIO_DE_TRABAJO;
+        directorio = listaDePath[0];
+    }
+    else {
+        directorio = DIRECTORIO_DE_TRABAJO;
+    }
     return [directorio stringByAppendingString:ARCHIVO_SETTIGS];
 }
 

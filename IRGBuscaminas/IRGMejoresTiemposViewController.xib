@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="6250" systemVersion="14B25" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="6254" systemVersion="14B25" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES">
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="6244"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="6247"/>
         <capability name="Aspect ratio constraints" minToolsVersion="5.1"/>
     </dependencies>
     <objects>
@@ -25,14 +25,20 @@
                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="XBb-0y-dBr">
                     <rect key="frame" x="0.0" y="0.0" width="600" height="80"/>
                     <subviews>
+                        <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Ganadores" translatesAutoresizingMaskIntoConstraints="NO" id="r6r-Pf-aP1">
+                            <rect key="frame" x="265" y="5" width="70" height="70"/>
+                            <constraints>
+                                <constraint firstAttribute="width" secondItem="r6r-Pf-aP1" secondAttribute="height" multiplier="1:1" id="Mxw-Q7-fhN"/>
+                            </constraints>
+                        </imageView>
                         <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="wRR-Wa-7Tj">
-                            <rect key="frame" x="529" y="20" width="51" height="40"/>
+                            <rect key="frame" x="20" y="5" width="70" height="70"/>
                             <constraints>
                                 <constraint firstAttribute="width" secondItem="wRR-Wa-7Tj" secondAttribute="height" multiplier="1:1" id="F1h-dj-9om"/>
                                 <constraint firstAttribute="width" secondItem="wRR-Wa-7Tj" secondAttribute="height" multiplier="49:32" id="bPW-M4-Vel"/>
                                 <constraint firstAttribute="width" secondItem="wRR-Wa-7Tj" secondAttribute="height" multiplier="1:1" id="g1b-V2-rFD"/>
                             </constraints>
-                            <state key="normal" title="Cerrar">
+                            <state key="normal" image="volver">
                                 <color key="titleColor" red="0.0" green="0.50196081399917603" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                 <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                             </state>
@@ -47,43 +53,47 @@
                                 <action selector="accionCerrarVentana:" destination="-1" eventType="touchUpInside" id="bYW-JC-vaS"/>
                             </connections>
                         </button>
-                        <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Ganadores" translatesAutoresizingMaskIntoConstraints="NO" id="r6r-Pf-aP1">
-                            <rect key="frame" x="265" y="5" width="70" height="70"/>
-                            <constraints>
-                                <constraint firstAttribute="width" secondItem="r6r-Pf-aP1" secondAttribute="height" multiplier="1:1" id="Mxw-Q7-fhN"/>
-                            </constraints>
-                        </imageView>
                     </subviews>
-                    <color key="backgroundColor" red="0.80000001190000003" green="0.80000001190000003" blue="0.80000001190000003" alpha="1" colorSpace="calibratedRGB"/>
+                    <color key="backgroundColor" red="0.33333333329999998" green="0.5568627451" blue="0.83529411760000005" alpha="1" colorSpace="calibratedRGB"/>
                     <constraints>
+                        <constraint firstItem="wRR-Wa-7Tj" firstAttribute="leading" secondItem="r6r-Pf-aP1" secondAttribute="trailing" constant="8" symbolic="YES" id="0pf-LI-gYF"/>
                         <constraint firstAttribute="bottom" secondItem="wRR-Wa-7Tj" secondAttribute="bottom" constant="5" id="5Oe-sb-vhm"/>
+                        <constraint firstItem="wRR-Wa-7Tj" firstAttribute="leading" secondItem="XBb-0y-dBr" secondAttribute="leading" constant="20" symbolic="YES" id="7ke-jh-UyI"/>
                         <constraint firstItem="wRR-Wa-7Tj" firstAttribute="top" secondItem="XBb-0y-dBr" secondAttribute="top" constant="20" symbolic="YES" id="7mj-fi-cm7"/>
                         <constraint firstAttribute="centerY" secondItem="r6r-Pf-aP1" secondAttribute="centerY" id="ArD-ON-8nx"/>
                         <constraint firstAttribute="bottom" secondItem="wRR-Wa-7Tj" secondAttribute="bottom" constant="5" id="GAG-oc-1ID"/>
                         <constraint firstAttribute="height" constant="80" id="GT7-uW-JVq"/>
                         <constraint firstAttribute="centerY" secondItem="wRR-Wa-7Tj" secondAttribute="centerY" id="Gpo-6S-43l"/>
-                        <constraint firstAttribute="bottom" secondItem="wRR-Wa-7Tj" secondAttribute="bottom" constant="20" symbolic="YES" id="H8v-Jx-Hmv"/>
-                        <constraint firstItem="wRR-Wa-7Tj" firstAttribute="top" secondItem="XBb-0y-dBr" secondAttribute="top" constant="20" symbolic="YES" id="Kgz-yu-hTo"/>
+                        <constraint firstAttribute="bottom" secondItem="wRR-Wa-7Tj" secondAttribute="bottom" constant="5" id="H8v-Jx-Hmv"/>
+                        <constraint firstItem="wRR-Wa-7Tj" firstAttribute="top" secondItem="XBb-0y-dBr" secondAttribute="top" constant="5" id="Kgz-yu-hTo"/>
                         <constraint firstItem="r6r-Pf-aP1" firstAttribute="top" secondItem="XBb-0y-dBr" secondAttribute="top" constant="5" id="L1G-fM-KIe"/>
                         <constraint firstAttribute="trailing" secondItem="wRR-Wa-7Tj" secondAttribute="trailing" constant="20" symbolic="YES" id="Vex-5p-Qpg"/>
                         <constraint firstAttribute="bottom" secondItem="r6r-Pf-aP1" secondAttribute="bottom" constant="5" id="Y6v-X4-zik"/>
                         <constraint firstAttribute="trailing" secondItem="wRR-Wa-7Tj" secondAttribute="trailing" constant="20" symbolic="YES" id="cLK-fb-DF2"/>
+                        <constraint firstItem="wRR-Wa-7Tj" firstAttribute="leading" secondItem="XBb-0y-dBr" secondAttribute="leading" constant="20" symbolic="YES" id="d4e-jF-3k8"/>
                         <constraint firstAttribute="centerX" secondItem="wRR-Wa-7Tj" secondAttribute="centerX" id="f1h-25-3zv"/>
                         <constraint firstItem="wRR-Wa-7Tj" firstAttribute="top" secondItem="XBb-0y-dBr" secondAttribute="top" constant="5" id="gxJ-yu-YCW"/>
+                        <constraint firstItem="wRR-Wa-7Tj" firstAttribute="leading" secondItem="r6r-Pf-aP1" secondAttribute="trailing" constant="8" symbolic="YES" id="hxU-8T-73J"/>
                         <constraint firstItem="wRR-Wa-7Tj" firstAttribute="top" secondItem="XBb-0y-dBr" secondAttribute="top" constant="5" id="mUi-0Z-9s6"/>
+                        <constraint firstAttribute="trailing" secondItem="wRR-Wa-7Tj" secondAttribute="trailing" constant="20" symbolic="YES" id="phg-DN-ksN"/>
                         <constraint firstAttribute="bottom" secondItem="wRR-Wa-7Tj" secondAttribute="bottom" constant="20" symbolic="YES" id="rQE-IP-Hqw"/>
                         <constraint firstAttribute="centerX" secondItem="r6r-Pf-aP1" secondAttribute="centerX" id="xYJ-or-boo"/>
                     </constraints>
                     <variation key="default">
                         <mask key="constraints">
+                            <exclude reference="0pf-LI-gYF"/>
                             <exclude reference="5Oe-sb-vhm"/>
                             <exclude reference="7mj-fi-cm7"/>
                             <exclude reference="GAG-oc-1ID"/>
                             <exclude reference="Gpo-6S-43l"/>
+                            <exclude reference="Vex-5p-Qpg"/>
                             <exclude reference="cLK-fb-DF2"/>
+                            <exclude reference="d4e-jF-3k8"/>
                             <exclude reference="f1h-25-3zv"/>
                             <exclude reference="gxJ-yu-YCW"/>
+                            <exclude reference="hxU-8T-73J"/>
                             <exclude reference="mUi-0Z-9s6"/>
+                            <exclude reference="phg-DN-ksN"/>
                             <exclude reference="rQE-IP-Hqw"/>
                         </mask>
                     </variation>
@@ -99,10 +109,11 @@
                 <constraint firstAttribute="trailing" secondItem="XBb-0y-dBr" secondAttribute="trailing" id="b4e-AO-He3"/>
                 <constraint firstAttribute="trailing" secondItem="PKC-US-FZ1" secondAttribute="trailing" id="rMI-CB-JOX"/>
             </constraints>
-            <point key="canvasLocation" x="372" y="440"/>
+            <point key="canvasLocation" x="635" y="384"/>
         </view>
     </objects>
     <resources>
-        <image name="Ganadores" width="1635" height="1516"/>
+        <image name="Ganadores" width="70" height="70"/>
+        <image name="volver" width="70" height="70"/>
     </resources>
 </document>

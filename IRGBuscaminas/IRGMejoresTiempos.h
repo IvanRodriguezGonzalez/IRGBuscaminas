@@ -18,7 +18,8 @@
                Nombre:(NSString *)nombre
        numeroDeCeldas:(NSInteger)numeroDeCeldas
         numeroDeMinas:(NSInteger)numeroDeMinas
-             conAyuda:(bool)conAyuda;
+             conAyuda:(bool)conAyuda
+           dificultad:(NSInteger)dificultad;
 
 - (NSArray *) todosLosMejoresTiempos;
 - (bool) guardarMejoresTiempos;

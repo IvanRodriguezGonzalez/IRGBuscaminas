@@ -38,17 +38,18 @@
 {
     if (image != nil)
     {
-        NSString *documentsDirectory;
-        if (!DIRECTORIO_DE_TRABAJO){
-            NSArray *paths = NSSearchPathForDirectoriesInDomains(NSDocumentDirectory,
-                                                             NSUserDomainMask, YES);
-            documentsDirectory = [paths objectAtIndex:0];
+        NSString *directorio;
+        if (GRABAR_EN_IPAD){
+            NSArray *listaDePath = NSSearchPathForDirectoriesInDomains(NSDocumentDirectory,
+                                                                       NSUserDomainMask,
+                                                                       TRUE);
+            directorio = listaDePath[0];
         }
         else {
-            documentsDirectory = DIRECTORIO_DE_TRABAJO;
+            directorio = DIRECTORIO_DE_TRABAJO;
         }
 
-        NSString * path= [documentsDirectory stringByAppendingPathComponent:
+        NSString * path= [directorio stringByAppendingPathComponent:
                               [NSString stringWithString: nombreDeLaImagen] ];
         
         NSData* data = UIImagePNGRepresentation(image);
@@ -59,7 +60,7 @@
 + (UIImage*)leerImagenConNombre:(NSString *)nombreDeLaImagen
 {
     NSString *documentsDirectory;
-    if (!DIRECTORIO_DE_TRABAJO){
+    if (GRABAR_EN_IPAD){
         NSArray *paths = NSSearchPathForDirectoriesInDomains(NSDocumentDirectory,
                                                              NSUserDomainMask, YES);
         documentsDirectory = [paths objectAtIndex:0];

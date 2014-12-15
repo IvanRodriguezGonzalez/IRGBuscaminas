@@ -343,7 +343,8 @@
                                                                                      nombre:nombre
                                                                              numeroDeCeldas:numeroDeCeldas
                                                                               numeroDeMinas:numeroDeMinas
-                                                                          conAyuda:conAyuda];
+                                                                          conAyuda:conAyuda
+                                                                                 dificultad:[IRGSettings sharedSettings].dificultad];
     vistaPreguntarModalViewController.datoDelMejorTiempo = datoDelMejorTiempo;
     [self presentViewController:vistaPreguntarModalViewController animated:TRUE completion:nil];
 

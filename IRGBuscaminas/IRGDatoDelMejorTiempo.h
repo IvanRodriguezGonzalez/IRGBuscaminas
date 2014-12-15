@@ -15,6 +15,7 @@
 @property (nonatomic) NSInteger numeroDeCeldas;
 @property (nonatomic )NSInteger numeroDeMinas;
 @property (nonatomic) BOOL conAyuda;
+@property (nonatomic) NSInteger dificultad;
 
 #pragma mark - Inicializadores
 //designated initializer
@@ -22,6 +23,7 @@
                         nombre:(NSString *)nombre
                 numeroDeCeldas:(NSInteger) numeroDeCeldas
                  numeroDeMinas:(NSInteger) numeroDeMinas
-                      conAyuda:(bool) conAyuda;
+                      conAyuda:(bool) conAyuda
+                    dificultad:(NSInteger) dificultad;
 
 @end

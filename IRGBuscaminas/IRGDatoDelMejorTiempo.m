@@ -21,7 +21,9 @@
                         nombre:(NSString *)nombre
                 numeroDeCeldas:(NSInteger) numeroDeCeldas
                  numeroDeMinas:(NSInteger) numeroDeMinas
-                      conAyuda:(bool)conAyuda{
+                      conAyuda:(bool)conAyuda
+                    dificultad:(NSInteger)dificultad
+{
     self = [super init];
     if (self){
         _tiempo = tiempo;
@@ -29,6 +31,7 @@
         _numeroDeCeldas = numeroDeCeldas;
         _numeroDeMinas = numeroDeMinas;
         _conAyuda = conAyuda;
+        _dificultad = dificultad;
     }
     return self;
 }
@@ -41,6 +44,7 @@
         _numeroDeCeldas = [aDecoder decodeIntegerForKey:@"numeroDeCeldas"];
         _numeroDeMinas = [aDecoder decodeIntegerForKey:@"numeroDeMinas"];
         _conAyuda = [aDecoder decodeBoolForKey:@"conAyuda"];
+        _dificultad = [aDecoder decodeIntegerForKey:@"dificultad"];
     }
     return self;
 }
@@ -53,6 +57,7 @@
     [aCoder encodeInteger:self.numeroDeCeldas forKey:@"numeroDeCeldas"];
     [aCoder encodeInteger:self.numeroDeMinas forKey:@"numeroDeMinas"];
     [aCoder encodeBool:self.conAyuda forKey:@"conAyuda"];
+    [aCoder encodeInteger:self.dificultad forKey:@"dificultad"];
 }
 @end
 
