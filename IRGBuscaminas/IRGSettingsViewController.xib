@@ -145,7 +145,7 @@
                                 <action selector="cambiarTransparenciaDelMenu:" destination="-1" eventType="valueChanged" id="fuf-UA-7Fl"/>
                             </connections>
                         </slider>
-                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="269-qg-pWV">
+                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="269-qg-pWV">
                             <constraints>
                                 <constraint firstAttribute="width" constant="100" id="qYv-Ra-UnG"/>
                             </constraints>

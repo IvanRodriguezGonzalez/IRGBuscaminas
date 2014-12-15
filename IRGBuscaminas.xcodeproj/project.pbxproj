@@ -24,6 +24,8 @@
 		E12E5D411A1113FD0047FCCF /* IRGGestorDeEstados.m in Sources */ = {isa = PBXBuildFile; fileRef = E12E5D401A1113FD0047FCCF /* IRGGestorDeEstados.m */; };
 		E12FBAAC1A31A1EC00B5465C /* IRGEstadoDelJuegoConfiguracion.m in Sources */ = {isa = PBXBuildFile; fileRef = E12FBAAB1A31A1EC00B5465C /* IRGEstadoDelJuegoConfiguracion.m */; };
 		E131A7EC1A1F18BD006EFED3 /* IRGSettings.m in Sources */ = {isa = PBXBuildFile; fileRef = E131A7EB1A1F18BD006EFED3 /* IRGSettings.m */; };
+		E13201A31A3E60BD00F7B979 /* IRGMejoresTiemposTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = E13201A11A3E60BD00F7B979 /* IRGMejoresTiemposTableViewCell.m */; };
+		E13201A41A3E60BD00F7B979 /* IRGMejoresTiemposTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = E13201A21A3E60BD00F7B979 /* IRGMejoresTiemposTableViewCell.xib */; };
 		E1923B741A1AA3C4000E69B2 /* IRGSettingsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = E1923B721A1AA3C4000E69B2 /* IRGSettingsViewController.m */; };
 		E1923B751A1AA3C4000E69B2 /* IRGSettingsViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = E1923B731A1AA3C4000E69B2 /* IRGSettingsViewController.xib */; };
 		E1A9A5CC1A13CB9B0020AE98 /* IRGNUmeroSieteSegmentosViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = E1A9A5CB1A13CB9B0020AE98 /* IRGNUmeroSieteSegmentosViewController.m */; };
@@ -92,6 +94,9 @@
 		E12FBAAB1A31A1EC00B5465C /* IRGEstadoDelJuegoConfiguracion.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = IRGEstadoDelJuegoConfiguracion.m; sourceTree = "<group>"; };
 		E131A7EA1A1F18BD006EFED3 /* IRGSettings.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IRGSettings.h; sourceTree = "<group>"; };
 		E131A7EB1A1F18BD006EFED3 /* IRGSettings.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = IRGSettings.m; sourceTree = "<group>"; };
+		E13201A01A3E60BD00F7B979 /* IRGMejoresTiemposTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IRGMejoresTiemposTableViewCell.h; sourceTree = "<group>"; };
+		E13201A11A3E60BD00F7B979 /* IRGMejoresTiemposTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = IRGMejoresTiemposTableViewCell.m; sourceTree = "<group>"; };
+		E13201A21A3E60BD00F7B979 /* IRGMejoresTiemposTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = IRGMejoresTiemposTableViewCell.xib; sourceTree = "<group>"; };
 		E1923B711A1AA3C4000E69B2 /* IRGSettingsViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IRGSettingsViewController.h; sourceTree = "<group>"; };
 		E1923B721A1AA3C4000E69B2 /* IRGSettingsViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = IRGSettingsViewController.m; sourceTree = "<group>"; };
 		E1923B731A1AA3C4000E69B2 /* IRGSettingsViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = IRGSettingsViewController.xib; sourceTree = "<group>"; };
@@ -295,6 +300,9 @@
 				E1CD31AB1A0BCCF900D317A8 /* IRGCelda.h */,
 				E1CD31AC1A0BCCF900D317A8 /* IRGCelda.m */,
 				E1923B731A1AA3C4000E69B2 /* IRGSettingsViewController.xib */,
+				E13201A01A3E60BD00F7B979 /* IRGMejoresTiemposTableViewCell.h */,
+				E13201A11A3E60BD00F7B979 /* IRGMejoresTiemposTableViewCell.m */,
+				E13201A21A3E60BD00F7B979 /* IRGMejoresTiemposTableViewCell.xib */,
 				320334441A0EC9A7000FFAEF /* IRGMejoresTiemposViewController.xib */,
 				E1CD31A51A0BCBF800D317A8 /* IRGVentanaPrincipalViewController.xib */,
 				32A1DB111A0FAFAB00AA33CE /* IRGPreguntarNombreViewController.xib */,
@@ -431,6 +439,7 @@
 				E1923B751A1AA3C4000E69B2 /* IRGSettingsViewController.xib in Resources */,
 				E1CD318E1A0BCB8900D317A8 /* LaunchScreen.xib in Resources */,
 				E1CD318B1A0BCB8900D317A8 /* Images.xcassets in Resources */,
+				E13201A41A3E60BD00F7B979 /* IRGMejoresTiemposTableViewCell.xib in Resources */,
 				320334461A0EC9A7000FFAEF /* IRGMejoresTiemposViewController.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -461,6 +470,7 @@
 				320334411A0EBDF3000FFAEF /* IRGPrincipalNavigationViewController.m in Sources */,
 				E1CB22A81A126BAC00D9EF6F /* IRGGestionarBotonera.m in Sources */,
 				E1D41DC51A0BEF6B0059C46C /* IRGCeldaViewController.m in Sources */,
+				E13201A31A3E60BD00F7B979 /* IRGMejoresTiemposTableViewCell.m in Sources */,
 				E1A9A5CC1A13CB9B0020AE98 /* IRGNUmeroSieteSegmentosViewController.m in Sources */,
 				E131A7EC1A1F18BD006EFED3 /* IRGSettings.m in Sources */,
 				E1923B741A1AA3C4000E69B2 /* IRGSettingsViewController.m in Sources */,

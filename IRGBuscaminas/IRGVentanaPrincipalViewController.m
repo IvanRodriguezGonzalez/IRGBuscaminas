@@ -67,6 +67,7 @@
 
 #pragma mark - Overrides
 - (void)viewDidLoad {
+
     [super viewDidLoad];
     
     [self iniciarGestionarBotonera];
@@ -74,6 +75,7 @@
     [self iniciarTotalMinasSieteSegmentos];
     [self iniciarTiempoDeJuegoSieteSegmentos];
     [self establecerImagenesDeLosBotones];
+    [self establecerParallax];
     
     [IRGSettings sharedSettings].colorDeRellenoDeLaBarraDeBotones = [self.vistaBarraDeBotonesVertical.backgroundColor colorWithAlphaComponent:[IRGSettings sharedSettings].porcerntajeDeTransparenciaDelMenu];
     
@@ -144,7 +146,6 @@
 }
 
 - (IBAction)accionMostarMejoresTiempos:(UIButton *)sender {
-   // [self mostrarBarraDeNavegacion];
     [self crearVistaDeMejoresTiempos];
 }
 
@@ -430,12 +431,10 @@
     }
 }
 
-
 - (void) generarMinas{
     for (int numeroDeMinas = 0;numeroDeMinas < [IRGSettings sharedSettings].numeroDeMinas;numeroDeMinas++){
         NSInteger celdaConMina = [self generarNumeroAleatorioEntre:0
                                                                  Y:[IRGLienzo sharedLienzo].filasDelLienzo*[IRGLienzo sharedLienzo].columnasDelLienzo];
-        
         IRGCeldaViewController * celdaViewController = [IRGDatos sharedDatos].todasLasCeldas[celdaConMina];
         
         if (!celdaViewController.tieneMina){
@@ -591,6 +590,31 @@
                  delBoton:(UIButton *)boton{
     [boton setImage:imagen
            forState:UIControlStateNormal];
+}
+
+- (void) establecerParallax{
+    // Set vertical effect
+    UIInterpolatingMotionEffect *verticalMotionEffect =
+    [[UIInterpolatingMotionEffect alloc]
+     initWithKeyPath:@"center.y"
+     type:UIInterpolatingMotionEffectTypeTiltAlongVerticalAxis];
+    verticalMotionEffect.minimumRelativeValue = @(-20);
+    verticalMotionEffect.maximumRelativeValue = @(20);
+    
+    // Set horizontal effect
+    UIInterpolatingMotionEffect *horizontalMotionEffect =
+    [[UIInterpolatingMotionEffect alloc]
+     initWithKeyPath:@"center.x"
+     type:UIInterpolatingMotionEffectTypeTiltAlongHorizontalAxis];
+    horizontalMotionEffect.minimumRelativeValue = @(-20);
+    horizontalMotionEffect.maximumRelativeValue = @(20);
+    
+    // Create group to combine both
+    UIMotionEffectGroup *group = [UIMotionEffectGroup new];
+    group.motionEffects = @[horizontalMotionEffect, verticalMotionEffect];
+    
+    // Add both effects to your view
+    [self.vistaImagenDeFondo addMotionEffect:group];
 }
 
 @end

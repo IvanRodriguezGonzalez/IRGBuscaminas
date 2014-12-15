@@ -129,7 +129,12 @@
     self.porcentajeDeTransparenciaDelMenu.value =1-[IRGSettings sharedSettings].porcerntajeDeTransparenciaDelMenu;
     
     self.stepperGrupoDeImagenDeLosBotones.value = [IRGSettings sharedSettings].grupoDeImagenesDeLosBotones;
+    UIImage *imagenDeIncrementoDeGrupoDeBotones = [UIImage imageNamed:@"stepper_derecha"];
+    UIImage *imagenDeDecrementoDeGrupoDeBotones = [UIImage imageNamed:@"stepper_izquierda"];
     
+    [self.stepperGrupoDeImagenDeLosBotones setIncrementImage:imagenDeIncrementoDeGrupoDeBotones forState:UIControlStateNormal];
+   [self.stepperGrupoDeImagenDeLosBotones setDecrementImage:imagenDeDecrementoDeGrupoDeBotones forState:UIControlStateNormal];
+    self.stepperGrupoDeImagenDeLosBotones.maximumValue =7;
     self.vistaDatos.layer.borderWidth = GROSOR_DEL_BORDER_DE_LA_VENTANA;
     self.vistaDatos.layer.borderColor = COLOR_DEL_BORDE_DE_LA_VENTANA.CGColor;
     self.vistaDatos.layer.cornerRadius = REDONDEO_DE_LAS_ESQUINAS_DE_LA_VENTANA;

@@ -35,7 +35,8 @@
 #define COLOR_DE_RELLENO_DE_LA_BARRA_DE_BOTONES [UIColor lightGrayColor]
 
 #define DESPLAZAMIENTO_X_DEL_CANVAS_DE_CELDAS_EN_MODO_HORIZONTAL 50
-#define DIRECTORIO_DE_TRABAJO @"/Users/IRG/Desktop/"
+
+#define DIRECTORIO_DE_TRABAJO @"/Users/LVS/Desktop/"
 #define ARCHIVO_SETTIGS @"IRGSettings.conf"
 #define ARCHIVO_IMAGEN_DEL_FONDO @"Fondo.png"
 

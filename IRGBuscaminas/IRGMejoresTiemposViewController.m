@@ -10,6 +10,9 @@
 #import"IRGMetodosComunes.h"
 #import "IRGMejoresTiempos.h"
 #import "IRGDatoDelMejorTiempo.h"
+#import "IRGMejoresTiemposTableViewCell.h"
+
+#define  celdaDatosJugador @"celdaDatosJugardor"
 
 
 
@@ -19,21 +22,6 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
 }
-
-- (void)didReceiveMemoryWarning {
-    [super didReceiveMemoryWarning];
-    // Dispose of any resources that can be recreated.
-}
-
-/*
-#pragma mark - Navigation
-
-// In a storyboard-based application, you will often want to do a little preparation before navigation
-- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
-    // Get the new view controller using [segue destinationViewController].
-    // Pass the selected object to the new view controller.
-}
-*/
 
 #pragma mark - Delegado
 - (NSInteger)tableView:(UITableView *)tableView
@@ -45,9 +33,19 @@
 - (UITableViewCell *)tableView:(UITableView *)tableView
          cellForRowAtIndexPath:(NSIndexPath *)indexPath{
     
-    UITableViewCell *celda = [[UITableViewCell alloc]initWithStyle:UITableViewCellStyleSubtitle
-                                                   reuseIdentifier:@"UITableViewCell"];
+    IRGMejoresTiemposTableViewCell *celda = [tableView dequeueReusableCellWithIdentifier:@"IRGMejoresTiemposTableViewCell"];
+
+    if (!celda){
+        NSArray *nib = [[NSBundle mainBundle] loadNibNamed:@"IRGMejoresTiemposTableViewCell" owner:self options:nil];
+        celda = (IRGMejoresTiemposTableViewCell *)[nib objectAtIndex:0];
+    }
     
+    NSInteger filaDeLaTabla  = indexPath.row;
+    IRGDatoDelMejorTiempo *mejorTiempo =[IRGMejoresTiempos sharedMejoresTiempos].todosLosMejoresTiempos[filaDeLaTabla];
+    NSLog(@"Ancho: %f Alto: %f",celda.frame.size.width,celda.frame.size.height);
+
+    celda.nombreDelJugador.text = mejorTiempo.nombre;
+/*
     NSInteger filaDeLaTabla  = indexPath.row;
     IRGDatoDelMejorTiempo *mejorTiempo =[IRGMejoresTiempos sharedMejoresTiempos].todosLosMejoresTiempos[filaDeLaTabla];
    
@@ -69,8 +67,10 @@
     
     celda.textLabel.text = mejorTiempo.nombre;
     celda.detailTextLabel.text = detalle;
+ */
     return celda;
 }
+
 
 #pragma mark - Navigation
 - (IBAction)accionCerrarVentana:(id)sender {
