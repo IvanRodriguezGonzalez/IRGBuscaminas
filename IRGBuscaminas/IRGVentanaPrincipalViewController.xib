@@ -82,7 +82,7 @@
                                 </mask>
                             </variation>
                         </textField>
-                        <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="treasury_map-100" translatesAutoresizingMaskIntoConstraints="NO" id="16j-Sr-n6l">
+                        <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="ayuda" translatesAutoresizingMaskIntoConstraints="NO" id="16j-Sr-n6l">
                             <rect key="frame" x="178" y="10" width="30" height="30"/>
                             <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                             <constraints>
@@ -180,7 +180,7 @@
                                                 <constraint firstAttribute="width" secondItem="RNV-JR-Uw3" secondAttribute="height" multiplier="1:1" id="yaT-hj-okI"/>
                                                 <constraint firstAttribute="height" constant="90" id="zEq-AW-yEm"/>
                                             </constraints>
-                                            <state key="normal" title="Minas" image="boton_mostrar_minas_1">
+                                            <state key="normal" image="boton_mostrar_minas_1">
                                                 <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                             </state>
                                             <variation key="default">
@@ -234,7 +234,7 @@
                                                 <constraint firstAttribute="width" constant="50" id="t54-hy-vIT"/>
                                                 <constraint firstAttribute="width" constant="120" id="wJs-J9-hd0"/>
                                             </constraints>
-                                            <state key="normal" title="Jugar" image="boton_play_1">
+                                            <state key="normal" image="boton_play_1">
                                                 <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                             </state>
                                             <variation key="default">
@@ -290,7 +290,7 @@
                                                 <constraint firstAttribute="height" constant="80" id="lzC-nO-LzG"/>
                                                 <constraint firstAttribute="width" constant="183" id="qX9-kt-EV4"/>
                                             </constraints>
-                                            <state key="normal" title="Historial" image="boton_historial_1">
+                                            <state key="normal" image="boton_historial_1">
                                                 <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                             </state>
                                             <variation key="default">
@@ -727,9 +727,10 @@
         </view>
     </objects>
     <resources>
-        <image name="boton_historial_1" width="256" height="256"/>
+        <image name="ayuda" width="42" height="42"/>
+        <image name="boton_historial_1" width="85" height="85"/>
         <image name="boton_historial_4" width="512" height="512"/>
-        <image name="boton_mostrar_minas_1" width="256" height="256"/>
+        <image name="boton_mostrar_minas_1" width="85" height="85"/>
         <image name="boton_mostrar_minas_4" width="512" height="512"/>
         <image name="boton_pausa_1" width="256" height="256"/>
         <image name="boton_pausa_4" width="512" height="512"/>
@@ -738,6 +739,5 @@
         <image name="boton_settings_1" width="256" height="256"/>
         <image name="boton_settings_4" width="512" height="512"/>
         <image name="fondo1" width="1024" height="1024"/>
-        <image name="treasury_map-100" width="30" height="30"/>
     </resources>
 </document>

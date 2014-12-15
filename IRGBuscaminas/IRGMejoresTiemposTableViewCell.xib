@@ -22,7 +22,7 @@
                             <constraint firstAttribute="height" constant="55" id="aLA-1x-Nbo"/>
                         </constraints>
                     </imageView>
-                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="mostrar_minas" translatesAutoresizingMaskIntoConstraints="NO" id="woD-lW-X2V">
+                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="ayuda" translatesAutoresizingMaskIntoConstraints="NO" id="woD-lW-X2V">
                         <rect key="frame" x="13" y="16" width="27" height="27"/>
                         <constraints>
                             <constraint firstAttribute="height" constant="100" id="QbT-bI-Ebe"/>
@@ -256,9 +256,9 @@
         </tableViewCell>
     </objects>
     <resources>
+        <image name="ayuda" width="42" height="42"/>
         <image name="bandera" width="59" height="61"/>
         <image name="clock" width="40" height="40"/>
         <image name="dificultad_media" width="45" height="45"/>
-        <image name="mostrar_minas" width="40" height="40"/>
     </resources>
 </document>

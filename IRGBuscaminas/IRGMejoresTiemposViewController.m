@@ -66,10 +66,10 @@
     celda.graficoDeDificultad.image = imagenDeDificultad;
     celda.numeroDeMinas.text = [NSString stringWithFormat:@"%ld", (long)mejorTiempo.numeroDeMinas];
     if(mejorTiempo.conAyuda){
-        celda.conAyuda.hidden = FALSE;
+        celda.conAyuda.alpha = 1;
     }
     else{
-        celda.conAyuda.hidden = TRUE;
+        celda.conAyuda.alpha = 0;
     }
     NSLog(@"%f",celda.graficoDeDificultad.frame.size.height);
     return celda;

@@ -25,8 +25,9 @@
                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="XBb-0y-dBr">
                     <rect key="frame" x="0.0" y="0.0" width="600" height="80"/>
                     <subviews>
-                        <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Ganadores" translatesAutoresizingMaskIntoConstraints="NO" id="r6r-Pf-aP1">
+                        <imageView userInteractionEnabled="NO" alpha="0.49999999999999961" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Ganadores" translatesAutoresizingMaskIntoConstraints="NO" id="r6r-Pf-aP1">
                             <rect key="frame" x="265" y="5" width="70" height="70"/>
+                            <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                             <constraints>
                                 <constraint firstAttribute="width" secondItem="r6r-Pf-aP1" secondAttribute="height" multiplier="1:1" id="Mxw-Q7-fhN"/>
                             </constraints>
@@ -38,9 +39,10 @@
                                 <constraint firstAttribute="width" secondItem="wRR-Wa-7Tj" secondAttribute="height" multiplier="49:32" id="bPW-M4-Vel"/>
                                 <constraint firstAttribute="width" secondItem="wRR-Wa-7Tj" secondAttribute="height" multiplier="1:1" id="g1b-V2-rFD"/>
                             </constraints>
+                            <size key="titleShadowOffset" width="3" height="4"/>
                             <state key="normal" image="volver">
                                 <color key="titleColor" red="0.0" green="0.50196081399917603" blue="1" alpha="1" colorSpace="calibratedRGB"/>
-                                <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                <color key="titleShadowColor" red="1" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                             </state>
                             <variation key="default">
                                 <mask key="constraints">
@@ -113,7 +115,7 @@
         </view>
     </objects>
     <resources>
-        <image name="Ganadores" width="70" height="70"/>
+        <image name="Ganadores" width="85" height="85"/>
         <image name="volver" width="70" height="70"/>
     </resources>
 </document>

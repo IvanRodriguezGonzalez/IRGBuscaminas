@@ -169,7 +169,7 @@
                                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="zlo-w3-anq" userLabel="fondo00">
                                     <rect key="frame" x="20" y="20" width="176" height="110"/>
                                     <subviews>
-                                        <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="christmas-9-500x500" translatesAutoresizingMaskIntoConstraints="NO" id="Nm4-Pn-xVx">
+                                        <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="fondo" translatesAutoresizingMaskIntoConstraints="NO" id="Nm4-Pn-xVx">
                                             <rect key="frame" x="5" y="5" width="166" height="100"/>
                                         </imageView>
                                     </subviews>
@@ -414,7 +414,7 @@
         </view>
     </objects>
     <resources>
-        <image name="christmas-9-500x500" width="500" height="500"/>
+        <image name="fondo" width="500" height="500"/>
         <image name="fondo christmas1" width="1024" height="1024"/>
         <image name="fondo1" width="1024" height="1024"/>
         <image name="fondo5" width="512" height="512"/>
