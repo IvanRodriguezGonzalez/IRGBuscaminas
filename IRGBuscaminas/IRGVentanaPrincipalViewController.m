@@ -387,7 +387,7 @@
     NSInteger altoDelCanvasDeLasCeldas = [IRGLienzo sharedLienzo].columnasDelLienzo*[IRGLienzo sharedLienzo].altoCelda;
     */
     NSInteger anchoDelCanvasDeLasCeldas = 700;
-    NSInteger altoDelCanvasDeLasCeldas = 600;
+    NSInteger altoDelCanvasDeLasCeldas = 630;
     NSInteger anchoDelBordeDelCanvasDeLasCeldas = anchoDelCanvasDeLasCeldas+20;
     NSInteger altoDelBordeDelCanvasDeLasCeldas = altoDelCanvasDeLasCeldas+20;
     

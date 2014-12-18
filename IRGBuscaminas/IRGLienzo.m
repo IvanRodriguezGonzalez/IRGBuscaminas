@@ -13,14 +13,14 @@
 
 
 
-# define FILAS_DEL_LIENZO_Nivel_1 10
-# define COLUMNAS_DEL_LIENZO_Nivel_1 10
+# define FILAS_DEL_LIENZO_Nivel_1 7
+# define COLUMNAS_DEL_LIENZO_Nivel_1 8
 
-# define FILAS_DEL_LIENZO_Nivel_2 12
-# define COLUMNAS_DEL_LIENZO_Nivel_2 12
+# define FILAS_DEL_LIENZO_Nivel_2 14
+# define COLUMNAS_DEL_LIENZO_Nivel_2 16
 
-# define FILAS_DEL_LIENZO_Nivel_3 20
-# define COLUMNAS_DEL_LIENZO_Nivel_3 20
+# define FILAS_DEL_LIENZO_Nivel_3 21
+# define COLUMNAS_DEL_LIENZO_Nivel_3 24
 
 #pragma mark -
 @implementation IRGLienzo
