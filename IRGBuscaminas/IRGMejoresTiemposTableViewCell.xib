@@ -22,7 +22,7 @@
                             <constraint firstAttribute="height" constant="55" id="aLA-1x-Nbo"/>
                         </constraints>
                     </imageView>
-                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="ayuda" translatesAutoresizingMaskIntoConstraints="NO" id="woD-lW-X2V">
+                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="mostrar_minas" translatesAutoresizingMaskIntoConstraints="NO" id="woD-lW-X2V">
                         <rect key="frame" x="13" y="16" width="27" height="27"/>
                         <constraints>
                             <constraint firstAttribute="height" constant="100" id="QbT-bI-Ebe"/>
@@ -45,10 +45,10 @@
                             <constraint firstAttribute="width" constant="30" id="Tel-CW-e0O"/>
                         </constraints>
                         <fontDescription key="fontDescription" type="system" pointSize="20"/>
-                        <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                        <color key="textColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
                         <nil key="highlightedColor"/>
                     </label>
-                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="bandera" translatesAutoresizingMaskIntoConstraints="NO" id="f6k-A7-k6x">
+                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="bandera_gris" translatesAutoresizingMaskIntoConstraints="NO" id="f6k-A7-k6x">
                         <rect key="frame" x="499" y="16" width="27" height="27"/>
                         <constraints>
                             <constraint firstAttribute="width" secondItem="f6k-A7-k6x" secondAttribute="height" multiplier="1:1" id="REW-yc-8N8"/>
@@ -65,7 +65,7 @@
                             </mask>
                         </variation>
                     </imageView>
-                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="clock" translatesAutoresizingMaskIntoConstraints="NO" id="aQl-7s-eg0">
+                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="clock1" translatesAutoresizingMaskIntoConstraints="NO" id="aQl-7s-eg0">
                         <rect key="frame" x="352" y="16" width="27" height="27"/>
                         <constraints>
                             <constraint firstAttribute="width" constant="100" id="Akt-gO-zT1"/>
@@ -104,7 +104,7 @@
                             <constraint firstAttribute="width" constant="60" id="HWa-ly-wH0"/>
                         </constraints>
                         <fontDescription key="fontDescription" type="system" pointSize="19"/>
-                        <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                        <color key="textColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
                         <nil key="highlightedColor"/>
                     </label>
                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="zr7-JI-fb3">
@@ -125,8 +125,8 @@
                             <constraint firstAttribute="width" constant="180" id="PaY-oQ-wLY"/>
                             <constraint firstAttribute="height" constant="40" id="cB6-8a-oCF"/>
                         </constraints>
-                        <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="20"/>
-                        <color key="textColor" name="alternateSelectedControlColor" catalog="System" colorSpace="catalog"/>
+                        <fontDescription key="fontDescription" name="BradleyHandITCTT-Bold" family="Bradley Hand" pointSize="25"/>
+                        <color key="textColor" red="0.33333333329999998" green="0.5568627451" blue="0.83529411760000005" alpha="1" colorSpace="calibratedRGB"/>
                         <nil key="highlightedColor"/>
                         <variation key="default">
                             <mask key="constraints">
@@ -256,9 +256,9 @@
         </tableViewCell>
     </objects>
     <resources>
-        <image name="ayuda" width="42" height="42"/>
-        <image name="bandera" width="59" height="61"/>
-        <image name="clock" width="40" height="40"/>
-        <image name="dificultad_media" width="45" height="45"/>
+        <image name="bandera_gris" width="40" height="40"/>
+        <image name="clock1" width="40" height="40"/>
+        <image name="dificultad_media" width="40" height="40"/>
+        <image name="mostrar_minas" width="40" height="40"/>
     </resources>
 </document>

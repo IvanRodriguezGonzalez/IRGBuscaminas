@@ -14,8 +14,7 @@
 
 @property (nonatomic) NSInteger filasDelLienzo;
 @property (nonatomic) NSInteger columnasDelLienzo;
-@property (nonatomic) NSInteger altoCelda;
-@property (nonatomic) NSInteger anchoCelda;
+
 
 
 #pragma mark - Inicializadores

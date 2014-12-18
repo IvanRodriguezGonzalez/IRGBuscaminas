@@ -15,7 +15,7 @@
 #import "IRGDisplaySieteSegmentosViewController.h"
 
 #pragma mark - Constantes
-#define REDONDEO_DE_LAS_ESQUINAS_DE_LA_VENTANA 20
+#define REDONDEO_DE_LAS_ESQUINAS_DE_LA_VENTANA 10
 #define COLOR_DEL_BORDE_DE_LA_VENTANA [UIColor lightGrayColor]
 #define GROSOR_DEL_BORDER_DE_LA_VENTANA 1
 
@@ -135,20 +135,21 @@
     [self.stepperGrupoDeImagenDeLosBotones setIncrementImage:imagenDeIncrementoDeGrupoDeBotones forState:UIControlStateNormal];
    [self.stepperGrupoDeImagenDeLosBotones setDecrementImage:imagenDeDecrementoDeGrupoDeBotones forState:UIControlStateNormal];
     self.stepperGrupoDeImagenDeLosBotones.maximumValue =7;
-    self.vistaDatos.layer.borderWidth = GROSOR_DEL_BORDER_DE_LA_VENTANA;
-    self.vistaDatos.layer.borderColor = COLOR_DEL_BORDE_DE_LA_VENTANA.CGColor;
-    self.vistaDatos.layer.cornerRadius = REDONDEO_DE_LAS_ESQUINAS_DE_LA_VENTANA;
-    self.vistaDatos.layer.masksToBounds = YES;
+    
+    self.view.layer.borderWidth = GROSOR_DEL_BORDER_DE_LA_VENTANA;
+    self.view.layer.borderColor = COLOR_DEL_BORDE_DE_LA_VENTANA.CGColor;
+    self.view.layer.cornerRadius = REDONDEO_DE_LAS_ESQUINAS_DE_LA_VENTANA;
+    self.view.layer.masksToBounds = YES;
     
     
     [self.nivelDeDificultad addTarget:self
                          action:@selector(actualizarMinasYTiempoDeAyudaSegunElNivelDeDificultad)
                forControlEvents:UIControlEventValueChanged];
     
-    [[NSNotificationCenter defaultCenter] addObserver:self
+   /* [[NSNotificationCenter defaultCenter] addObserver:self
                                              selector:@selector(deviceOrientationDidChange:)
                                                  name:UIDeviceOrientationDidChangeNotification
-                                               object:nil];
+                                               object:nil];*/
 }
 
 - (void)didReceiveMemoryWarning {
@@ -158,10 +159,6 @@
 
 #pragma mark - Navigation
 
-
--(void) deviceOrientationDidChange:(NSNotification *)sender{
-    
-}
 
 - (IBAction)guardarResultados:(UIButton *)sender {
     [IRGSettings sharedSettings].numeroDeMinas = self.stepperNumeroDeMinas.value;

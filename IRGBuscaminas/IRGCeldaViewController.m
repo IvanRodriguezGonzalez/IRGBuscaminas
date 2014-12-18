@@ -45,12 +45,10 @@
         _numeroDeFila = numeroDeFila;
         _numeroDeColumna = numeroDeColumna;
         
-        NSInteger margenX=0;
-        NSInteger margenY=0;
-        NSInteger posicionX = margenX+numeroDeColumna*[IRGLienzo sharedLienzo].anchoCelda;
-        NSInteger posicionY = margenY+numeroDeFila*[IRGLienzo sharedLienzo].altoCelda;
-        NSInteger anchoCelda = [IRGLienzo sharedLienzo].anchoCelda;
-        NSInteger altoCelda = [IRGLienzo sharedLienzo].altoCelda;
+        NSInteger anchoCelda = self.delegado.vistaCanvasDeLasCeldas.frame.size.width/[IRGLienzo sharedLienzo].columnasDelLienzo;
+        NSInteger altoCelda = self.delegado.vistaCanvasDeLasCeldas.frame.size.height/[IRGLienzo sharedLienzo].filasDelLienzo;
+        NSInteger posicionX = numeroDeColumna*anchoCelda;
+        NSInteger posicionY = numeroDeFila*altoCelda;
         
         _frameCelda = CGRectMake(posicionX, posicionY, anchoCelda, altoCelda);
         _estado = libre;

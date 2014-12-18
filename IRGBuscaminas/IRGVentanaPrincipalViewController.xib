@@ -24,8 +24,9 @@
                 <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
                 <outlet property="vistaBarraDeBotones" destination="hIG-gz-8Ow" id="kj1-yD-LHV"/>
                 <outlet property="vistaBarraDeBotonesVertical" destination="9HN-GC-ekE" id="6Eh-lg-aFQ"/>
+                <outlet property="vistaBordeDeLasCeldas" destination="z6L-oK-47O" id="7jT-3Q-qlG"/>
                 <outlet property="vistaBotonJugarSecundario" destination="1x8-JR-3La" id="mvf-cQ-gjS"/>
-                <outlet property="vistaCanvasDeLasCeldas" destination="k1h-1u-mTQ" id="4gr-Tm-79j"/>
+                <outlet property="vistaCanvasDeLasCeldas" destination="k1h-1u-mTQ" id="Ihs-C6-Lei"/>
                 <outlet property="vistaImagenDeFondo" destination="jh8-Ee-EbS" id="DDA-or-Zp3"/>
                 <outlet property="vistaModoAyuda" destination="16j-Sr-n6l" id="2uD-ZH-oPY"/>
                 <outlet property="vistaTiempoYMinas" destination="tpS-bL-P0p" id="qkx-eh-lSt"/>
@@ -36,7 +37,7 @@
             <rect key="frame" x="0.0" y="0.0" width="770" height="1321"/>
             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
             <subviews>
-                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="fondo1" translatesAutoresizingMaskIntoConstraints="NO" id="jh8-Ee-EbS">
+                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="jh8-Ee-EbS">
                     <rect key="frame" x="-20" y="-20" width="810" height="1361"/>
                 </imageView>
                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="tpS-bL-P0p" userLabel="vistaDeTiempoYMinas">
@@ -151,14 +152,6 @@
                 <view multipleTouchEnabled="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="zp6-fT-8XJ" userLabel="canvas">
                     <rect key="frame" x="0.0" y="70" width="770" height="1251"/>
                     <subviews>
-                        <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="k1h-1u-mTQ" userLabel="vistaDeLasCeldas">
-                            <rect key="frame" x="360" y="586" width="50" height="80"/>
-                            <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
-                            <constraints>
-                                <constraint firstAttribute="height" constant="80" id="S1f-Y6-e30"/>
-                                <constraint firstAttribute="width" constant="50" id="e20-Hk-35s"/>
-                            </constraints>
-                        </view>
                         <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="hIG-gz-8Ow" userLabel="vistaBarraDeBotones">
                             <rect key="frame" x="85" y="1111" width="600" height="120"/>
                             <subviews>
@@ -494,7 +487,7 @@
                                                 <constraint firstAttribute="width" constant="80" id="wBv-re-kdg"/>
                                                 <constraint firstAttribute="height" constant="80" id="zt6-ds-Qf5"/>
                                             </constraints>
-                                            <state key="normal" title="Button" image="boton_historial_4">
+                                            <state key="normal" image="boton_historial_4">
                                                 <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                             </state>
                                             <variation key="default">
@@ -572,7 +565,7 @@
                                                 <constraint firstAttribute="width" constant="80" id="ccO-ma-aDG"/>
                                                 <constraint firstAttribute="width" secondItem="nOR-sf-ttw" secondAttribute="height" multiplier="1:1" id="jF6-jb-BY0"/>
                                             </constraints>
-                                            <state key="normal" title="Button" image="boton_pausa_4">
+                                            <state key="normal" image="boton_pausa_4">
                                                 <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                             </state>
                                             <variation key="default">
@@ -606,7 +599,7 @@
                                                 <constraint firstAttribute="height" constant="80" id="Ymu-cw-gxi"/>
                                                 <constraint firstAttribute="width" secondItem="ljI-Js-IMg" secondAttribute="height" multiplier="1:1" id="tkR-WW-6qk"/>
                                             </constraints>
-                                            <state key="normal" title="Button" image="boton_settings_4">
+                                            <state key="normal" image="boton_settings_4">
                                                 <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                             </state>
                                             <variation key="default">
@@ -675,27 +668,61 @@
                                 </mask>
                             </variation>
                         </view>
+                        <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="z6L-oK-47O">
+                            <rect key="frame" x="235" y="476" width="300" height="300"/>
+                            <subviews>
+                                <view contentMode="scaleToFill" ambiguous="YES" translatesAutoresizingMaskIntoConstraints="NO" id="k1h-1u-mTQ" userLabel="vistaDeLasCeldas">
+                                    <rect key="frame" x="125" y="110" width="50" height="80"/>
+                                    <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                    <constraints>
+                                        <constraint firstAttribute="height" constant="80" id="S1f-Y6-e30"/>
+                                        <constraint firstAttribute="width" constant="50" id="e20-Hk-35s"/>
+                                    </constraints>
+                                    <variation key="default">
+                                        <mask key="constraints">
+                                            <exclude reference="S1f-Y6-e30"/>
+                                            <exclude reference="e20-Hk-35s"/>
+                                        </mask>
+                                    </variation>
+                                </view>
+                            </subviews>
+                            <color key="backgroundColor" red="0.0" green="0.25098040699958801" blue="0.50196081399917603" alpha="1" colorSpace="calibratedRGB"/>
+                            <constraints>
+                                <constraint firstItem="k1h-1u-mTQ" firstAttribute="top" secondItem="z6L-oK-47O" secondAttribute="top" constant="24" id="SNd-Fd-9cW"/>
+                                <constraint firstAttribute="centerY" secondItem="k1h-1u-mTQ" secondAttribute="centerY" id="acD-0k-sOg"/>
+                                <constraint firstAttribute="width" constant="300" id="hNa-2i-PdE"/>
+                                <constraint firstAttribute="centerX" secondItem="k1h-1u-mTQ" secondAttribute="centerX" id="jBc-KD-lsE"/>
+                                <constraint firstAttribute="height" constant="300" id="jjd-L6-6BM"/>
+                            </constraints>
+                            <variation key="default">
+                                <mask key="constraints">
+                                    <exclude reference="SNd-Fd-9cW"/>
+                                    <exclude reference="acD-0k-sOg"/>
+                                    <exclude reference="jBc-KD-lsE"/>
+                                </mask>
+                            </variation>
+                        </view>
                     </subviews>
                     <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                     <gestureRecognizers/>
                     <constraints>
                         <constraint firstAttribute="centerX" secondItem="hIG-gz-8Ow" secondAttribute="centerX" id="6py-aj-QSl"/>
+                        <constraint firstItem="z6L-oK-47O" firstAttribute="leading" secondItem="zp6-fT-8XJ" secondAttribute="leading" constant="139" id="Bci-xJ-N2a"/>
                         <constraint firstItem="ujJ-X7-iWa" firstAttribute="width" secondItem="RNV-JR-Uw3" secondAttribute="width" id="Btk-El-wl0"/>
-                        <constraint firstAttribute="centerX" secondItem="k1h-1u-mTQ" secondAttribute="centerX" id="FeQ-8R-CNh"/>
                         <constraint firstAttribute="centerX" secondItem="9HN-GC-ekE" secondAttribute="centerX" id="Hzd-Ki-mCV"/>
                         <constraint firstItem="ujJ-X7-iWa" firstAttribute="height" secondItem="RNV-JR-Uw3" secondAttribute="height" id="Iin-xV-Z63"/>
+                        <constraint firstAttribute="centerX" secondItem="z6L-oK-47O" secondAttribute="centerX" id="J4H-cg-zMf"/>
                         <constraint firstAttribute="bottom" secondItem="hIG-gz-8Ow" secondAttribute="bottom" constant="20" symbolic="YES" id="Nap-iW-mhc"/>
-                        <constraint firstAttribute="centerX" secondItem="k1h-1u-mTQ" secondAttribute="centerX" id="dlL-zX-UTy"/>
-                        <constraint firstAttribute="centerY" secondItem="k1h-1u-mTQ" secondAttribute="centerY" id="jwd-QR-lEt"/>
+                        <constraint firstItem="z6L-oK-47O" firstAttribute="top" secondItem="zp6-fT-8XJ" secondAttribute="top" constant="236" id="PDJ-Hn-IBF"/>
                         <constraint firstItem="9HN-GC-ekE" firstAttribute="leading" secondItem="zp6-fT-8XJ" secondAttribute="leading" constant="20" symbolic="YES" id="nIa-Hg-JkJ"/>
-                        <constraint firstAttribute="trailing" secondItem="k1h-1u-mTQ" secondAttribute="trailing" constant="20" symbolic="YES" id="o1q-a1-Loa"/>
+                        <constraint firstAttribute="centerY" secondItem="z6L-oK-47O" secondAttribute="centerY" id="ub0-fE-JxD"/>
                         <constraint firstAttribute="centerY" secondItem="9HN-GC-ekE" secondAttribute="centerY" id="vYi-ZJ-jy6"/>
                     </constraints>
                     <variation key="default">
                         <mask key="constraints">
+                            <exclude reference="Bci-xJ-N2a"/>
+                            <exclude reference="PDJ-Hn-IBF"/>
                             <exclude reference="Hzd-Ki-mCV"/>
-                            <exclude reference="dlL-zX-UTy"/>
-                            <exclude reference="o1q-a1-Loa"/>
                         </mask>
                     </variation>
                 </view>
@@ -728,16 +755,15 @@
     </objects>
     <resources>
         <image name="ayuda" width="42" height="42"/>
-        <image name="boton_historial_1" width="85" height="85"/>
-        <image name="boton_historial_4" width="512" height="512"/>
-        <image name="boton_mostrar_minas_1" width="85" height="85"/>
-        <image name="boton_mostrar_minas_4" width="512" height="512"/>
-        <image name="boton_pausa_1" width="256" height="256"/>
+        <image name="boton_historial_1" width="90" height="90"/>
+        <image name="boton_historial_4" width="90" height="90"/>
+        <image name="boton_mostrar_minas_1" width="90" height="90"/>
+        <image name="boton_mostrar_minas_4" width="90" height="90"/>
+        <image name="boton_pausa_1" width="90" height="90"/>
         <image name="boton_pausa_4" width="512" height="512"/>
-        <image name="boton_play_1" width="256" height="256"/>
+        <image name="boton_play_1" width="91" height="90"/>
         <image name="boton_play_4" width="512" height="512"/>
-        <image name="boton_settings_1" width="256" height="256"/>
+        <image name="boton_settings_1" width="90" height="90"/>
         <image name="boton_settings_4" width="512" height="512"/>
-        <image name="fondo1" width="1024" height="1024"/>
     </resources>
 </document>

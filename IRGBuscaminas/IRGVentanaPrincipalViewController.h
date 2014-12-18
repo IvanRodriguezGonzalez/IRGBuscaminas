@@ -43,6 +43,7 @@
 @property (weak, nonatomic) IBOutlet UIView *cuentaAtras;
 @property (weak, nonatomic) IBOutlet UIImageView *vistaImagenDeFondo;
 @property (weak, nonatomic) IBOutlet UIImageView *vistaModoAyuda;
+@property (weak, nonatomic) IBOutlet UIView *vistaBordeDeLasCeldas;
 
 @property (nonatomic) NSInteger banderasPuestas;
 @property (nonatomic,weak) NSTimer *reloj;

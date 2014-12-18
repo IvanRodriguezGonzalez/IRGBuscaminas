@@ -102,11 +102,8 @@
         celda.conAyuda.alpha= 1;
     }
     else{
-        celda.conAyuda.alpha = 0;
+        celda.conAyuda.alpha = .2;
     }
-    NSLog(@"%f",celda.graficoDeDificultad.frame.size.height);
-    return celda;
-
     return celda;
 }
 

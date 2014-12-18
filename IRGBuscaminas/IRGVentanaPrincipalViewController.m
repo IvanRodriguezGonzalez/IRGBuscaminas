@@ -382,32 +382,48 @@
   }
 
 - (void) establecerFrameDelCanvasDeLasCeldas{
-    
+    /*
     NSInteger anchoDelCanvasDeLasCeldas = [IRGLienzo sharedLienzo].filasDelLienzo*[IRGLienzo sharedLienzo].anchoCelda;
     NSInteger altoDelCanvasDeLasCeldas = [IRGLienzo sharedLienzo].columnasDelLienzo*[IRGLienzo sharedLienzo].altoCelda;
+    */
+    NSInteger anchoDelCanvasDeLasCeldas = 700;
+    NSInteger altoDelCanvasDeLasCeldas = 600;
+    NSInteger anchoDelBordeDelCanvasDeLasCeldas = anchoDelCanvasDeLasCeldas+20;
+    NSInteger altoDelBordeDelCanvasDeLasCeldas = altoDelCanvasDeLasCeldas+20;
+    
     NSInteger margenX;
     NSInteger margenY;
     
     if ([self iPadVertical]){
-        margenX =(self.canvas.frame.size.width -anchoDelCanvasDeLasCeldas)/2;
+        margenX =(self.canvas.frame.size.width -anchoDelBordeDelCanvasDeLasCeldas)/2;
         if ((self.vistaBarraDeBotones.hidden == FALSE) || (self.vistaBarraDeBotonesVertical.hidden == FALSE)){
-            margenY = (self.vistaBarraDeBotones.frame.origin.y -altoDelCanvasDeLasCeldas)/2;
+            margenY = (self.vistaBarraDeBotones.frame.origin.y -altoDelBordeDelCanvasDeLasCeldas)/2;
         }
         else {
-            margenY = (self.canvas.frame.size.height - altoDelCanvasDeLasCeldas)/2;
+            margenY = (self.canvas.frame.size.height - altoDelBordeDelCanvasDeLasCeldas)/2;
         }
     }
     else {
-        margenY = (self.canvas.frame.size.height - altoDelCanvasDeLasCeldas)/2;
+        margenY = (self.canvas.frame.size.height - altoDelBordeDelCanvasDeLasCeldas)/2;
         if ((self.vistaBarraDeBotones.hidden == FALSE) || (self.vistaBarraDeBotonesVertical.hidden == FALSE)){
-            margenX = (self.canvas.frame.size.width-self.vistaBarraDeBotonesVertical.frame.origin.x-self.vistaBarraDeBotonesVertical.frame.size.width-anchoDelCanvasDeLasCeldas)/2+self.vistaBarraDeBotonesVertical.frame.origin.x+self.vistaBarraDeBotonesVertical.frame.size.width;
+            margenX = (self.canvas.frame.size.width-self.vistaBarraDeBotonesVertical.frame.origin.x-self.vistaBarraDeBotonesVertical.frame.size.width-anchoDelBordeDelCanvasDeLasCeldas)/2+self.vistaBarraDeBotonesVertical.frame.origin.x+self.vistaBarraDeBotonesVertical.frame.size.width;
         }
         else {
-            margenX = (self.canvas.frame.size.width-anchoDelCanvasDeLasCeldas)/2;
+            margenX = (self.canvas.frame.size.width-anchoDelBordeDelCanvasDeLasCeldas)/2;
         }
     }
-    CGRect frameCanvasDeLasCeldas = CGRectMake(margenX, margenY, anchoDelCanvasDeLasCeldas, altoDelCanvasDeLasCeldas);
-   self.vistaCanvasDeLasCeldas.frame = frameCanvasDeLasCeldas;
+    
+    CGRect frameDelBorderDelCanvasDeLasCeldas = CGRectMake(margenX, margenY, anchoDelBordeDelCanvasDeLasCeldas, altoDelBordeDelCanvasDeLasCeldas);
+    
+    CGRect frameCanvasDeLasCeldas = CGRectMake(0 , 0, anchoDelCanvasDeLasCeldas, altoDelCanvasDeLasCeldas);
+    
+    self.vistaBordeDeLasCeldas.frame = frameDelBorderDelCanvasDeLasCeldas;
+
+    self.vistaCanvasDeLasCeldas.frame = frameCanvasDeLasCeldas;
+    self.vistaCanvasDeLasCeldas.center = CGPointMake(self.vistaBordeDeLasCeldas.frame.size.width/2,self.vistaBordeDeLasCeldas.frame.size.height/2);
+
+    [self.vistaCanvasDeLasCeldas setNeedsDisplay];
+    [self.vistaBordeDeLasCeldas setNeedsDisplay];
 }
 
 - (void) generarLasCeldasDelCanvas {
@@ -536,10 +552,11 @@
 -(void) mostrarVentanaDeConfiguracion{
     [self.gestorDeEstados establecerEstado:self.gestorDeEstados.estadoDelJuegoConfiguracion];
     self.vistaDeConfiguracion =[[IRGSettingsViewController alloc]init];
-    self.vistaDeConfiguracion.view.center = CGPointMake(self.vistaCanvasDeLasCeldas.frame.size.width/2,
-                                                                 self.vistaCanvasDeLasCeldas.frame.size.height/2);
+    self.vistaDeConfiguracion.view.center = CGPointMake(self.self.vistaCanvasDeLasCeldas.frame.size.width/2,
+                                                                 self.self.vistaCanvasDeLasCeldas.frame.size.height/2);
     self.vistaDeConfiguracion.senderViewController = self;
-    [self.vistaCanvasDeLasCeldas addSubview:self.vistaDeConfiguracion.view];
+    [self.self.vistaCanvasDeLasCeldas addSubview:self.vistaDeConfiguracion.view];
+
 }
 
 - (void) restaurarEstado{
