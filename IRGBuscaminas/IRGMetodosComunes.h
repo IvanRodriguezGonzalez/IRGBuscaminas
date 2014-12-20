@@ -13,7 +13,7 @@
 //
 // constantes de la clase IRGSettings
 //
-#define NIVEL_DIFICULTAD_POR_DEFECTO 2
+#define NIVEL_DIFICULTAD_POR_DEFECTO 1
 #define NUMERO_DE_MINAS_POR_DEFECTO 15
 #define AYUDAS_ACTIVAS true
 #define TIEMPO_DE_AYUDA_POR_DEFECTO 5
@@ -31,6 +31,7 @@
 
 //Colores
 #define COLOR_DE_RELLENO_DE_LA_CELDA_PROCESADA [[UIColor alloc]initWithRed:.8 green:.8 blue:.8 alpha:1]
+
 #define COLOR_DE_RELLENO_DE_LA_CELDA_NO_PROCESADA [[UIColor alloc]initWithRed:.7 green:.7 blue:.7 alpha:1]
 #define COLOR_DE_RELLENO_DE_LA_BARRA_DE_BOTONES [UIColor lightGrayColor]
 

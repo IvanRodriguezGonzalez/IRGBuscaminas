@@ -61,11 +61,18 @@
 
 @property (nonatomic) IRGSettingsViewController * vistaDeConfiguracion;
 
+
 @end
 
 @implementation IRGVentanaPrincipalViewController
 
 #pragma mark - Overrides
+
+-(void) viewDidAppear:(BOOL)animated{
+    [super viewDidAppear:animated];
+    [self establecerFrameDelCanvasDeLasCeldas];
+
+}
 - (void)viewDidLoad {
 
     [super viewDidLoad];
@@ -87,7 +94,7 @@
     self.vistaBarraDeBotonesVertical.layer.borderWidth = GROSOR_DEL_BORDER_DE_LA_VENTANA;
     self.vistaBarraDeBotonesVertical.layer.borderColor = COLOR_DEL_BORDE_DE_LA_VENTANA.CGColor;
     self.vistaBarraDeBotonesVertical.layer.cornerRadius = REDONDEO_DE_LAS_ESQUINAS_DE_LA_VENTANA;
-    self.vistaBarraDeBotonesVertical.layer.masksToBounds = YES;
+    self.vistaBarraDeBotonesVertical.layer.masksToBounds= YES;
     
     self.vistaBarraDeBotones.layer.borderWidth = GROSOR_DEL_BORDER_DE_LA_VENTANA;
     self.vistaBarraDeBotones.layer.borderColor = COLOR_DEL_BORDE_DE_LA_VENTANA.CGColor;
@@ -104,14 +111,6 @@
                                                  name:UIDeviceOrientationDidChangeNotification
                                                object:nil];
 }
-
-- (void)didReceiveMemoryWarning {
-    [super didReceiveMemoryWarning];
-}
-- (void)viewWillAppear:(BOOL)animated{
-    [super viewWillAppear:animated];
-}
-
 
 - (void) touchesBegan:(NSSet *)touches
             withEvent:(UIEvent *)event{
@@ -224,10 +223,6 @@
 #pragma mark - Auxiliares primer nivel
 
 -(void) iniciarTiempoDeJuegoSieteSegmentos{
-    
-    
-    
-    
     CGRect frameTiempoDeJuego7S = CGRectMake(0, 0,
                                               self.tiempoDeJuegoTextField.frame.size.width,
                                               self.tiempoDeJuegoTextField.frame.size.height);
@@ -382,52 +377,50 @@
   }
 
 - (void) establecerFrameDelCanvasDeLasCeldas{
-    /*
-    NSInteger anchoDelCanvasDeLasCeldas = [IRGLienzo sharedLienzo].filasDelLienzo*[IRGLienzo sharedLienzo].anchoCelda;
-    NSInteger altoDelCanvasDeLasCeldas = [IRGLienzo sharedLienzo].columnasDelLienzo*[IRGLienzo sharedLienzo].altoCelda;
-    */
-    NSInteger anchoDelCanvasDeLasCeldas = 700;
-    NSInteger altoDelCanvasDeLasCeldas = 630;
-    NSInteger anchoDelBordeDelCanvasDeLasCeldas = anchoDelCanvasDeLasCeldas+20;
-    NSInteger altoDelBordeDelCanvasDeLasCeldas = altoDelCanvasDeLasCeldas+20;
+
+    CGSize tamanoPantallaDelDispositivo = [self screenSize];
     
-    NSInteger margenX;
-    NSInteger margenY;
+    
+
+    float anchoDelCanvasDeLasCeldas =tamanoPantallaDelDispositivo.width-80;
+    
+    NSInteger anchoDeLaCelda = anchoDelCanvasDeLasCeldas/[IRGLienzo sharedLienzo].columnasDelLienzo;
+    NSInteger anchoAjustadoDelCanvasDeLasCeldas = anchoDeLaCelda*[IRGLienzo sharedLienzo].columnasDelLienzo;
+    
+    anchoDelCanvasDeLasCeldas = anchoAjustadoDelCanvasDeLasCeldas;
+    float altoDelCanvasDeLasCeldas = anchoDelCanvasDeLasCeldas;
+    
+    float margenX;
+    float margenY;
     
     if ([self iPadVertical]){
-        margenX =(self.canvas.frame.size.width -anchoDelBordeDelCanvasDeLasCeldas)/2;
+        margenX =(tamanoPantallaDelDispositivo.width -anchoDelCanvasDeLasCeldas)/2;
         if ((self.vistaBarraDeBotones.hidden == FALSE) || (self.vistaBarraDeBotonesVertical.hidden == FALSE)){
-            margenY = (self.vistaBarraDeBotones.frame.origin.y -altoDelBordeDelCanvasDeLasCeldas)/2;
+            margenY = (self.vistaBarraDeBotones.frame.origin.y -altoDelCanvasDeLasCeldas)/2;
         }
         else {
-            margenY = (self.canvas.frame.size.height - altoDelBordeDelCanvasDeLasCeldas)/2;
+            margenY = (self.canvas.frame.size.height - altoDelCanvasDeLasCeldas)/2;
         }
     }
     else {
-        margenY = (self.canvas.frame.size.height - altoDelBordeDelCanvasDeLasCeldas)/2;
+        margenY = (self.canvas.frame.size.height - altoDelCanvasDeLasCeldas)/2;
         if ((self.vistaBarraDeBotones.hidden == FALSE) || (self.vistaBarraDeBotonesVertical.hidden == FALSE)){
-            margenX = (self.canvas.frame.size.width-self.vistaBarraDeBotonesVertical.frame.origin.x-self.vistaBarraDeBotonesVertical.frame.size.width-anchoDelBordeDelCanvasDeLasCeldas)/2+self.vistaBarraDeBotonesVertical.frame.origin.x+self.vistaBarraDeBotonesVertical.frame.size.width;
+            margenX = (self.canvas.frame.size.width-self.vistaBarraDeBotonesVertical.frame.origin.x-self.vistaBarraDeBotonesVertical.frame.size.width-anchoDelCanvasDeLasCeldas)/2+self.vistaBarraDeBotonesVertical.frame.origin.x+self.vistaBarraDeBotonesVertical.frame.size.width;
         }
         else {
-            margenX = (self.canvas.frame.size.width-anchoDelBordeDelCanvasDeLasCeldas)/2;
+            margenX = (self.canvas.frame.size.width-anchoDelCanvasDeLasCeldas)/2;
         }
     }
     
-    CGRect frameDelBorderDelCanvasDeLasCeldas = CGRectMake(margenX, margenY, anchoDelBordeDelCanvasDeLasCeldas, altoDelBordeDelCanvasDeLasCeldas);
     
-    CGRect frameCanvasDeLasCeldas = CGRectMake(0 , 0, anchoDelCanvasDeLasCeldas, altoDelCanvasDeLasCeldas);
+    CGRect frameCanvasDeLasCeldas = CGRectMake(margenX,margenY, anchoDelCanvasDeLasCeldas, altoDelCanvasDeLasCeldas);
     
-    self.vistaBordeDeLasCeldas.frame = frameDelBorderDelCanvasDeLasCeldas;
-
     self.vistaCanvasDeLasCeldas.frame = frameCanvasDeLasCeldas;
-    self.vistaCanvasDeLasCeldas.center = CGPointMake(self.vistaBordeDeLasCeldas.frame.size.width/2,self.vistaBordeDeLasCeldas.frame.size.height/2);
-
-    [self.vistaCanvasDeLasCeldas setNeedsDisplay];
-    [self.vistaBordeDeLasCeldas setNeedsDisplay];
 }
 
 - (void) generarLasCeldasDelCanvas {
     
+    self.vistaCanvasDeLasCeldas.backgroundColor = [UIColor clearColor];
     for (NSInteger fila = 0;fila < [IRGLienzo sharedLienzo].filasDelLienzo;fila++){
         for (NSInteger columna = 0; columna< [IRGLienzo sharedLienzo].columnasDelLienzo;columna++){
             
@@ -633,6 +626,14 @@
     
     // Add both effects to your view
     [self.vistaImagenDeFondo addMotionEffect:group];
+}
+
+- (CGSize)screenSize {
+    CGSize screenSize = [UIScreen mainScreen].bounds.size;
+    if ((NSFoundationVersionNumber > NSFoundationVersionNumber_iOS_7_1) && UIInterfaceOrientationIsLandscape([UIApplication sharedApplication].statusBarOrientation)) {
+        return CGSizeMake(screenSize.height, screenSize.width);
+    }
+    return screenSize;
 }
 
 @end

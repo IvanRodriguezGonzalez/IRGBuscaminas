@@ -66,7 +66,9 @@
                                                                              numeroDeMinas:numeroDeMinas
                                                                                     conAyuda:conAyuda
                                                                                   dificultad:dificultad];
-    [self.mejoresTiempos addObject:datoDelMejorTiempo];
+  //  [self.mejoresTiempos addObject:datoDelMejorTiempo];
+    [self.mejoresTiempos insertObject:datoDelMejorTiempo atIndex:0];
+    
     [self guardarMejoresTiempos];
 }
 

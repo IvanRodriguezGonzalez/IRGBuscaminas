@@ -83,9 +83,6 @@
     
     [self dibujarLineaSuperiorOscuraConGrosor:GROSOR_DEL_BORDE_DE_LA_CELDA_PROCESADA];
     [self dibujarLineaIzquierdaOscuraConGrosor:GROSOR_DEL_BORDE_DE_LA_CELDA_PROCESADA];
-    //[self dibujarLineaInferiorOscuraConGrosor:GROSOR_DEL_BORDE_DE_LA_CELDA_PROCESADA];
-   // [self dibujarLineaDerechaOscuraConGrosor:GROSOR_DEL_BORDE_DE_LA_CELDA_PROCESADA];
-
     [self dibujarLineaInferiorClaraConGrosor:GROSOR_DEL_BORDE_DE_LA_CELDA_PROCESADA];
     [self dibujarLineaDerechaClaraConGrosor:GROSOR_DEL_BORDE_DE_LA_CELDA_PROCESADA];
 }

@@ -18,6 +18,7 @@
 #define REDONDEO_DE_LAS_ESQUINAS_DE_LA_VENTANA 10
 #define COLOR_DEL_BORDE_DE_LA_VENTANA [UIColor lightGrayColor]
 #define GROSOR_DEL_BORDER_DE_LA_VENTANA 1
+#define COLOR_MARCO_FONDO_ELEGIDO [UIColor blueColor]
 
 #pragma mark -
 @interface IRGSettingsViewController ()
@@ -43,10 +44,6 @@
 @property (weak, nonatomic) IBOutlet UIView *vistaFondo10;
 @property (weak, nonatomic) IBOutlet UIImageView *imagen10;
 
-@property (weak, nonatomic) IBOutlet UIView *vistaFondo01;
-@property (weak, nonatomic) IBOutlet UIImageView *imagen01;
-@property (weak, nonatomic) IBOutlet UIView *vistaFondo11;
-@property (weak, nonatomic) IBOutlet UIImageView *imagen11;
 
 @property (weak, nonatomic) IBOutlet UIView *vistaNumeroDeMinas;
 @property (nonatomic) IRGDisplaySieteSegmentosViewController * numeroDeMinas7S;
@@ -79,31 +76,23 @@
     [self comprobarPulsacion:touch enFondo:self.vistaFondo00 conImagen:self.imagen00];
 
     [self comprobarPulsacion:touch enFondo:self.vistaFondo10 conImagen:self.imagen10];
-    
-    [self comprobarPulsacion:touch enFondo:self.vistaFondo01 conImagen:self.imagen01];
-
-    [self comprobarPulsacion:touch enFondo:self.vistaFondo11 conImagen:self.imagen11];
+ 
 
 }
 
 -(void) borrarIndicadorDeFondoElegido{
     self.vistaFondo00.backgroundColor = [UIColor clearColor];
-    self.vistaFondo01.backgroundColor = [UIColor clearColor];
     self.vistaFondo10.backgroundColor = [UIColor clearColor];
-    self.vistaFondo11.backgroundColor = [UIColor clearColor];
 }
 
 - (void) comprobarPulsacion:(UITouch *) pulsacion
                     enFondo:(UIView *) vista
                          conImagen:(UIImageView *) imagen{
     if (CGRectContainsPoint(vista.frame, [pulsacion locationInView:self.vistaDeLosFondos]) ){
-        vista.backgroundColor = [UIColor greenColor];
+        vista.backgroundColor = COLOR_MARCO_FONDO_ELEGIDO;
         self.senderViewController.vistaImagenDeFondo.image = imagen.image;
         self.fondoElegidoTemporal =imagen.image;
     }
-    
-    
-    
 }
 
 - (void)viewDidLoad {
@@ -145,11 +134,6 @@
     [self.nivelDeDificultad addTarget:self
                          action:@selector(actualizarMinasYTiempoDeAyudaSegunElNivelDeDificultad)
                forControlEvents:UIControlEventValueChanged];
-    
-   /* [[NSNotificationCenter defaultCenter] addObserver:self
-                                             selector:@selector(deviceOrientationDidChange:)
-                                                 name:UIDeviceOrientationDidChangeNotification
-                                               object:nil];*/
 }
 
 - (void)didReceiveMemoryWarning {

@@ -45,6 +45,8 @@
 		E1D41DC51A0BEF6B0059C46C /* IRGCeldaViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = E1D41DC41A0BEF6B0059C46C /* IRGCeldaViewController.m */; };
 		E1D41DCA1A0BF0050059C46C /* IRGLienzo.m in Sources */ = {isa = PBXBuildFile; fileRef = E1D41DC71A0BF0050059C46C /* IRGLienzo.m */; };
 		E1D41DCE1A0BFEC30059C46C /* IRGDatos.m in Sources */ = {isa = PBXBuildFile; fileRef = E1D41DCD1A0BFEC30059C46C /* IRGDatos.m */; };
+		E1EFA72E1A45A34B00D3E4E6 /* IRGMejoresTiemposTabViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = E1EFA72C1A45A34B00D3E4E6 /* IRGMejoresTiemposTabViewController.m */; };
+		E1EFA72F1A45A34B00D3E4E6 /* IRGMejoresTiemposTabViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = E1EFA72D1A45A34B00D3E4E6 /* IRGMejoresTiemposTabViewController.xib */; };
 		E1F722471A345B2B00854883 /* Media.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = E1F722461A345B2B00854883 /* Media.xcassets */; };
 		E1FE2CE71A112C1D004333F9 /* IRGEstadoDelJuegoAyuda.m in Sources */ = {isa = PBXBuildFile; fileRef = E1FE2CE61A112C1D004333F9 /* IRGEstadoDelJuegoAyuda.m */; };
 		E1FE2CEA1A114242004333F9 /* IRGEstadoDelJuegoEnJuegoConAyuda.m in Sources */ = {isa = PBXBuildFile; fileRef = E1FE2CE91A114242004333F9 /* IRGEstadoDelJuegoEnJuegoConAyuda.m */; };
@@ -133,6 +135,9 @@
 		E1D41DC71A0BF0050059C46C /* IRGLienzo.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = IRGLienzo.m; sourceTree = "<group>"; };
 		E1D41DCC1A0BFEC30059C46C /* IRGDatos.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IRGDatos.h; sourceTree = "<group>"; };
 		E1D41DCD1A0BFEC30059C46C /* IRGDatos.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = IRGDatos.m; sourceTree = "<group>"; };
+		E1EFA72B1A45A34B00D3E4E6 /* IRGMejoresTiemposTabViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IRGMejoresTiemposTabViewController.h; sourceTree = "<group>"; };
+		E1EFA72C1A45A34B00D3E4E6 /* IRGMejoresTiemposTabViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = IRGMejoresTiemposTabViewController.m; sourceTree = "<group>"; };
+		E1EFA72D1A45A34B00D3E4E6 /* IRGMejoresTiemposTabViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = IRGMejoresTiemposTabViewController.xib; sourceTree = "<group>"; };
 		E1F722461A345B2B00854883 /* Media.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; name = Media.xcassets; path = ../Media.xcassets; sourceTree = "<group>"; };
 		E1FE2CE51A112C1D004333F9 /* IRGEstadoDelJuegoAyuda.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IRGEstadoDelJuegoAyuda.h; sourceTree = "<group>"; };
 		E1FE2CE61A112C1D004333F9 /* IRGEstadoDelJuegoAyuda.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = IRGEstadoDelJuegoAyuda.m; sourceTree = "<group>"; };
@@ -304,6 +309,9 @@
 				E13201A11A3E60BD00F7B979 /* IRGMejoresTiemposTableViewCell.m */,
 				E13201A21A3E60BD00F7B979 /* IRGMejoresTiemposTableViewCell.xib */,
 				320334441A0EC9A7000FFAEF /* IRGMejoresTiemposViewController.xib */,
+				E1EFA72B1A45A34B00D3E4E6 /* IRGMejoresTiemposTabViewController.h */,
+				E1EFA72C1A45A34B00D3E4E6 /* IRGMejoresTiemposTabViewController.m */,
+				E1EFA72D1A45A34B00D3E4E6 /* IRGMejoresTiemposTabViewController.xib */,
 				32A1DB111A0FAFAB00AA33CE /* IRGPreguntarNombreViewController.xib */,
 				E1CD31A51A0BCBF800D317A8 /* IRGVentanaPrincipalViewController.xib */,
 			);
@@ -438,6 +446,7 @@
 				E1F722471A345B2B00854883 /* Media.xcassets in Resources */,
 				E1923B751A1AA3C4000E69B2 /* IRGSettingsViewController.xib in Resources */,
 				E1CD318E1A0BCB8900D317A8 /* LaunchScreen.xib in Resources */,
+				E1EFA72F1A45A34B00D3E4E6 /* IRGMejoresTiemposTabViewController.xib in Resources */,
 				E1CD318B1A0BCB8900D317A8 /* Images.xcassets in Resources */,
 				E13201A41A3E60BD00F7B979 /* IRGMejoresTiemposTableViewCell.xib in Resources */,
 				320334461A0EC9A7000FFAEF /* IRGMejoresTiemposViewController.xib in Resources */,
@@ -483,6 +492,7 @@
 				E1D41DCA1A0BF0050059C46C /* IRGLienzo.m in Sources */,
 				E12E5D3A1A10F36E0047FCCF /* IRGEstadoDelJuegoEnJuego.m in Sources */,
 				32A1DB121A0FAFAB00AA33CE /* IRGPreguntarNombreViewController.m in Sources */,
+				E1EFA72E1A45A34B00D3E4E6 /* IRGMejoresTiemposTabViewController.m in Sources */,
 				E1CB22A51A12695E00D9EF6F /* IRGEstadoDelJuegoEnPausa.m in Sources */,
 				E1CD31891A0BCB8900D317A8 /* AppDelegate.m in Sources */,
 				E1C5435E1A12030C00D5B23A /* IRGEstadoDelJuegoFinalizadoSinErrorConAyuda.m in Sources */,
@@ -610,7 +620,7 @@
 				IPHONEOS_DEPLOYMENT_TARGET = 8.1;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				TARGETED_DEVICE_FAMILY = 2;
+				TARGETED_DEVICE_FAMILY = "1,2";
 			};
 			name = Debug;
 		};
@@ -623,7 +633,7 @@
 				IPHONEOS_DEPLOYMENT_TARGET = 8.1;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				TARGETED_DEVICE_FAMILY = 2;
+				TARGETED_DEVICE_FAMILY = "1,2";
 			};
 			name = Release;
 		};
