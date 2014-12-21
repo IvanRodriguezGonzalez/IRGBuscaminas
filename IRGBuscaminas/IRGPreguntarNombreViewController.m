@@ -38,6 +38,10 @@
     [self.presentingViewController dismissViewControllerAnimated:TRUE completion:nil];
 }
 
+- (IBAction)accionCerrarVentana:(UIButton *)sender {
+    [self.presentingViewController dismissViewControllerAnimated:TRUE completion:nil];
+}
+
 #  pragma mark - Overrides
 
 - (void)viewDidLoad {

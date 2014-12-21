@@ -151,10 +151,12 @@
                 <view multipleTouchEnabled="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="zp6-fT-8XJ" userLabel="canvas">
                     <rect key="frame" x="0.0" y="70" width="748" height="954"/>
                     <subviews>
-                        <view contentMode="scaleToFill" ambiguous="YES" translatesAutoresizingMaskIntoConstraints="NO" id="k1h-1u-mTQ" userLabel="vistaDeLasCeldas">
+                        <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="k1h-1u-mTQ" userLabel="vistaDeLasCeldas">
                             <rect key="frame" x="359" y="462" width="30" height="30"/>
                             <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                             <constraints>
+                                <constraint firstAttribute="height" constant="30" id="0r2-Pa-S7J"/>
+                                <constraint firstAttribute="width" constant="30" id="2FN-z5-Ldm"/>
                                 <constraint firstAttribute="height" constant="30" id="awB-RI-djV"/>
                                 <constraint firstAttribute="width" constant="30" id="wsE-LA-uIw"/>
                             </constraints>
@@ -486,6 +488,8 @@
                         <constraint firstAttribute="bottom" secondItem="hIG-gz-8Ow" secondAttribute="bottom" constant="20" symbolic="YES" id="5rO-ck-v3m"/>
                         <constraint firstItem="hIG-gz-8Ow" firstAttribute="leading" secondItem="zp6-fT-8XJ" secondAttribute="leading" priority="999" constant="20" symbolic="YES" id="EHF-95-zeL"/>
                         <constraint firstAttribute="bottom" secondItem="9HN-GC-ekE" secondAttribute="bottom" priority="999" constant="20" symbolic="YES" id="IEq-ar-yhd"/>
+                        <constraint firstItem="k1h-1u-mTQ" firstAttribute="centerY" secondItem="9HN-GC-ekE" secondAttribute="centerY" id="Pv7-sZ-5mw"/>
+                        <constraint firstItem="k1h-1u-mTQ" firstAttribute="centerX" secondItem="hIG-gz-8Ow" secondAttribute="centerX" id="Rvt-bP-sa6"/>
                         <constraint firstAttribute="centerX" secondItem="hIG-gz-8Ow" secondAttribute="centerX" id="hip-Pr-pPE"/>
                         <constraint firstItem="9HN-GC-ekE" firstAttribute="leading" secondItem="zp6-fT-8XJ" secondAttribute="leading" constant="20" symbolic="YES" id="nIa-Hg-JkJ"/>
                         <constraint firstAttribute="centerY" secondItem="9HN-GC-ekE" secondAttribute="centerY" id="rNA-Fc-EDA"/>

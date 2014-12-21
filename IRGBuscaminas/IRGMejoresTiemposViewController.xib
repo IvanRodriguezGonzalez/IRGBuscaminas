@@ -35,15 +35,35 @@
                         <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="WqV-WN-kFi">
                             <rect key="frame" x="500" y="0.0" width="100" height="80"/>
                             <subviews>
-                                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="wRR-Wa-7Tj">
-                                    <rect key="frame" x="15" y="5" width="70" height="70"/>
+                                <button opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="309-13-GtF">
+                                    <rect key="frame" x="8" y="0.0" width="100" height="80"/>
+                                    <state key="normal" image="borrar_color">
+                                        <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                    </state>
+                                    <connections>
+                                        <action selector="accionBorrarHistorial:" destination="-1" eventType="touchUpInside" id="BqT-w6-rJ8"/>
+                                    </connections>
+                                </button>
+                            </subviews>
+                            <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                            <constraints>
+                                <constraint firstAttribute="centerY" secondItem="309-13-GtF" secondAttribute="centerY" id="ASr-91-bjV"/>
+                                <constraint firstAttribute="centerX" secondItem="309-13-GtF" secondAttribute="centerX" id="YDe-h6-p4U"/>
+                                <constraint firstAttribute="width" constant="100" id="ZN5-DK-eir"/>
+                            </constraints>
+                        </view>
+                        <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="zsf-4n-Zjz">
+                            <rect key="frame" x="0.0" y="0.0" width="100" height="80"/>
+                            <subviews>
+                                <button opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="wRR-Wa-7Tj">
+                                    <rect key="frame" x="0.0" y="8" width="70" height="70"/>
                                     <constraints>
                                         <constraint firstAttribute="width" secondItem="wRR-Wa-7Tj" secondAttribute="height" multiplier="1:1" id="F1h-dj-9om"/>
                                         <constraint firstAttribute="width" secondItem="wRR-Wa-7Tj" secondAttribute="height" multiplier="49:32" id="bPW-M4-Vel"/>
                                         <constraint firstAttribute="width" secondItem="wRR-Wa-7Tj" secondAttribute="height" multiplier="1:1" id="g1b-V2-rFD"/>
                                     </constraints>
                                     <size key="titleShadowOffset" width="3" height="4"/>
-                                    <state key="normal" image="ok">
+                                    <state key="normal" image="cancel">
                                         <color key="titleColor" red="0.0" green="0.50196081399917603" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                         <color key="titleShadowColor" red="1" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                     </state>
@@ -61,31 +81,9 @@
                             </subviews>
                             <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                             <constraints>
-                                <constraint firstAttribute="centerX" secondItem="wRR-Wa-7Tj" secondAttribute="centerX" id="64r-pe-MJ1"/>
-                                <constraint firstAttribute="centerY" secondItem="wRR-Wa-7Tj" secondAttribute="centerY" id="UyA-0N-E8s"/>
-                                <constraint firstAttribute="width" constant="100" id="ZN5-DK-eir"/>
-                            </constraints>
-                        </view>
-                        <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="zsf-4n-Zjz">
-                            <rect key="frame" x="0.0" y="0.0" width="100" height="80"/>
-                            <subviews>
-                                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="309-13-GtF">
-                                    <rect key="frame" x="0.0" y="0.0" width="100" height="80"/>
-                                    <state key="normal" image="borrar_color">
-                                        <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
-                                    </state>
-                                    <connections>
-                                        <action selector="accionBorrarHistorial:" destination="-1" eventType="touchUpInside" id="BqT-w6-rJ8"/>
-                                    </connections>
-                                </button>
-                            </subviews>
-                            <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
-                            <constraints>
-                                <constraint firstAttribute="trailing" secondItem="309-13-GtF" secondAttribute="trailing" id="Lu4-wn-280"/>
+                                <constraint firstAttribute="centerX" secondItem="wRR-Wa-7Tj" secondAttribute="centerX" id="BUM-za-hDK"/>
                                 <constraint firstAttribute="width" constant="100" id="aPr-m9-JA8"/>
-                                <constraint firstItem="309-13-GtF" firstAttribute="top" secondItem="zsf-4n-Zjz" secondAttribute="top" id="ddN-rg-eJF"/>
-                                <constraint firstItem="309-13-GtF" firstAttribute="leading" secondItem="zsf-4n-Zjz" secondAttribute="leading" id="leS-af-cXa"/>
-                                <constraint firstAttribute="bottom" secondItem="309-13-GtF" secondAttribute="bottom" id="pEC-8X-oSr"/>
+                                <constraint firstAttribute="centerY" secondItem="wRR-Wa-7Tj" secondAttribute="centerY" id="snQ-os-mBS"/>
                             </constraints>
                         </view>
                     </subviews>
@@ -126,6 +124,6 @@
     </objects>
     <resources>
         <image name="borrar_color" width="70" height="70"/>
-        <image name="ok" width="70" height="70"/>
+        <image name="cancel" width="70" height="70"/>
     </resources>
 </document>

@@ -25,7 +25,9 @@
                                                object:nil];
     self.vistaVentanaDeAviso.layer.borderWidth = 1;
     self.vistaVentanaDeAviso.layer.borderColor = [UIColor blackColor].CGColor;
-    self.vistaVentanaDeAviso.layer.cornerRadius = 5;
+    self.vistaVentanaDeAviso.layer.cornerRadius = 10;
+    self.vistaVentanaDeAviso.layer.masksToBounds = YES;
+
 }
 
 

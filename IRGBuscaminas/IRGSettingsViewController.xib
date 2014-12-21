@@ -358,7 +358,7 @@
                                         <constraint firstAttribute="width" constant="40" id="Kgg-6P-MBZ"/>
                                         <constraint firstAttribute="height" constant="40" id="vyo-fu-7WP"/>
                                     </constraints>
-                                    <state key="normal" image="ok">
+                                    <state key="normal" image="ok_color_2">
                                         <color key="titleColor" red="0.047058823529411764" green="0.37254901960784315" blue="0.98039215686274506" alpha="1" colorSpace="calibratedRGB"/>
                                         <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                     </state>
@@ -451,6 +451,6 @@
         <image name="cancel" width="70" height="70"/>
         <image name="fondo christmas1" width="1600" height="1200"/>
         <image name="fondo christmas2" width="1366" height="768"/>
-        <image name="ok" width="70" height="70"/>
+        <image name="ok_color_2" width="90" height="90"/>
     </resources>
 </document>

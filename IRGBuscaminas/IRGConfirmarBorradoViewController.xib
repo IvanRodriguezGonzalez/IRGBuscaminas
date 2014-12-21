@@ -162,7 +162,7 @@
                             </variation>
                         </view>
                     </subviews>
-                    <color key="backgroundColor" white="0.0" alpha="0.41000000000000003" colorSpace="calibratedWhite"/>
+                    <color key="backgroundColor" white="0.0" alpha="0.70000000000000007" colorSpace="calibratedWhite"/>
                     <constraints>
                         <constraint firstAttribute="centerY" secondItem="yFo-au-kMr" secondAttribute="centerY" id="A4Q-y5-fHK"/>
                         <constraint firstAttribute="centerX" secondItem="yFo-au-kMr" secondAttribute="centerX" id="j6C-lE-nBG"/>
