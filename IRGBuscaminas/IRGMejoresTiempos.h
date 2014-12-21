@@ -22,7 +22,9 @@
            dificultad:(NSInteger)dificultad;
 
 - (NSArray *) todosLosMejoresTiempos;
+- (NSArray *) mejoresTiempoDelNivel:(NSInteger) nivel;
 - (bool) guardarMejoresTiempos;
+- (void) borrarMejoresTiempos;
 
 
 @end

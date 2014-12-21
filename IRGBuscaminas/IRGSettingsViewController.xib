@@ -297,17 +297,17 @@
                             <exclude reference="XOJ-x2-IUq"/>
                             <exclude reference="yUc-8k-Dr2"/>
                             <exclude reference="Nh1-ep-Ae6"/>
-                            <exclude reference="lcl-oW-jrq"/>
                             <exclude reference="Nzy-wg-51V"/>
-                            <exclude reference="P8W-ub-itc"/>
                             <exclude reference="7kF-hG-FDB"/>
                             <exclude reference="VeC-ji-ss5"/>
                             <exclude reference="oMB-g5-7oc"/>
+                            <exclude reference="lcl-oW-jrq"/>
+                            <exclude reference="P8W-ub-itc"/>
                             <exclude reference="kof-O0-LKT"/>
-                            <exclude reference="5ZP-P9-hNa"/>
                             <exclude reference="ETb-yC-ZKs"/>
                             <exclude reference="pxA-qe-nzA"/>
                             <exclude reference="YgF-Fe-ZzK"/>
+                            <exclude reference="5ZP-P9-hNa"/>
                             <exclude reference="JBl-jr-6vs"/>
                         </mask>
                     </variation>
@@ -358,7 +358,7 @@
                                         <constraint firstAttribute="width" constant="40" id="Kgg-6P-MBZ"/>
                                         <constraint firstAttribute="height" constant="40" id="vyo-fu-7WP"/>
                                     </constraints>
-                                    <state key="normal" image="OK">
+                                    <state key="normal" image="ok">
                                         <color key="titleColor" red="0.047058823529411764" green="0.37254901960784315" blue="0.98039215686274506" alpha="1" colorSpace="calibratedRGB"/>
                                         <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                     </state>
@@ -444,13 +444,13 @@
                     <exclude reference="hal-5G-dF9"/>
                 </mask>
             </variation>
-            <point key="canvasLocation" x="-777" y="-200"/>
+            <point key="canvasLocation" x="-749" y="-306"/>
         </view>
     </objects>
     <resources>
-        <image name="OK" width="70" height="70"/>
         <image name="cancel" width="70" height="70"/>
         <image name="fondo christmas1" width="1600" height="1200"/>
         <image name="fondo christmas2" width="1366" height="768"/>
+        <image name="ok" width="70" height="70"/>
     </resources>
 </document>

@@ -3,15 +3,17 @@
     {
       "idiom" : "universal",
       "scale" : "1x",
-      "filename" : "1418512808_lock.png"
+      "filename" : "1419135551_lock_unlocked.png"
     },
     {
       "idiom" : "universal",
-      "scale" : "2x"
+      "scale" : "2x",
+      "filename" : "1419135551_lock_unlocked@2x.png"
     },
     {
       "idiom" : "universal",
-      "scale" : "3x"
+      "scale" : "3x",
+      "filename" : "1419135551_lock_unlocked@3x.png"
     }
   ],
   "info" : {

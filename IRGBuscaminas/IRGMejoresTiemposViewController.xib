@@ -7,6 +7,7 @@
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="IRGMejoresTiemposViewController">
             <connections>
+                <outlet property="botonBorrarHistorial" destination="309-13-GtF" id="2NR-ba-cgf"/>
                 <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
             </connections>
         </placeholder>
@@ -34,7 +35,7 @@
                         <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="WqV-WN-kFi">
                             <rect key="frame" x="500" y="0.0" width="100" height="80"/>
                             <subviews>
-                                <button opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="wRR-Wa-7Tj">
+                                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="wRR-Wa-7Tj">
                                     <rect key="frame" x="15" y="5" width="70" height="70"/>
                                     <constraints>
                                         <constraint firstAttribute="width" secondItem="wRR-Wa-7Tj" secondAttribute="height" multiplier="1:1" id="F1h-dj-9om"/>
@@ -42,7 +43,7 @@
                                         <constraint firstAttribute="width" secondItem="wRR-Wa-7Tj" secondAttribute="height" multiplier="1:1" id="g1b-V2-rFD"/>
                                     </constraints>
                                     <size key="titleShadowOffset" width="3" height="4"/>
-                                    <state key="normal" image="OK">
+                                    <state key="normal" image="ok">
                                         <color key="titleColor" red="0.0" green="0.50196081399917603" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                         <color key="titleShadowColor" red="1" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                     </state>
@@ -65,17 +66,42 @@
                                 <constraint firstAttribute="width" constant="100" id="ZN5-DK-eir"/>
                             </constraints>
                         </view>
+                        <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="zsf-4n-Zjz">
+                            <rect key="frame" x="0.0" y="0.0" width="100" height="80"/>
+                            <subviews>
+                                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="309-13-GtF">
+                                    <rect key="frame" x="0.0" y="0.0" width="100" height="80"/>
+                                    <state key="normal" image="borrar_color">
+                                        <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                    </state>
+                                    <connections>
+                                        <action selector="accionBorrarHistorial:" destination="-1" eventType="touchUpInside" id="BqT-w6-rJ8"/>
+                                    </connections>
+                                </button>
+                            </subviews>
+                            <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                            <constraints>
+                                <constraint firstAttribute="trailing" secondItem="309-13-GtF" secondAttribute="trailing" id="Lu4-wn-280"/>
+                                <constraint firstAttribute="width" constant="100" id="aPr-m9-JA8"/>
+                                <constraint firstItem="309-13-GtF" firstAttribute="top" secondItem="zsf-4n-Zjz" secondAttribute="top" id="ddN-rg-eJF"/>
+                                <constraint firstItem="309-13-GtF" firstAttribute="leading" secondItem="zsf-4n-Zjz" secondAttribute="leading" id="leS-af-cXa"/>
+                                <constraint firstAttribute="bottom" secondItem="309-13-GtF" secondAttribute="bottom" id="pEC-8X-oSr"/>
+                            </constraints>
+                        </view>
                     </subviews>
                     <color key="backgroundColor" red="0.33333333329999998" green="0.5568627451" blue="0.83529411760000005" alpha="1" colorSpace="calibratedRGB"/>
                     <constraints>
                         <constraint firstItem="WqV-WN-kFi" firstAttribute="leading" secondItem="XBb-0y-dBr" secondAttribute="leading" id="0g8-Pu-ezA"/>
                         <constraint firstAttribute="centerY" secondItem="4pi-4D-K5P" secondAttribute="centerY" id="3jX-ZU-hiD"/>
+                        <constraint firstAttribute="bottom" secondItem="zsf-4n-Zjz" secondAttribute="bottom" id="CWA-u1-U2x"/>
                         <constraint firstItem="WqV-WN-kFi" firstAttribute="top" secondItem="XBb-0y-dBr" secondAttribute="top" id="Fss-Qg-a5T"/>
                         <constraint firstAttribute="height" constant="80" id="GT7-uW-JVq"/>
+                        <constraint firstItem="zsf-4n-Zjz" firstAttribute="top" secondItem="XBb-0y-dBr" secondAttribute="top" id="IQU-vn-Rwn"/>
                         <constraint firstAttribute="bottom" secondItem="WqV-WN-kFi" secondAttribute="bottom" id="VyL-Se-0i2"/>
                         <constraint firstItem="4pi-4D-K5P" firstAttribute="leading" secondItem="WqV-WN-kFi" secondAttribute="trailing" id="bI2-XD-thf"/>
                         <constraint firstAttribute="centerX" secondItem="4pi-4D-K5P" secondAttribute="centerX" id="cox-Ib-VPf"/>
                         <constraint firstAttribute="trailing" secondItem="WqV-WN-kFi" secondAttribute="trailing" id="jdV-AI-IZC"/>
+                        <constraint firstItem="zsf-4n-Zjz" firstAttribute="leading" secondItem="XBb-0y-dBr" secondAttribute="leading" id="ww5-VC-alx"/>
                     </constraints>
                     <variation key="default">
                         <mask key="constraints">
@@ -99,6 +125,7 @@
         </view>
     </objects>
     <resources>
-        <image name="OK" width="70" height="70"/>
+        <image name="borrar_color" width="70" height="70"/>
+        <image name="ok" width="70" height="70"/>
     </resources>
 </document>

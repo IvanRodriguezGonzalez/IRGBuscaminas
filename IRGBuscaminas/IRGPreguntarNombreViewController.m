@@ -102,7 +102,7 @@
         celda.conAyuda.alpha= 1;
     }
     else{
-        celda.conAyuda.alpha = .2;
+        celda.conAyuda.alpha = .05;
     }
     return celda;
 }

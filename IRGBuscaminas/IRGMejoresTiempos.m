@@ -66,7 +66,6 @@
                                                                              numeroDeMinas:numeroDeMinas
                                                                                     conAyuda:conAyuda
                                                                                   dificultad:dificultad];
-  //  [self.mejoresTiempos addObject:datoDelMejorTiempo];
     [self.mejoresTiempos insertObject:datoDelMejorTiempo atIndex:0];
     
     [self guardarMejoresTiempos];
@@ -76,11 +75,23 @@
     return self.mejoresTiempos;
 }
 
+- (NSArray *) mejoresTiempoDelNivel:(NSInteger) nivel{
+    NSPredicate * condicionDeBusqueda = [NSPredicate predicateWithFormat:@"dificultad = %d",
+                                       nivel];
+    return [self.mejoresTiempos filteredArrayUsingPredicate:condicionDeBusqueda];
+    
+}
+
 - (bool) guardarMejoresTiempos{
     NSString *path = [self obtenerPath];
     return [NSKeyedArchiver archiveRootObject:self.mejoresTiempos
                                        toFile:path];
 }
+
+- (void) borrarMejoresTiempos{
+    self.mejoresTiempos = [[NSMutableArray alloc] init];
+    [self guardarMejoresTiempos];
+};
 
 
 #pragma mark - Auxiliares primer nivel

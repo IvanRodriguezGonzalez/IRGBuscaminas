@@ -178,9 +178,29 @@
 - (void) crearVistaDeMejoresTiempos{
     
     NSBundle * bundle = [NSBundle mainBundle];
-    IRGMejoresTiemposViewController *mejoresTiemposViewController = [[IRGMejoresTiemposViewController alloc] initWithNibName:@"IRGMejoresTiemposViewController" bundle:bundle];
-    mejoresTiemposViewController.modalPresentationStyle =UIModalPresentationFormSheet;
-    [self presentViewController:mejoresTiemposViewController animated:TRUE completion:nil];
+    
+    IRGMejoresTiemposViewController *mejoresTiemposNivelFacilViewController = [[IRGMejoresTiemposViewController alloc] initWithNibName:@"IRGMejoresTiemposViewController" bundle:bundle nivel:1];
+    mejoresTiemposNivelFacilViewController.tabBarItem.title = @"Facil";
+    UIImage *imagenMejoresTiemposNivelFacilViewController = [UIImage imageNamed:@"dificultad_facil.png"];
+    mejoresTiemposNivelFacilViewController.tabBarItem.image = imagenMejoresTiemposNivelFacilViewController;
+    
+    
+    IRGMejoresTiemposViewController *mejoresTiemposNivelMedioViewController = [[IRGMejoresTiemposViewController alloc] initWithNibName:@"IRGMejoresTiemposViewController" bundle:bundle nivel:2];
+    mejoresTiemposNivelMedioViewController.tabBarItem.title= @"Medio";
+    UIImage *imagenMejoresTiemposNivelMedioViewController = [UIImage imageNamed:@"dificultad_media.png"];
+    mejoresTiemposNivelMedioViewController.tabBarItem.image = imagenMejoresTiemposNivelMedioViewController;
+
+    IRGMejoresTiemposViewController *mejoresTiemposNivelDificilViewController = [[IRGMejoresTiemposViewController alloc] initWithNibName:@"IRGMejoresTiemposViewController" bundle:bundle nivel:3];
+    mejoresTiemposNivelDificilViewController.tabBarItem.title= @"Dificil";
+    UIImage *imagenMejoresTiemposNivelDificilViewController = [UIImage imageNamed:@"dificultad_dificil.png"];
+    mejoresTiemposNivelDificilViewController.tabBarItem.image = imagenMejoresTiemposNivelDificilViewController;
+
+    
+    UITabBarController * tbv = [[UITabBarController alloc]init];
+    tbv.viewControllers = @[mejoresTiemposNivelFacilViewController,mejoresTiemposNivelMedioViewController,mejoresTiemposNivelDificilViewController ];
+    tbv.modalPresentationStyle = UIModalPresentationFormSheet;
+    [self presentViewController:tbv animated:TRUE completion:nil];
+    
 }
 
 #pragma mark - Delegado primer nivel

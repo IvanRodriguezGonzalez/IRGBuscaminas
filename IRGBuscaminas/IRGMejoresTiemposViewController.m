@@ -11,23 +11,57 @@
 #import "IRGMejoresTiempos.h"
 #import "IRGDatoDelMejorTiempo.h"
 #import "IRGMejoresTiemposTableViewCell.h"
+#import "IRGConfirmarBorradoViewController.h"
 
 #define  celdaDatosJugador @"celdaDatosJugardor"
 
+@interface IRGMejoresTiemposViewController()
+@property (nonatomic) NSInteger nivel;
+@property (nonatomic) IRGConfirmarBorradoViewController * confirmarBorradoDelHistorial;
+@property (weak, nonatomic) IBOutlet UIButton *botonBorrarHistorial;
 
+@end
 
-@implementation IRGMejoresTiemposViewController
+@implementation IRGMejoresTiemposViewController;
+
+#pragma mark - Inicializadores
+
+//designated initializer
+-(instancetype) initWithNibName:(NSString *)nibNameOrNil
+                         bundle:(NSBundle *)nibBundleOrNil
+                          nivel:(NSInteger)nivel
+{
+    self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
+    _nivel = nivel;
+    return self;
+}
+
+-(instancetype) initWithNibName:(NSString *)nibNameOrNil
+                         bundle:(NSBundle *)nibBundleOrNil
+{
+    return [self initWithNibName:nibNameOrNil bundle:nibBundleOrNil nivel:0];
+}
 
 #pragma mark - Overrides
 - (void)viewDidLoad {
     [super viewDidLoad];
+    
+}
+
+-(void) viewWillAppear:(BOOL)animated{
+    if ([[IRGMejoresTiempos sharedMejoresTiempos].todosLosMejoresTiempos count]==0){
+        self.botonBorrarHistorial.hidden = TRUE;
+    }
+    else {
+        self.botonBorrarHistorial.hidden = FALSE;
+    }
 }
 
 #pragma mark - Delegado
 - (NSInteger)tableView:(UITableView *)tableView
  numberOfRowsInSection:(NSInteger)section{
     
-    return [[IRGMejoresTiempos sharedMejoresTiempos].todosLosMejoresTiempos count];
+    return [[[IRGMejoresTiempos sharedMejoresTiempos] mejoresTiempoDelNivel:self.nivel ] count];
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView
@@ -41,7 +75,7 @@
     }
     
     NSInteger filaDeLaTabla  = indexPath.row;
-    IRGDatoDelMejorTiempo *mejorTiempo =[IRGMejoresTiempos sharedMejoresTiempos].todosLosMejoresTiempos[filaDeLaTabla];
+    IRGDatoDelMejorTiempo *mejorTiempo =[[IRGMejoresTiempos sharedMejoresTiempos] mejoresTiempoDelNivel:self.nivel][filaDeLaTabla];
 
     celda.nombreDelJugador.text = mejorTiempo.nombre;
     celda.tiempoDelJugador.text =[IRGMetodosComunes formatearTiempoDeJuegoEnSegundos:mejorTiempo.tiempo];
@@ -69,7 +103,7 @@
         celda.conAyuda.alpha = 1;
     }
     else{
-        celda.conAyuda.alpha = 0.2;
+        celda.conAyuda.alpha = 0.05;
     }
     return celda;
 }
@@ -77,8 +111,26 @@
 
 #pragma mark - Navigation
 - (IBAction)accionCerrarVentana:(id)sender {
+    [self cerrarVentana];
+}
+
+- (void) cerrarVentana{
     [self.presentingViewController dismissViewControllerAnimated:TRUE
                                                       completion:nil];
+
+}
+
+- (IBAction)accionBorrarHistorial:(id)sender {
+
+    self.confirmarBorradoDelHistorial = [[IRGConfirmarBorradoViewController alloc] init];
+    
+    CGRect frameConfirmarBorrado = [[UIApplication sharedApplication] keyWindow].frame;
+    self.confirmarBorradoDelHistorial.view.frame = frameConfirmarBorrado;
+    
+    self.confirmarBorradoDelHistorial.view.center = CGPointMake([[UIApplication sharedApplication] keyWindow].frame.size.width/2,[[UIApplication sharedApplication] keyWindow].frame.size.height/2);
+    self.confirmarBorradoDelHistorial.sender = self;
+    [[[UIApplication sharedApplication] keyWindow] addSubview:self.confirmarBorradoDelHistorial.view];
+    
 }
 
 

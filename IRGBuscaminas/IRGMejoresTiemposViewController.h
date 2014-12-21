@@ -10,4 +10,11 @@
 
 @interface IRGMejoresTiemposViewController : UIViewController<UITableViewDataSource>
 
+
+-(instancetype) initWithNibName:(NSString *)nibNameOrNil
+                         bundle:(NSBundle *)nibBundleOrNil
+                          nivel:(NSInteger)nivel;
+
+- (void) cerrarVentana;
+
 @end
