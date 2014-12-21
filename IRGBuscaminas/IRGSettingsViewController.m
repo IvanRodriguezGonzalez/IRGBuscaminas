@@ -181,6 +181,7 @@
     [self.senderViewController restaurarEstado];
     [self restablecerTransparenciaDeLasCeldas];
     [self restaurarTransparenciaDelMenu];
+    [self restaurarImagenDeFondo];
     [self.view removeFromSuperview];
 
 }
@@ -226,6 +227,12 @@
             celdaViewController.view.backgroundColor = [[IRGSettings sharedSettings].colorDeRellenoDeLaCeldaProcesada colorWithAlphaComponent:[IRGSettings sharedSettings].porcerntajeDeTransparenciaDeLasCeldas];
         }
     }
+}
+
+-(void) restaurarImagenDeFondo{
+    self.senderViewController.vistaImagenDeFondo.image = [IRGMetodosComunes leerImagenConNombre:ARCHIVO_IMAGEN_DEL_FONDO];
+
+    
 }
 
 -(void) restaurarTransparenciaDelMenu{

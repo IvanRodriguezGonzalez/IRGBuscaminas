@@ -83,7 +83,7 @@
                             </variation>
                         </textField>
                         <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="ayuda" translatesAutoresizingMaskIntoConstraints="NO" id="16j-Sr-n6l">
-                            <rect key="frame" x="178" y="10" width="30" height="30"/>
+                            <rect key="frame" x="178" y="5" width="40" height="40"/>
                             <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                             <constraints>
                                 <constraint firstAttribute="width" secondItem="16j-Sr-n6l" secondAttribute="height" multiplier="1:1" id="JcB-zC-VR7"/>
@@ -106,7 +106,7 @@
                         <constraint firstItem="phd-fm-tez" firstAttribute="width" secondItem="OW5-p5-RKd" secondAttribute="width" id="5jg-zq-jFQ"/>
                         <constraint firstItem="phd-fm-tez" firstAttribute="leading" secondItem="tpS-bL-P0p" secondAttribute="leading" constant="20" symbolic="YES" id="7uq-0w-ete"/>
                         <constraint firstItem="phd-fm-tez" firstAttribute="top" relation="greaterThanOrEqual" secondItem="tpS-bL-P0p" secondAttribute="top" constant="20" symbolic="YES" id="9si-Hw-DAT"/>
-                        <constraint firstAttribute="bottom" secondItem="16j-Sr-n6l" secondAttribute="bottom" constant="10" id="A9V-Z2-HqO"/>
+                        <constraint firstAttribute="bottom" secondItem="16j-Sr-n6l" secondAttribute="bottom" constant="5" id="A9V-Z2-HqO"/>
                         <constraint firstAttribute="bottom" secondItem="OW5-p5-RKd" secondAttribute="bottom" constant="5" id="B2c-M7-V0H"/>
                         <constraint firstAttribute="trailing" secondItem="OW5-p5-RKd" secondAttribute="trailing" constant="16" id="FJe-vh-z4u"/>
                         <constraint firstAttribute="centerX" secondItem="16j-Sr-n6l" secondAttribute="centerX" id="KQ9-hw-Hzi"/>
@@ -121,7 +121,7 @@
                         <constraint firstItem="OW5-p5-RKd" firstAttribute="leading" secondItem="phd-fm-tez" secondAttribute="trailing" constant="8" symbolic="YES" id="nLf-He-kpX"/>
                         <constraint firstItem="phd-fm-tez" firstAttribute="top" secondItem="tpS-bL-P0p" secondAttribute="top" constant="5" id="o0J-4g-hfS"/>
                         <constraint firstItem="phd-fm-tez" firstAttribute="top" secondItem="tpS-bL-P0p" secondAttribute="top" constant="20" symbolic="YES" id="qWS-G1-JF6"/>
-                        <constraint firstItem="16j-Sr-n6l" firstAttribute="top" secondItem="tpS-bL-P0p" secondAttribute="top" constant="10" id="qoI-u1-PuP"/>
+                        <constraint firstItem="16j-Sr-n6l" firstAttribute="top" secondItem="tpS-bL-P0p" secondAttribute="top" constant="5" id="qoI-u1-PuP"/>
                         <constraint firstAttribute="trailing" secondItem="OW5-p5-RKd" secondAttribute="trailing" constant="20" symbolic="YES" id="rAu-K6-ec2"/>
                         <constraint firstAttribute="centerY" secondItem="phd-fm-tez" secondAttribute="centerY" id="trB-ew-xxl"/>
                         <constraint firstItem="phd-fm-tez" firstAttribute="leading" secondItem="tpS-bL-P0p" secondAttribute="leading" constant="20" symbolic="YES" id="ttV-4a-xLS"/>

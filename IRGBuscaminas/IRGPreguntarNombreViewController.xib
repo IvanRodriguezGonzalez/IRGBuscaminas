@@ -225,7 +225,7 @@
                                         <constraint firstAttribute="width" secondItem="Dso-8V-0tB" secondAttribute="height" multiplier="2455:1923" id="9TV-B1-5wP"/>
                                         <constraint firstAttribute="width" secondItem="Dso-8V-0tB" secondAttribute="height" multiplier="1:1" id="QMf-Sl-Vpe"/>
                                     </constraints>
-                                    <state key="normal" image="ok_color_2">
+                                    <state key="normal" image="ok">
                                         <color key="titleColor" red="0.0" green="0.50196081400000003" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                         <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                     </state>
@@ -336,6 +336,6 @@
     </objects>
     <resources>
         <image name="cancel" width="70" height="70"/>
-        <image name="ok_color_2" width="90" height="90"/>
+        <image name="ok" width="70" height="70"/>
     </resources>
 </document>

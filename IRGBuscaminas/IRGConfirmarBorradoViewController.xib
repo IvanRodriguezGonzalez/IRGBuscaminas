@@ -19,7 +19,7 @@
                     <rect key="frame" x="0.0" y="0.0" width="631" height="531"/>
                     <subviews>
                         <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="yFo-au-kMr" userLabel="ventanaAviso">
-                            <rect key="frame" x="86" y="101" width="460" height="330"/>
+                            <rect key="frame" x="86" y="126" width="460" height="280"/>
                             <subviews>
                                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="vox-fb-KVf" userLabel="vistaTitulo">
                                     <rect key="frame" x="0.0" y="0.0" width="460" height="80"/>
@@ -102,47 +102,47 @@
                                     </variation>
                                 </view>
                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="... si no quieres borrarlos pulsa el boton " textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="3" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="HU5-gi-azv">
-                                    <rect key="frame" x="20" y="228" width="418" height="88"/>
-                                    <fontDescription key="fontDescription" name="BradleyHandITCTT-Bold" family="Bradley Hand" pointSize="35"/>
+                                    <rect key="frame" x="20" y="202" width="418" height="63"/>
+                                    <fontDescription key="fontDescription" name="BradleyHandITCTT-Bold" family="Bradley Hand" pointSize="25"/>
                                     <color key="textColor" red="0.40000000596046448" green="0.40000000596046448" blue="0.40000000596046448" alpha="1" colorSpace="calibratedRGB"/>
                                     <nil key="highlightedColor"/>
                                 </label>
                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Si pulsas el boton       se borraran todos los datos de las partidas guardadas." textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="3" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="CnA-6J-EIt">
-                                    <rect key="frame" x="20" y="88" width="418" height="132"/>
-                                    <fontDescription key="fontDescription" name="BradleyHandITCTT-Bold" family="Bradley Hand" pointSize="35"/>
+                                    <rect key="frame" x="20" y="100" width="418" height="94"/>
+                                    <fontDescription key="fontDescription" name="BradleyHandITCTT-Bold" family="Bradley Hand" pointSize="25"/>
                                     <color key="textColor" red="0.40000000596046448" green="0.40000000596046448" blue="0.40000000596046448" alpha="1" colorSpace="calibratedRGB"/>
                                     <nil key="highlightedColor"/>
                                 </label>
-                                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="borrar_color" translatesAutoresizingMaskIntoConstraints="NO" id="lQZ-Ya-tqB">
-                                    <rect key="frame" x="325" y="88" width="40" height="40"/>
+                                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="borrar" translatesAutoresizingMaskIntoConstraints="NO" id="lQZ-Ya-tqB">
+                                    <rect key="frame" x="248" y="98" width="30" height="30"/>
                                     <constraints>
-                                        <constraint firstAttribute="height" constant="40" id="Wak-PY-DTt"/>
-                                        <constraint firstAttribute="width" constant="40" id="eMX-8j-46F"/>
+                                        <constraint firstAttribute="height" constant="30" id="Wak-PY-DTt"/>
+                                        <constraint firstAttribute="width" constant="30" id="eMX-8j-46F"/>
                                     </constraints>
                                 </imageView>
                                 <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="cancel" translatesAutoresizingMaskIntoConstraints="NO" id="IQA-fe-x0H">
-                                    <rect key="frame" x="340" y="269" width="40" height="40"/>
+                                    <rect key="frame" x="267" y="230" width="30" height="30"/>
                                     <constraints>
-                                        <constraint firstAttribute="height" constant="40" id="6SX-Z9-4yb"/>
-                                        <constraint firstAttribute="width" constant="40" id="jfW-a2-vNF"/>
+                                        <constraint firstAttribute="height" constant="30" id="6SX-Z9-4yb"/>
+                                        <constraint firstAttribute="width" constant="30" id="jfW-a2-vNF"/>
                                     </constraints>
                                 </imageView>
                             </subviews>
                             <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                             <constraints>
-                                <constraint firstAttribute="height" constant="330" id="0dM-14-uQT"/>
+                                <constraint firstAttribute="height" constant="280" id="0dM-14-uQT"/>
                                 <constraint firstAttribute="trailing" relation="greaterThanOrEqual" secondItem="HU5-gi-azv" secondAttribute="trailing" constant="20" symbolic="YES" id="8Mo-Dz-YWj"/>
-                                <constraint firstAttribute="centerX" secondItem="lQZ-Ya-tqB" secondAttribute="centerX" constant="-115" id="CQV-fI-7i8"/>
+                                <constraint firstAttribute="centerX" secondItem="lQZ-Ya-tqB" secondAttribute="centerX" constant="-32.5" id="CQV-fI-7i8"/>
                                 <constraint firstAttribute="width" constant="460" id="DOA-dW-4OE"/>
                                 <constraint firstItem="HU5-gi-azv" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="yFo-au-kMr" secondAttribute="leading" constant="20" symbolic="YES" id="J9F-CP-Jy9"/>
                                 <constraint firstItem="vox-fb-KVf" firstAttribute="top" secondItem="yFo-au-kMr" secondAttribute="top" id="K4J-ML-39p"/>
                                 <constraint firstItem="CnA-6J-EIt" firstAttribute="leading" secondItem="yFo-au-kMr" secondAttribute="leading" constant="20" symbolic="YES" id="K5O-BP-fto"/>
-                                <constraint firstAttribute="trailing" secondItem="IQA-fe-x0H" secondAttribute="trailing" constant="80" id="LLm-3I-9Wq"/>
-                                <constraint firstItem="IQA-fe-x0H" firstAttribute="top" secondItem="CnA-6J-EIt" secondAttribute="bottom" constant="49" id="Nd8-kq-i2P"/>
-                                <constraint firstAttribute="centerY" secondItem="lQZ-Ya-tqB" secondAttribute="centerY" constant="57" id="Qbs-RV-RMF"/>
+                                <constraint firstAttribute="trailing" secondItem="IQA-fe-x0H" secondAttribute="trailing" constant="163" id="LLm-3I-9Wq"/>
+                                <constraint firstItem="IQA-fe-x0H" firstAttribute="top" secondItem="CnA-6J-EIt" secondAttribute="bottom" constant="36" id="Nd8-kq-i2P"/>
+                                <constraint firstAttribute="centerY" secondItem="lQZ-Ya-tqB" secondAttribute="centerY" constant="27" id="Qbs-RV-RMF"/>
                                 <constraint firstAttribute="trailing" secondItem="vox-fb-KVf" secondAttribute="trailing" id="bFh-xg-ZGc"/>
                                 <constraint firstItem="vox-fb-KVf" firstAttribute="leading" secondItem="yFo-au-kMr" secondAttribute="leading" id="bpO-qH-mgx"/>
-                                <constraint firstItem="CnA-6J-EIt" firstAttribute="top" secondItem="vox-fb-KVf" secondAttribute="bottom" constant="8" symbolic="YES" id="bvK-S2-1sZ"/>
+                                <constraint firstItem="CnA-6J-EIt" firstAttribute="top" secondItem="vox-fb-KVf" secondAttribute="bottom" constant="20" id="bvK-S2-1sZ"/>
                                 <constraint firstItem="HU5-gi-azv" firstAttribute="top" secondItem="CnA-6J-EIt" secondAttribute="bottom" constant="8" symbolic="YES" id="cWu-rQ-7HE"/>
                                 <constraint firstItem="vox-fb-KVf" firstAttribute="top" secondItem="yFo-au-kMr" secondAttribute="top" id="dfn-Cm-1Ra"/>
                                 <constraint firstItem="vox-fb-KVf" firstAttribute="leading" secondItem="yFo-au-kMr" secondAttribute="leading" id="fno-eb-eEH"/>
@@ -181,6 +181,7 @@
         </view>
     </objects>
     <resources>
+        <image name="borrar" width="70" height="70"/>
         <image name="borrar_color" width="70" height="70"/>
         <image name="cancel" width="70" height="70"/>
     </resources>
