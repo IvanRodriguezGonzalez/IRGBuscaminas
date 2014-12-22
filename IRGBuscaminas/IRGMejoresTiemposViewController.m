@@ -19,6 +19,8 @@
 @property (nonatomic) NSInteger nivel;
 @property (nonatomic) IRGConfirmarBorradoViewController * confirmarBorradoDelHistorial;
 @property (weak, nonatomic) IBOutlet UIButton *botonBorrarHistorial;
+@property (weak, nonatomic) IBOutlet UITableView *vistaTablaMejoresTiempos;
+
 
 @end
 
@@ -46,6 +48,10 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     
+    NSBundle * bundle = [NSBundle mainBundle];
+    [self.vistaTablaMejoresTiempos registerNib:[UINib nibWithNibName:@"IRGMejoresTiemposTableViewCell"
+                                                              bundle:bundle]
+                        forCellReuseIdentifier:@"IRGMejoresTiemposTableViewCell"];
 }
 
 -(void) viewWillAppear:(BOOL)animated{
@@ -64,15 +70,16 @@
     return [[[IRGMejoresTiempos sharedMejoresTiempos] mejoresTiempoDelNivel:self.nivel ] count];
 }
 
+- (CGFloat)tableView:(UITableView *)tableView
+heightForRowAtIndexPath:(NSIndexPath *)indexPath{
+    return 40;
+}
+
 - (UITableViewCell *)tableView:(UITableView *)tableView
-         cellForRowAtIndexPath:(NSIndexPath *)indexPath{
+          cellForRowAtIndexPath:(NSIndexPath *)indexPath
+{
     
     IRGMejoresTiemposTableViewCell *celda = [tableView dequeueReusableCellWithIdentifier:@"IRGMejoresTiemposTableViewCell"];
-
-    if (!celda){
-        NSArray *nib = [[NSBundle mainBundle] loadNibNamed:@"IRGMejoresTiemposTableViewCell" owner:self options:nil];
-        celda = (IRGMejoresTiemposTableViewCell *)[nib objectAtIndex:0];
-    }
     
     NSInteger filaDeLaTabla  = indexPath.row;
     IRGDatoDelMejorTiempo *mejorTiempo =[[IRGMejoresTiempos sharedMejoresTiempos] mejoresTiempoDelNivel:self.nivel][filaDeLaTabla];

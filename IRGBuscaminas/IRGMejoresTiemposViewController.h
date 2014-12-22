@@ -8,7 +8,7 @@
 
 #import <UIKit/UIKit.h>
 
-@interface IRGMejoresTiemposViewController : UIViewController<UITableViewDataSource>
+@interface IRGMejoresTiemposViewController : UIViewController<UITableViewDataSource,UITableViewDelegate>
 
 
 -(instancetype) initWithNibName:(NSString *)nibNameOrNil

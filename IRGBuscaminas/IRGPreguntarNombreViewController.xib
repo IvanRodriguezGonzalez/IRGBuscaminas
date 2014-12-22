@@ -11,6 +11,7 @@
                 <outlet property="nombreTextField" destination="aav-cH-Alf" id="Ois-s9-bdV"/>
                 <outlet property="numeroDeCeldasTextField" destination="nL9-bn-P5c" id="qMI-yT-bGc"/>
                 <outlet property="numeroDeMinasTextField" destination="lTG-Ys-EEg" id="Pyi-sw-UZ1"/>
+                <outlet property="tablaVistaMejoresTiempos" destination="cyX-AS-oeo" id="Ysk-Lg-maH"/>
                 <outlet property="tiempoTextField" destination="wvB-Wt-Mm0" id="JFx-3n-NGr"/>
                 <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
             </connections>
@@ -204,6 +205,7 @@
                     <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                     <connections>
                         <outlet property="dataSource" destination="-1" id="m0s-ja-QSg"/>
+                        <outlet property="delegate" destination="-1" id="Pxc-jg-KRA"/>
                     </connections>
                 </tableView>
                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="fga-nM-eS2">

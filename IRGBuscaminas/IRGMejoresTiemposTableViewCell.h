@@ -18,5 +18,8 @@
 @property (weak, nonatomic) IBOutlet UILabel *dificultadDeLaPartida;
 @property (weak, nonatomic) IBOutlet UILabel *numeroDeMinas;
 @property (weak, nonatomic) IBOutlet UIImageView *conAyuda;
+@property (weak, nonatomic) IBOutlet UIImageView *reloj;
+@property (weak, nonatomic) IBOutlet UIImageView *mina;
+
 
 @end

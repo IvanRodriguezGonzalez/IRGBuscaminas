@@ -9,6 +9,7 @@
             <connections>
                 <outlet property="botonBorrarHistorial" destination="309-13-GtF" id="2NR-ba-cgf"/>
                 <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
+                <outlet property="vistaTablaMejoresTiempos" destination="PKC-US-FZ1" id="PwJ-4m-NqP"/>
             </connections>
         </placeholder>
         <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
@@ -21,6 +22,7 @@
                     <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                     <connections>
                         <outlet property="dataSource" destination="-1" id="4U2-db-RzD"/>
+                        <outlet property="delegate" destination="-1" id="I8L-jt-Mu4"/>
                     </connections>
                 </tableView>
                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="XBb-0y-dBr">

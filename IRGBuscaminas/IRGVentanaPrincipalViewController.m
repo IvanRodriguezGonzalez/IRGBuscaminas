@@ -328,7 +328,8 @@
                             Nombre:nil
                     numeroDeCeldas:[IRGLienzo sharedLienzo].filasDelLienzo*[IRGLienzo sharedLienzo].columnasDelLienzo
                      numeroDeMinas:[IRGSettings sharedSettings].numeroDeMinas
-                          conAyuda:FALSE];
+                          conAyuda:FALSE
+                          dificultad:[IRGSettings sharedSettings].dificultad];
 }
 
 - (void) acabarJuegoSinErrorConAyuda{
@@ -337,7 +338,8 @@
                             Nombre:nil
                     numeroDeCeldas:[IRGLienzo sharedLienzo].filasDelLienzo*[IRGLienzo sharedLienzo].columnasDelLienzo
                      numeroDeMinas:[IRGSettings sharedSettings].numeroDeMinas
-                          conAyuda:true];
+                          conAyuda:true
+                          dificultad:[IRGSettings sharedSettings].dificultad];
 
    }
 
@@ -347,7 +349,8 @@
                           Nombre:(NSString *)nombre
                   numeroDeCeldas:(NSInteger)numeroDeCeldas
                    numeroDeMinas:(NSInteger)numeroDeMinas
-                        conAyuda:(bool)conAyuda{
+                        conAyuda:(bool)conAyuda
+                              dificultad:(NSInteger)dificultad{
     
     NSBundle *bunlde = [NSBundle mainBundle];
     
@@ -359,7 +362,7 @@
                                                                              numeroDeCeldas:numeroDeCeldas
                                                                               numeroDeMinas:numeroDeMinas
                                                                           conAyuda:conAyuda
-                                                                                 dificultad:[IRGSettings sharedSettings].dificultad];
+                                                                                 dificultad:dificultad];
     vistaPreguntarModalViewController.datoDelMejorTiempo = datoDelMejorTiempo;
     [self presentViewController:vistaPreguntarModalViewController animated:TRUE completion:nil];
 

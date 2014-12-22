@@ -19,20 +19,8 @@
                         <rect key="frame" x="13" y="16" width="27" height="27"/>
                         <constraints>
                             <constraint firstAttribute="width" constant="27" id="Iu1-DP-1iG"/>
-                            <constraint firstAttribute="height" constant="100" id="QbT-bI-Ebe"/>
-                            <constraint firstAttribute="width" constant="100" id="j5s-Cq-a1d"/>
-                            <constraint firstAttribute="width" secondItem="woD-lW-X2V" secondAttribute="height" multiplier="1:1" id="oMW-ty-8SP"/>
-                            <constraint firstAttribute="height" constant="269" id="pTs-16-Kod"/>
                             <constraint firstAttribute="height" constant="27" id="w5M-3t-23L"/>
                         </constraints>
-                        <variation key="default">
-                            <mask key="constraints">
-                                <exclude reference="QbT-bI-Ebe"/>
-                                <exclude reference="j5s-Cq-a1d"/>
-                                <exclude reference="oMW-ty-8SP"/>
-                                <exclude reference="pTs-16-Kod"/>
-                            </mask>
-                        </variation>
                     </imageView>
                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="99" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="eC8-Tc-1vc">
                         <rect key="frame" x="531" y="18" width="30" height="24"/>
@@ -140,7 +128,6 @@
                     <constraint firstItem="0dp-rx-qQ2" firstAttribute="leading" secondItem="bnR-Cn-ZEs" secondAttribute="trailing" constant="8" symbolic="YES" id="24y-ap-gnd"/>
                     <constraint firstItem="aQl-7s-eg0" firstAttribute="width" secondItem="f6k-A7-k6x" secondAttribute="width" id="2xh-w1-miY"/>
                     <constraint firstItem="aQl-7s-eg0" firstAttribute="height" secondItem="f6k-A7-k6x" secondAttribute="height" id="7wj-wX-eDE"/>
-                    <constraint firstAttribute="bottom" secondItem="woD-lW-X2V" secondAttribute="bottom" constant="5" id="A8F-pL-KOI"/>
                     <constraint firstItem="bnR-Cn-ZEs" firstAttribute="leading" secondItem="aQl-7s-eg0" secondAttribute="trailing" constant="8" symbolic="YES" id="BY3-ad-sgJ"/>
                     <constraint firstItem="aQl-7s-eg0" firstAttribute="height" secondItem="bnR-Cn-ZEs" secondAttribute="height" id="H8u-sa-mS5"/>
                     <constraint firstAttribute="centerY" secondItem="bnR-Cn-ZEs" secondAttribute="centerY" id="KSS-l3-GXR"/>
@@ -154,12 +141,9 @@
                     <constraint firstAttribute="centerY" secondItem="f6k-A7-k6x" secondAttribute="centerY" id="dYz-Ll-4wi"/>
                     <constraint firstItem="aQl-7s-eg0" firstAttribute="width" secondItem="woD-lW-X2V" secondAttribute="width" id="fua-Mb-GkX"/>
                     <constraint firstItem="bnR-Cn-ZEs" firstAttribute="leading" secondItem="aQl-7s-eg0" secondAttribute="trailing" constant="8" symbolic="YES" id="gsL-Ia-rZC"/>
-                    <constraint firstItem="woD-lW-X2V" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" constant="16" id="hIK-e5-iDM"/>
                     <constraint firstItem="f6k-A7-k6x" firstAttribute="leading" secondItem="zr7-JI-fb3" secondAttribute="trailing" constant="8" symbolic="YES" id="hqQ-8U-50D"/>
-                    <constraint firstAttribute="centerY" secondItem="woD-lW-X2V" secondAttribute="centerY" id="iEd-3f-5oe"/>
                     <constraint firstItem="MyB-dl-OBJ" firstAttribute="leading" secondItem="woD-lW-X2V" secondAttribute="trailing" constant="10" id="kpe-yI-yB3"/>
                     <constraint firstAttribute="centerY" secondItem="aQl-7s-eg0" secondAttribute="centerY" id="nRJ-CT-NCb"/>
-                    <constraint firstItem="woD-lW-X2V" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leadingMargin" constant="5" id="nhF-Sy-Z2P"/>
                     <constraint firstAttribute="trailingMargin" secondItem="eC8-Tc-1vc" secondAttribute="trailing" id="odx-A2-gTW"/>
                     <constraint firstItem="zr7-JI-fb3" firstAttribute="leading" secondItem="0dp-rx-qQ2" secondAttribute="trailing" id="qz6-mu-7fs"/>
                     <constraint firstItem="aQl-7s-eg0" firstAttribute="width" secondItem="0dp-rx-qQ2" secondAttribute="width" id="w0d-tb-ZWu"/>
@@ -167,24 +151,18 @@
                     <constraint firstAttribute="centerY" secondItem="zr7-JI-fb3" secondAttribute="centerY" id="z7w-ss-iHV"/>
                     <constraint firstItem="woD-lW-X2V" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leadingMargin" constant="5" id="zcg-gy-tdB"/>
                 </constraints>
-                <variation key="default">
-                    <mask key="constraints">
-                        <exclude reference="A8F-pL-KOI"/>
-                        <exclude reference="hIK-e5-iDM"/>
-                        <exclude reference="iEd-3f-5oe"/>
-                        <exclude reference="nhF-Sy-Z2P"/>
-                    </mask>
-                </variation>
             </tableViewCellContentView>
             <connections>
                 <outlet property="conAyuda" destination="woD-lW-X2V" id="eHW-FV-So9"/>
                 <outlet property="dificultadDeLaPartida" destination="zr7-JI-fb3" id="hPT-Z6-ham"/>
                 <outlet property="graficoDeDificultad" destination="0dp-rx-qQ2" id="Aem-qN-IaO"/>
+                <outlet property="mina" destination="f6k-A7-k6x" id="CTl-F1-1S5"/>
                 <outlet property="nombreDelJugador" destination="MyB-dl-OBJ" id="45t-DX-BvH"/>
                 <outlet property="numeroDeMinas" destination="eC8-Tc-1vc" id="SfK-DL-fh7"/>
+                <outlet property="reloj" destination="aQl-7s-eg0" id="jhe-As-61l"/>
                 <outlet property="tiempoDelJugador" destination="bnR-Cn-ZEs" id="8tG-hC-8pj"/>
             </connections>
-            <point key="canvasLocation" x="-439.5" y="-943"/>
+            <point key="canvasLocation" x="-774.5" y="-933"/>
         </tableViewCell>
     </objects>
     <resources>
