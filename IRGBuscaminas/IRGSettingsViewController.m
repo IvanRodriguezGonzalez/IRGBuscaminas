@@ -74,7 +74,6 @@
     [self borrarIndicadorDeFondoElegido];
 
     [self comprobarPulsacion:touch enFondo:self.vistaFondo00 conImagen:self.imagen00];
-
     [self comprobarPulsacion:touch enFondo:self.vistaFondo10 conImagen:self.imagen10];
  
 

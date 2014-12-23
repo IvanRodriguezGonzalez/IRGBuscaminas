@@ -20,6 +20,13 @@
 @property (weak, nonatomic) IBOutlet UIImageView *conAyuda;
 @property (weak, nonatomic) IBOutlet UIImageView *reloj;
 @property (weak, nonatomic) IBOutlet UIImageView *mina;
+@property (weak, nonatomic) IBOutlet UIImageView *imagenDelJugador;
 
 
+
+@property (weak, nonatomic) IBOutlet UIView *vistaGeneralDeLaCelda;
+
+@property (weak, nonatomic) IBOutlet UIView *vistaInteriorPrincipal;
+
+@property (weak, nonatomic) IBOutlet UIView *vistaDeLosDatos;
 @end

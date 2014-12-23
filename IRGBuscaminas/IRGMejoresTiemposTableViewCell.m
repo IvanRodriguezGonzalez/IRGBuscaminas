@@ -12,6 +12,17 @@
 
 - (void)awakeFromNib {
     // Initialization code
+    self.vistaInteriorPrincipal.layer.borderWidth = 1;
+    self.vistaInteriorPrincipal.layer.borderColor = [UIColor grayColor].CGColor;
+    self.vistaInteriorPrincipal.layer.cornerRadius = 5;
+    self.vistaInteriorPrincipal.layer.masksToBounds = YES;
+
+    self.vistaDeLosDatos.layer.borderWidth =0;
+    self.vistaDeLosDatos.layer.borderColor = [UIColor grayColor].CGColor;
+    self.vistaDeLosDatos.layer.cornerRadius = 0;
+    self.vistaDeLosDatos.layer.masksToBounds = YES;
+    
+    
 }
 
 - (void)setSelected:(BOOL)selected animated:(BOOL)animated {

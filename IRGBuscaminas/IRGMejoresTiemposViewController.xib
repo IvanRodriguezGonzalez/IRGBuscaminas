@@ -17,7 +17,7 @@
             <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
-                <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="22" sectionFooterHeight="22" translatesAutoresizingMaskIntoConstraints="NO" id="PKC-US-FZ1">
+                <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" style="plain" separatorStyle="none" rowHeight="44" sectionHeaderHeight="22" sectionFooterHeight="22" translatesAutoresizingMaskIntoConstraints="NO" id="PKC-US-FZ1">
                     <rect key="frame" x="0.0" y="80" width="600" height="520"/>
                     <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                     <connections>
@@ -29,7 +29,7 @@
                     <rect key="frame" x="0.0" y="0.0" width="600" height="80"/>
                     <subviews>
                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Historial" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="4pi-4D-K5P">
-                            <rect key="frame" x="213" y="11" width="175" height="57"/>
+                            <rect key="frame" x="214" y="11" width="175" height="57"/>
                             <fontDescription key="fontDescription" name="BradleyHandITCTT-Bold" family="Bradley Hand" pointSize="45"/>
                             <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                             <nil key="highlightedColor"/>
@@ -38,7 +38,7 @@
                             <rect key="frame" x="500" y="0.0" width="100" height="80"/>
                             <subviews>
                                 <button opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="309-13-GtF">
-                                    <rect key="frame" x="8" y="0.0" width="100" height="80"/>
+                                    <rect key="frame" x="15" y="5" width="70" height="70"/>
                                     <state key="normal" image="borrar_color">
                                         <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                     </state>
@@ -57,8 +57,8 @@
                         <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="zsf-4n-Zjz">
                             <rect key="frame" x="0.0" y="0.0" width="100" height="80"/>
                             <subviews>
-                                <button opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="wRR-Wa-7Tj">
-                                    <rect key="frame" x="0.0" y="8" width="70" height="70"/>
+                                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="wRR-Wa-7Tj">
+                                    <rect key="frame" x="15" y="5" width="70" height="70"/>
                                     <constraints>
                                         <constraint firstAttribute="width" secondItem="wRR-Wa-7Tj" secondAttribute="height" multiplier="1:1" id="F1h-dj-9om"/>
                                         <constraint firstAttribute="width" secondItem="wRR-Wa-7Tj" secondAttribute="height" multiplier="49:32" id="bPW-M4-Vel"/>
@@ -99,7 +99,7 @@
                         <constraint firstItem="zsf-4n-Zjz" firstAttribute="top" secondItem="XBb-0y-dBr" secondAttribute="top" id="IQU-vn-Rwn"/>
                         <constraint firstAttribute="bottom" secondItem="WqV-WN-kFi" secondAttribute="bottom" id="VyL-Se-0i2"/>
                         <constraint firstItem="4pi-4D-K5P" firstAttribute="leading" secondItem="WqV-WN-kFi" secondAttribute="trailing" id="bI2-XD-thf"/>
-                        <constraint firstAttribute="centerX" secondItem="4pi-4D-K5P" secondAttribute="centerX" id="cox-Ib-VPf"/>
+                        <constraint firstAttribute="centerX" secondItem="4pi-4D-K5P" secondAttribute="centerX" constant="-1" id="cox-Ib-VPf"/>
                         <constraint firstAttribute="trailing" secondItem="WqV-WN-kFi" secondAttribute="trailing" id="jdV-AI-IZC"/>
                         <constraint firstItem="zsf-4n-Zjz" firstAttribute="leading" secondItem="XBb-0y-dBr" secondAttribute="leading" id="ww5-VC-alx"/>
                     </constraints>
@@ -121,7 +121,7 @@
                 <constraint firstAttribute="trailing" secondItem="XBb-0y-dBr" secondAttribute="trailing" id="b4e-AO-He3"/>
                 <constraint firstAttribute="trailing" secondItem="PKC-US-FZ1" secondAttribute="trailing" id="rMI-CB-JOX"/>
             </constraints>
-            <point key="canvasLocation" x="419" y="370"/>
+            <point key="canvasLocation" x="691.5" y="273"/>
         </view>
     </objects>
     <resources>

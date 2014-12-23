@@ -14,6 +14,8 @@
 #import "IRGConfirmarBorradoViewController.h"
 
 #define  celdaDatosJugador @"celdaDatosJugardor"
+#define TAMAÑO_IMAGEN_DEL_JUGADOR 80
+
 
 @interface IRGMejoresTiemposViewController()
 @property (nonatomic) NSInteger nivel;
@@ -72,7 +74,7 @@
 
 - (CGFloat)tableView:(UITableView *)tableView
 heightForRowAtIndexPath:(NSIndexPath *)indexPath{
-    return 40;
+    return TAMAÑO_IMAGEN_DEL_JUGADOR+30;
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView
@@ -90,15 +92,15 @@ heightForRowAtIndexPath:(NSIndexPath *)indexPath{
     switch (mejorTiempo.dificultad) {
         case 1:
             celda.dificultadDeLaPartida.text = @"Fácil";;
-            imagenDeDificultad = [UIImage imageNamed:@"dificultad_facil.png"];
+            imagenDeDificultad = [UIImage imageNamed:@"dificultad_neutra.png"];
             break;
         case 2:
             celda.dificultadDeLaPartida.text = @"Media";
-            imagenDeDificultad = [UIImage imageNamed:@"dificultad_media.png"];
+            imagenDeDificultad = [UIImage imageNamed:@"dificultad_neutra.png"];
             break;
         case 3:
             celda.dificultadDeLaPartida.text = @"Dificil";
-            imagenDeDificultad = [UIImage imageNamed:@"dificultad_dificil.png"];
+            imagenDeDificultad = [UIImage imageNamed:@"dificultad_neutra.png"];
             break;
         default:
             celda.dificultadDeLaPartida.text = @"";
@@ -112,6 +114,11 @@ heightForRowAtIndexPath:(NSIndexPath *)indexPath{
     else{
         celda.conAyuda.alpha = 0.05;
     }
+  
+    if (mejorTiempo.imagenDelJugador!=nil){
+    celda.imagenDelJugador.image = mejorTiempo.imagenDelJugador;
+    }
+   
     return celda;
 }
 

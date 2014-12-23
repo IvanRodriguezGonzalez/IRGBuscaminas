@@ -199,6 +199,8 @@
     UITabBarController * tbv = [[UITabBarController alloc]init];
     tbv.viewControllers = @[mejoresTiemposNivelFacilViewController,mejoresTiemposNivelMedioViewController,mejoresTiemposNivelDificilViewController ];
     tbv.modalPresentationStyle = UIModalPresentationFormSheet;
+    CGRect tmpFrame = tbv.view.frame;
+    NSLog (@"x:%f y:%f ancho:%f alto:%f",tmpFrame.origin.x,tmpFrame.origin.y,tmpFrame.size.width,tmpFrame.size.height);
     [self presentViewController:tbv animated:TRUE completion:nil];
     
 }
@@ -350,7 +352,8 @@
                   numeroDeCeldas:(NSInteger)numeroDeCeldas
                    numeroDeMinas:(NSInteger)numeroDeMinas
                         conAyuda:(bool)conAyuda
-                              dificultad:(NSInteger)dificultad{
+                              dificultad:(NSInteger)dificultad
+{
     
     NSBundle *bunlde = [NSBundle mainBundle];
     
@@ -362,7 +365,8 @@
                                                                              numeroDeCeldas:numeroDeCeldas
                                                                               numeroDeMinas:numeroDeMinas
                                                                           conAyuda:conAyuda
-                                                                                 dificultad:dificultad];
+                                                                                 dificultad:dificultad
+                                                                           imagenDelJugador:nil];
     vistaPreguntarModalViewController.datoDelMejorTiempo = datoDelMejorTiempo;
     [self presentViewController:vistaPreguntarModalViewController animated:TRUE completion:nil];
 

@@ -9,7 +9,7 @@
 #import <UIKit/UIKit.h>
 #import "IRGDatoDelMejorTiempo.h"
 
-@interface IRGPreguntarNombreViewController : UIViewController<UITableViewDataSource,UITableViewDelegate>
+@interface IRGPreguntarNombreViewController : UIViewController<UITableViewDataSource,UITableViewDelegate,UIImagePickerControllerDelegate,UINavigationControllerDelegate>
 #pragma mark - Propiedades publicas
 @property (nonatomic) IRGDatoDelMejorTiempo *datoDelMejorTiempo;
 @end

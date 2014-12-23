@@ -59,13 +59,15 @@
         numeroDeMinas:(NSInteger)numeroDeMinas
              conAyuda:(bool)conAyuda
            dificultad:(NSInteger)dificultad
+    imagendDelJugador:(UIImage *)imagenDelJugador
 {
     IRGDatoDelMejorTiempo * datoDelMejorTiempo = [[IRGDatoDelMejorTiempo alloc]initConTiempo:tiempo
                                                                                     nombre:nombre
                                                                             numeroDeCeldas:numeroDeCeldas
                                                                              numeroDeMinas:numeroDeMinas
                                                                                     conAyuda:conAyuda
-                                                                                  dificultad:dificultad];
+                                                                                  dificultad:dificultad
+                                                                            imagenDelJugador:imagenDelJugador];
     [self.mejoresTiempos insertObject:datoDelMejorTiempo atIndex:0];
     
     [self guardarMejoresTiempos];

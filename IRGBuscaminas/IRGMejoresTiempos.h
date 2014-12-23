@@ -7,6 +7,7 @@
 //
 
 #import <Foundation/Foundation.h>
+#import <UIKit/UIKit.h>
 
 @interface IRGMejoresTiempos : NSObject
 
@@ -19,7 +20,8 @@
        numeroDeCeldas:(NSInteger)numeroDeCeldas
         numeroDeMinas:(NSInteger)numeroDeMinas
              conAyuda:(bool)conAyuda
-           dificultad:(NSInteger)dificultad;
+           dificultad:(NSInteger)dificultad
+    imagendDelJugador:(UIImage *)imagenDelJugador;
 
 - (NSArray *) todosLosMejoresTiempos;
 - (NSArray *) mejoresTiempoDelNivel:(NSInteger) nivel;

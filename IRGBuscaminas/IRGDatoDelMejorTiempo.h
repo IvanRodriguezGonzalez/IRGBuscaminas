@@ -7,6 +7,7 @@
 //
 
 #import <Foundation/Foundation.h>
+#import <UIKit/UIKit.h>
 
 @interface IRGDatoDelMejorTiempo : NSObject<NSCoding>
 #pragma mark Propiedades publicas
@@ -16,6 +17,7 @@
 @property (nonatomic )NSInteger numeroDeMinas;
 @property (nonatomic) BOOL conAyuda;
 @property (nonatomic) NSInteger dificultad;
+@property (nonatomic) UIImage *imagenDelJugador;
 
 #pragma mark - Inicializadores
 //designated initializer
@@ -24,6 +26,7 @@
                 numeroDeCeldas:(NSInteger) numeroDeCeldas
                  numeroDeMinas:(NSInteger) numeroDeMinas
                       conAyuda:(bool) conAyuda
-                    dificultad:(NSInteger) dificultad;
+                    dificultad:(NSInteger) dificultad
+              imagenDelJugador:(UIImage*)imagenDelJugador;
 
 @end

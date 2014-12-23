@@ -14,6 +14,7 @@
 #import "IRGMejoresTiemposTableViewCell.h"
 
 #define FILAS_DE_MEJORES_TIEMPOS_MOSTRADAS 3
+#define TAMAÑO_IMAGEN_DEL_JUGADOR 80
 
 @interface IRGPreguntarNombreViewController ()
 #pragma mark - Propiedades privadas
@@ -23,6 +24,13 @@
 @property (weak, nonatomic) IBOutlet UITextField *numeroDeMinasTextField;
 @property (weak, nonatomic) IBOutlet UITextField *conAyudaTextField;
 @property (weak, nonatomic) IBOutlet UITableView *tablaVistaMejoresTiempos;
+
+@property (weak, nonatomic) IBOutlet UIImageView *imagenDelJugador;
+
+@property (weak, nonatomic) IBOutlet UIButton *botonImagenDelJugador;
+@property (weak, nonatomic) IBOutlet UIButton *botonFotosDelDispositivo;
+
+@property (weak, nonatomic) IBOutlet UIView *vistaImagenDelJugador;
 
 
 @end
@@ -38,7 +46,8 @@
                 numeroDeCeldas:self.datoDelMejorTiempo.numeroDeCeldas
                  numeroDeMinas:self.datoDelMejorTiempo.numeroDeMinas
                     conAyuda:self.datoDelMejorTiempo.conAyuda
-     dificultad:[IRGSettings sharedSettings].dificultad];
+                    dificultad:[IRGSettings sharedSettings].dificultad
+              imagenDelJuagdor:self.imagenDelJugador.image];
     [self.presentingViewController dismissViewControllerAnimated:TRUE completion:nil];
 }
 
@@ -48,8 +57,14 @@
 
 #  pragma mark - Overrides
 
+
 - (void)viewDidLoad {
     [super viewDidLoad];
+    
+    self.vistaImagenDelJugador.layer.borderWidth = 1;
+    self.vistaImagenDelJugador.layer.borderColor = [UIColor grayColor].CGColor;
+    self.vistaImagenDelJugador.layer.cornerRadius = 5;
+    self.vistaImagenDelJugador.layer.masksToBounds = YES;
     
     self.nombreTextField.text = self.datoDelMejorTiempo.nombre;
     self.numeroDeCeldasTextField.text = [NSString stringWithFormat:@"%ld",(long)self.datoDelMejorTiempo.numeroDeCeldas];
@@ -68,8 +83,9 @@
     [self.tablaVistaMejoresTiempos registerNib:[UINib nibWithNibName:@"IRGMejoresTiemposTableViewCell"
                                                               bundle:bundle]
                         forCellReuseIdentifier:@"IRGMejoresTiemposTableViewCell"];
-
-    
+    self.imagenDelJugador.image = [self crearThumbnail:[UIImage imageNamed:@"imagen_jugador"]
+                                             conTamano: TAMAÑO_IMAGEN_DEL_JUGADOR];    
+    [self.nombreTextField becomeFirstResponder];
 }
 
 
@@ -109,7 +125,7 @@
 
 - (CGFloat)tableView:(UITableView *)tableView
 heightForRowAtIndexPath:(NSIndexPath *)indexPath{
-    return 40;
+    return TAMAÑO_IMAGEN_DEL_JUGADOR+30;
 }
 
 
@@ -142,15 +158,15 @@ heightForRowAtIndexPath:(NSIndexPath *)indexPath{
         switch (mejorTiempo.dificultad) {
             case 1:
                 celda.dificultadDeLaPartida.text = @"Fácil";;
-                imagenDeDificultad = [UIImage imageNamed:@"dificultad_facil.png"];
+                imagenDeDificultad = [UIImage imageNamed:@"dificultad_neutra.png"];
                 break;
             case 2:
                 celda.dificultadDeLaPartida.text = @"Media";
-                imagenDeDificultad = [UIImage imageNamed:@"dificultad_media.png"];
+                imagenDeDificultad = [UIImage imageNamed:@"dificultad_neutra.png"];
                 break;
             case 3:
                 celda.dificultadDeLaPartida.text = @"Dificil";
-                imagenDeDificultad = [UIImage imageNamed:@"dificultad_dificil.png"];
+                imagenDeDificultad = [UIImage imageNamed:@"dificultad_neutra.png"];
                 break;
             default:
                 celda.dificultadDeLaPartida.text = @"";
@@ -164,6 +180,9 @@ heightForRowAtIndexPath:(NSIndexPath *)indexPath{
         else{
             celda.conAyuda.alpha = .05;
         }
+        if (mejorTiempo.imagenDelJugador!=nil){
+            celda.imagenDelJugador.image = mejorTiempo.imagenDelJugador;
+        }
     }
     return celda;
 }
@@ -174,14 +193,82 @@ heightForRowAtIndexPath:(NSIndexPath *)indexPath{
                numeroDeCeldas:(NSInteger)numeroDeCeldas
                 numeroDeMinas:(NSInteger)numeroDeMinas
                      conAyuda:(bool)conAyuda
-                   dificultad:(NSInteger) dificultad{
-    
+                   dificultad:(NSInteger) dificultad
+             imagenDelJuagdor:(UIImage *)imagenDelJugador
+{
     [[IRGMejoresTiempos sharedMejoresTiempos] anadirTiempo:mejorTiempo
                                                     Nombre:nombre
                                             numeroDeCeldas:numeroDeCeldas
                                              numeroDeMinas:numeroDeMinas
                                                   conAyuda:conAyuda
-                                                dificultad:dificultad];
+                                                dificultad:dificultad
+                                         imagendDelJugador:self.imagenDelJugador.image];
+}
+
+- (IBAction)tomarImagenDelJugador:(UIButton *)sender {
+    UIImagePickerController * imagePicker = [[UIImagePickerController alloc] init];
+    if ([UIImagePickerController isSourceTypeAvailable:UIImagePickerControllerSourceTypeCamera]) {
+        imagePicker.sourceType = UIImagePickerControllerSourceTypeCamera;
+    }
+    else{
+        imagePicker.sourceType = UIImagePickerControllerSourceTypePhotoLibrary;
+    }
+    imagePicker.delegate = self;
+    
+    double delayInSeconds = 0.3;
+    dispatch_time_t popTime = dispatch_time(DISPATCH_TIME_NOW, delayInSeconds * NSEC_PER_SEC);
+    dispatch_after(popTime, dispatch_get_main_queue(), ^(void){
+    
+    [self presentViewController:imagePicker animated:YES completion:Nil];
+    });
+}
+
+- (IBAction)cargarImagenDelDispositivo:(UIButton *)sender {
+    UIImagePickerController * imagePicker = [[UIImagePickerController alloc] init];
+
+    imagePicker.sourceType = UIImagePickerControllerSourceTypePhotoLibrary;
+    
+    imagePicker.delegate = self;
+    
+    double delayInSeconds = 0.3;
+    dispatch_time_t popTime = dispatch_time(DISPATCH_TIME_NOW, delayInSeconds * NSEC_PER_SEC);
+    dispatch_after(popTime, dispatch_get_main_queue(), ^(void){
+        
+        [self presentViewController:imagePicker animated:YES completion:Nil];
+    });
+
+}
+
+
+-(void) imagePickerController:(UIImagePickerController *)picker didFinishPickingMediaWithInfo:(NSDictionary *)info{
+    UIImage * imagenDelJugador = info[UIImagePickerControllerOriginalImage];
+    self.imagenDelJugador.image = [self crearThumbnail:imagenDelJugador
+                                             conTamano: TAMAÑO_IMAGEN_DEL_JUGADOR];
+
+    [self dismissViewControllerAnimated:YES completion:nil];
+}
+
+- (UIImage *) crearThumbnail:(UIImage*)imagenOriginal conTamano:(NSInteger)anchoNuevo{
+    
+    CGRect tamanoDelMarco = CGRectMake(0, 0, anchoNuevo, anchoNuevo);
+    float aspectRatio = MAX(anchoNuevo/imagenOriginal.size.width,anchoNuevo/imagenOriginal.size.height);
+
+    UIGraphicsBeginImageContextWithOptions(tamanoDelMarco.size, NO, 0.0);
+    UIBezierPath *marcoDelThumbnail = [UIBezierPath bezierPathWithRoundedRect:tamanoDelMarco cornerRadius:5.0];
+    [marcoDelThumbnail addClip];
+    
+    //centrar la imagen en el espacio del thumb
+    CGRect nuevoFrameDeLaImagen ;
+    nuevoFrameDeLaImagen.size.width = aspectRatio*imagenOriginal.size.width;
+    nuevoFrameDeLaImagen.size.height = aspectRatio*imagenOriginal.size.height;
+    nuevoFrameDeLaImagen.origin.x = (anchoNuevo-nuevoFrameDeLaImagen.size.width)/2;
+    nuevoFrameDeLaImagen.origin.y = (anchoNuevo-nuevoFrameDeLaImagen.size.height)/2;
+    [imagenOriginal drawInRect:nuevoFrameDeLaImagen];
+    
+    UIImage *thumbnail = UIGraphicsGetImageFromCurrentImageContext();
+    UIGraphicsEndImageContext();
+    
+    return thumbnail;
 }
 
 @end

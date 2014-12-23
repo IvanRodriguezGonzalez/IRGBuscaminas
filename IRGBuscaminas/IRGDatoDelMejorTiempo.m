@@ -23,6 +23,8 @@
                  numeroDeMinas:(NSInteger) numeroDeMinas
                       conAyuda:(bool)conAyuda
                     dificultad:(NSInteger)dificultad
+              imagenDelJugador:(UIImage *)imagenDelJugador
+
 {
     self = [super init];
     if (self){
@@ -32,6 +34,7 @@
         _numeroDeMinas = numeroDeMinas;
         _conAyuda = conAyuda;
         _dificultad = dificultad;
+        _imagenDelJugador = imagenDelJugador;
     }
     return self;
 }
@@ -45,6 +48,8 @@
         _numeroDeMinas = [aDecoder decodeIntegerForKey:@"numeroDeMinas"];
         _conAyuda = [aDecoder decodeBoolForKey:@"conAyuda"];
         _dificultad = [aDecoder decodeIntegerForKey:@"dificultad"];
+        _imagenDelJugador = [aDecoder decodeObjectForKey:@"imagenDelJugador"];
+        
     }
     return self;
 }
@@ -58,6 +63,7 @@
     [aCoder encodeInteger:self.numeroDeMinas forKey:@"numeroDeMinas"];
     [aCoder encodeBool:self.conAyuda forKey:@"conAyuda"];
     [aCoder encodeInteger:self.dificultad forKey:@"dificultad"];
+    [aCoder encodeObject:self.imagenDelJugador forKey:@"imagenDelJugador"];
 }
 @end
 
