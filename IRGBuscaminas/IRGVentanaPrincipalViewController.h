@@ -19,6 +19,7 @@
 @property (weak, nonatomic) IBOutlet UIView *canvas;
 @property (nonatomic) IBOutlet UIView *vistaCanvasDeLasCeldas;
 
+@property (weak, nonatomic) IBOutlet UILabel *labelEstadoDelJuego;
 
 //botoneras
 @property (weak, nonatomic) IBOutlet UIView *vistaBarraDeBotones;
@@ -32,10 +33,11 @@
 @property (weak, nonatomic) IBOutlet UIButton *botonMostrarMejoresTiempoVertical;
 @property (weak, nonatomic) IBOutlet UIButton *botonPausar;
 @property (weak, nonatomic) IBOutlet UIButton *botonPausarVertical;
-@property (weak, nonatomic) IBOutlet UIView *vistaBotonJugarSecundario;
-@property (weak, nonatomic) IBOutlet UIView *vistaBotonJugarSecundarioVertical;
 @property (weak, nonatomic) IBOutlet UIButton *botonJugarSecundario;
 @property (weak, nonatomic) IBOutlet UIButton *botonJugarSecundarioVertical;
+
+@property (weak, nonatomic) IBOutlet UIView *vistaBotonJugarSecundario;
+@property (weak, nonatomic) IBOutlet UIView *vistaBotonJugarSecundarioVertical;
 
 
 @property (weak, nonatomic) IBOutlet UIView *vistaTiempoYMinas;
@@ -51,40 +53,35 @@
 @property (nonatomic) IRGGestorDeEstados * gestorDeEstados;
 
 
-
-
--(void) ponerBandera:(IRGCeldaViewController *)celda;
--(void) despejarCelda: (IRGCeldaViewController *)celda;
-- (void) propagaTouch:(IRGCeldaViewController *)celdaViewController;
-
-
+// delegados de Estados del juego
 - (void) iniciarJuego;
-- (void) mostrarMinas;
-- (void) ocultarMinas;
+- (void) delegadoMostrarMinas;
+- (void) ocultarTodasLasMinas;
+- (void) delegadoPausarJuego;
+- (void) delegadoReanudarJuego;
+- (void) delegadoMostrarVentanaDeConfiguracion;
+- (void) propagaTouch:(IRGCeldaViewController *)celdaViewController;
 - (void) actualizaMinasPendientes;
-
+- (NSInteger) calcularPorcentajeDeProgreso;
 - (void) acabarJuegoConError;
 - (void) acabarJuegoSinErrorSinAyuda;
 - (void) acabarJuegoSinErrorConAyuda;
-- (void) inicializarTiempoDeJuego;
-- (void) iniciarReloj;
-- (void) detenerRelor;
-- (void) mostrarImagenDeBloqueo:(NSString *)imagen;
-- (void) eliminarImagenDeBloqueo;
+- (void) mostrarBotonVentanaDeAyuda;
+- (void) establecerFrameDelCanvasDeLasCeldas;
+- (void) ocultarBotonVentanaDeAyuda;
 
--(void) mostrarVentanaDeConfiguracion;
 - (void) restaurarEstado;
 
 
-- (NSInteger) calcularPorcentajeDeProgreso;
+//delegados de Celdas
+- (void) ponerBandera:(IRGCeldaViewController *)celda;
+- (void) despejarCelda: (IRGCeldaViewController *)celda;
 
-- (void)cambiarTransparenciaDelMenu:(float) porcentajeDeTransparencia;
+// delegado de configuracion
+- (void) cambiarTransparenciaDelMenu:(float) porcentajeDeTransparencia;
+- (void) establecerImagenesDeLosBotones;
 
+// generales
 - (BOOL) iPadVertical;
-
-- (void) establecerFrameDelCanvasDeLasCeldas;
--(void) establecerImagenesDeLosBotones;
-
-
 
 @end

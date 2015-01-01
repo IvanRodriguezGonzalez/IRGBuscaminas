@@ -57,6 +57,7 @@
 }
 
 -(void) viewWillAppear:(BOOL)animated{
+    [super viewWillAppear:animated];
     if ([[IRGMejoresTiempos sharedMejoresTiempos].todosLosMejoresTiempos count]==0){
         self.botonBorrarHistorial.hidden = TRUE;
     }
@@ -112,7 +113,7 @@ heightForRowAtIndexPath:(NSIndexPath *)indexPath{
         celda.conAyuda.alpha = 1;
     }
     else{
-        celda.conAyuda.alpha = 0.05;
+        celda.conAyuda.alpha = 0.00;
     }
   
     if (mejorTiempo.imagenDelJugador!=nil){

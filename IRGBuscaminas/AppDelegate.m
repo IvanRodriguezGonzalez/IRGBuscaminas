@@ -20,6 +20,7 @@
     // Override point for customization after application launch.
 
     IRGPrincipalNavigationViewController * principalNavigationViewController = [[IRGPrincipalNavigationViewController alloc]init];
+    
     IRGVentanaPrincipalViewController * ventanaPrincipalViewController = [[IRGVentanaPrincipalViewController alloc] init];
     
     principalNavigationViewController.viewControllers = @[ventanaPrincipalViewController];

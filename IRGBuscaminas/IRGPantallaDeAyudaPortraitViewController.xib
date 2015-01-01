@@ -1,0 +1,129 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="6254" systemVersion="14B25" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES">
+    <dependencies>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="6247"/>
+        <capability name="Aspect ratio constraints" minToolsVersion="5.1"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="IRGPantallaDeAyudaPortraitViewController">
+            <connections>
+                <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
+                <outlet property="vistaPrincipal" destination="XYd-KF-hHE" id="eLx-DX-0Od"/>
+            </connections>
+        </placeholder>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <view clearsContextBeforeDrawing="NO" contentMode="scaleToFill" id="i5M-Pr-FkT">
+            <rect key="frame" x="0.0" y="0.0" width="600" height="892"/>
+            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+            <subviews>
+                <view contentMode="scaleToFill" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="XYd-KF-hHE" userLabel="vistaPrincipal">
+                    <rect key="frame" x="9" y="31" width="584" height="830"/>
+                    <subviews>
+                        <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" image="ayuda_portrait" translatesAutoresizingMaskIntoConstraints="NO" id="aLO-U2-f1K">
+                            <rect key="frame" x="-2" y="80" width="586" height="750"/>
+                            <constraints>
+                                <constraint firstAttribute="height" constant="750" id="9m3-3P-gt8"/>
+                                <constraint firstAttribute="width" secondItem="aLO-U2-f1K" secondAttribute="height" multiplier="25:32" id="S4p-Rl-s1E"/>
+                                <constraint firstAttribute="width" constant="420" id="tzl-cL-1ra"/>
+                            </constraints>
+                            <variation key="default">
+                                <mask key="constraints">
+                                    <exclude reference="tzl-cL-1ra"/>
+                                </mask>
+                            </variation>
+                        </imageView>
+                        <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="hfW-DC-goK" userLabel="vistaCabecera">
+                            <rect key="frame" x="0.0" y="0.0" width="586" height="80"/>
+                            <subviews>
+                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ZwH-VB-YDm">
+                                    <rect key="frame" x="219" y="11" width="144" height="57"/>
+                                    <fontDescription key="fontDescription" name="BradleyHandITCTT-Bold" family="Bradley Hand" pointSize="45"/>
+                                    <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                    <nil key="highlightedColor"/>
+                                </label>
+                                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="YgC-jE-sTp">
+                                    <rect key="frame" x="0.0" y="0.0" width="100" height="80"/>
+                                    <subviews>
+                                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="NRO-DU-Ohm">
+                                            <rect key="frame" x="15" y="5" width="70" height="70"/>
+                                            <constraints>
+                                                <constraint firstAttribute="width" secondItem="NRO-DU-Ohm" secondAttribute="height" multiplier="1:1" id="B4g-bj-oRO"/>
+                                                <constraint firstAttribute="width" secondItem="NRO-DU-Ohm" secondAttribute="height" multiplier="49:32" id="Zxo-rH-6WF"/>
+                                                <constraint firstAttribute="width" secondItem="NRO-DU-Ohm" secondAttribute="height" multiplier="1:1" id="oel-Af-w61"/>
+                                            </constraints>
+                                            <size key="titleShadowOffset" width="3" height="4"/>
+                                            <state key="normal" image="cancel">
+                                                <color key="titleColor" red="0.0" green="0.50196081400000003" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                                <color key="titleShadowColor" red="1" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                            </state>
+                                            <variation key="default">
+                                                <mask key="constraints">
+                                                    <exclude reference="B4g-bj-oRO"/>
+                                                    <exclude reference="Zxo-rH-6WF"/>
+                                                    <exclude reference="oel-Af-w61"/>
+                                                </mask>
+                                            </variation>
+                                            <connections>
+                                                <action selector="accionCerrarVentana:" destination="-1" eventType="touchUpInside" id="7TU-h1-iNu"/>
+                                            </connections>
+                                        </button>
+                                    </subviews>
+                                    <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                    <constraints>
+                                        <constraint firstAttribute="width" constant="100" id="0HE-wR-MiV"/>
+                                        <constraint firstAttribute="centerY" secondItem="NRO-DU-Ohm" secondAttribute="centerY" id="WwO-s1-rqz"/>
+                                        <constraint firstAttribute="centerX" secondItem="NRO-DU-Ohm" secondAttribute="centerX" id="wat-4q-pW3"/>
+                                    </constraints>
+                                </view>
+                            </subviews>
+                            <color key="backgroundColor" red="0.33333333329999998" green="0.5568627451" blue="0.83529411760000005" alpha="1" colorSpace="calibratedRGB"/>
+                            <constraints>
+                                <constraint firstAttribute="bottom" secondItem="YgC-jE-sTp" secondAttribute="bottom" id="1Lq-tp-Q2a"/>
+                                <constraint firstAttribute="centerY" secondItem="ZwH-VB-YDm" secondAttribute="centerY" id="FMq-h2-b62"/>
+                                <constraint firstAttribute="centerX" secondItem="ZwH-VB-YDm" secondAttribute="centerX" id="Hnc-Gy-30g"/>
+                                <constraint firstItem="YgC-jE-sTp" firstAttribute="leading" secondItem="hfW-DC-goK" secondAttribute="leading" id="Sgm-aO-GL8"/>
+                                <constraint firstAttribute="centerY" secondItem="ZwH-VB-YDm" secondAttribute="centerY" id="aM1-cA-X4m"/>
+                                <constraint firstAttribute="centerX" secondItem="ZwH-VB-YDm" secondAttribute="centerX" id="d9m-TP-Cd8"/>
+                                <constraint firstAttribute="height" constant="80" id="e8D-pj-8TY"/>
+                                <constraint firstItem="YgC-jE-sTp" firstAttribute="top" secondItem="hfW-DC-goK" secondAttribute="top" id="qN8-uy-5dQ"/>
+                            </constraints>
+                            <variation key="default">
+                                <mask key="constraints">
+                                    <exclude reference="FMq-h2-b62"/>
+                                    <exclude reference="d9m-TP-Cd8"/>
+                                </mask>
+                            </variation>
+                        </view>
+                    </subviews>
+                    <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    <constraints>
+                        <constraint firstAttribute="height" constant="830" id="2IP-W1-rnq"/>
+                        <constraint firstItem="hfW-DC-goK" firstAttribute="leading" secondItem="XYd-KF-hHE" secondAttribute="leading" id="LKY-D2-VcO"/>
+                        <constraint firstAttribute="centerX" secondItem="aLO-U2-f1K" secondAttribute="centerX" id="Ltk-MT-Dmt"/>
+                        <constraint firstAttribute="width" constant="586" id="WkG-fj-mJj"/>
+                        <constraint firstItem="aLO-U2-f1K" firstAttribute="top" secondItem="hfW-DC-goK" secondAttribute="bottom" id="Zme-XQ-GJ5"/>
+                        <constraint firstAttribute="trailing" secondItem="hfW-DC-goK" secondAttribute="trailing" id="nvH-sK-UXQ"/>
+                        <constraint firstItem="aLO-U2-f1K" firstAttribute="top" secondItem="XYd-KF-hHE" secondAttribute="top" id="nvI-h3-Eta"/>
+                        <constraint firstItem="hfW-DC-goK" firstAttribute="top" secondItem="XYd-KF-hHE" secondAttribute="top" id="wvy-2v-kn2"/>
+                    </constraints>
+                    <variation key="default">
+                        <mask key="constraints">
+                            <exclude reference="nvI-h3-Eta"/>
+                        </mask>
+                    </variation>
+                </view>
+            </subviews>
+            <color key="backgroundColor" white="0.66666666666666663" alpha="0.59999999999999998" colorSpace="calibratedWhite"/>
+            <constraints>
+                <constraint firstAttribute="centerX" secondItem="XYd-KF-hHE" secondAttribute="centerX" id="QNy-2z-DdO"/>
+                <constraint firstAttribute="centerY" secondItem="XYd-KF-hHE" secondAttribute="centerY" id="VY9-dM-7fg"/>
+            </constraints>
+            <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
+            <point key="canvasLocation" x="372" y="438"/>
+        </view>
+    </objects>
+    <resources>
+        <image name="ayuda_portrait" width="576" height="768"/>
+        <image name="cancel" width="70" height="70"/>
+    </resources>
+</document>

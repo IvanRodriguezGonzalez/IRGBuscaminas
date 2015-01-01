@@ -11,9 +11,11 @@
                 <outlet property="activarAyuda" destination="t0n-bi-KFb" id="iPE-rv-1W7"/>
                 <outlet property="imagen00" destination="Nm4-Pn-xVx" id="DCE-we-jRa"/>
                 <outlet property="imagen10" destination="M7D-Pr-iT3" id="UP8-6X-2LP"/>
+                <outlet property="mostrarPanttalaDeAyuda" destination="FRl-IF-Bbx" id="OBQ-er-MiA"/>
                 <outlet property="nivelDeDificultad" destination="4Xc-n2-lap" id="hvn-we-GWM"/>
                 <outlet property="porcentajeDeTransparenciaDeLasCeldas" destination="RMZ-W5-BIb" id="jO7-8X-tLu"/>
                 <outlet property="porcentajeDeTransparenciaDelMenu" destination="0bw-cI-d56" id="opY-ce-UcH"/>
+                <outlet property="segmentoElegirAccionDelTap" destination="Hrm-nX-YSM" id="rRf-h5-hPK"/>
                 <outlet property="sensibilidadDelTap" destination="XTk-vT-h1e" id="Nrw-zl-pLr"/>
                 <outlet property="stepperGrupoDeImagenDeLosBotones" destination="gFL-b3-EiB" id="ZKl-Os-NJW"/>
                 <outlet property="stepperNumeroDeMinas" destination="bTo-Yr-RdM" id="ap8-g2-1K8"/>
@@ -29,33 +31,33 @@
         </placeholder>
         <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
         <view clearsContextBeforeDrawing="NO" contentMode="scaleToFill" id="i5M-Pr-FkT">
-            <rect key="frame" x="0.0" y="0.0" width="372" height="548"/>
+            <rect key="frame" x="0.0" y="0.0" width="372" height="609"/>
             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
             <subviews>
                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="UU4-1G-79J">
-                    <rect key="frame" x="0.0" y="80" width="372" height="468"/>
+                    <rect key="frame" x="0.0" y="80" width="372" height="529"/>
                     <subviews>
-                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Ayuda" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="RvN-Cs-RgH">
-                            <rect key="frame" x="20" y="22" width="53" height="22"/>
-                            <fontDescription key="fontDescription" type="boldSystem" pointSize="18"/>
+                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Mostrar minas" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="RvN-Cs-RgH">
+                            <rect key="frame" x="20" y="22" width="131" height="25"/>
+                            <fontDescription key="fontDescription" name="BradleyHandITCTT-Bold" family="Bradley Hand" pointSize="20"/>
                             <color key="textColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
                             <nil key="highlightedColor"/>
                         </label>
                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Tap" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="WCl-6G-10C">
-                            <rect key="frame" x="20" y="58" width="30" height="22"/>
-                            <fontDescription key="fontDescription" type="boldSystem" pointSize="18"/>
+                            <rect key="frame" x="20" y="94" width="32" height="25"/>
+                            <fontDescription key="fontDescription" name="BradleyHandITCTT-Bold" family="Bradley Hand" pointSize="20"/>
                             <color key="textColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
                             <nil key="highlightedColor"/>
                         </label>
                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Nº de minas" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Dze-F0-qmg">
-                            <rect key="frame" x="20" y="132" width="101" height="22"/>
-                            <fontDescription key="fontDescription" type="boldSystem" pointSize="18"/>
+                            <rect key="frame" x="20" y="166" width="108" height="25"/>
+                            <fontDescription key="fontDescription" name="BradleyHandITCTT-Bold" family="Bradley Hand" pointSize="20"/>
                             <color key="textColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
                             <nil key="highlightedColor"/>
                         </label>
                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Tiempo de ayuda" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="YUw-qR-C99">
-                            <rect key="frame" x="20" y="170" width="145" height="22"/>
-                            <fontDescription key="fontDescription" type="boldSystem" pointSize="18"/>
+                            <rect key="frame" x="20" y="204" width="149" height="25"/>
+                            <fontDescription key="fontDescription" name="BradleyHandITCTT-Bold" family="Bradley Hand" pointSize="20"/>
                             <color key="textColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
                             <nil key="highlightedColor"/>
                         </label>
@@ -68,13 +70,13 @@
                             <color key="tintColor" red="0.50196081399917603" green="0.50196081399917603" blue="0.50196081399917603" alpha="1" colorSpace="calibratedRGB"/>
                         </segmentedControl>
                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Nivel" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ZlR-je-caz">
-                            <rect key="frame" x="20" y="94" width="42" height="22"/>
-                            <fontDescription key="fontDescription" type="boldSystem" pointSize="18"/>
+                            <rect key="frame" x="20" y="130" width="47" height="25"/>
+                            <fontDescription key="fontDescription" name="BradleyHandITCTT-Bold" family="Bradley Hand" pointSize="20"/>
                             <color key="textColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
                             <nil key="highlightedColor"/>
                         </label>
                         <segmentedControl opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="plain" selectedSegmentIndex="0" translatesAutoresizingMaskIntoConstraints="NO" id="4Xc-n2-lap">
-                            <rect key="frame" x="194" y="92" width="158" height="29"/>
+                            <rect key="frame" x="194" y="128" width="158" height="29"/>
                             <segments>
                                 <segment title="Facil"/>
                                 <segment title="Medio"/>
@@ -83,7 +85,7 @@
                             <color key="tintColor" red="0.50196081400000003" green="0.50196081400000003" blue="0.50196081400000003" alpha="1" colorSpace="calibratedRGB"/>
                         </segmentedControl>
                         <slider opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" value="0.5" minValue="0.0" maxValue="1" translatesAutoresizingMaskIntoConstraints="NO" id="RMZ-W5-BIb">
-                            <rect key="frame" x="270" y="242" width="84" height="31"/>
+                            <rect key="frame" x="270" y="278" width="84" height="31"/>
                             <color key="tintColor" red="0.50196081400000003" green="0.50196081400000003" blue="0.50196081400000003" alpha="1" colorSpace="calibratedRGB"/>
                             <constraints>
                                 <constraint firstAttribute="height" constant="30" id="ekS-I6-8Xd"/>
@@ -94,7 +96,7 @@
                             </connections>
                         </slider>
                         <slider opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" value="0.5" minValue="0.0" maxValue="1" translatesAutoresizingMaskIntoConstraints="NO" id="XTk-vT-h1e">
-                            <rect key="frame" x="270" y="280" width="84" height="31"/>
+                            <rect key="frame" x="270" y="316" width="84" height="31"/>
                             <color key="tintColor" red="0.50196081400000003" green="0.50196081400000003" blue="0.50196081400000003" alpha="1" colorSpace="calibratedRGB"/>
                             <constraints>
                                 <constraint firstAttribute="width" constant="80" id="3V9-XV-LLV"/>
@@ -102,25 +104,25 @@
                             </constraints>
                         </slider>
                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Transparencia de las celdas" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="2wP-cV-mVP">
-                            <rect key="frame" x="20" y="246" width="232" height="22"/>
-                            <fontDescription key="fontDescription" type="boldSystem" pointSize="18"/>
+                            <rect key="frame" x="20" y="280" width="241" height="25"/>
+                            <fontDescription key="fontDescription" name="BradleyHandITCTT-Bold" family="Bradley Hand" pointSize="20"/>
                             <color key="textColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
                             <nil key="highlightedColor"/>
                         </label>
-                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Transparencia del menu" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="v27-Sb-sBy">
-                            <rect key="frame" x="20" y="208" width="199" height="22"/>
-                            <fontDescription key="fontDescription" type="boldSystem" pointSize="18"/>
+                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Transparencia del menú" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="v27-Sb-sBy">
+                            <rect key="frame" x="20" y="242" width="214" height="25"/>
+                            <fontDescription key="fontDescription" name="BradleyHandITCTT-Bold" family="Bradley Hand" pointSize="20"/>
                             <color key="textColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
                             <nil key="highlightedColor"/>
                         </label>
                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Sensibilidad del Tap" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="trW-4S-NYl">
-                            <rect key="frame" x="20" y="284" width="167" height="22"/>
-                            <fontDescription key="fontDescription" type="boldSystem" pointSize="18"/>
+                            <rect key="frame" x="20" y="318" width="182" height="25"/>
+                            <fontDescription key="fontDescription" name="BradleyHandITCTT-Bold" family="Bradley Hand" pointSize="20"/>
                             <color key="textColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
                             <nil key="highlightedColor"/>
                         </label>
                         <segmentedControl opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="plain" selectedSegmentIndex="0" translatesAutoresizingMaskIntoConstraints="NO" id="Hrm-nX-YSM">
-                            <rect key="frame" x="143" y="56" width="209" height="29"/>
+                            <rect key="frame" x="143" y="92" width="209" height="29"/>
                             <segments>
                                 <segment title="Poner bandera"/>
                                 <segment title="Despejar celda"/>
@@ -128,7 +130,7 @@
                             <color key="tintColor" red="0.50196081399917603" green="0.50196081399917603" blue="0.50196081399917603" alpha="1" colorSpace="calibratedRGB"/>
                         </segmentedControl>
                         <slider opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" value="0.5" minValue="0.0" maxValue="1" translatesAutoresizingMaskIntoConstraints="NO" id="0bw-cI-d56">
-                            <rect key="frame" x="270" y="204" width="84" height="31"/>
+                            <rect key="frame" x="270" y="240" width="84" height="31"/>
                             <color key="tintColor" red="0.50196081400000003" green="0.50196081400000003" blue="0.50196081400000003" alpha="1" colorSpace="calibratedRGB"/>
                             <constraints>
                                 <constraint firstAttribute="height" constant="30" id="dK0-BJ-reo"/>
@@ -139,20 +141,20 @@
                             </connections>
                         </slider>
                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Imagenes del menú" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="OpK-MT-BZL">
-                            <rect key="frame" x="20" y="322" width="163" height="22"/>
-                            <fontDescription key="fontDescription" type="boldSystem" pointSize="18"/>
+                            <rect key="frame" x="20" y="356" width="171" height="25"/>
+                            <fontDescription key="fontDescription" name="BradleyHandITCTT-Bold" family="Bradley Hand" pointSize="20"/>
                             <color key="textColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
                             <nil key="highlightedColor"/>
                         </label>
                         <stepper opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" contentHorizontalAlignment="center" contentVerticalAlignment="center" maximumValue="100" translatesAutoresizingMaskIntoConstraints="NO" id="gFL-b3-EiB">
-                            <rect key="frame" x="258" y="318" width="94" height="29"/>
+                            <rect key="frame" x="258" y="354" width="94" height="29"/>
                             <color key="tintColor" red="0.50196081400000003" green="0.50196081400000003" blue="0.50196081400000003" alpha="1" colorSpace="calibratedRGB"/>
                             <connections>
                                 <action selector="cambiarGrupoDeImagenDelMenu:" destination="-1" eventType="valueChanged" id="WOd-3b-SmS"/>
                             </connections>
                         </stepper>
                         <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="GS1-eG-WUw">
-                            <rect key="frame" x="318" y="128" width="34" height="30"/>
+                            <rect key="frame" x="318" y="164" width="34" height="30"/>
                             <color key="backgroundColor" white="1" alpha="0.0" colorSpace="calibratedWhite"/>
                             <constraints>
                                 <constraint firstAttribute="height" constant="30" id="ED5-wl-zQr"/>
@@ -160,14 +162,14 @@
                             </constraints>
                         </view>
                         <stepper opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" contentHorizontalAlignment="center" contentVerticalAlignment="center" maximumValue="100" translatesAutoresizingMaskIntoConstraints="NO" id="bTo-Yr-RdM">
-                            <rect key="frame" x="216" y="128" width="94" height="29"/>
+                            <rect key="frame" x="216" y="164" width="94" height="29"/>
                             <color key="tintColor" red="0.50196081400000003" green="0.50196081400000003" blue="0.50196081400000003" alpha="1" colorSpace="calibratedRGB"/>
                             <connections>
                                 <action selector="cambiarNumeroDeMinas:" destination="-1" eventType="valueChanged" id="BAL-q3-cKz"/>
                             </connections>
                         </stepper>
                         <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="szk-hd-NSv">
-                            <rect key="frame" x="318" y="166" width="34" height="30"/>
+                            <rect key="frame" x="318" y="202" width="34" height="30"/>
                             <color key="backgroundColor" white="1" alpha="0.0" colorSpace="calibratedWhite"/>
                             <constraints>
                                 <constraint firstAttribute="width" constant="34" id="bXh-7g-aBo"/>
@@ -175,14 +177,14 @@
                             </constraints>
                         </view>
                         <stepper opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" contentHorizontalAlignment="center" contentVerticalAlignment="center" maximumValue="100" translatesAutoresizingMaskIntoConstraints="NO" id="gHt-iT-2AK">
-                            <rect key="frame" x="216" y="166" width="94" height="29"/>
+                            <rect key="frame" x="216" y="202" width="94" height="29"/>
                             <color key="tintColor" red="0.50196081400000003" green="0.50196081400000003" blue="0.50196081400000003" alpha="1" colorSpace="calibratedRGB"/>
                             <connections>
                                 <action selector="cambiarTiempoDeAyuda:" destination="-1" eventType="valueChanged" id="THQ-Td-ScT"/>
                             </connections>
                         </stepper>
                         <view contentMode="scaleToFill" verticalHuggingPriority="248" translatesAutoresizingMaskIntoConstraints="NO" id="0dW-gK-25Q" userLabel="fondos">
-                            <rect key="frame" x="0.0" y="338" width="372" height="130"/>
+                            <rect key="frame" x="0.0" y="399" width="372" height="130"/>
                             <subviews>
                                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="zlo-w3-anq" userLabel="fondo00">
                                     <rect key="frame" x="20" y="20" width="162" height="90"/>
@@ -228,10 +230,25 @@
                                 <constraint firstItem="vcn-5G-AQR" firstAttribute="top" secondItem="0dW-gK-25Q" secondAttribute="top" constant="20" symbolic="YES" id="nJg-mU-2Ej"/>
                             </constraints>
                         </view>
+                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Pantalla de ayuda" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="HKF-80-0GI">
+                            <rect key="frame" x="20" y="58" width="163" height="25"/>
+                            <fontDescription key="fontDescription" name="BradleyHandITCTT-Bold" family="Bradley Hand" pointSize="20"/>
+                            <color key="textColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
+                            <nil key="highlightedColor"/>
+                        </label>
+                        <segmentedControl opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="plain" selectedSegmentIndex="0" translatesAutoresizingMaskIntoConstraints="NO" id="FRl-IF-Bbx">
+                            <rect key="frame" x="287" y="56" width="65" height="29"/>
+                            <segments>
+                                <segment title="Si"/>
+                                <segment title="No"/>
+                            </segments>
+                            <color key="tintColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                        </segmentedControl>
                     </subviews>
                     <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                     <constraints>
                         <constraint firstItem="YUw-qR-C99" firstAttribute="centerY" secondItem="gHt-iT-2AK" secondAttribute="centerY" id="16f-gg-Ww7"/>
+                        <constraint firstItem="Hrm-nX-YSM" firstAttribute="top" secondItem="FRl-IF-Bbx" secondAttribute="bottom" constant="8" symbolic="YES" id="18N-r1-koy"/>
                         <constraint firstAttribute="trailing" secondItem="0dW-gK-25Q" secondAttribute="trailing" id="2UK-bu-Zf4"/>
                         <constraint firstItem="t0n-bi-KFb" firstAttribute="top" secondItem="UU4-1G-79J" secondAttribute="top" constant="20" symbolic="YES" id="3rY-iL-Nti"/>
                         <constraint firstItem="2wP-cV-mVP" firstAttribute="centerY" secondItem="RMZ-W5-BIb" secondAttribute="centerY" id="4z5-1h-xb2"/>
@@ -247,6 +264,7 @@
                         <constraint firstItem="OpK-MT-BZL" firstAttribute="leading" secondItem="UU4-1G-79J" secondAttribute="leading" constant="20" symbolic="YES" id="F1E-SU-VWu"/>
                         <constraint firstAttribute="trailing" secondItem="Hrm-nX-YSM" secondAttribute="trailing" constant="20" symbolic="YES" id="G5n-vA-PfA"/>
                         <constraint firstAttribute="trailing" secondItem="t0n-bi-KFb" secondAttribute="trailing" constant="20" symbolic="YES" id="GAC-fC-IfO"/>
+                        <constraint firstItem="FRl-IF-Bbx" firstAttribute="centerY" secondItem="HKF-80-0GI" secondAttribute="centerY" id="GFo-se-rch"/>
                         <constraint firstItem="bTo-Yr-RdM" firstAttribute="centerY" secondItem="GS1-eG-WUw" secondAttribute="centerY" id="Hc1-Ej-1Ia"/>
                         <constraint firstItem="v27-Sb-sBy" firstAttribute="leading" secondItem="UU4-1G-79J" secondAttribute="leading" constant="20" symbolic="YES" id="IcY-dT-OLy"/>
                         <constraint firstItem="gFL-b3-EiB" firstAttribute="top" secondItem="RMZ-W5-BIb" secondAttribute="bottom" constant="8" symbolic="YES" id="JBl-jr-6vs"/>
@@ -264,7 +282,9 @@
                         <constraint firstAttribute="width" constant="400" id="XOJ-x2-IUq"/>
                         <constraint firstItem="szk-hd-NSv" firstAttribute="centerY" secondItem="gHt-iT-2AK" secondAttribute="centerY" id="YgF-Fe-ZzK"/>
                         <constraint firstItem="XTk-vT-h1e" firstAttribute="centerY" secondItem="trW-4S-NYl" secondAttribute="centerY" id="YnX-Q8-wOS"/>
+                        <constraint firstItem="FRl-IF-Bbx" firstAttribute="top" secondItem="t0n-bi-KFb" secondAttribute="bottom" constant="8" symbolic="YES" id="Z1Z-JC-61i"/>
                         <constraint firstItem="4Xc-n2-lap" firstAttribute="top" secondItem="Hrm-nX-YSM" secondAttribute="bottom" constant="8" symbolic="YES" id="ZbQ-zx-GYb"/>
+                        <constraint firstItem="RvN-Cs-RgH" firstAttribute="leading" secondItem="HKF-80-0GI" secondAttribute="leading" id="ZlC-tH-Ymg"/>
                         <constraint firstItem="YUw-qR-C99" firstAttribute="leading" secondItem="UU4-1G-79J" secondAttribute="leading" constant="20" symbolic="YES" id="aQh-uw-N7T"/>
                         <constraint firstItem="0dW-gK-25Q" firstAttribute="leading" secondItem="UU4-1G-79J" secondAttribute="leading" id="b7T-D4-5Zs"/>
                         <constraint firstItem="GS1-eG-WUw" firstAttribute="leading" secondItem="bTo-Yr-RdM" secondAttribute="trailing" constant="8" symbolic="YES" id="bxi-J2-8Ox"/>
@@ -279,6 +299,7 @@
                         <constraint firstItem="trW-4S-NYl" firstAttribute="leading" secondItem="UU4-1G-79J" secondAttribute="leading" constant="20" symbolic="YES" id="nX6-YK-pe5"/>
                         <constraint firstItem="ZlR-je-caz" firstAttribute="baseline" secondItem="4Xc-n2-lap" secondAttribute="baseline" id="nci-5e-knW"/>
                         <constraint firstItem="bTo-Yr-RdM" firstAttribute="top" secondItem="4Xc-n2-lap" secondAttribute="bottom" constant="8" symbolic="YES" id="nmD-Sk-ABx"/>
+                        <constraint firstItem="t0n-bi-KFb" firstAttribute="trailing" secondItem="FRl-IF-Bbx" secondAttribute="trailing" id="nmi-jp-eyl"/>
                         <constraint firstAttribute="trailing" secondItem="gFL-b3-EiB" secondAttribute="trailing" constant="20" symbolic="YES" id="oAL-uS-4BT"/>
                         <constraint firstItem="bTo-Yr-RdM" firstAttribute="leading" secondItem="GS1-eG-WUw" secondAttribute="trailing" constant="8" symbolic="YES" id="oMB-g5-7oc"/>
                         <constraint firstAttribute="trailing" secondItem="4Xc-n2-lap" secondAttribute="trailing" constant="20" symbolic="YES" id="p4O-4d-ojp"/>
@@ -297,17 +318,18 @@
                             <exclude reference="XOJ-x2-IUq"/>
                             <exclude reference="yUc-8k-Dr2"/>
                             <exclude reference="Nh1-ep-Ae6"/>
+                            <exclude reference="Jg3-km-R4i"/>
                             <exclude reference="Nzy-wg-51V"/>
                             <exclude reference="7kF-hG-FDB"/>
                             <exclude reference="VeC-ji-ss5"/>
                             <exclude reference="oMB-g5-7oc"/>
                             <exclude reference="lcl-oW-jrq"/>
-                            <exclude reference="P8W-ub-itc"/>
-                            <exclude reference="kof-O0-LKT"/>
                             <exclude reference="ETb-yC-ZKs"/>
                             <exclude reference="pxA-qe-nzA"/>
+                            <exclude reference="kof-O0-LKT"/>
                             <exclude reference="YgF-Fe-ZzK"/>
                             <exclude reference="5ZP-P9-hNa"/>
+                            <exclude reference="P8W-ub-itc"/>
                             <exclude reference="JBl-jr-6vs"/>
                         </mask>
                     </variation>
@@ -444,7 +466,7 @@
                     <exclude reference="hal-5G-dF9"/>
                 </mask>
             </variation>
-            <point key="canvasLocation" x="-749" y="-306"/>
+            <point key="canvasLocation" x="-792" y="-290.5"/>
         </view>
     </objects>
     <resources>

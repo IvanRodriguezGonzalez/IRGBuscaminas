@@ -27,8 +27,6 @@
     CGRect  separador2 = CGRectMake(posicionX,posicionYSeparador2,anchoSeparador,altoSeparador);
     UIBezierPath * pathSeparador2 = [UIBezierPath bezierPathWithRoundedRect:separador2 cornerRadius:10];
     
-    
-    
     [self.colorDelBordeDelSeparador setStroke];
     [self.colorDeRellenoDelSeparador setFill];
     

@@ -34,7 +34,6 @@
     return false;
 }
 
-
 # pragma mark - Metodos Publicos de activar y desactivar botones
 
 -(void) activarBotonJugarSecundario{
@@ -87,9 +86,7 @@
     self.delegado.botonSettingsVertical.enabled = false;
 }
 
-
 -(void) mostrarBarraDeBotones{
-    
     if ([self iPadVertical]){
         self.delegado.vistaBarraDeBotones.hidden = NO;
         self.delegado.vistaBarraDeBotonesVertical.hidden= YES;
@@ -116,7 +113,6 @@
 }
 
 - (BOOL) iPadVertical{
-    
     UIInterfaceOrientation newOrientation =  [UIApplication sharedApplication].statusBarOrientation;
     if ((newOrientation == UIInterfaceOrientationLandscapeLeft || newOrientation == UIInterfaceOrientationLandscapeRight)){
         return false;
@@ -129,7 +125,6 @@
 -(void) mostrarIndicadorModoAyuda{
     self.delegado.vistaModoAyuda.hidden = NO;
 }
-
 
 -(void) ocultarIndicadorModoAyuda{
     self.delegado.vistaModoAyuda.hidden = YES;

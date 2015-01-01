@@ -50,6 +50,7 @@
             _tapPoneBandera = TAP_PONE_BANDERA_POR_DEFECTO;
             _sensibilidadDelTap = SENSIBILIDAD_TAP_POR_DEFECTO;
             _grupoDeImagenesDeLosBotones = GRUPO_DE_IMAGENES_DE_LOS_BOTONES_POR_DEFECTO;
+            _mostrarPantallaDeAyuda = MOSTRAR_PANTALLA_DE_AYUDA_POR_DEFECTO;
         }
     }
     return self;
@@ -127,6 +128,7 @@
     [aCoder encodeBool:self.tapPoneBandera forKey:@"tapPoneBandera"];
     [aCoder encodeFloat:self.sensibilidadDelTap forKey:@"sensibilidadDelTap"];
     [aCoder encodeInteger:self.grupoDeImagenesDeLosBotones forKey:@"grupoDeImagenesDeLosBotones"];
+    [aCoder encodeBool:self.mostrarPantallaDeAyuda forKey:@"mostrarPantallaDeAyuda"];
 }
 
 -(instancetype) initWithCoder:(NSCoder *)aDecoder{
@@ -141,6 +143,7 @@
         _tapPoneBandera = [aDecoder decodeBoolForKey:@"tapPoneBandera"];
         _sensibilidadDelTap = [aDecoder decodeFloatForKey:@"sensibilidadDelTap"];
         _grupoDeImagenesDeLosBotones = [aDecoder decodeIntegerForKey:@"grupoDeImagenesDeLosBotones"];
+        _mostrarPantallaDeAyuda = [aDecoder decodeBoolForKey:@"mostrarPantallaDeAyuda"];
     }
     return self;
 }

@@ -49,10 +49,6 @@
 
 - (void) ocultarVistaTiempoYMinas;
 
-- (void) bloquearBotones;
-
-- (void) desbloquearBotones;
-
 - (void) mostrarIndicadorModoAyuda;
 
 - (void) ocultarIndicadorModoAyuda;

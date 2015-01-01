@@ -28,11 +28,14 @@
 #define TAP_PONE_BANDERA_POR_DEFECTO true;
 #define SENSIBILIDAD_TAP_POR_DEFECTO .2
 #define GRUPO_DE_IMAGENES_DE_LOS_BOTONES_POR_DEFECTO 1
+#define MOSTRAR_PANTALLA_DE_AYUDA_POR_DEFECTO TRUE
 
 //Colores
 #define COLOR_DE_RELLENO_DE_LA_CELDA_PROCESADA [[UIColor alloc]initWithRed:.8 green:.8 blue:.8 alpha:1]
 
 #define COLOR_DE_RELLENO_DE_LA_CELDA_NO_PROCESADA [[UIColor alloc]initWithRed:.7 green:.7 blue:.7 alpha:1]
+
+//#define COLOR_DE_RELLENO_DE_LA_CELDA_NO_PROCESADA [[UIColor alloc]initWithRed:.7 green:.7 blue:.7 alpha:1]
 #define COLOR_DE_RELLENO_DE_LA_BARRA_DE_BOTONES [UIColor lightGrayColor]
 
 #define DESPLAZAMIENTO_X_DEL_CANVAS_DE_CELDAS_EN_MODO_HORIZONTAL 50

@@ -25,6 +25,8 @@
 #pragma mark - Propiedades privadas
 
 @property (weak, nonatomic) IBOutlet UISegmentedControl *activarAyuda;
+@property (weak, nonatomic) IBOutlet UISegmentedControl *mostrarPanttalaDeAyuda;
+
 @property (weak, nonatomic) IBOutlet UISegmentedControl *nivelDeDificultad;
 @property (weak, nonatomic) IBOutlet UISlider *porcentajeDeTransparenciaDeLasCeldas;
 
@@ -107,6 +109,12 @@
     }
     self.nivelDeDificultad.selectedSegmentIndex =[IRGSettings sharedSettings].dificultad-1;
     self.porcentajeDeTransparenciaDeLasCeldas.value = 1-[IRGSettings sharedSettings].porcerntajeDeTransparenciaDeLasCeldas;
+    if ([IRGSettings sharedSettings].mostrarPantallaDeAyuda){
+        self.mostrarPanttalaDeAyuda.selectedSegmentIndex =0;
+    }
+    else{
+        self.mostrarPanttalaDeAyuda.selectedSegmentIndex = 1;
+    }
     if ([IRGSettings sharedSettings].tapPoneBandera){
         self.accionTap.selectedSegmentIndex=0;
     }
@@ -146,6 +154,15 @@
 - (IBAction)guardarResultados:(UIButton *)sender {
     [IRGSettings sharedSettings].numeroDeMinas = self.stepperNumeroDeMinas.value;
     [IRGSettings sharedSettings].tiempoDeAyuda = self.stepperTiempoDeAyuda.value;
+    
+    if (self.mostrarPanttalaDeAyuda.selectedSegmentIndex ==0){
+        [IRGSettings sharedSettings].mostrarPantallaDeAyuda = TRUE;
+        [self.senderViewController mostrarBotonVentanaDeAyuda];
+    }
+    else {
+        [IRGSettings sharedSettings].mostrarPantallaDeAyuda = false;
+        [self.senderViewController ocultarBotonVentanaDeAyuda];
+    }
     if (self.activarAyuda.selectedSegmentIndex == 0){
     [IRGSettings sharedSettings].activarAyuda  = true ;
     }

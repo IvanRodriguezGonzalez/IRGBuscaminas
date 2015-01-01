@@ -13,6 +13,7 @@
 #pragma mark - Propiedades publicas
 @property (nonatomic) IRGVentanaPrincipalViewController *senderViewController;
 @property (weak, nonatomic) IBOutlet UIView *vistaDatos;
+@property (weak, nonatomic) IBOutlet UISegmentedControl *segmentoElegirAccionDelTap;
 
 
 @end

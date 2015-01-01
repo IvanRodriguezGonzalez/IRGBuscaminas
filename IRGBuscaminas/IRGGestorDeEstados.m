@@ -13,9 +13,6 @@
     @property (nonatomic) IRGVentanaPrincipalViewController *delegado;
     @property (nonatomic) id<IRGEstadosDelJuego> estadoDelJuego;
     @property (nonatomic) id<IRGEstadosDelJuego> antiguoEstadoDelJuego;
-
-
-
 @end
 
 #pragma mark -
@@ -45,6 +42,7 @@
         self.estadoDelJuegoEnPausa = [[IRGEstadoDelJuegoEnPausa alloc] initConGestorDeEstados:self delegado:self.delegado];
         
         self.estadoDelJuegoConfiguracion = [[IRGEstadoDelJuegoConfiguracion alloc]initConGestorDeEstados:self delegado:self.delegado];
+        self.estadoDelJuegoMostrandoAyuda = [[IRGEstadoDelJuegoMostrandoAyuda alloc]initConGestorDeEstados:self delegado:self.delegado];
         
         self.estadoDelJuego = self.estadoDelJuegoInicio;
         self.antiguoEstadoDelJuego = self.estadoDelJuegoInicio;
@@ -90,6 +88,16 @@
     [self.estadoDelJuego accionConfigurar];
 }
 
+- (void) accionMostrarVentanaDeAyuda{
+    [self.estadoDelJuego accionMostrarVentanaDeAyuda];
+}
+
+-(void) accionOcultarVentanaDeAyuda{
+    [self.estadoDelJuego accionOcultarVentanaDeAyuda];
+}
+-(void) accionRotarPantalla{
+    [self.estadoDelJuego accionRotarPantalla];
+}
 
 #pragma mark - Accesors
 

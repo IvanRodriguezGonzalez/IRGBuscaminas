@@ -12,10 +12,6 @@
 
 #define GROSOR_DEL_BORDE_DE_LA_CELDA_PROCESADA 1
 #define GROSOR_DEL_BORDE_DE_LA_CELDA_NO_PROCESADA 3
-/*
-#define COLOR_DEL_BORDE_OSCURO [[UIColor alloc] initWithRed:.5 green:.5 blue:.5 alpha:1]
-#define COLOR_DEL_BORDE_CLARO [[UIColor alloc] initWithRed:.9 green:.9 blue:.9 alpha:1]
-*/
 #define COLOR_DEL_BORDE_OSCURO [UIColor grayColor]
 #define COLOR_DEL_BORDE_CLARO [[UIColor alloc] initWithRed:.9 green:.9 blue:.9 alpha:1]
 #pragma mark -
@@ -40,13 +36,15 @@
 
         CGRect frameTextoDeLaCelda = CGRectMake(0 ,
                                                 0,
-                                                self.frame.size.width-4,
-                                                self.frame.size.height-4);
+                                                self.frame.size.width*.8,
+                                                self.frame.size.height*.8);
         
         UILabel * textoDeLaCelda = [[UILabel alloc] initWithFrame:frameTextoDeLaCelda];
         textoDeLaCelda.center = CGPointMake(self.frame.size.width/2,self.frame.size.height/2);
-        textoDeLaCelda.font = [UIFont  systemFontOfSize:self.frame.size.height-4];
-        textoDeLaCelda.textAlignment = NSTextAlignmentCenter;
+        
+        textoDeLaCelda.font = [UIFont fontWithName:@"Bradley Hand" size:self.frame.size.height];
+                textoDeLaCelda.textAlignment = NSTextAlignmentCenter;
+        
         [self addSubview:textoDeLaCelda];
         self.numeroDeMinasAlrededor = textoDeLaCelda;
         

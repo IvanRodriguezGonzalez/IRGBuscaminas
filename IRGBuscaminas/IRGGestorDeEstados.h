@@ -20,6 +20,7 @@
 #import "IRGEstadoDelJuegoEnPausa.h"
 
 #import "IRGEstadoDelJuegoConfiguracion.h"
+#import "IRGEstadoDelJuegoMostrandoAyuda.h"
 
 
 @interface IRGGestorDeEstados : NSObject<IRGEstadosDelJuego>
@@ -34,6 +35,7 @@
 @property (nonatomic) IRGEstadoDelJuegoFinalizadoConError* estadoDelJuegoFinalizadoConError;
 @property (nonatomic) IRGEstadoDelJuegoEnPausa* estadoDelJuegoEnPausa;
 @property (nonatomic) IRGEstadoDelJuegoConfiguracion* estadoDelJuegoConfiguracion;
+@property (nonatomic) IRGEstadoDelJuegoMostrandoAyuda *estadoDelJuegoMostrandoAyuda;
 
 
 #pragma mark - Inicializadores

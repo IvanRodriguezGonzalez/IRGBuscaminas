@@ -49,6 +49,8 @@
 #pragma mark - Metodos del protocolo
 
 - (void) establecerBotones{
+    self.delegado.labelEstadoDelJuego.text=@"jugando...";
+
     if ([IRGSettings sharedSettings].activarAyuda){
         [self.delegado.gestionarBotonera activarBotonMostrarMinas];
     }
@@ -73,9 +75,7 @@
 }
 
 -(void) accionMostrarMinas{
-    [self.delegado detenerRelor];
-    [self.delegado inicializarTiempoDeJuego];
-    [self.delegado mostrarMinas];
+    [self.delegado delegadoMostrarMinas];
     [self.gestorDeEstados establecerEstado:self.gestorDeEstados.estadoDelJuegoAyuda];
 }
 
@@ -123,9 +123,9 @@
 }
 
 -(void) accionPausar{
-    [self.delegado.reloj invalidate];
+    [self.delegado delegadoPausarJuego];
     [self.gestorDeEstados establecerEstado:self.gestorDeEstados.estadoDelJuegoEnPausa];
-    [self.delegado mostrarImagenDeBloqueo:@"imagenDeBloqueo"];
+
 }
 
 -(void) mostrarYOcultarBotones{
@@ -138,8 +138,15 @@
 }
 
 -(void) accionConfigurar{
-    [self.delegado mostrarVentanaDeConfiguracion];
+    [self.gestorDeEstados establecerEstado:self.gestorDeEstados.estadoDelJuegoConfiguracion];
+    [self.delegado delegadoMostrarVentanaDeConfiguracion];
 }
-
-
+- (void) accionMostrarVentanaDeAyuda{
+    [NSException exceptionWithName:@"accion incorrecta" reason:@"El estado no la soporta" userInfo:nil];
+}
+-(void) accionOcultarVentanaDeAyuda{
+    [NSException exceptionWithName:@"accion incorrecta" reason:@"El estado no la soporta" userInfo:nil];
+};
+-(void) accionRotarPantalla{
+}
 @end

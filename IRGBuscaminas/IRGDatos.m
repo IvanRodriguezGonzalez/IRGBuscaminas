@@ -69,8 +69,8 @@
 
 - (BOOL) tieneMinasAlrededor:(IRGCeldaViewController *) celdaViewcontroller{
     
-    NSArray * celdasAlrededor = [[NSMutableArray alloc] init];
-    NSArray *celdasAlrededorSinMinas = [[NSMutableArray alloc] init];
+    NSArray * celdasAlrededor ;
+    NSArray *celdasAlrededorSinMinas ;
     celdasAlrededor = [[IRGDatos sharedDatos] celdasAlrededorDe:celdaViewcontroller];
     celdasAlrededorSinMinas = [[IRGDatos sharedDatos]celdasSinMinasAlrededorDe:celdaViewcontroller incluyendoEsquinas:true];
     return ([celdasAlrededor count] == [celdasAlrededorSinMinas count]);

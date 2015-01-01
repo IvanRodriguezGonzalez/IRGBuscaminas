@@ -32,7 +32,8 @@
 #pragma mark - Inicializadores
 
 -(instancetype)init{
-    return [self initConNumeroDeFila:0 numeroDeColumna:0 conDelegado:nil];
+    [NSException exceptionWithName:@"Invalid init" reason:@"Use initConSender" userInfo:nil];
+    return FALSE;
 }
 
 //designated initializer
@@ -201,10 +202,6 @@
     }
 }
 
-- (void) ocultarMina {
-    [self  dibujarEstado];
-}
-
 -(void) dibujarEstado{
     UIImage *imagenConBandera = [UIImage imageNamed:@"bandera"];
     UIImage *imagenConDuda = [UIImage imageNamed:@"duda"];
@@ -232,14 +229,6 @@
             break;
     }
 }
-
--(void) ocultarCelda{
-    self.celda.backgroundColor = [UIColor greenColor];
-    self.celda.numeroDeMinasAlrededor.text = @"";
-    self.celda.imagenDeMina.image = [UIImage imageNamed:@"candado"];
-    [self.celda setNeedsDisplay];
-}
-
 
 # pragma mark - Auxiliares
 

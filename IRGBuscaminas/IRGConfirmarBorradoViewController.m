@@ -19,6 +19,7 @@
 #pragma mark - overrides
 
 -(void) viewDidLoad{
+    [super viewDidLoad];
     [[NSNotificationCenter defaultCenter] addObserver:self
                                              selector:@selector(deviceOrientationDidChange:)
                                                  name:UIDeviceOrientationDidChangeNotification
@@ -27,9 +28,7 @@
     self.vistaVentanaDeAviso.layer.borderColor = [UIColor blackColor].CGColor;
     self.vistaVentanaDeAviso.layer.cornerRadius = 10;
     self.vistaVentanaDeAviso.layer.masksToBounds = YES;
-
 }
-
 
 #pragma mark - Navigation
 - (IBAction)accionCerrarVentana:(id)sender {
@@ -40,7 +39,6 @@
     [[IRGMejoresTiempos sharedMejoresTiempos] borrarMejoresTiempos];
     [self.view removeFromSuperview];
     [self.sender cerrarVentana];
-
 }
 
 -(void) deviceOrientationDidChange:(NSNotification *)sender{

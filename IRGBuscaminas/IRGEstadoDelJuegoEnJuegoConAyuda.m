@@ -46,6 +46,8 @@
 #pragma mark - Metodos del protocolo
 
 - (void) establecerBotones{
+    self.delegado.labelEstadoDelJuego.text=@"jugando (con ayuda)";
+
     [self.delegado.gestionarBotonera activarBotonMostrarMinas];
     [self.delegado.gestionarBotonera desactivarBotonMejoresTiempos];
     [self.delegado.gestionarBotonera activarBotonJugarSecundario];
@@ -57,14 +59,13 @@
     [self.delegado.gestionarBotonera mostrarVistaTiempoYMinas];
 }
 
-
 - (void) accionJugar{
     [self.delegado iniciarJuego];
     [self.gestorDeEstados establecerEstado:self.gestorDeEstados.estadoDelJuegoEnJuego];
 }
 
 -(void) accionMostrarMinas{
-    [self.delegado mostrarMinas];
+    [self.delegado delegadoMostrarMinas];
     [self.gestorDeEstados establecerEstado:self.gestorDeEstados.estadoDelJuegoAyuda];
 }
 
@@ -127,7 +128,16 @@
 
 
 -(void) accionConfigurar{
-    [self.delegado mostrarVentanaDeConfiguracion];
+    [self.gestorDeEstados establecerEstado:self.gestorDeEstados.estadoDelJuegoConfiguracion];
+    [self.delegado delegadoMostrarVentanaDeConfiguracion];
 }
 
+- (void) accionMostrarVentanaDeAyuda{
+    [NSException exceptionWithName:@"accion incorrecta" reason:@"El estado no la soporta" userInfo:nil];
+}
+-(void) accionOcultarVentanaDeAyuda{
+    [NSException exceptionWithName:@"accion incorrecta" reason:@"El estado no la soporta" userInfo:nil];
+};
+-(void) accionRotarPantalla{
+}
 @end

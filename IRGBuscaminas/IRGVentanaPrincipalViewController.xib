@@ -14,11 +14,13 @@
                 <outlet property="botonMostrarMejoresTiempos" destination="g0l-vu-kiX" id="eLh-QO-01J"/>
                 <outlet property="botonMostrarMinas" destination="RNV-JR-Uw3" id="Tqa-zl-5Tk"/>
                 <outlet property="botonMostrarMinasVertical" destination="ujJ-X7-iWa" id="Mrg-WX-seO"/>
+                <outlet property="botonMostrarVentanaDeAyuda" destination="tpK-nJ-zjW" id="gcA-YP-sGI"/>
                 <outlet property="botonPausar" destination="zgi-zC-f8X" id="2X3-Tf-Eug"/>
                 <outlet property="botonPausarVertical" destination="nOR-sf-ttw" id="ZFq-IQ-K0X"/>
                 <outlet property="botonSettings" destination="Qdt-QI-beK" id="oWd-J0-MAZ"/>
                 <outlet property="botonSettingsVertical" destination="ljI-Js-IMg" id="mLf-z7-K8u"/>
                 <outlet property="canvas" destination="zp6-fT-8XJ" id="TSy-iL-j2s"/>
+                <outlet property="labelEstadoDelJuego" destination="CSm-nw-Jhd" id="o7g-Mj-jlC"/>
                 <outlet property="tiempoDeJuegoTextField" destination="phd-fm-tez" id="eqy-Hp-8l2"/>
                 <outlet property="totalMinas" destination="OW5-p5-RKd" id="c7E-2I-BcO"/>
                 <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
@@ -97,6 +99,25 @@
                                 </mask>
                             </variation>
                         </imageView>
+                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="empezar..." lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="CSm-nw-Jhd">
+                            <rect key="frame" x="308" y="6" width="132" height="38"/>
+                            <fontDescription key="fontDescription" name="BradleyHandITCTT-Bold" family="Bradley Hand" pointSize="30"/>
+                            <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                            <nil key="highlightedColor"/>
+                        </label>
+                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="tpK-nJ-zjW">
+                            <rect key="frame" x="620" y="10" width="30" height="30"/>
+                            <constraints>
+                                <constraint firstAttribute="height" constant="30" id="nOM-r2-FaM"/>
+                                <constraint firstAttribute="width" constant="30" id="wAZ-8G-OKL"/>
+                            </constraints>
+                            <state key="normal" image="duda">
+                                <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                            </state>
+                            <connections>
+                                <action selector="mostrarVentanaDeAyuda:" destination="-1" eventType="touchUpInside" id="tMe-tC-E7G"/>
+                            </connections>
+                        </button>
                     </subviews>
                     <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                     <constraints>
@@ -110,6 +131,8 @@
                         <constraint firstAttribute="bottom" secondItem="OW5-p5-RKd" secondAttribute="bottom" constant="5" id="B2c-M7-V0H"/>
                         <constraint firstAttribute="trailing" secondItem="OW5-p5-RKd" secondAttribute="trailing" constant="16" id="FJe-vh-z4u"/>
                         <constraint firstAttribute="centerX" secondItem="16j-Sr-n6l" secondAttribute="centerX" id="KQ9-hw-Hzi"/>
+                        <constraint firstAttribute="centerY" secondItem="CSm-nw-Jhd" secondAttribute="centerY" id="KSd-Qn-mJ7"/>
+                        <constraint firstAttribute="centerY" secondItem="tpK-nJ-zjW" secondAttribute="centerY" id="Ngn-Vi-CGs"/>
                         <constraint firstAttribute="centerY" secondItem="16j-Sr-n6l" secondAttribute="centerY" id="Oi3-G6-mZn"/>
                         <constraint firstItem="OW5-p5-RKd" firstAttribute="top" secondItem="tpS-bL-P0p" secondAttribute="top" constant="5" id="R1r-mb-j1j"/>
                         <constraint firstAttribute="centerY" secondItem="OW5-p5-RKd" secondAttribute="centerY" id="RlI-ra-nc0"/>
@@ -117,9 +140,11 @@
                         <constraint firstItem="phd-fm-tez" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="tpS-bL-P0p" secondAttribute="leading" constant="20" symbolic="YES" id="Wg6-sa-Gct"/>
                         <constraint firstItem="OW5-p5-RKd" firstAttribute="top" secondItem="tpS-bL-P0p" secondAttribute="top" constant="20" symbolic="YES" id="YKM-f6-D5e"/>
                         <constraint firstAttribute="height" constant="50" id="dJn-8s-6zJ"/>
+                        <constraint firstAttribute="centerX" secondItem="CSm-nw-Jhd" secondAttribute="centerX" id="fUs-kN-n6T"/>
                         <constraint firstItem="phd-fm-tez" firstAttribute="height" secondItem="OW5-p5-RKd" secondAttribute="height" id="lhG-1K-4mj"/>
                         <constraint firstItem="OW5-p5-RKd" firstAttribute="leading" secondItem="phd-fm-tez" secondAttribute="trailing" constant="8" symbolic="YES" id="nLf-He-kpX"/>
                         <constraint firstItem="phd-fm-tez" firstAttribute="top" secondItem="tpS-bL-P0p" secondAttribute="top" constant="5" id="o0J-4g-hfS"/>
+                        <constraint firstItem="OW5-p5-RKd" firstAttribute="leading" secondItem="tpK-nJ-zjW" secondAttribute="trailing" constant="8" symbolic="YES" id="qCO-2P-cay"/>
                         <constraint firstItem="phd-fm-tez" firstAttribute="top" secondItem="tpS-bL-P0p" secondAttribute="top" constant="20" symbolic="YES" id="qWS-G1-JF6"/>
                         <constraint firstItem="16j-Sr-n6l" firstAttribute="top" secondItem="tpS-bL-P0p" secondAttribute="top" constant="5" id="qoI-u1-PuP"/>
                         <constraint firstAttribute="trailing" secondItem="OW5-p5-RKd" secondAttribute="trailing" constant="20" symbolic="YES" id="rAu-K6-ec2"/>
@@ -513,7 +538,7 @@
                 <constraint firstItem="jh8-Ee-EbS" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" constant="-20" id="zQE-nJ-JlU"/>
             </constraints>
             <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
-            <point key="canvasLocation" x="119" y="127"/>
+            <point key="canvasLocation" x="37" y="59"/>
         </view>
     </objects>
     <resources>
@@ -523,5 +548,6 @@
         <image name="boton_pausa_2" width="90" height="90"/>
         <image name="boton_play_2" width="91" height="90"/>
         <image name="boton_settings_2" width="90" height="90"/>
+        <image name="duda" width="50" height="50"/>
     </resources>
 </document>

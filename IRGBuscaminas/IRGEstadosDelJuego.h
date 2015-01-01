@@ -13,13 +13,19 @@
 
 @protocol IRGEstadosDelJuego  <NSObject>
 #pragma mark - Metodos del protocolo obligatorios
--(void)accionJugar;
--(void)accionMostrarMinas;
+-(void) accionJugar;
+-(void) accionMostrarMinas;
 -(void) accionPausar;
 -(void) accionConfigurar;
+-(void) accionMostrarVentanaDeAyuda;
+-(void) accionOcultarVentanaDeAyuda;
+-(void) accionRotarPantalla;
 -(void) ponerBandera: (IRGCeldaViewController *)celdaViewController;
 -(void) despejarCelda: (IRGCeldaViewController *)celdaViewController;
 -(void) establecerBotones;
 -(void) mostrarYOcultarBotones;
+
+@property (nonatomic,strong,readonly) IRGVentanaPrincipalViewController *delegado;
+@property (nonatomic,strong,readonly) IRGGestorDeEstados * gestorDeEstados;
 
 @end

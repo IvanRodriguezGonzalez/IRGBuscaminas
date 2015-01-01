@@ -19,10 +19,8 @@
 
     self.vistaDeLosDatos.layer.borderWidth =0;
     self.vistaDeLosDatos.layer.borderColor = [UIColor grayColor].CGColor;
-    self.vistaDeLosDatos.layer.cornerRadius = 0;
+    self.vistaDeLosDatos.layer.cornerRadius = 5;
     self.vistaDeLosDatos.layer.masksToBounds = YES;
-    
-    
 }
 
 - (void)setSelected:(BOOL)selected animated:(BOOL)animated {

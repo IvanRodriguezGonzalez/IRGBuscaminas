@@ -44,6 +44,8 @@
 #pragma mark - Metodos del protocolo
 
 - (void) establecerBotones{
+    self.delegado.labelEstadoDelJuego.text=@"parado";
+
     [self.delegado.gestionarBotonera desactivarBotonMostrarMinas];
     [self.delegado.gestionarBotonera desactivarBotonMejoresTiempos];
     [self.delegado.gestionarBotonera desactivarBotonJugarSecundario];
@@ -62,18 +64,15 @@
 
 -(void) ponerBandera:(IRGCeldaViewController *)celdaViewController{
     [NSException exceptionWithName:@"accion incorrecta" reason:@"El estado no la soporta" userInfo:nil];
-    
 }
 
 - (void) despejarCelda:(IRGCeldaViewController *)celdaViewController{
     [NSException exceptionWithName:@"accion incorrecta" reason:@"El estado no la soporta" userInfo:nil];
-    
 }
 
 -(void) accionPausar{
-    [self.delegado iniciarReloj];
+    [self.delegado delegadoReanudarJuego];
     [self.gestorDeEstados establecerEstado:self.gestorDeEstados.estadoDelJuegoEnJuego];
-    [self.delegado eliminarImagenDeBloqueo];
 }
 
 -(void) mostrarYOcultarBotones{
@@ -84,5 +83,14 @@
     [NSException exceptionWithName:@"accion incorrecta" reason:@"El estado no la soporta" userInfo:nil];
 }
 
+- (void) accionMostrarVentanaDeAyuda{
+    [NSException exceptionWithName:@"accion incorrecta" reason:@"El estado no la soporta" userInfo:nil];
+}
 
+-(void) accionOcultarVentanaDeAyuda{
+    [NSException exceptionWithName:@"accion incorrecta" reason:@"El estado no la soporta" userInfo:nil];
+};
+
+-(void) accionRotarPantalla{
+}
 @end

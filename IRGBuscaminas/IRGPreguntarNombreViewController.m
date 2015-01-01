@@ -18,11 +18,14 @@
 
 @interface IRGPreguntarNombreViewController ()
 #pragma mark - Propiedades privadas
+
 @property (weak, nonatomic) IBOutlet UITextField *nombreTextField;
-@property (weak, nonatomic) IBOutlet UITextField *tiempoTextField;
-@property (weak, nonatomic) IBOutlet UITextField *numeroDeCeldasTextField;
-@property (weak, nonatomic) IBOutlet UITextField *numeroDeMinasTextField;
-@property (weak, nonatomic) IBOutlet UITextField *conAyudaTextField;
+@property (weak, nonatomic) IBOutlet UILabel *labelTiempoDeJuego;
+@property (weak, nonatomic) IBOutlet UILabel *labelNumeroDeMinas;
+@property (weak, nonatomic) IBOutlet UILabel *labelDificultadDelJuego;
+@property (weak, nonatomic) IBOutlet UIImageView *iconoAyuda;
+
+
 @property (weak, nonatomic) IBOutlet UITableView *tablaVistaMejoresTiempos;
 
 @property (weak, nonatomic) IBOutlet UIImageView *imagenDelJugador;
@@ -32,6 +35,9 @@
 
 @property (weak, nonatomic) IBOutlet UIView *vistaImagenDelJugador;
 
+@property (weak, nonatomic) IBOutlet UILabel *tiempoDelJugador;
+@property (weak, nonatomic) IBOutlet UILabel *numeroDeMinas;
+@property (weak, nonatomic) IBOutlet UILabel *dificultadDeLaPartida;
 
 @end
 
@@ -57,7 +63,6 @@
 
 #  pragma mark - Overrides
 
-
 - (void)viewDidLoad {
     [super viewDidLoad];
     
@@ -66,18 +71,28 @@
     self.vistaImagenDelJugador.layer.cornerRadius = 5;
     self.vistaImagenDelJugador.layer.masksToBounds = YES;
     
-    self.nombreTextField.text = self.datoDelMejorTiempo.nombre;
-    self.numeroDeCeldasTextField.text = [NSString stringWithFormat:@"%ld",(long)self.datoDelMejorTiempo.numeroDeCeldas];
-    self.numeroDeMinasTextField.text = [NSString stringWithFormat:@"%ld",(long)self.datoDelMejorTiempo.numeroDeMinas];
+    self.labelNumeroDeMinas.text =[NSString stringWithFormat:@"%ld",(long)self.datoDelMejorTiempo.numeroDeMinas];
     if (self.datoDelMejorTiempo.conAyuda){
-        self.conAyudaTextField.text = @"Si";
+        self.iconoAyuda.hidden = NO;
     }
     else{
-        self.conAyudaTextField.text = @"No";
+        self.iconoAyuda.hidden = YES;
+    };
+    self.labelTiempoDeJuego.text=[IRGMetodosComunes formatearTiempoDeJuegoEnSegundos:self.datoDelMejorTiempo.tiempo];
+    switch (self.datoDelMejorTiempo.dificultad) {
+        case 1:
+            self.labelDificultadDelJuego.text = @"Fácil";
+            break;
+        case 2:
+            self.labelDificultadDelJuego.text = @"Medio";
+            break;
+        case 3:
+            self.labelDificultadDelJuego.text = @"Dificil";
+            break;
+            
+        default:
+            break;
     }
-    self.tiempoTextField.text = [IRGMetodosComunes formatearTiempoDeJuegoEnSegundos:self.datoDelMejorTiempo.tiempo]
-    ;    
-
     
     NSBundle * bundle = [NSBundle mainBundle];
     [self.tablaVistaMejoresTiempos registerNib:[UINib nibWithNibName:@"IRGMejoresTiemposTableViewCell"
@@ -138,7 +153,6 @@ heightForRowAtIndexPath:(NSIndexPath *)indexPath{
     
     if (filaDeLaTabla > FILAS_DE_MEJORES_TIEMPOS_MOSTRADAS-1)
     {
-
         celda.nombreDelJugador.text = @"...";
         celda.tiempoDelJugador.text =Nil;
         celda.dificultadDeLaPartida.text = @"";
@@ -178,7 +192,7 @@ heightForRowAtIndexPath:(NSIndexPath *)indexPath{
             celda.conAyuda.alpha= 1;
         }
         else{
-            celda.conAyuda.alpha = .05;
+            celda.conAyuda.alpha = .00;
         }
         if (mejorTiempo.imagenDelJugador!=nil){
             celda.imagenDelJugador.image = mejorTiempo.imagenDelJugador;

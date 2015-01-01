@@ -8,8 +8,10 @@
 
 #import <UIKit/UIKit.h>
 #import "IRGDatoDelMejorTiempo.h"
+#import "IRGVentanaPrincipalViewController.h"
 
 @interface IRGPreguntarNombreViewController : UIViewController<UITableViewDataSource,UITableViewDelegate,UIImagePickerControllerDelegate,UINavigationControllerDelegate>
 #pragma mark - Propiedades publicas
 @property (nonatomic) IRGDatoDelMejorTiempo *datoDelMejorTiempo;
+@property (nonatomic) IRGVentanaPrincipalViewController *sender;
 @end
